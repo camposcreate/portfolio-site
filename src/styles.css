@@ -18,6 +18,7 @@
  .container {
     padding: 10px 10%;
  }
+/* nav bar */
 nav {
     display: flex;
     align-items: center;
