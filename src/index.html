@@ -6,8 +6,9 @@
     <title>Personal Portfolio Website</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Add any additional meta tags, CSS stylesheets, or JavaScript files here -->
+    <script src="script.js"></script>
 </head>
-<!--Changes New User-->
+<!--HEADER + NAV BAR-->
 <body>
 <div class="back-texture">
     <img src="images/texture.png" class="pic">
@@ -17,19 +18,80 @@
         <nav>
             <img src="images/250x52.png" class="logo">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="header-text">
-            <p>Full-Time CS Student</p>
-            <h1>Hi, I'm <span>Uriel</span><br>from the United States.</h1>
-            <a href="#">Contact</a>
-        </div>
+        <section id="home">
+            <h1>Home Section</h1>
+            <div class="header-text">
+                <p>Full-Time CS Student</p>
+                <h1>Hi, I'm <span>Uriel</span><br>from the United States.</h1>
+                <a href="#">Contact</a>
+            </div>
+            <div class="self-pic">
+                <img src="images/coffee.png" class="me" alt="Self Picture">
+            </div>
+        </section>
+    </div>
+</div>
 
-        <div class="self-pic">
-            <img src="images/coffee.png" class="me">
+<section id="portfolio-section">
+    <div class="container">
+        <h1>Portfolio Section</h1>
+    </div>
+</section>
+<!-----------PORTFOLIO----------->
+<div id="portfolio">
+    <div class="main">
+        <h2>Portfolio</h2>
+        <p>Projects</p>
+        <div class="row">
+            <div class="column-1">
+                <div class="block">
+                    <a href="#" class="tile">
+                        <img src="images/temp.png">
+                    </a>
+                    <div class="banner"></div>
+                    <div class="column1-layer">
+                        <h3>work in progress</h3>
+                        <p>
+                            The "Work in Progress" project is currently under development, and the specific details and purpose of the program have yet to be decided.
+                            It represents an ongoing project that is still in the ideation phase, and further planning and development will shape its purpose, functionality, and benefits
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="block">
+                    <a href="#" class="tile">
+                        <img src="images/visualizer.png">
+                    </a>
+                    <div class="column2-layer">
+                        <h3>Algorithm Visualizer</h3>
+                        <p>The Algorithm Visualizer project is an interactive tool that visually demonstrates how different algorithms work in real time.
+                            Users can input a starting point and an ending point, and the visualizer will showcase how algorithms such as Dijkstra's algorithm
+                            or A* algorithm find the shortest path between the two points. This project provides an intuitive and interactive way for users to
+                            understand and learn about algorithms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column-3">
+                <div class="block">
+                    <a href="#" class="tile">
+                        <img src="images/task-manager.png">
+                    </a>
+                    <div class="column3-layer">
+                        <h3>Task Manager</h3>
+                        <p>
+                            The Task Manager project is a program designed to assist users in managing their tasks effectively.
+                            Users can create, organize, and prioritize their tasks based on importance or deadlines.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

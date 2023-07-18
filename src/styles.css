@@ -23,7 +23,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #18191c;
+    background: #060607;
     position: fixed;
     top: 0;
     left: 0;
@@ -51,6 +51,9 @@ nav ul li a {
     text-decoration: none;
     font-size: 18px;
     position: relative;
+}
+nav li .active {
+    font-weight: bold;
 }
 /* add hover effect to list items */
 nav ul li a::after {
@@ -112,7 +115,7 @@ nav ul li a:hover::after {
 /* self image */
 .self-pic {
     width: 15%;
-    height: 90%;
+    height: 80%;
     position: absolute;
     right: 100px;
     bottom: 0;
@@ -127,4 +130,114 @@ nav ul li a:hover::after {
 }
 .self-pic:hover .me {
     left: 45%;
+}
+
+/* -----------PORTFOLIO------------- */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+}
+.main h2 {
+    color: #fff;
+    padding-left: 130px;
+    font-size: 40px;
+    padding-top: 10px;
+}
+.main p {
+    color: #fff;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+.column-1, .column-2, .column-3 {
+    flex: 1;
+    padding: 10px;
+    width: 273px;
+    height: 300px;
+}
+.block {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #0f0f0f;
+    height: 600px;
+    padding: 15px 15px;
+}
+.tile {
+    position: relative;
+    display: flex;
+    text-align: center;
+    background-color: #ebebeb;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    border: 2px solid #9b00ff; /*#333*/
+    object-fit: cover;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+.tile img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+/* OPACITY AND OPACITY COLOR LAYER FOR TILES */
+.tile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 25, 0.3);
+  border-radius: 10px;
+}
+.tile:hover {
+    background-color: #ccc;
+    transform: scale(1.1);
+}
+.tile:active {
+    background-color: #fff;
+}
+/* work in progress header */
+.column1-layer h3{
+    color: #333;
+    /*color: #9b00ff;*/
+    padding-top: 12px;
+}
+/* work in progress description */
+.column1-layer p {
+    font-size: 17px;
+    text-align: left;
+    padding-top: 10px;
+}
+/* algorithm visualizer header */
+.column2-layer h3{
+    color: #fff;
+    padding-top: 12px;
+}
+/* algorithm visualizer description */
+.column2-layer p {
+    font-size: 17px;
+    text-align: left;
+    padding-top: 10px;
+}
+/* task manager header */
+.column3-layer h3{
+    color: #fff;
+    padding-top: 12px;
+}
+/* task manager description */
+.column3-layer p {
+    font-size: 17px;
+    text-align: left;
+    padding-top: 10px;
 }
