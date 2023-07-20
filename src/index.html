@@ -10,17 +10,20 @@
 </head>
 <!--HEADER + NAV BAR-->
 <body>
+
+<!-------- Scrap
 <div class="back-texture">
     <img src="images/texture.png" class="pic">
 </div>
+---->
 <div id="header">
     <div class="container">
         <nav>
-            <img src="images/250x52.png" class="logo">
+            <img src="images/updated.png" class="logo">
             <ul>
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link active" onclick="scrollToSection('#home')">Home</a></li>
+                <li><a href="#portfolio-section" class="nav-link" onclick="scrollToSection('#portfolio-section')">Portfolio</a></li>
+                <li><a href="#contact-section" class="nav-link" onclick="scrollToSection('#contact-section')">Contact</a></li>
             </ul>
         </nav>
         <section id="home">
@@ -28,7 +31,7 @@
             <div class="header-text">
                 <p>Full-Time CS Student</p>
                 <h1>Hi, I'm <span>Uriel</span><br>from the United States.</h1>
-                <a href="#">Contact</a>
+                <a href="#contact-section">Contact</a>
             </div>
             <div class="self-pic">
                 <img src="images/coffee.png" class="me" alt="Self Picture">
@@ -38,9 +41,8 @@
 </div>
 
 <section id="portfolio-section">
-    <div class="container">
-        <h1>Portfolio Section</h1>
-    </div>
+    <!--<div class="container"></div>-->
+    <h1>Portfolio Section</h1>
 </section>
 <!-----------PORTFOLIO----------->
 <div id="portfolio">
@@ -94,6 +96,44 @@
             </div>
         </div>
     </div>
+</div>
+<!----------- CONTACT SECTION ------------->
+<section id="contact-section">
+    <h2>Contact Section</h2>
+</section>
+<div id="contact">
+    <div class="main-contact">
+        <h2>Contact</h2>
+        <div class="contact-container">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="icons">
+    <a href="https://github.com/camposcreate">
+        <img src="images/git-hub.png" alt="Personal GitHub">
+    </a>
+    <a href="#">
+        <img src="images/resume.png" alt="Personal Resume">
+    </a>
 </div>
 </body>
 </html>
