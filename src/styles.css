@@ -14,6 +14,7 @@
     height: 100vh;
     background-size: cover;
     background-position: center;
+    background-image: url('images/splash1.png');
  }
  .container {
     padding: 10px 10%;
@@ -48,7 +49,7 @@ nav ul li {
 /* set color to list items */
 /* increase font size and remove underline */
 nav ul li a {
-    color: #fff;
+    color: #f0f6f6;
     text-decoration: none;
     font-size: 18px;
     position: relative;
@@ -76,12 +77,12 @@ nav ul li a:hover::after {
     margin-top: 10%;
 }
 .header-text p {
-    color: #fff;
+    color: #f0f6f6;
     margin-bottom: 1%;
     font-size: 18px;
 }
 .header-text h1 {
-    color: #fff;
+    color: #f0f6f6;
     font-size: 34px;
 }
 .header-text h1 span {
@@ -137,6 +138,9 @@ nav ul li a:hover::after {
 }
 
 /* -----------PORTFOLIO------------- */
+#portfolio-section h1 {
+    margin-top: -30px;
+}
 .main {
     display: flex;
     flex-direction: column;
@@ -147,13 +151,13 @@ nav ul li a:hover::after {
     padding-bottom: 400px;
 }
 .main h2 {
-    color: #fff;
+    color: #f0f6f6;
     padding-left: 130px;
     font-size: 40px;
     padding-top: 50px;
 }
 .main p {
-    color: #fff;
+    color: #f0f6f6;
     margin: 0 auto;
     font-size: 20px;
     text-align: left;
@@ -217,7 +221,7 @@ nav ul li a:hover::after {
 }
 /* work in progress header */
 .column1-layer h3{
-    color: #333;
+    color: #bbe6e4;
     /*color: #9b00ff;*/
     padding-top: 12px;
 }
@@ -229,7 +233,7 @@ nav ul li a:hover::after {
 }
 /* algorithm visualizer header */
 .column2-layer h3{
-    color: #fff;
+    color: #bbe6e4;
     padding-top: 12px;
 }
 /* algorithm visualizer description */
@@ -240,7 +244,7 @@ nav ul li a:hover::after {
 }
 /* task manager header */
 .column3-layer h3{
-    color: #fff;
+    color: #bbe6e4;
     padding-top: 12px;
 }
 /* task manager description */
@@ -253,6 +257,12 @@ nav ul li a:hover::after {
 /*----------- CONTACT ----------- */
 #contact {
   padding: 25px 0;
+  background-image: url('images/contact_bg.png');
+  margin-top: -20px;
+}
+.contact-section {
+    width: 100%;
+    height: 100vh;
 }
 .main-contact {
     display: flex;
@@ -261,7 +271,7 @@ nav ul li a:hover::after {
     text-align: center;
 }
 .main-contact h2 {
-    color: #fff;
+    color: #f0f6f6;
     padding-left: 130px;
     font-size: 40px;
 }
@@ -272,14 +282,15 @@ nav ul li a:hover::after {
   padding-top: 50px;
 }
 .form-group {
-    color: #fff; /*#9b00ff;*/
+    color: #bbe6e4; /*#9b00ff;*/
     margin-bottom: 20px;
 }
 label {
     display: block;
     font-weight: bold;
+    /*
     text-decoration: underline;
-    text-decoration-color: #9b00ff;
+    text-decoration-color: #9b00ff; */
     padding-bottom: 4px;
 }
 input, textarea {
@@ -287,6 +298,7 @@ input, textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: #f0f6f6;
 }
 textarea {
     width: 300px;
@@ -310,4 +322,5 @@ button:hover {
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
+    background-color: #060607;
 }
