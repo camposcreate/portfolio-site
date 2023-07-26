@@ -36,7 +36,7 @@ Unfortunately, a live demo of the site is unavailable at this time. Please come 
 
 To run this project locally, follow these steps:
 
-1. Clone this repository to your local machine using `git clone https://github.com/yourusername/portfolio.git`.
+1. Clone this repository to your local machine using `git clone https://github.com/camposcreate/portfolio.git`.
 2. Navigate to the project's root directory.
 3. Open `index.html` in your preferred web browser.
 
