@@ -100,14 +100,6 @@ nav ul li a:hover::after {
 .header-text a:hover {
     background: #c162ff;
 }
-/* background self pic color-texture
-.back-texture {
-    width: 30%;
-    height: 10%;
-    position: relative;
-    opacity: 60%;
-}
-*/
 .back-texture img {
     position: fixed;
     width: 525px;
@@ -119,7 +111,7 @@ nav ul li a:hover::after {
 
 /* self image */
 .self-pic {
-    width: 15%;
+    width: 20%;
     height: 80%;
     position: absolute;
     right: 100px;
