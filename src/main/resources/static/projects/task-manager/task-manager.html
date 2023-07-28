@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Project</title>
+    <!-- Link the CSS file -->
+    <link rel="stylesheet" href="task-manager.css">
+</head>
+
+<body>
+<!------- NAV BAR ---------->
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="../../images/updated.png" class="logo">
+            <a href="../../index.html" class="nav-link active">Home</a>
+        </nav>
+        <div class="header-text">
+            <h1>Welcome to the Task Manager! <span>(ver. 1.0)</span></h1>
+            <p>The program utilizes <span2>Java Oriented Programming</span2> to create objects represented as a user defined task.</p>
+        </div>
+    </div>
+</div>
+<div class="task-program">
+    <div class="add-task">
+        <input type="text" id="task-input" placeholder="Add a new task...">
+        <label for="priority">Priority:</label>
+        <input type="checkbox" id="priority">
+        <button id="add-button" onclick="addTask()">add</button>
+    </div>
+    <div class="task-list">
+        <h2>Task List</h2>
+        <!--<textarea id="task-textarea" rows="8" readonly></textarea>-->
+        <div id="task-display"></div>
+        <button id="clear-button" onclick="clearAllTasks()">Clear all</button>
+    </div>
+</div>
+<script src="task-manager.js"></script>
+</body>
+
+</html>
