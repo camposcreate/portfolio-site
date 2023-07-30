@@ -28,12 +28,21 @@ function addTask() {
         console.log('Data:', data);
         // Task added successfully, update the task list display
         getTasks();
+        setTimeout(() => {
+            document.getElementById('task-input').value = '';
+        }, 100);
     })
     .catch(error => {
         // Handle errors if any
         console.error(error);
     });
 }
+
+// Attach event listener to the form to handle form submission
+document.getElementById('task-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    addTask(); // Call the addTask function when the form is submitted
+});
 
 // Function to retrieve tasks from the backend
 function getTasks() {
@@ -92,4 +101,3 @@ function clearAllTasks() {
         console.error(error);
     });
 }
-

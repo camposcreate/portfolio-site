@@ -16,7 +16,13 @@ public class main {
 
 	@PostMapping("/addTask")
 	public ResponseEntity<String> addTask(@RequestBody tasks object) {
-		taskObject.add(object);
+		if (object.isPriority() && taskObject.isEmpty()) {
+			taskObject.add(object);
+		} else if (object.isPriority()) {
+			taskObject.add(0, object);
+		} else {
+			taskObject.add(object);
+		}
 		return ResponseEntity.ok("{\"message\": \"Task added successfully\"}");
 	}
 
