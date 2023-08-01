@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', function() {
             var sectionHeight = section.offsetHeight;
 
             // Add a slight offset to the section activation
-            var activationOffset = 70;
+            var activationOffset = 51;
 
             // Check if the scroll position is within the section with the offset
             if (

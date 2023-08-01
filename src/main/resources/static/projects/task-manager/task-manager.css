@@ -137,9 +137,20 @@ h2 {
     margin-bottom: 10px;
     color: #f0f6f6;
 }
-#task-display {
+.task-headers {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding: 8px;
+}
+.task-headers h3 {
+    font-size: 18px;
     color: #f0f6f6;
-    background-color: #333;
+    width: 50%;
+}
+#task-display {
+    background-color: #060607;
     padding: 10px;
 }
 li {
@@ -153,7 +164,7 @@ li {
     text-decoration: none;
     color: #f0f6f6;
     background: #9b00ff;
-    padding: 10px 18px;
+    padding: 8px 16px;
     border-radius: 10px;
     font-size: 16px;
     border: none;
@@ -162,4 +173,15 @@ li {
 }
 #clear-button:hover {
     background: #c162ff;
+}
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #f0f6f6;
+}
+.task-item p {
+    margin-left: 10px;
+    margin-right: 10px;
 }

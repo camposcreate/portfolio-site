@@ -6,6 +6,9 @@
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
  }
+ html {
+     scroll-behavior: smooth;
+ }
  body {
     background: #000000;
     color: #000000;
@@ -57,7 +60,8 @@ nav ul li a {
     position: relative;
 }
 nav li a.active {
-    font-weight: bold;
+    position: relative;
+    border-top: 2px solid #9b00ff;
 }
 /* add hover effect to list items */
 nav ul li a::after {
@@ -173,7 +177,7 @@ nav ul li a:hover::after {
     border-radius: 10px;
     overflow: hidden;
     background-color: #0f0f0f;
-    height: 600px;
+    height: 650px;
     padding: 15px 15px;
 }
 .tile {

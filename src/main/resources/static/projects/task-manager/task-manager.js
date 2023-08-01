@@ -38,6 +38,7 @@ function addTask() {
     });
 }
 
+
 // Attach event listener to the form to handle form submission
 document.getElementById('task-form').addEventListener('submit', function(event) {
     event.preventDefault();
