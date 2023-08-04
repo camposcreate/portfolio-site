@@ -38,7 +38,6 @@ function addTask() {
     });
 }
 
-
 // Attach event listener to the form to handle form submission
 document.getElementById('task-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -77,6 +76,7 @@ function updateTaskDisplay(tasks) {
         const taskItem = document.createElement('div');
         taskItem.classList.add('task-item');
         taskItem.innerHTML = `
+            <input type="checkbox" class="delete-checkbox" id="delete-${task.id}">
             <p>Title: ${task.title}</p>
             <p>Priority: ${task.priority ? 'High' : 'Low'}</p>
         `;
@@ -86,12 +86,12 @@ function updateTaskDisplay(tasks) {
 
 // Function to clear all tasks
 function clearAllTasks() {
-    console.log('Clear all tasks button clicked'); // Add this line for debugging
+    console.log('Clear all tasks button clicked'); // for debugging
     fetch('http://localhost:8080/tasks', {
         method: 'DELETE'
     })
     .then(response => {
-        console.log('Response status:', response.status); // Add this line for debugging
+        console.log('Response status:', response.status); // for debugging
         if (!response.ok) {
             throw new Error('Error clearing tasks: ' + response.status);
         }
@@ -102,3 +102,35 @@ function clearAllTasks() {
         console.error(error);
     });
 }
+
+// Function to delete selected tasks
+function deleteTask() {
+  const deleteCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
+  const taskIds = Array.from(deleteCheckboxes).map(checkbox => parseInt(checkbox.id.split('-')[1]));
+
+  if (taskIds.length === 0) {
+    console.log('No tasks selected for deletion.');
+    return;
+  }
+
+  // Send the DELETE request to the backend with the selected task IDs
+  fetch('http://localhost:8080/tasks/deleteSelected', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(taskIds)
+  })
+    .then(response => {
+      console.log('Response status:', response.status); // for debugging
+      if (!response.ok) {
+        throw new Error('Error deleting tasks: ' + response.status);
+      }
+      // update task display container when deleting tasks
+      getTasks();
+    })
+    .catch(error => {
+      console.error('Error deleting tasks:', error);
+    });
+}
+

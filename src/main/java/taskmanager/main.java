@@ -13,9 +13,11 @@ import java.util.List;
 public class main {
 
 	private List<tasks> taskObject = new ArrayList<>();
+	private int taskId = 0; // unique id for given task
 
 	@PostMapping("/addTask")
 	public ResponseEntity<String> addTask(@RequestBody tasks object) {
+		object.setId(taskId++);
 		if (object.isPriority() && taskObject.isEmpty()) {
 			taskObject.add(object);
 		} else if (object.isPriority()) {
@@ -31,12 +33,23 @@ public class main {
 		return taskObject;
 	}
 
-	@DeleteMapping("/{index}")
-	public void deleteTask(@PathVariable int index) {
-		if (index >= 0 && index < taskObject.size()) {
-			taskObject.remove(index);
+	@DeleteMapping("/deleteSelected")
+	public void deleteTask(@RequestBody List<Integer> ids) {
+		List<tasks> tasksToDelete = new ArrayList<>();
+
+		for (int id : ids) {
+			tasks taskToDelete = taskObject.stream()
+					.filter(task -> task.getId() == id)
+					.findFirst()
+					.orElse(null);
+
+			if (taskToDelete != null) {
+				tasksToDelete.add(taskToDelete);
+			}
 		}
+		taskObject.removeAll(tasksToDelete);
 	}
+
 
 	@DeleteMapping
 	public void clearAllTasks() {

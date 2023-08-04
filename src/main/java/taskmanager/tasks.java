@@ -1,28 +1,29 @@
 package taskmanager;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class tasks {
 	// private attributes
 	private String title;
 	private boolean priority;
+	private int id;
 
-	// set title
+	// set and get title
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	// get title
 	public String getTitle() {
 		return title;
 	}
-	// set priority
+
+	// set and get priority
 	public void setPriority(boolean priority) {
 		this.priority = priority;
 	}
-	// get priority
 	public boolean isPriority() {
 		return priority;
 	}
+
+	// set and get id
+	public void setId(int id) {this.id = id;}
+	public int getId() {return id;}
 
 } // end class tasks()
