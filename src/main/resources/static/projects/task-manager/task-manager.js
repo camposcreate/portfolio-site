@@ -30,6 +30,7 @@ function addTask() {
         getTasks();
         setTimeout(() => {
             document.getElementById('task-input').value = '';
+            document.getElementById('priority').checked = false;
         }, 100);
     })
     .catch(error => {
@@ -45,8 +46,9 @@ document.getElementById('task-form').addEventListener('submit', function(event) 
 });
 
 // Function to retrieve tasks from the backend
+// Send a GET request to the /tasks/getTitle endpoint
 function getTasks() {
-    fetch('http://localhost:8080/tasks/getTasks') // Send a GET request to the /tasks/getTitle endpoint
+    fetch('http://localhost:8080/tasks/getTasks')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error retrieving tasks: ' + response.status);
@@ -76,9 +78,13 @@ function updateTaskDisplay(tasks) {
         const taskItem = document.createElement('div');
         taskItem.classList.add('task-item');
         taskItem.innerHTML = `
-            <input type="checkbox" class="delete-checkbox" id="delete-${task.id}">
-            <p>Title: ${task.title}</p>
-            <p>Priority: ${task.priority ? 'High' : 'Low'}</p>
+            <div class="task-container">
+                <input type="checkbox" class="delete-checkbox" id="delete-${task.id}">
+                <div class="task-content">
+                    <p class="task-title">${task.title}</p>
+                </div>
+                <p class="task-priority">${task.priority ? 'High' : 'Low'}</p>
+            </div>
         `;
         taskDisplay.appendChild(taskItem);
     });

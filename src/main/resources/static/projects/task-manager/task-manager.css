@@ -62,29 +62,30 @@ nav a.nav-link:hover {
 .container {
     padding: 20px 10px;
 }
-
 /*--------- TEXT HEADING -----------*/
 .header-text {
     padding: 15px 20px;
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 .header-text h1 {
     color: #f0f6f6;
     font-size: 34px;
+    padding-bottom: 5px;
 }
 .header-text h1 span {
     color: #9b00ff;
     font-size: 14px;
 }
-.header-text p {
-    color: #f0f6f6;
-    font-size: 18px;
+.header-text h7 {
+    color: #060607;
+    font-size: 16px;
+    background: #f0f6f6;
+    padding: 4px;
 }
-.header-text p span2 {
+.header-text h7 span {
     color: #9b00ff;
-    font-size: 22px;
 }
-
 /*--------- PROGRAM FIELDS ----------*/
 .task-program {
     display: flex;
@@ -109,6 +110,7 @@ nav a.nav-link:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 10px;
+    margin-bottom: 5px;
 }
 label {
     color: #f0f6f6;
@@ -128,7 +130,7 @@ label {
     background: #c162ff;
 }
 .task-list {
-    width: 475px;
+    width: 500px;
     text-align: center;
 }
 h2 {
@@ -149,9 +151,22 @@ h2 {
     color: #f0f6f6;
     width: 50%;
 }
-#task-display {
+.task-display {
     background-color: #060607;
     padding: 10px;
+}
+.task-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px; /* Adjust space between checkbox, title, and priority */
+}
+.task-content {
+    flex-grow: 1;
+}
+.task-priority {
+    position: absolute;
+    padding-left: 325px;
 }
 li {
     display: flex;
