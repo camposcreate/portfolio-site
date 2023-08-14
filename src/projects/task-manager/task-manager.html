@@ -18,8 +18,10 @@
             <a href="../../index.html" class="nav-link active">return home</a>
         </nav>
         <div class="header-text">
-            <h1>Welcome to the Task Manager! <span>(ver. 1.0)</span></h1>
+            <h1>Welcome to the Task Manager! <span>(ver. 2.0)</span></h1>
             <p>The program utilizes <span2>Java Oriented Programming</span2> to create objects represented as a user defined task.</p>
+            <h5>The task manager utilizes a title (string), priority (bool), and id (int) to <span>set and get</span> task objects as they're created by the user.</h5>
+            <h7>Feel free to <span>create your own tasks</span> below, and delete/clear accordingly.</h7>
         </div>
     </div>
 </div>
@@ -33,7 +35,10 @@
     <div class="task-list">
         <h2>Task List</h2>
         <textarea id="task-textarea" rows="8" readonly></textarea>
-        <button id="clear-button">Clear all</button>
+        <div class="task-buttons">
+            <button id="delete-button">Delete</button>
+            <button id="clear-button">Clear all</button>
+        </div>
     </div>
 </div>
 

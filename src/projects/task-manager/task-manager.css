@@ -40,17 +40,17 @@ nav a {
     font-size: 18px;
     position: relative;
 }
-/* Style the "Home" link */
+/* Style the "return home" link */
 nav a.nav-link {
     text-decoration: none;
     color: #f0f6f6;
     background: #e61045; /*#9b00ff;*/
     margin: -10px 0;
-    padding: 4px 18px;
+    padding: 2px 18px;
     border-radius: 10px;
     display: inline-block;
 }
-/* Add hover effect to the "Home" link */
+/* Add hover effect to the "return home" link */
 nav a.nav-link:hover {
     background: #fc2d61; /*#c162ff;*/
 }
@@ -68,7 +68,7 @@ nav a.nav-link:hover {
 }
 .header-text h1 {
     color: #f0f6f6;
-    font-size: 34px;
+    font-size: 36px;
 }
 .header-text h1 span {
     color: #9b00ff;
@@ -81,6 +81,23 @@ nav a.nav-link:hover {
 .header-text p span2 {
     color: #9b00ff;
     font-size: 22px;
+}
+.header-text h5 {
+    color: #000;
+    font-size: 22px;
+    background: #fff;
+    padding: 2px;
+}
+.header-text h5 span {
+    color: #9b00ff;
+}
+.header-text h7 {
+    color: #f0f6f6;
+    font-size: 18px;
+    padding: 2px;
+}
+.header-text h7 span {
+    color: #9b00ff;
 }
 
 /*--------- PROGRAM FIELDS ----------*/
@@ -146,6 +163,26 @@ li {
     padding: 8px;
     border-bottom: 1px solid #f0f6f6;
 }
+.task-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+}
+#delete-button {
+    text-decoration: none;
+    color: #f0f6f6;
+    background: #e61045;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 3%;
+}
+#delete-button:hover {
+    background: #fc2d61;
+}
 #clear-button {
     text-decoration: none;
     color: #f0f6f6;
@@ -155,7 +192,7 @@ li {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    margin-top: 10px;
+    margin-right: 40%;
 }
 #clear-button:hover {
     background: #c162ff;

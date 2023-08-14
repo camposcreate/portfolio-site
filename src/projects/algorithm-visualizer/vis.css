@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background: #000000;
+}
+#header {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+/* ---------- NAV BAR -------------*/
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #060607;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    z-index: 9999;
+}
+/* logo */
+.logo {
+    width: 190px;
+}
+/* set color to list items */
+/* increase font size and remove underline */
+nav a {
+    color: #f0f6f6;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+/* Style the "return home" link */
+nav a.nav-link {
+    text-decoration: none;
+    color: #f0f6f6;
+    background: #e61045; /*#9b00ff;*/
+    margin: -10px 0;
+    padding: 2px 18px;
+    border-radius: 10px;
+    display: inline-block;
+}
+/* Add hover effect to the "return home" link */
+nav a.nav-link:hover {
+    background: #fc2d61; /*#c162ff;*/
+}
+.container ul {
+    display: none;
+}
+.container {
+    padding: 20px 10px;
+    margin-bottom: 10px; /* adjust space between nav and grid */
+}
+/* ----------- VISUALIZER BUTTONS -----------*/
+.vis-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+#clear-button {
+    color: #fff;
+    font-size: 16px;
+    border-color: #9b00ff;
+    background: #9b00ff;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.clear-button:hover {
+    background: #c162ff;
+}
+/* ----------- GRID CSS -----------*/
+body {
+    margin: 2rem;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(100px, 1fr)); /* (# of columns, minmax(min, max)) */
+    /*color: #f0f6f6; color contents of tiles*/
+    gap: 2px;
+}
+.grid > div {
+    background-color: #f0f6f6;
+}
+.grid > div > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.grid > div.clicked {
+    background-color: #000;
+}
+.grid > div:hover {
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    transform: scale(1.1);
+}
+
