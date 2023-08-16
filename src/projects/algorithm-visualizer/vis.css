@@ -41,15 +41,16 @@ nav a {
 nav a.nav-link {
     text-decoration: none;
     color: #f0f6f6;
-    background: #e61045; /*#9b00ff;*/
     margin: -10px 0;
-    padding: 2px 18px;
-    border-radius: 10px;
+    padding: 4px 18px;
+    border-radius: 8px;
     display: inline-block;
 }
 /* Add hover effect to the "return home" link */
 nav a.nav-link:hover {
     background: #fc2d61; /*#c162ff;*/
+    box-shadow: 0 0 10px #fc2d61;
+    transition: 1.0s ease;
 }
 .container ul {
     display: none;
@@ -65,17 +66,39 @@ nav a.nav-link:hover {
     align-items: center;
     margin-bottom: 10px;
     text-decoration: none;
+    padding: 8px;
+}
+label {
+    color: #f0f6f6;
+    margin-right: 5px;
+}
+select {
+    margin-right: 15px;
+}
+#start-button {
+    color: #fff;
+    font-size: 14px;
+    border-color: rgb(76, 187, 23);
+    background: rgb(76, 187, 23);/*#9b00ff;*/
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 50px;
+}
+#start-button:hover {
+    background: rgb(76, 200, 23);
 }
 #clear-button {
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     border-color: #9b00ff;
     background: #9b00ff;
     padding: 8px 14px;
     border-radius: 10px;
     cursor: pointer;
 }
-.clear-button:hover {
+#clear-button:hover {
     background: #c162ff;
 }
 /* ----------- GRID CSS -----------*/
@@ -90,18 +113,29 @@ body {
 }
 .grid > div {
     background-color: #f0f6f6;
+    padding: 1rem;
+    border-radius: 3px;
 }
-.grid > div > a {
-    display: block;
-    width: 100%;
-    height: 100%;
+.grid > div > img {
+    display: none;
 }
 .grid > div.clicked {
     background-color: #000;
 }
-.grid > div:hover {
-    cursor: pointer;
+.grid-item .image {
+    background-image: url("../../images/circle.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.grid-item .image2 {
+    background-image: url("../../images/diamond-symbol.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.grid-item.hovered {
     transition: transform 0.5s ease;
     transform: scale(1.1);
-}
-
+    box-shadow: 0 0 25px #f0f6f6;
+}*/
