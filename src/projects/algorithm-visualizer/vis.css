@@ -50,7 +50,7 @@ nav a.nav-link {
 nav a.nav-link:hover {
     background: #fc2d61; /*#c162ff;*/
     box-shadow: 0 0 10px #fc2d61;
-    transition: 1.0s ease;
+    transition: 0.8s ease;
 }
 .container ul {
     display: none;
@@ -89,7 +89,7 @@ select {
 #start-button:hover {
     background: rgb(76, 200, 23);
 }
-#clear-button {
+#reset-button {
     color: #fff;
     font-size: 14px;
     border-color: #9b00ff;
@@ -98,7 +98,7 @@ select {
     border-radius: 10px;
     cursor: pointer;
 }
-#clear-button:hover {
+#reset-button:hover {
     background: #c162ff;
 }
 /* ----------- GRID CSS -----------*/
@@ -107,7 +107,7 @@ body {
 }
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, minmax(100px, 1fr)); /* (# of columns, minmax(min, max)) */
+    grid-template-columns: repeat(10, minmax(70px, 1fr)); /* (# of columns, minmax(min, max)) */
     /*color: #f0f6f6; color contents of tiles*/
     gap: 2px;
 }

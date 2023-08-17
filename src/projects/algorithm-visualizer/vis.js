@@ -1,52 +1,43 @@
-/*
-// toggle item color and reset board
-document.addEventListener('DOMContentLoaded', () => {
-    const gridItems = document.querySelectorAll('.grid a');
-    const resetButton = document.getElementById('clear-button');
+// capture original HTML content of grid
+const originalGridHTML = document.querySelector(".grid").innerHTML;
 
-    // toggle
-    gridItems.forEach(item => {
-        item.addEventListener('click', () => {
-            console.log("Clicked!");
-            item.parentElement.classList.toggle('clicked');
+// reset the grid to original state
+function resetGrid() {
+    document.querySelector(".grid").innerHTML = originalGridHTML;
+
+    // reattach event listeners
+    addDragAndDropListeners();
+}
+
+// add drag-and-drop functionality to cells
+function addDragAndDropListeners() {
+    const cell = document.querySelectorAll(".grid-item"),
+        image = document.querySelector(".image");
+
+    // loop through each cell element
+    cell.forEach((gridItem) => {
+        // when elements are dragged over cells
+        gridItem.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            gridItem.classList.add("hovered");
+        });
+
+        // when elements are dragged out of cells
+        gridItem.addEventListener("dragleave", () => {
+            gridItem.classList.remove("hovered");
+        });
+
+        // when elements are dropped in a cell
+        gridItem.addEventListener("drop", () => {
+            gridItem.appendChild(image);
+            gridItem.classList.remove("hovered");
         });
     });
+}
 
-    // reset board
-    resetButton.addEventListener('click', () => {
-        gridItems.forEach(item => {
-            item.parentElement.classList.remove('clicked');
-        });
-    });
-});*/
+// call function initially
+addDragAndDropListeners();
 
-const cell = document.querySelectorAll(".grid-item"),
-    image = document.querySelector(".image");
-
-console.log(cell, image);
-
-// loop each cell element
-cell.forEach((gridItem) => {
-    // When elements are dragged over cells
-    gridItem.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        gridItem.classList.add("hovered");
-    });
-
-    // When elements are dragged out of cells
-    gridItem.addEventListener("dragleave", () => {
-        gridItem.classList.remove("hovered");
-    });
-
-    // When elements are dropped in a cell
-    gridItem.addEventListener("drop", () => {
-        gridItem.appendChild(image);
-        gridItem.classList.remove("hovered");
-    });
-});
-
-
-
-
-
-
+// reset button functionality
+const resetButton = document.getElementById("reset-button");
+resetButton.addEventListener("click", resetGrid);
