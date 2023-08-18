@@ -265,7 +265,7 @@ nav ul li a:hover::after {
 #contact {
   padding: 25px 0;
   background-image: url('images/contact_bg.png');
-  margin-top: 0px;
+  margin-top: -29px;
 }
 .contact-section {
     width: 100%;
@@ -308,7 +308,7 @@ input, textarea {
     background-color: #f0f6f6;
 }
 textarea {
-    width: 300px;
+    width: 340px; /* increase width of all fields */
     height: 100px;
 }
 button {
@@ -327,7 +327,7 @@ button:hover {
 /*----------- FOOTER ---------*/
 .icons {
     text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: #060607;
 }
