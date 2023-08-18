@@ -46,15 +46,16 @@ nav a {
 nav a.nav-link {
     text-decoration: none;
     color: #f0f6f6;
-    background: #e61045; /*#9b00ff;*/
     margin: -10px 0;
-    padding: 2px 18px;
-    border-radius: 10px;
+    padding: 4px 18px;
+    border-radius: 8px;
     display: inline-block;
 }
 /* Add hover effect to the "Home" link */
 nav a.nav-link:hover {
     background: #fc2d61; /*#c162ff;*/
+    box-shadow: 0 0 10px #fc2d61;
+    transition: 0.8s ease;
 }
 .container ul {
     display: none;
