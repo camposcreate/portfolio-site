@@ -39,11 +39,15 @@ function addTask() {
     });
 }
 
-// Attach event listener to the form to handle form submission
-document.getElementById('task-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    addTask(); // Call the addTask function when the form is submitted
-});
+window.onload = function() {
+    var taskForm = document.getElementById('task-form');
+    if (taskForm) {
+        taskForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            addTask();
+        });
+    }
+};
 
 // Function to retrieve tasks from the backend
 // Send a GET request to the /tasks/getTitle endpoint

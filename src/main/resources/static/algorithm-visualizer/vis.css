@@ -112,7 +112,7 @@ body {
     gap: 2px;
 }
 .grid > div {
-    background-color: #f0f6f6;
+    background-color: /*#f0f6f6;*/
     padding: 1rem;
     border-radius: 3px;
 }
@@ -122,6 +122,28 @@ body {
 .grid > div.clicked {
     background-color: #000;
 }
+.grid-item {
+    padding: 1rem;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+:root {
+    --open-cell-color: #333;
+    --obstacle-color: #FF0000;
+}
+.open-cell {
+    background-color: var(--open-cell-color) !important;
+}
+.obstacle {
+    background-color: #000;
+}
+.dynamic-color {
+    background-color: #333 !important;
+}
+.visited-cell {
+    background-color: #333;
+}
+/* Starting Sprite */
 .grid-item .image {
     background-image: url("../../images/circle.png");
     background-size: contain;
@@ -138,4 +160,4 @@ body {
     transition: transform 0.5s ease;
     transform: scale(1.1);
     box-shadow: 0 0 25px #f0f6f6;
-}*/
+}

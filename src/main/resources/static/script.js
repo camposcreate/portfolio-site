@@ -10,7 +10,7 @@ function updateProgressBar() {
 window.addEventListener('scroll', updateProgressBar);
 
 
-window.addEventListener('DOMContentLoaded', function() {
+/*window.addEventListener('DOMContentLoaded', function() {
     // Get the navigation links
     var navLinks = document.querySelectorAll('.nav-link');
 
@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', function() {
             var sectionHeight = section.offsetHeight;
 
             // Add a slight offset to the section activation
-            // var activationOffset = 100;
+            var activationOffset = 100;
 
             // Check if the scroll position is within the section with the offset
             if (
@@ -58,3 +58,4 @@ window.addEventListener('DOMContentLoaded', function() {
       });
 
 });
+*/
