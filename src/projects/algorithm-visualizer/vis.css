@@ -107,7 +107,7 @@ body {
 }
 .grid {
     display: grid;
-    grid-template-columns: repeat(10, minmax(70px, 1fr)); /* (# of columns, minmax(min, max)) */
+    grid-template-columns: repeat(10, minmax(50px, 1fr)); /* (# of columns, minmax(min, max)) */
     /*color: #f0f6f6; color contents of tiles*/
     gap: 2px;
 }
@@ -128,7 +128,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
-.grid-item .image2 {
+.grid-item1 .image {
     background-image: url("../../images/diamond-symbol.png");
     background-size: contain;
     background-repeat: no-repeat;

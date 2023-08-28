@@ -29,8 +29,13 @@ nav {
     z-index: 9999;
 }
 /* logo */
+.nav_logo {
+    width: 30px;
+    padding: 4px;
+}
 .logo {
-    width: 190px;
+    width: 180px;
+    margin-right: auto;
 }
 /* set color to list items */
 /* increase font size and remove underline */
