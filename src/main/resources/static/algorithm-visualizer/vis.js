@@ -6,8 +6,7 @@ const spritePosition = {
     col: 0, // Initialize with a default value
 };
 
-const cellElements = document.querySelectorAll(".grid-item"),
-        image = document.querySelector(".image");
+const cellElements = document.querySelectorAll(".grid-item");
 
 const colorChangeButton = document.getElementById("color-change-button");
 const gridColumns = 10;
@@ -25,13 +24,12 @@ function resetGrid() {
 
 // add drag-and-drop functionality to cells
 function addDragAndDropListeners() {
-
-    // loop through each cell element
     cellElements.forEach((gridItem) => {
         // when elements are dragged over cells
         gridItem.addEventListener("dragover", (e) => {
             e.preventDefault();
             gridItem.classList.add("hovered");
+            console.log("Dragged over cell:", gridItem);
         });
 
         // when elements are dragged out of cells
@@ -67,7 +65,7 @@ function sendGridData() {
          grid: getGrid(),
          spritePosition: getSpritePosition(),
     };
-
+    console.log("Grid data sent to backend:", gridData);
     // Send the grid data as JSON to the backend
     fetch('/Algorithms/visualize', {
         method: 'POST',
@@ -81,7 +79,6 @@ function sendGridData() {
         console.log("Received updated grid data:", updatedGridData);
         // Handle the response from the backend
         visualizeAlgorithm(updatedGridData);
-        // changeCellColor(0, 0, "open-cell"); - testing color change
 
         cellElements.forEach(gridItem => {
             gridItem.addEventListener("dragover", handleDragOver);
@@ -116,31 +113,57 @@ function handleDrop(e) {
 
 function visualizeAlgorithm(updatedGridData) {
     console.log("Received updated grid data:", updatedGridData);
-    const grid = document.querySelectorAll(".grid-item");
 
+    // Convert the 1D array to a 2D array
+    const numRows = 3;
+    const numCols = 10;
+    const gridData2D = [];
+    for (let i = 0; i < numRows; i++) {
+        const row = updatedGridData.slice(i * numCols, (i + 1) * numCols);
+        gridData2D.push(row);
+    }
+
+    console.log("Structure of updatedGridData:");
     // Loop through the grid cells and update their appearance based on the updatedGridData
-    for (let row = 0; row < updatedGridData.length; row++) {
-        for (let col = 0; col < updatedGridData[row].length; col++) {
-            const cellValue = updatedGridData[row][col];
-            if (updatedGridData[row][col] === 'X') {
-                changeCellColor(cellElements, row, col, "obstacle");  // Corrected here
-            } else if (updatedGridData[row][col] === 'O') {
+    for (let row = 0; row < gridData2D.length; row++) {
+        console.log(updatedGridData[row]);
+        for (let col = 0; col < gridData2D[row].length; col++) {
+            const cellValue = gridData2D[row][col];
+            console.log("Processing cell:", row, col, "with value:", cellValue);
+            if (cellValue === 'X') {
+                console.log("Row:", row, "Col:", col);
+                changeCellColor(cellElements, row, col, "obstacle");
+            } else if (cellValue === 'O') {
+                console.log("Row:", row, "Col:", col);
                 changeCellColor(cellElements, row, col, "open-cell");
             } else if (cellValue === 'V') {
+                console.log("Row:", row, "Col:", col);
                 changeCellColor(cellElements, row, col, "visited-cell");
             }
-            // for adding additional conditions as needed
         }
     }
     console.log("Color changes applied");
 }
 
 function changeCellColor(cellElements, row, col, colorClass) {
-    const cellIndex = row * gridColumns + col;
-    const cell = cellElements[cellIndex];
-    console.log("cell:", cell);
-    console.log("colorClass:", colorClass);
+    console.log("changeCellColor - Row:", row, "Col:", col);
 
+    if (row < 0 || row >= 3 || col < 0 || col >= 10) {
+        console.error(`Invalid row or column index: row=${row}, col=${col}`);
+        return;
+    }
+
+    const cellIndex = row * 10 + col; // Assuming 10 columns
+    const cell = cellElements[cellIndex];
+
+    if (!cell) {
+        console.error(`Cell element not found for row=${row}, col=${col}`);
+        console.log("cellElements:", cellElements); // Log the cellElements array
+        console.log("cellIndex:", cellIndex); // Log the calculated cellIndex
+        return;
+    }
+
+    console.log(`Setting color at ${row} ${col}`);
     cell.classList.add(colorClass, "dynamic-color");
 }
 
@@ -170,8 +193,6 @@ function getSpritePosition() {
 
 // Visualize button functionality
 const visualizeButton = document.getElementById("start-button");
-visualizeButton.addEventListener("click", sendGridData);
-
 visualizeButton.addEventListener("click", () => {
     console.log("Visualize button clicked");
     sendGridData();

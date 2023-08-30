@@ -51,8 +51,13 @@ nav {
     padding: 0 20px;
 }
 /* logo */
+.nav_logo {
+    width: 30px;
+    padding: 4px;
+}
 .logo {
     width: 190px;
+    margin-right: auto;
 }
 nav ul {
     display: flex;
