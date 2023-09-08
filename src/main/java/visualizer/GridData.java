@@ -6,6 +6,14 @@ public class GridData {
     private List<String> grid;
     private SpritePosition spritePosition;
 
+    public GridData() {
+
+    }
+
+    public GridData(List<String> grid) {
+        this.grid = grid;
+    }
+
     public List<String> getGrid() {
         return grid;
     }

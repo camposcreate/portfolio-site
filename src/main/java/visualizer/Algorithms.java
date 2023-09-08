@@ -1,11 +1,15 @@
 package visualizer;
 
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class Algorithms {
 
-    public static void bfs(char[][] grid, int startRow, int startCol) {
+    public static void bfs(char[][] grid, int startRow, int startCol, SimpMessagingTemplate messagingTemplate) {
         int rows = grid.length;
         int cols = grid[0].length;
         boolean[][] visited = new boolean[rows][cols];
@@ -22,9 +26,14 @@ public class Algorithms {
             int r = current[0];
             int c = current[1];
 
-            // Perform your BFS visualization logic here
-            // For example, you can update the grid cell color to show traversal
-            grid[r][c] = 'V'; // 'V' for visited
+            // Implement your BFS algorithm logic here
+            // You can modify the grid and send updates to the frontend using messagingTemplate
+
+            // Mark the current cell as visited
+            grid[r][c] = 'V';
+
+            // Send updated grid data to frontend
+            messagingTemplate.convertAndSend("/topic/updatedGrid", convertGridToStringList(grid));
 
             // Enqueue unvisited neighboring cells
             for (int i = 0; i < 4; i++) {
@@ -39,5 +48,14 @@ public class Algorithms {
             }
         }
     }
-}
 
+    // Helper method to convert the grid to List<String>
+    public static List<String> convertGridToStringList(char[][] grid) {
+        List<String> gridList = new ArrayList<>();
+        for (char[] row : grid) {
+            gridList.add(new String(row));
+        }
+        return gridList;
+    }
+
+}
