@@ -7,7 +7,7 @@ const spritePosition = {
     col: 0,
 };
 
-const cellElements = document.querySelectorAll(".grid-item");
+const cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
 const numRows = 3; // Define the number of rows
 const numColumns = cellElements.length / numRows; // Calculate the number of columns
 
@@ -82,7 +82,7 @@ function sendGridData() {
     // Prepare grid data
     const gridData = {
         grid: getGrid(),
-        spritePosition: getSpritePosition(),
+        spritePosition: spritePosition,
     };
 
     console.log("Grid data sent to backend:", gridData);
@@ -98,14 +98,15 @@ function sendGridData() {
     .then(response => {
         console.log('Response:', response);
         if (!response.ok) {
+            console.error('Server returned an error:', response.status, response.statusText);
             throw new Error('Network response was not ok');
         }
-        return response.json(); // Read the response as text
+        return response.text(); // Read the response as text
     })
     .then(data => {
         console.log('Data:', data);
         try {
-            const jsonData = data; // Use the response data directly
+            const jsonData = JSON.parse(data); // Use the response data directly
             console.log('Parsed JSON Data:', jsonData);
             updateGrid(jsonData); // Update the grid on the frontend
         } catch (error) {
@@ -177,13 +178,14 @@ function processBFSStep(updatedGridData, row, col) {
 
         // Move to the next cell or row if necessary
         col++;
-        if (col >= gridColumns) {
+        if (col >= numColumns) {
             col = 0;
             row++;
             console.log("Moving to the next row");
         }
 
         if (row < gridRows) {
+            //await delay(100000000);
             setTimeout(() => {
                 processBFSStep(updatedGridData, row, col);
             }, 100); // Adjust the delay as needed
@@ -198,12 +200,12 @@ function processBFSStep(updatedGridData, row, col) {
 function changeCellColor(cellElements, row, col, colorClass) {
     console.log(`changeCellColor - Row: ${row}, Col: ${col}, Class: ${colorClass}`);
 
-    if (row < 0 || row >= 3 || col < 0 || col >= gridColumns) {
+    if (row < 0 || row >= 3 || col < 0 || col >= numColumns) {
         console.error(`Invalid row or column index: row=${row}, col=${col}`);
         return;
     }
 
-    const cellIndex = row * gridColumns + col;
+    const cellIndex = row * numColumns + col;
     const cell = cellElements[cellIndex];
 
     if (!cell) {
@@ -218,56 +220,63 @@ function changeCellColor(cellElements, row, col, colorClass) {
     }
 }
 
+// Function to update the grid based on updatedGridData
 function updateGrid(updatedGridData) {
     console.log('updateGrid called');
     console.log('Received grid data:', updatedGridData);
 
     try {
-        // Attempt to parse the received JSON data
-        const parsedData = JSON.parse(updatedGridData);
+        // Convert the JSON data to an array if it's a string
+        if (typeof updatedGridData === 'string') {
+            updatedGridData = JSON.parse(updatedGridData);
+        }
+        // Log the values of cellElements
+        console.log('cellElements:', cellElements);
+        console.log('Row length:', updatedGridData.length);
+        for (let row = 0; row < updatedGridData.length; row++) {
+            for (let col = 0; col < updatedGridData[row].length; col++) {
+                const cellValue = updatedGridData[row][col];
+                const cellId = `cell-${row}-${col}`;
+                const cellElement = document.getElementById(cellId);
 
-        if (Array.isArray(parsedData.grid)) {
-            const grid = parsedData.grid;
+                if (cellElement) {
+                    // Clear existing classes
+                    cellElement.className = '';
 
-            for (let row = 0; row < grid.length; row++) {
-                for (let col = 0; col < grid[row].length; col++) {
-                    const cellValue = grid[row][col];
-                    const cellElement = document.getElementById(`cell-${row}-${col}`);
-
-                    if (cellElement) {
-                        cellElement.className = '';
-
-                        if (cellValue === 'V') {
-                            cellElement.classList.add('visited-cell');
-                            console.log(`Setting cell-${row}-${col} to visited-cell`);
-                        } else if (cellValue === 'O') {
-                            cellElement.classList.add('open-cell');
-                            console.log(`Setting cell-${row}-${col} to open-cell`);
-                        } else if (cellValue === 'X') {
-                            cellElement.classList.add('obstacle');
-                            console.log(`Setting cell-${row}-${col} to obstacle`);
-                        }
+                    if (cellValue === 'V') {
+                        cellElement.classList.add('visited-cell');
+                        console.log(`Setting ${cellId} to visited-cell`);
+                    } else if (cellValue === 'O') {
+                        cellElement.classList.add('open-cell');
+                        console.log(`Setting ${cellId} to open-cell`);
+                    } else if (cellValue === 'X') {
+                        cellElement.classList.add('obstacle');
+                        console.log(`Setting ${cellId} to obstacle`);
                     }
+                } else {
+                    console.error(`Cell element not found for row=${row}, col=${col}`);
                 }
             }
-        } else {
-            console.error('Invalid grid data format:', parsedData);
         }
     } catch (error) {
-        console.error('Error parsing JSON:', error);
+        console.error('Error updating grid:', error);
     }
 }
 
-// Retrieve the current state of the grid
+// Retrieve the current state of the grid as a 2D array
 function getGrid() {
-    const grid = document.querySelectorAll(".grid-item");
     const gridData = [];
 
-    grid.forEach((gridItem) => {
-        const cellValue = gridItem.classList.contains("obstacle") ? "X" : "O";
-        gridData.push(cellValue);
-    });
-
+    for (let row = 0; row < numRows; row++) {
+        const rowData = [];
+        for (let col = 0; col < numColumns; col++) {
+            const cellId = `cell-${row}-${col}`;
+            const gridItem = document.getElementById(cellId);
+            const cellValue = gridItem.classList.contains("obstacle") ? "X" : "O";
+            rowData.push(cellValue);
+        }
+        gridData.push(rowData);
+    }
     return gridData;
 }
 
@@ -317,9 +326,21 @@ function handleGridDataAsByteArray(byteArray) {
 stompClient.connect({}, (frame) => {
     // Subscription code goes here
     stompClient.subscribe('/topic/updatedGrid', (message) => {
-        // Handle incoming messages
-        const byteArray = new Uint8Array(message.body);
-        handleGridDataAsByteArray(byteArray);
+        console.log('Received WebSocket message:', message.body);
+        try {
+            const data = message.body;
+            if (data && typeof data === 'string') {
+                const updatedGridData = JSON.parse(data);
+                console.log('Received updated grid data:', updatedGridData);
+
+                // Update the grid on the frontend with the updatedGridData
+                updateGrid(updatedGridData);
+            } else {
+                console.error('Received invalid data:', data);
+            }
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+        }
     });
 });
 
@@ -334,3 +355,7 @@ visualizeButton.addEventListener("click", () => {
     console.log("Visualize button clicked");
     sendGridData();
 });
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
