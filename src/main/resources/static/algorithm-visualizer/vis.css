@@ -113,7 +113,7 @@ body {
     gap: 2px;
 }
 .grid > div {
-    background-color: /*#f0f6f6;*/
+    background-color: #f0f6f6;
     padding: 1rem;
     border-radius: 3px;
 }
@@ -127,8 +127,7 @@ body {
     padding: 1rem;
     border-radius: 3px;
     transition: background-color 0.3s;
-    height: 30px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 :root {
     --open-cell-color: #333;
@@ -141,10 +140,15 @@ body {
     background-color: #fff;
 }
 .dynamic-color {
-    background-color: #333;
+    background-color: #fff;
 }
+/*
 .visited-cell {
-    background-color: #333;
+    background-color: #333 !important;
+}
+*/
+.update-cell {
+    background-color: #333 !important;
 }
 /* Starting Sprite */
 .grid-item .image {

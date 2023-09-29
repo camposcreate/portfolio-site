@@ -39,6 +39,9 @@ function resetGrid() {
     addDragAndDropListeners();
 }
 
+// Define activeSprite as an HTML element
+const activeSprite = document.querySelector(".image");
+
 // add drag-and-drop functionality to cells
 function addDragAndDropListeners() {
     cellElements.forEach((gridItem) => {
@@ -56,8 +59,20 @@ function addDragAndDropListeners() {
 
         // when elements are dropped in a cell
         gridItem.addEventListener("drop", () => {
-            gridItem.appendChild(image);
-            gridItem.classList.remove("hovered");
+
+                gridItem.appendChild(activeSprite);
+                gridItem.classList.remove("hovered");
+
+                // Get the row and column values of the dropped cell
+                const row = parseInt(gridItem.id.split("-")[1]);
+                const col = parseInt(gridItem.id.split("-")[2]);
+
+                // Update the spritePosition
+                spritePosition.row = row;
+                spritePosition.col = col;
+
+                console.log('Sprite dropped at row:', row, 'col:', col);
+
         });
     });
 }
@@ -87,8 +102,8 @@ function sendGridData() {
 
     console.log("Grid data sent to backend:", gridData);
 
-    // Send grid data as JSON to the backend
-    fetch('/Algorithms/visualize', {
+    // Send grid data as JSON to the backend and handle the response
+    return fetch('/Algorithms/visualize', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -101,22 +116,16 @@ function sendGridData() {
             console.error('Server returned an error:', response.status, response.statusText);
             throw new Error('Network response was not ok');
         }
-        return response.text(); // Read the response as text
+        return response.json(); // Parse the response as JSON
     })
     .then(data => {
         console.log('Data:', data);
-        try {
-            const jsonData = JSON.parse(data); // Use the response data directly
-            console.log('Parsed JSON Data:', jsonData);
-            updateGrid(jsonData); // Update the grid on the frontend
-        } catch (error) {
-            console.error('Error parsing JSON:', error);
-            // Handle the error or empty response here
-        }
+        return data; // Resolve the promise with the received data
     })
     .catch(error => {
         console.error('Error:', error);
         // Handle errors here
+        throw error;
     });
 }
 
@@ -134,6 +143,10 @@ function handleDrop(e) {
         // Update the spritePosition
         spritePosition.row = row;
         spritePosition.col = col;
+
+        console.log('Sprite dropped at row:', row, 'col:', col);
+        console.log('Updated spritePosition:', spritePosition);
+
     }
 }
 
@@ -263,6 +276,77 @@ function updateGrid(updatedGridData) {
     }
 }
 
+function visualizeBFS(updatedGridData, startRow, startCol) {
+    console.log('Visualizing BFS');
+
+    // Create a new 2D array to represent the grid without original class information
+    const gridData = JSON.parse(JSON.stringify(updatedGridData));
+
+    // Queue for BFS traversal
+    const queue = [{ row: startRow, col: startCol }];
+
+    // Delay (in milliseconds) between visualization steps
+    const delay = 0; // Adjust as needed
+
+    // Helper function to check if a cell is within the grid boundaries
+    function isValid(row, col) {
+        return row >= 0 && row < gridData.length && col >= 0 && col < gridData[0].length;
+    }
+
+    let visitedCount = 0;
+    let totalCells = gridData.length * gridData[0].length;
+
+    // Start BFS traversal
+    function processNextStep() {
+        if (queue.length === 0 || visitedCount === totalCells) {
+            console.log('BFS visualization completed');
+            return;
+        }
+
+        const { row, col } = queue.shift(); // Dequeue
+        console.log(`Processing cell at row: ${row}, col: ${col}`); // Log current cell
+
+        // Add neighboring cells to the queue for traversal
+        enqueue(row - 1, col); // Top
+        enqueue(row + 1, col); // Bottom
+        enqueue(row, col - 1); // Left
+        enqueue(row, col + 1); // Right
+
+        // Continue to the next step with a delay
+        setTimeout(processNextStep, delay);
+    }
+
+    // Helper function to add a neighboring cell to the queue for traversal
+    function enqueue(row, col) {
+        if (isValid(row, col) && gridData[row][col] === 'V') {
+            queue.push({ row, col });
+            gridData[row][col] = 'V'; // Mark as visited
+
+            // Paint the visited cell (change its class)
+            const cellId = `cell-${row}-${col}`;
+            const cellElement = document.getElementById(cellId);
+            if (cellElement) {
+                // Remove any existing classes and add the class for visited cells
+                cellElement.className = 'update-cell';
+            }
+            visitedCount++;
+
+            // Debug statements
+            console.log(`Visited Count: ${visitedCount}`);
+            console.log(`Total Cells: ${totalCells}`);
+
+            if(visitedCount === totalCells) {
+                console.log('All cells visited!');
+            }
+        } else {
+            console.log(`Skipped cell at row: ${row}, col: ${col}`); // Log skipped cell
+        }
+    }
+
+    // Start the BFS visualization
+    processNextStep();
+}
+
 // Retrieve the current state of the grid as a 2D array
 function getGrid() {
     const gridData = [];
@@ -308,7 +392,7 @@ function connectWebSocket() {
     });
 }
 
-// Function to handle incoming grid data as a byte array
+/* Function to handle incoming grid data as a byte array
 function handleGridDataAsByteArray(byteArray) {
     if (byteArray.length > 0) {
         // Handle the binary data here based on your application's logic.
@@ -320,7 +404,7 @@ function handleGridDataAsByteArray(byteArray) {
     } else {
         console.error('Received empty byte array.');
     }
-}
+}*/
 
 // WebSocket message handler
 stompClient.connect({}, (frame) => {
@@ -335,6 +419,10 @@ stompClient.connect({}, (frame) => {
 
                 // Update the grid on the frontend with the updatedGridData
                 updateGrid(updatedGridData);
+
+                console.log('What is going on?');
+                //visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col);
+                //visualizeBFS(updatedGridData, 0, 0);
             } else {
                 console.error('Received invalid data:', data);
             }
@@ -343,6 +431,17 @@ stompClient.connect({}, (frame) => {
         }
     });
 });
+
+/* WebSocket message handler
+stompClient.connect({}, (frame) => {
+    stompClient.subscribe('/topic/updatedGrid', (message) => {
+        const updatedGridData = JSON.parse(message.body);
+        console.log('Received updated grid data:', updatedGridData);
+
+        // Visualize BFS traversal
+        visualizeBFSTraversal(updatedGridData);
+    });
+});*/
 
 // Call the connectWebSocket function when the page loads
 window.onload = function () {
@@ -353,9 +452,13 @@ window.onload = function () {
 const visualizeButton = document.getElementById("start-button");
 visualizeButton.addEventListener("click", () => {
     console.log("Visualize button clicked");
-    sendGridData();
+    //sendGridData();
+    sendGridData().then(updatedGridData => {
+        visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col);
+    });
+
 });
 
-function delay(ms) {
+/*function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-}
+}*/
