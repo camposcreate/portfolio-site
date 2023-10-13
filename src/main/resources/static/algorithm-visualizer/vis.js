@@ -8,18 +8,20 @@ const spritePosition = {
 };
 
 const cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
-const numRows = 3; // Define the number of rows
+const numRows = 5; // number of rows
 const numColumns = cellElements.length / numRows; // Calculate the number of columns
 
 console.log("Number of rows: " + numRows);
 console.log("Number of columns: " + numColumns);
 
-const colorChangeButton = document.getElementById("color-change-button");
+// const colorChangeButton = document.getElementById("color-change-button");
 const gridColumns = 10;
+/*
 colorChangeButton.addEventListener("click", () => {
     changeCellColor(cellElements, spritePosition.row, spritePosition.col, "open-cell");
     // ^ Pass the existing 'cellElements' variable to the function
 });
+*/
 
 const socket = new SockJS('/Algorithms/websocket');
 const stompClient = Stomp.over(socket);
@@ -124,11 +126,12 @@ function sendGridData() {
     })
     .catch(error => {
         console.error('Error:', error);
-        // Handle errors here
+        // Handle errors
         throw error;
     });
 }
 
+// Drop sprite and record position (row, col)
 function handleDrop(e) {
     e.preventDefault();
     const targetCell = e.target;
@@ -212,7 +215,7 @@ function processBFSStep(updatedGridData, row, col) {
     }
 }
 */
-
+/*
 function changeCellColor(cellElements, row, col, colorClass) {
     console.log(`changeCellColor - Row: ${row}, Col: ${col}, Class: ${colorClass}`);
 
@@ -235,7 +238,7 @@ function changeCellColor(cellElements, row, col, colorClass) {
         console.log(`Color changed successfully at ${row} ${col}`);
     }
 }
-
+*/
 /* Function to update the grid based on updatedGridData
 function updateGrid(updatedGridData) {
     console.log('updateGrid called');
@@ -283,53 +286,53 @@ function updateGrid(updatedGridData) {
 function visualizeBFS(updatedGridData, startRow, startCol) {
     console.log('Visualizing BFS');
 
-    // Create a new 2D array to represent the grid without original class information
+    // create new 2D array to represent the grid without original class information
     const gridData = JSON.parse(JSON.stringify(updatedGridData));
 
-    // Delay (in milliseconds) between painting cells
-    const delay = 100; // Adjust as needed
+    // delay between painting cells
+    const delay = 100;
 
     // BFS traversal queue
     const queue = [{ row: startRow, col: startCol }];
 
-    // Helper function to check if a cell is within the grid boundaries
+    // check if cell is within grid boundaries
     function isValid(row, col) {
         return row >= 0 && row < gridData.length && col >= 0 && col < gridData[0].length;
     }
 
-    // Counter to keep track of iterations
+    // count iterations
     let iterationCount = 0;
 
-    // Set a maximum iteration limit to prevent infinite loops
+    // maximum iteration limit (prevent infinite loops)
     const maxIterations = gridData.length * gridData[0].length;
 
-    // Array to store visited cells
+    // store visited cells
     const visitedCells = [];
 
-    // Start BFS-like visualization
+    // start BFS
     function processNextStep() {
         console.log('Count: ', iterationCount);
-        if (iterationCount >= maxIterations) {
+        if (queue.length === 0 || iterationCount >= maxIterations) {
             console.log('BFS visualization completed');
             return;
         }
 
-        // Process the current queue
+        // process current queue
         const queueLength = queue.length;
         for (let i = 0; i < queueLength; i++) {
             const { row, col } = queue.shift(); // Dequeue
 
-            // Check if this cell has already been visited
+            // check if cell has previously been visited
             if (visitedCells.some(cell => cell.row === row && cell.col === col)) {
                 continue;
             }
 
             console.log(`Processing cell at row: ${row}, col: ${col}`); // Log current cell
 
-            // Mark this cell as visited
+            // mark visited cell
             visitedCells.push({ row, col });
 
-            // Add neighboring unvisited cells to the queue for traversal
+            // add neighboring cells (unvisited) to queue
             enqueue(row - 1, col); // Top
             enqueue(row + 1, col); // Bottom
             enqueue(row, col - 1); // Left
@@ -338,11 +341,11 @@ function visualizeBFS(updatedGridData, startRow, startCol) {
 
         iterationCount++;
 
-        // Continue to the next step with a delay
+        // continue with delay
         setTimeout(processNextStep, delay);
     }
 
-    // Helper function to add a neighboring cell to the queue for traversal
+    // add a neighboring cells to the queue for traversal
     function enqueue(row, col) {
         if (isValid(row, col) && gridData[row][col] === 'V') {
             queue.push({ row, col });

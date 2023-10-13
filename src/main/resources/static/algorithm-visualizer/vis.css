@@ -22,12 +22,18 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    padding: 10px 20px;
+    padding: 4px 20px;
     z-index: 9999;
 }
 /* logo */
+.nav_logo {
+    width: 30px;
+    padding: 4px;
+}
+/* logo name */
 .logo {
     width: 190px;
+    margin-right: auto;
 }
 /* set color to list items */
 /* increase font size and remove underline */
@@ -133,9 +139,11 @@ body {
     --open-cell-color: #333;
     --obstacle-color: #666;
 }
+/*
 .open-cell {
     background-color: #333;
 }
+*/
 .obstacle {
     background-color: #fff;
 }
@@ -163,6 +171,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+/* Hover cell effect */
 .grid-item.hovered {
     transition: transform 0.5s ease;
     transform: scale(1.1);

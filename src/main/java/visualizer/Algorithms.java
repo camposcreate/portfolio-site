@@ -26,9 +26,6 @@ public class Algorithms {
             int r = current[0];
             int c = current[1];
 
-            // Implement your BFS algorithm logic here
-            // You can modify the grid and send updates to the frontend using messagingTemplate
-
             // Mark the current cell as visited
             grid[r][c] = 'V';
 
