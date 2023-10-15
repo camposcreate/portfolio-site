@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Project</title>
+    <!-- Link the CSS file -->
+    <link rel="stylesheet" href="task-manager.css">
+    <link rel="shortcut icon" type="../../image/png" href="../../images/favicon.png">
+</head>
+
+<body>
+<!------- NAV BAR ---------->
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="../../images/navbar_logo.png" class="nav_logo">
+            <img src="../../images/logo_name.png" class="logo">
+            <a href="../../index.html" class="nav-link active">return</a>
+        </nav>
+        <div class="header-text">
+            <h1>Welcome to the Task Manager! <span>(ver. 3.0)</span></h1>
+            <h7>Feel free to <span>create your own tasks</span> below, and delete/clear accordingly.</h7>
+        </div>
+    </div>
+</div>
+<div class="task-program">
+    <div class="add-task">
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Add a new task...">
+            <label for="priority">Priority:</label>
+            <input type="checkbox" id="priority">
+            <button type="button" id="add-button" onclick="addTask()">add</button>
+        </form>
+    </div>
+    <div class="task-list">
+        <h2>Task List</h2>
+        <div class="task-headers">
+            <h3>Task</h3>
+            <h3>Priority</h3>
+        </div>
+        <!--<textarea id="task-textarea" rows="8" readonly></textarea>-->
+        <div id="task-display"></div>
+        <div class="task-buttons">
+            <button id="delete-button" onclick="deleteTask()">Delete</button>
+            <button id="clear-button" onclick="clearAllTasks()">Clear all</button>
+        </div>
+    </div>
+</div>
+<script src="task-manager.js"></script>
+</body>
+
+</html>

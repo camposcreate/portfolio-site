@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+ }
+ html {
+    scroll-behavior: smooth;
+ }
+ .progress-bar {
+    position: fixed;
+    width: 100%;
+    height: 3px;
+    top: 0.5px;
+    z-index: 5;
+ }
+ .filled {
+    width: 0%;
+    height: 100%;
+    background-image: linear-gradient(to right, #9b00ff, #fff);
+    border-radius: 10px;
+ }
+ body {
+    background: #000000;
+    color: #000000;
+ }
+ #header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-image: url('images/splash1.png');
+    z-index: 1;
+ }
+ .container {
+    padding: 0px 10%;
+ }
+/* nav bar */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #060607;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+}
+/* logo */
+.nav_logo {
+    width: 30px;
+    padding: 4px;
+}
+/* logo name */
+.logo {
+    width: 190px;
+    margin-right: auto;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+}
+/* position list items */
+/* change margins */
+nav ul li {
+    margin: 10px 12px;
+}
+
+/* set color to list items */
+/* increase font size and remove underline */
+nav ul li a {
+    color: #f0f6f6;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+/* add hover effect to list items */
+nav ul li a::after {
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #9b00ff;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+/* transitioning underline effect */
+nav ul li a:hover::after {
+    width: 100%;
+}
+.header-text {
+    padding: 75px 20px;
+    margin-top: 10%;
+}
+.header-text p {
+    color: #f0f6f6;
+    margin-bottom: 1%;
+    font-size: 18px;
+}
+.header-text h1 {
+    color: #f0f6f6;
+    font-size: 34px;
+}
+.header-text h1 span {
+    color: #9b00ff;
+}
+.header-text a {
+    text-decoration: none;
+    color: #fff;
+    background: #9b00ff;
+    margin: 26px 0;
+    padding: 10px 18px;
+    border-radius: 10px;
+    display: inline-block;
+}
+.header-text a:hover {
+    background: #c162ff;
+}
+.back-texture img {
+    position: fixed;
+    width: 525px;
+    height: 140%;
+    left: 40%;
+    transform: translate(100%);
+    bottom: 0;
+}
+
+/* self image */
+.self-pic {
+    width: 20%;
+    height: 85%;
+    position: absolute;
+    right: 100px;
+    top: 50px;
+    bottom: 0;
+    z-index: -1;
+}
+.self-pic img {
+    position: absolute;
+    height: 70%;
+    left: 30%;
+    transform: translate(-70%);
+    bottom 0;
+    transition: left 2s ease;
+}
+.self-pic:hover .me {
+    left: 45%;
+}
+
+/* -----------PORTFOLIO------------- */
+#portfolio-section h1 {
+    margin-top: 0;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    background-color: #060607;
+    min-height: 100vh;
+    padding-bottom: 400px;
+}
+.main h2 {
+    color: #f0f6f6;
+    padding-left: 130px;
+    font-size: 40px;
+    padding-top: 50px;
+}
+.main p {
+    color: #f0f6f6;
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: left;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+.column-1, .column-2, .column-3 {
+    flex: 1;
+    padding: 10px;
+    width: 273px;
+    height: 300px;
+}
+.block {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #0f0f0f;
+    height: 650px;
+    padding: 15px 15px;
+}
+.tile {
+    position: relative;
+    display: flex;
+    text-align: center;
+    background-color: #ebebeb;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    border: 2px solid #9b00ff; /*#333*/
+    object-fit: cover;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+.tile img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+/* OPACITY AND OPACITY COLOR LAYER FOR TILES */
+.tile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 25, 0.3);
+  border-radius: 10px;
+}
+.tile:hover {
+    background-color: #ccc;
+    transform: scale(1.1);
+}
+.tile:active {
+    background-color: #fff;
+}
+/* work in progress header */
+.column1-layer h3{
+    color: #bbe6e4;
+    /*color: #9b00ff;*/
+    padding-top: 12px;
+    text-decoration: underline;
+}
+/* work in progress description */
+.column1-layer p {
+    font-size: 17px;
+    text-align: left;
+    padding-top: 10px;
+}
+/* algorithm visualizer header */
+.column2-layer h3{
+    color: #bbe6e4;
+    padding-top: 12px;
+    text-decoration: underline;
+}
+/* algorithm visualizer description */
+.column2-layer p {
+    font-size: 17px;
+    text-align: left;
+    padding-top: 10px;
+}
+/* task manager header */
+.column3-layer h3{
+    color: #bbe6e4;
+    padding-top: 12px;
+    text-decoration: underline;
+}
+/* task manager description */
+.column3-layer p {
+    font-size: 17px;
+    text-align: left;
+    padding-top: 10px;
+}
+.column3-layer p span{
+    font-size: 18px;
+    color: #9b00ff;
+}
+/*----------- CONTACT ----------- */
+#contact {
+  padding: 25px 0;
+  background-image: url('images/contact_bg.png');
+  margin-top: -29px;
+}
+.contact-section {
+    width: 100%;
+    height: 100vh;
+}
+.main-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+}
+.main-contact h2 {
+    color: #f0f6f6;
+    padding-left: 130px;
+    font-size: 40px;
+}
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  padding-top: 50px;
+}
+.form-group {
+    color: #bbe6e4; /*#9b00ff;*/
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    /*
+    text-decoration: underline;
+    text-decoration-color: #9b00ff; */
+    padding-bottom: 4px;
+}
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f6f6;
+}
+textarea {
+    width: 340px;
+    height: 100px;
+}
+button {
+    text-decoration: none;
+    color: #fff;
+    background: #9b00ff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background: #c162ff;
+}
+/*----------- FOOTER ---------*/
+.icons {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #060607;
+}

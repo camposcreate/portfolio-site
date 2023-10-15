@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <!-- Add any additional meta tags, CSS stylesheets, or JavaScript files here -->
+    <script src="script.js"></script>
+    <script src="projects/task-manager/task-manager.js"></script>
+</head>
+<!--HEADER + NAV BAR-->
+<body>
+<div class="progress-bar">
+    <div class="filled"></div>
+</div>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="images/navbar_logo.png" class="nav_logo">
+            <img src="images/logo_name.png" class="logo">
+            <ul>
+                <li><a href="#home" class="nav-link home-link">Home</a></li>
+                <li><a href="#portfolio-section" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact-section" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <section id="home">
+            <h1></h1>
+            <div class="header-text">
+                <p>Full-Time CS Student</p>
+                <h1>Hi, I'm <span>Uriel</span><br>from the United States.</h1>
+                <a href="#contact-section">Contact</a>
+            </div>
+            <div class="self-pic">
+                <img src="images/coffee.png" class="me" alt="Self Picture">
+            </div>
+        </section>
+    </div>
+</div>
+
+<section id="portfolio-section">
+    <!--<div class="container"></div>-->
+    <h1></h1>
+</section>
+<!-----------PORTFOLIO----------->
+<div id="portfolio">
+    <div class="main">
+        <h2>Portfolio</h2>
+        <p>Projects</p>
+        <div class="row">
+            <div class="column-1">
+                <div class="block">
+                    <a href="#" class="tile">
+                        <img src="images/temp.png">
+                    </a>
+                    <div class="banner"></div>
+                    <div class="column1-layer">
+                        <h3>work in progress</h3>
+                        <p>
+                            The "Work in Progress" project is currently under development, and the specific details and purpose of the program have yet to be decided.
+                            It represents an ongoing project that is still in the ideation phase, and further planning and development will shape its purpose, functionality, and benefits
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="block">
+                    <a href="algorithm-visualizer/vis.html" class="tile">
+                        <img src="images/visualizer.png">
+                    </a>
+                    <div class="column2-layer">
+                        <h3>Algorithm Visualizer</h3>
+                        <p>The Algorithm Visualizer is an interactive tool that visually demonstrates how different algorithms work in real time.
+                            Users can input a starting point and an ending point, and the visualizer will showcase how algorithms such as Dijkstra's algorithm
+                            or A* algorithm find the shortest path between the two points. This project provides an intuitive and interactive way for users to
+                            understand and learn about algorithms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column-3">
+                <div class="block">
+                    <a href="projects/task-manager/task-manager.html" class="tile">
+                        <img src="images/task-manager.png">
+                    </a>
+                    <div class="column3-layer">
+                        <h3>Task Manager</h3>
+                        <p>
+                            The Task Manager project is a program designed to assist users in managing their tasks effectively.
+                            Users can create, prioritize, and delete their own tasks accordingly.
+                        </p>
+                        <p>
+                            The program utilizes <span>Java Oriented Programming</span> to create objects represented as a user defined task.
+                        </p>
+                        <p>
+                            The task manager utilizes a title (string), priority (bool), and id (int) to <span>set and get</span> task objects as they're created by the user.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!----------- CONTACT SECTION ------------->
+<section id="contact-section">
+    <h2>Contact Section</h2>
+</section>
+<div id="contact">
+    <div class="main-contact">
+        <h2>Contact</h2>
+        <div class="contact-container">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Optional" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" placeholder="Brief Description" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="icons">
+    <a href="https://github.com/camposcreate" target="_blank">
+        <img src="images/git-hub.png" alt="Personal GitHub">
+    </a>
+    <a href="images/dummy_resume.pdf" target="_blank">
+        <img src="images/resume.png" alt="Personal Resume">
+    </a>
+</div>
+</body>
+</html>

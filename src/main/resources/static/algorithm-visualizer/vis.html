@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer Project</title>
+    <!-- Link the CSS file -->
+    <link rel="stylesheet" href="vis.css">
+    <link rel="shortcut icon" type="../../image/png" href="../../images/favicon.png">
+</head>
+<script src="/webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+<body>
+<!------- NAV BAR ---------->
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="../../images/navbar_logo.png" class="nav_logo">
+            <img src="../../images/logo_name.png" class="logo">
+            <a href="../../index.html" class="nav-link active">return</a>
+        </nav>
+    </div>
+</div>
+<!--------- BUTTONS -------->
+<div class="vis-buttons">
+    <!--<label>Choose algo:</label>-->
+    <select name="algo">
+        <option value="BFS">BFS</option>
+        <!--<option value="DFS">DFS</option>-->
+    </select>
+    <button id="start-button">Visualize</button>
+    <button id="reset-button">Reset</button>
+</div>
+<!--------- GRID ----------->
+<div class="grid">
+    <!-- Rows 1 -->
+    <div id="cell-0-0" class="grid-item" data-row="0" data-col="0">
+        <div class="image" draggable="true"><img src="" alt=""></div>
+    </div>
+    <div id="cell-0-1" class="grid-item" data-row="0" data-col="1"></div>
+    <div id="cell-0-2" class="grid-item"></div>
+    <div id="cell-0-3" class="grid-item"></div>
+    <div id="cell-0-4" class="grid-item"></div>
+    <div id="cell-0-5" class="grid-item"></div>
+    <div id="cell-0-6" class="grid-item"></div>
+    <div id="cell-0-7" class="grid-item"></div>
+    <div id="cell-0-8" class="grid-item"></div>
+    <div id="cell-0-9" class="grid-item"></div>
+
+    <!-- Rows 2 -->
+    <div id="cell-1-0" class="grid-item">
+        <div class=""><img src="" alt=""></div>
+    </div>
+    <div id="cell-1-1" class="grid-item"></div>
+    <div id="cell-1-2" class="grid-item"></div>
+    <div id="cell-1-3" class="grid-item"></div>
+    <div id="cell-1-4" class="grid-item"></div>
+    <div id="cell-1-5" class="grid-item"></div>
+    <div id="cell-1-6" class="grid-item"></div>
+    <div id="cell-1-7" class="grid-item"></div>
+    <div id="cell-1-8" class="grid-item"></div>
+    <div id="cell-1-9" class="grid-item"></div>
+
+    <!-- Rows 3 -->
+    <div id="cell-2-0" class="grid-item">
+        <div class=""><img src="" alt=""></div>
+    </div>
+    <div id="cell-2-1" class="grid-item"></div>
+    <div id="cell-2-2" class="grid-item"></div>
+    <div id="cell-2-3" class="grid-item"></div>
+    <div id="cell-2-4" class="grid-item"></div>
+    <div id="cell-2-5" class="grid-item"></div>
+    <div id="cell-2-6" class="grid-item"></div>
+    <div id="cell-2-7" class="grid-item"></div>
+    <div id="cell-2-8" class="grid-item"></div>
+    <div id="cell-2-9" class="grid-item"></div>
+
+    <!-- Rows 4 -->
+    <div id="cell-3-0" class="grid-item">
+        <div class=""><img src="" alt=""></div>
+    </div>
+    <div id="cell-3-1" class="grid-item"></div>
+    <div id="cell-3-2" class="grid-item"></div>
+    <div id="cell-3-3" class="grid-item"></div>
+    <div id="cell-3-4" class="grid-item"></div>
+    <div id="cell-3-5" class="grid-item"></div>
+    <div id="cell-3-6" class="grid-item"></div>
+    <div id="cell-3-7" class="grid-item"></div>
+    <div id="cell-3-8" class="grid-item"></div>
+    <div id="cell-3-9" class="grid-item"></div>
+
+    <!-- Rows 5 -->
+    <div id="cell-4-0" class="grid-item">
+        <div class=""><img src="" alt=""></div>
+    </div>
+    <div id="cell-4-1" class="grid-item"></div>
+    <div id="cell-4-2" class="grid-item"></div>
+    <div id="cell-4-3" class="grid-item"></div>
+    <div id="cell-4-4" class="grid-item"></div>
+    <div id="cell-4-5" class="grid-item"></div>
+    <div id="cell-4-6" class="grid-item"></div>
+    <div id="cell-4-7" class="grid-item"></div>
+    <div id="cell-4-8" class="grid-item"></div>
+    <div id="cell-4-9" class="grid-item"></div>
+</div>
+<script src="vis.js"></script>
+</body>
+</html>

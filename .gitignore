@@ -1,3 +1,4 @@
+HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -17,6 +18,7 @@ out/
 !**/src/test/**/out/
 
 ### Eclipse ###
+### STS ###
 .apt_generated
 .classpath
 .factorypath

@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background: #000000;
+    color: #000000;
+}
+#header {
+    position: relative;
+    /*width: 100%;
+    height: 100vh;*/
+    background-size: cover;
+    background-position: center;
+}
+/* nav bar for task-manager.html */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #060607;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 4px 20px;
+    z-index: 9999;
+}
+/* logo */
+.nav_logo {
+    width: 30px;
+    padding: 4px;
+}
+/* logo name */
+.logo {
+    width: 190px;
+    margin-right: auto;
+}
+/* set color to list items */
+/* increase font size and remove underline */
+nav a {
+    color: #f0f6f6;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+/* Style the "Home" link */
+nav a.nav-link {
+    text-decoration: none;
+    color: #f0f6f6;
+    margin: -10px 0;
+    padding: 4px 18px;
+    border-radius: 8px;
+    display: inline-block;
+}
+/* Add hover effect to the "Home" link */
+nav a.nav-link:hover {
+    background: #fc2d61; /*#c162ff;*/
+    box-shadow: 0 0 10px #fc2d61;
+    transition: 0.8s ease;
+}
+.container ul {
+    display: none;
+}
+.container {
+    padding: 20px 10px;
+}
+/*--------- TEXT HEADING -----------*/
+.header-text {
+    padding: 15px 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.header-text h1 {
+    color: #f0f6f6;
+    font-size: 34px;
+    padding-bottom: 5px;
+}
+.header-text h1 span {
+    color: #9b00ff;
+    font-size: 14px;
+}
+.header-text h7 {
+    color: #060607;
+    font-size: 16px;
+    background: #f0f6f6;
+    padding: 4px;
+}
+.header-text h7 span {
+    color: #9b00ff;
+}
+/*--------- PROGRAM FIELDS ----------*/
+.task-program {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.task-program p {
+    color: #f0f6f6;
+    padding-right: 5px;
+}
+.add-task {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*------ TASK INPUT FIELD --------*/
+#task-input {
+    width: 290px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+label {
+    color: #f0f6f6;
+}
+#add-button {
+    text-decoration: none;
+    color: #f0f6f6;
+    background: #9b00ff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+#add-button:hover {
+    background: #c162ff;
+}
+.task-list {
+    width: 500px;
+    text-align: center;
+}
+h2 {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #f0f6f6;
+}
+.task-headers {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding: 8px;
+}
+.task-headers h3 {
+    font-size: 18px;
+    color: #f0f6f6;
+    width: 50%;
+}
+.task-display {
+    background-color: #060607;
+    padding: 10px;
+}
+.task-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px; /* Adjust space between checkbox, title, and priority */
+}
+.task-content {
+    flex-grow: 1;
+}
+.task-priority {
+    position: absolute;
+    padding-left: 325px;
+}
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #f0f6f6;
+}
+.task-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+}
+#delete-button {
+    text-decoration: none;
+    color: #f0f6f6;
+    background: #e61045;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 3%;
+}
+#delete-button:hover {
+    background: #fc2d61;
+}
+#clear-button {
+    text-decoration: none;
+    color: #f0f6f6;
+    background: #9b00ff;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+#clear-button:hover {
+    background: #c162ff;
+}
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #f0f6f6;
+}
+.task-item p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
