@@ -2,13 +2,17 @@ console.log("Script loaded. Starting debugging.");
 // capture original HTML content of grid
 const originalGridHTML = document.querySelector(".grid").innerHTML;
 
-// sprite position
-const spritePosition = {
+// sprite position (starting position)
+let spritePosition = {
     row: 0,
     col: 0,
 };
 
-const cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
+// activeSprite as an HTML element
+const activeSprite = document.querySelector(".image");
+
+// cell as an HTML element
+let cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
 const numRows = 5; // number of rows
 const numColumns = cellElements.length / numRows; // number of columns
 
@@ -26,24 +30,13 @@ stompClient.connect({}, (frame) => {
     });
 });
 
-// reset the grid to original state
-function resetGrid() {
-    document.querySelector(".grid").innerHTML = originalGridHTML;
-    // reattach event listeners
-    addDragAndDropListeners();
-}
-
-// Define activeSprite as an HTML element
-const activeSprite = document.querySelector(".image");
-
-// add drag-and-drop functionality to cells
+// Function to clear and reattach event listeners
 function addDragAndDropListeners() {
     cellElements.forEach((gridItem) => {
         // when elements are dragged over cells
         gridItem.addEventListener("dragover", (e) => {
             e.preventDefault();
             gridItem.classList.add("hovered");
-            console.log("Dragged over cell:", gridItem);
         });
 
         // when elements are dragged out of cells
@@ -53,36 +46,31 @@ function addDragAndDropListeners() {
 
         // when elements are dropped in a cell
         gridItem.addEventListener("drop", () => {
-
-                gridItem.appendChild(activeSprite);
-                gridItem.classList.remove("hovered");
-
-                // Get the row and column values of the dropped cell
-                const row = parseInt(gridItem.id.split("-")[1]);
-                const col = parseInt(gridItem.id.split("-")[2]);
-
-                // Update the spritePosition
-                spritePosition.row = row;
-                spritePosition.col = col;
-
-                console.log('Sprite dropped at row:', row, 'col:', col);
-
+            gridItem.appendChild(activeSprite);
+            gridItem.classList.remove("hovered");
+            // Update the spritePosition
+            spritePosition.row = parseInt(gridItem.id.split("-")[1]);
+            spritePosition.col = parseInt(gridItem.id.split("-")[2]);
         });
     });
 }
 
-// call function initially
+// Call this function initially
 addDragAndDropListeners();
+
+// Reset the grid and reattach event listeners
+function resetGrid() {
+    console.log('Reset button clicked');
+    document.querySelector(".grid").innerHTML = originalGridHTML;
+    cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
+    addDragAndDropListeners();
+    // Reset sprite position after reset
+    spritePosition = { row: 0, col: 0 };
+}
 
 // reset button functionality
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", resetGrid);
-
-// Define handleDragOver function
-function handleDragOver(e) {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
-}
 
 // Function to send grid data to the backend
 function sendGridData() {
