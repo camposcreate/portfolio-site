@@ -43,7 +43,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #060607;
+    background: #111112;/*#060607;*/
     position: fixed;
     top: 0;
     left: 0;

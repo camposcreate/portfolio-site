@@ -17,7 +17,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #060607;
+    background: #111112;/*#060607;*/
     position: fixed;
     top: 0;
     left: 0;
@@ -127,9 +127,9 @@ body {
 .grid > div > img {
     display: none;
 }
-.grid > div.clicked {
+/*.grid > div.clicked {
     background-color: #000;
-}
+}*/
 .grid-item {
     padding: 1rem;
     border-radius: 3px;
@@ -172,7 +172,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
-/* Hover cell effect */
+/* hover cell effect (not dragging sprite) */
+.grid-item:hover {
+    background-color: yellow;
+}
+/* hover cell effect when dragging sprite */
 .grid-item.hovered {
     transition: transform 0.5s ease;
     transform: scale(1.1);

@@ -291,9 +291,15 @@ window.onload = function () {
 const visualizeButton = document.getElementById("start-button");
 visualizeButton.addEventListener("click", () => {
     console.log("Visualize button clicked");
-    //sendGridData();
     sendGridData().then(updatedGridData => {
         visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col);
     });
 
+});
+
+// cell click change color (obstacles)
+cellElements.forEach((cellClick) => {
+    cellClick.addEventListener('click', () => {
+        cellClick.style.backgroundColor = '#000';
+    });
 });
