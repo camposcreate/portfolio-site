@@ -46,6 +46,11 @@ function addDragAndDropListeners() {
 
         // when elements are dropped in a cell
         gridItem.addEventListener("drop", () => {
+            console.log("Dropped in cell:", gridItem);
+            if (gridItem.contains(activeSprite)) {
+                return;
+            }
+
             gridItem.appendChild(activeSprite);
             gridItem.classList.remove("hovered");
             // Update the spritePosition
@@ -58,14 +63,25 @@ function addDragAndDropListeners() {
 // Call this function initially
 addDragAndDropListeners();
 
-// Reset the grid and reattach event listeners
 function resetGrid() {
     console.log('Reset button clicked');
-    document.querySelector(".grid").innerHTML = originalGridHTML;
+
+    // Clear the grid
+    const grid = document.querySelector(".grid");
+    grid.innerHTML = originalGridHTML;
+
+    // Reattach event listeners to all cells
     cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
     addDragAndDropListeners();
+
     // Reset sprite position after reset
     spritePosition = { row: 0, col: 0 };
+
+    // Remove the original sprite from its initial position
+    const originalSpriteContainer = document.querySelector("#cell-0-0");
+    // Clear the sprite
+    originalSpriteContainer.innerHTML = '';
+    originalSpriteContainer.appendChild(activeSprite); // Attach sprite
 }
 
 // reset button functionality

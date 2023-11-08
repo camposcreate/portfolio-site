@@ -10,23 +10,24 @@ import java.util.Queue;
 public class Algorithms {
 
     public static void bfs(char[][] grid, int startRow, int startCol, SimpMessagingTemplate messagingTemplate) {
-        int rows = grid.length;
-        int cols = grid[0].length;
+        int rows = grid.length; // get row length
+        int cols = grid[0].length; // get col length
         boolean[][] visited = new boolean[rows][cols];
 
         Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{startRow, startCol});
-        visited[startRow][startCol] = true;
+        queue.add(new int[]{startRow, startCol}); // add starting node
+        visited[startRow][startCol] = true; // mark as visited
 
-        int[] dr = {-1, 1, 0, 0}; // Offsets for neighboring cells
+        // Offsets for neighboring cells
+        int[] dr = {-1, 1, 0, 0};
         int[] dc = {0, 0, -1, 1};
 
         while (!queue.isEmpty()) {
-            int[] current = queue.poll();
-            int r = current[0];
-            int c = current[1];
+            int[] current = queue.poll(); // current node
+            int r = current[0]; // node row
+            int c = current[1]; // node col
 
-            // Mark the current cell as visited
+            // Mark current cell as visited
             grid[r][c] = 'V';
 
             // Send updated grid data to frontend
