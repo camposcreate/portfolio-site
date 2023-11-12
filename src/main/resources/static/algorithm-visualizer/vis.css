@@ -17,7 +17,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #111112;/*#060607;*/
+    background: #0f0f0f;/*#060607;*/
     position: fixed;
     top: 0;
     left: 0;
@@ -39,7 +39,7 @@ nav {
 /* set color to list items */
 /* increase font size and remove underline */
 nav a {
-    color: #f0f6f6;
+    color: #d7e7e7;/*#f0f6f6;*/
     text-decoration: none;
     font-size: 18px;
     position: relative;
@@ -47,7 +47,7 @@ nav a {
 /* Style the "return home" link */
 nav a.nav-link {
     text-decoration: none;
-    color: #f0f6f6;
+    color: #d7e7e7;/*#f0f6f6;*/
     margin: -10px 0;
     padding: 4px 18px;
     border-radius: 8px;
@@ -76,14 +76,14 @@ nav a.nav-link:hover {
     padding: 8px;
 }
 label {
-    color: #f0f6f6;
+    color: #d7e7e7;/*#f0f6f6;*/
     margin-right: 5px;
 }
 select {
     margin-right: 15px;
 }
 #start-button {
-    color: #fff;
+    color: #d7e7e7;/*#f0f6f6;*/
     font-size: 14px;
     border-color: rgb(76, 187, 23);
     background: rgb(76, 187, 23);/*#9b00ff;*/
@@ -97,7 +97,7 @@ select {
     background: rgb(76, 200, 23);
 }
 #reset-button {
-    color: #f0f6f6;
+    color: #d7e7e7;/*#f0f6f6;*/
     font-size: 14px;
     border-color: #9b00ff;
     background: #9b00ff;
@@ -120,7 +120,7 @@ body {
     gap: 2px;
 }
 .grid > div {
-    background-color: #f0f6f6;
+    background-color: #d7e7e7;/*#f0f6f6;*/
     padding: 1rem;
     border-radius: 3px;
 }

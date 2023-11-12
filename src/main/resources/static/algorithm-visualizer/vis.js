@@ -260,6 +260,11 @@ function getSpritePosition() {
     return null; // Return null if sprite is not present
 }
 
+function getSelectedValue() {
+    var selectedValue = document.getElementById("algo").value;
+    console.log(selectedValue);
+}
+
 // connect to the WebSocket and listen for updates
 function connectWebSocket() {
     const socket = new SockJS('/Algorithms/websocket'); // Use the correct WebSocket endpoint

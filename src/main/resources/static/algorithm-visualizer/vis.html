@@ -25,9 +25,9 @@
 <!--------- BUTTONS -------->
 <div class="vis-buttons">
     <!--<label>Choose algo:</label>-->
-    <select name="algo">
+    <select id="algo" onchange="getSelectedValue()">
         <option value="BFS">BFS</option>
-        <!--<option value="DFS">DFS</option>-->
+        <option value="DFS">DFS</option>
     </select>
     <button id="start-button">Visualize</button>
     <button id="reset-button">Reset</button>
