@@ -25,11 +25,11 @@
 <!--------- BUTTONS -------->
 <div class="vis-buttons">
     <!--<label>Choose algo:</label>-->
-    <select id="algo" onchange="getSelectedValue()">
+    <select id="algo" onchange="getAlgorithm()">
         <option value="BFS">BFS</option>
         <option value="DFS">DFS</option>
     </select>
-    <button id="start-button">Visualize</button>
+    <button id="start-button" onclick="visualize()">Visualize</button>
     <button id="reset-button">Reset</button>
 </div>
 <!--------- GRID ----------->

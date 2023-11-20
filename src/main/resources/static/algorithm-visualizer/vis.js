@@ -149,6 +149,89 @@ function handleDrop(e) {
     }
 }
 
+// DFS (work in progress)
+function visualizeDFS(updatedGridData, startRow, startCol) {
+    console.log('Visualize DFS');
+    // create new 2D array to represent the grid without original class information
+    const gridData = JSON.parse(JSON.stringify(updatedGridData));
+
+    // delay between painting cells
+    const delay = 100;
+
+    // DFS traversal queue
+    const stack = [{ row: startRow, col: startCol }];
+
+    function isValid(row, col) {
+        return row >= 0 && row < gridData.length && col >= 0 && col < gridData.length;
+    }
+
+    // count iterations
+    let iterationCount = 0;
+
+    // maximum iteration limit (prevent infinite loops)
+    const maxIterations = gridData.length * gridData[0].length;
+
+    // store visited cells
+    const visitedCells = [];
+
+    // start DFS
+    function processNextStep() {
+        console.log('Count: ', iterationCount);
+        if (stack.length === 0 || iterationCount >= maxIterations) {
+            console.log('DFS visualization completed');
+            return;
+        }
+
+        // process current queue
+        const stackLength = stack.length;
+        for (let i = 0; i < stackLength; i++) {
+            const { row, col } = stack.pop(); // Dequeue
+
+            // check if cell has previously been visited
+            if (visitedCells.some(cell => cell.row === row && cell.col === col)) {
+                continue;
+            }
+
+            console.log(`Processing cell at row: ${row}, col: ${col}`); // Log current cell
+
+            // mark visited cell
+            visitedCells.push({ row, col });
+
+            // add neighboring cells (unvisited) to queue
+            enqueue(row - 1, col); // Top
+            enqueue(row + 1, col); // Bottom
+            enqueue(row, col - 1); // Left
+            enqueue(row, col + 1); // Right
+        }
+
+        iterationCount++;
+
+        // continue with delay
+        setTimeout(processNextStep, delay);
+    }
+
+    // add a neighboring cells to the queue for traversal
+    function enqueue(row, col) {
+        if (isValid(row, col) && gridData[row][col] === 'V') {
+            stack.push({ row, col });
+
+            const cellId = `cell-${row}-${col}`;
+            const cellElement = document.getElementById(cellId);
+
+            if (cellElement) {
+                cellElement.className = 'update-cell';
+            }
+        }
+    }
+
+    // for debugging
+    console.log('Starting DFS visualization');
+
+    // Start the DFS visualization
+    processNextStep();
+}
+
+// BFS
 function visualizeBFS(updatedGridData, startRow, startCol) {
     console.log('Visualizing BFS');
 
@@ -225,10 +308,10 @@ function visualizeBFS(updatedGridData, startRow, startCol) {
         }
     }
 
-    // Before BFS-like visualization starts
-    console.log('Starting BFS-like visualization');
+    // for debugging
+    console.log('Starting BFS visualization');
 
-    // Start the BFS-like visualization
+    // Start the BFS visualization
     processNextStep();
 }
 
@@ -260,9 +343,13 @@ function getSpritePosition() {
     return null; // Return null if sprite is not present
 }
 
-function getSelectedValue() {
-    var selectedValue = document.getElementById("algo").value;
-    console.log(selectedValue);
+// Default to BFS
+let selectedAlgorithm = "BFS";
+
+// Controls selection of algorithm
+function getAlgorithm() {
+    selectedAlgorithm = document.getElementById("algo").value;
+    console.log(selectedAlgorithm);
 }
 
 // connect to the WebSocket and listen for updates
@@ -309,14 +396,26 @@ window.onload = function () {
 };
 
 // Visualize button functionality
-const visualizeButton = document.getElementById("start-button");
+/*const visualizeButton = document.getElementById("start-button");
 visualizeButton.addEventListener("click", () => {
     console.log("Visualize button clicked");
     sendGridData().then(updatedGridData => {
         visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col);
     });
 
-});
+});*/
+// Visualize button functionality
+function visualize() {
+    console.log("Visualize button clicked");
+
+    sendGridData().then(updatedGridData => {
+        if (selectedAlgorithm === "BFS") {
+            visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col);
+        } else if (selectedAlgorithm === "DFS") {
+            visualizeDFS(updatedGridData, spritePosition.row, spritePosition.col);
+        }
+    });
+}
 
 // cell click change color (obstacles)
 cellElements.forEach((cellClick) => {
