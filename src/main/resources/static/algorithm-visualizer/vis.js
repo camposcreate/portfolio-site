@@ -152,68 +152,56 @@ function handleDrop(e) {
 // DFS (work in progress)
 function visualizeDFS(updatedGridData, startRow, startCol) {
     console.log('Visualize DFS');
-    // create new 2D array to represent the grid without original class information
-    const gridData = JSON.parse(JSON.stringify(updatedGridData));
+
+    const ROW = updatedGridData.length;
+    const COL = updatedGridData[0].length;
+    const stack = [[startRow, startCol]];
+    const visitedCells = Array.from(Array(ROW), () => Array(COL).fill(false));
+
+    var dRow = [0, 1, 0, -1];
+    var dCol = [-1, 0, 1, 0];
 
     // delay between painting cells
     const delay = 100;
 
-    // DFS traversal queue
-    const stack = [{ row: startRow, col: startCol }];
-
-    function isValid(row, col) {
-        return row >= 0 && row < gridData.length && col >= 0 && col < gridData.length;
-    }
-
-    // count iterations
-    let iterationCount = 0;
-
-    // maximum iteration limit (prevent infinite loops)
-    const maxIterations = gridData.length * gridData[0].length;
-
-    // store visited cells
-    const visitedCells = [];
-
-    // start DFS
     function processNextStep() {
-        console.log('Count: ', iterationCount);
-        if (stack.length === 0 || iterationCount >= maxIterations) {
+        if (stack.length === 0) {
             console.log('DFS visualization completed');
             return;
         }
+        const [r, c] = stack.pop();
 
-        // process current queue
-        const stackLength = stack.length;
-        for (let i = 0; i < stackLength; i++) {
-            const { row, col } = stack.pop(); // Dequeue
-
-            // check if cell has previously been visited
-            if (visitedCells.some(cell => cell.row === row && cell.col === col)) {
-                continue;
-            }
-
-            console.log(`Processing cell at row: ${row}, col: ${col}`); // Log current cell
-
-            // mark visited cell
-            visitedCells.push({ row, col });
-
-            // add neighboring cells (unvisited) to queue
-            enqueue(row - 1, col); // Top
-            enqueue(row + 1, col); // Bottom
-            enqueue(row, col - 1); // Left
-            enqueue(row, col + 1); // Right
+        if (!isValid(r, c) || visitedCells[r][c]) {
+            processNextStep();
+            return;
         }
 
-        iterationCount++;
+        // Mark cell as visited
+        visitedCells[r][c] = true;
 
-        // continue with delay
+        // Update cell color
+        updateCellUI(r, c);
+
+        // Push incoming neighbors
+        for (let i = 0; i < 4; i++) {
+            const pathR = r + dRow[i];
+            const pathC = c + dCol[i];
+            stack.push([pathR, pathC]);
+        }
+
         setTimeout(processNextStep, delay);
     }
+    console.log('Starting DFS visualization');
+    processNextStep();
 
-    // add a neighboring cells to the queue for traversal
-    function enqueue(row, col) {
-        if (isValid(row, col) && gridData[row][col] === 'V') {
-            stack.push({ row, col });
+    function isValid(row, col) {
+        return row >= 0 && col >= 0 && row < ROW && col < COL && !visitedCells[row][col];
+    }
+
+    function updateCellUI(row, col) {
+        // Implement the UI update logic here (e.g., change class, color, etc.)
+        console.log(`Processing cell at row: ${row}, col: ${col}`);
+        if (updatedGridData[row][col] === 'V') {
 
             const cellId = `cell-${row}-${col}`;
             const cellElement = document.getElementById(cellId);
@@ -222,13 +210,7 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
                 cellElement.className = 'update-cell';
             }
         }
-    }
-
-    // for debugging
-    console.log('Starting DFS visualization');
-
-    // Start the DFS visualization
-    processNextStep();
+    } // updateCellUI()
 }
 
 // BFS
