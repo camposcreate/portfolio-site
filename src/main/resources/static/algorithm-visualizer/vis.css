@@ -55,8 +55,8 @@ nav a.nav-link {
 }
 /* Add hover effect to the "return home" link */
 nav a.nav-link:hover {
-    background: #fc2d61; /*#c162ff;*/
-    box-shadow: 0 0 10px #fc2d61;
+    background: #AB2AFF; /*#c162ff;*/
+    /*box-shadow: 0 0 10px #AB2AFF; #fc2d61;*/
     transition: 0.8s ease;
 }
 .container ul {
