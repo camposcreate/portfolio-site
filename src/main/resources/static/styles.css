@@ -237,9 +237,8 @@ nav ul li a:hover::after {
 }
 /* work in progress header */
 .column1-layer h3{
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     padding-top: 12px;
-    text-decoration: underline;
 }
 /* work in progress description */
 .column1-layer p {
@@ -249,9 +248,8 @@ nav ul li a:hover::after {
 }
 /* algorithm visualizer header */
 .column2-layer h3{
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     padding-top: 12px;
-    text-decoration: underline;
 }
 /* algorithm visualizer description */
 .column2-layer p {
@@ -261,14 +259,12 @@ nav ul li a:hover::after {
 }
 /* task manager header */
 .column3-layer h3{
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     padding-top: 12px;
-    text-decoration: underline;
 }
 /* task manager description */
 .column3-layer p {
     font-size: 17px;
-    text-align: left;
     padding-top: 10px;
 }
 .column3-layer p span{
@@ -343,10 +339,54 @@ button:hover {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #060607;
 }
 /*--------CSS for Small Screens--------*/
+nav #open-menu {
+    display: none;
+}
+nav #close-menu {
+    display: none;
+}
 @media only screen and (max-width: 600px) {
+    nav #open-menu {
+        display: block;
+        padding: 5px 5px 0px 5px;
+        margin: 5px;
+        background-color: #0f0f0f;
+        border: 1px solid #AB2AFF;
+    }
+    nav #open-menu img {
+        padding: 10%;
+    }
+    nav #open-menu:hover {
+        background-color: #AB2AFF;
+    }
+    nav #close-menu {
+        display: block;
+        position: absolute;
+        padding: 5px 5px 0px 5px;
+        top: 15px;
+        left: 15px;
+    }
+    nav #sidemenu {
+        display: block;
+        background: #0f0f0f;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        transition: right 0.5s;
+        z-index: 2;
+    }
+    nav #sidemenu.menu-open {
+        right: 0;
+    }
+    nav #sidemenu li {
+        display: block;
+        margin: 25px;
+    }
     /*---Splash---*/
      #header {
         width: 100%;
@@ -390,11 +430,14 @@ button:hover {
          height: 675px;
      }
      .tile {
-        background: #d390ff;
+        background: #AB2AFF;/*#d390ff;*/
      }
      .tile img {
          max-width: 96%;
          max-height: 100%;
+     }
+     .column1-layer h3, .column2-layer h3, .column3-layer h3{
+         text-align: left;
      }
      /*----Contact----*/
      .main-contact h2 {

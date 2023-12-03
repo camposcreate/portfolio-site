@@ -20,11 +20,17 @@
         <nav>
             <img src="images/navbar_logo.png" class="nav_logo">
             <img src="images/logo_name.png" class="logo">
-            <ul>
+            <ul id="sidemenu">
                 <li><a href="#" class="nav-link home-link">Home</a></li>
                 <li><a href="#portfolio-section" class="nav-link">Portfolio</a></li>
                 <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                <button id="close-menu" onclick="closemenu()">
+                    <img src="images/x.png" width="30">
+                </button>
             </ul>
+            <button id="open-menu" onclick="openmenu()">
+                <img src="images/hamburger.png" width="30">
+            </button>
         </nav>
         <!--<section id="home">-->
         <h1></h1>
@@ -34,7 +40,7 @@
             <a href="#contact-section">Contact</a>
         </div>
         <div class="self-pic">
-            <img src="images/coffee.png" class="me" alt="Self Picture">
+            <img src="images/self_sample.png" class="me" alt="Self Picture">
         </div>
         <!--</section>-->
     </div>
@@ -58,8 +64,7 @@
                     <div class="column1-layer">
                         <h3>work in progress</h3>
                         <p>
-                            The "Work in Progress" project is currently under development, and the specific details and purpose of the program have yet to be decided.
-                            It represents an ongoing project that is still in the ideation phase, and further planning and development will shape its purpose, functionality, and benefits.
+                            Currently under development. Specific details and purpose of the program have yet to be decided.
                         </p>
                     </div>
                 </div>
@@ -72,8 +77,8 @@
                     <div class="column2-layer">
                         <h3>Algorithm Visualizer</h3>
                         <p>An interactive tool that visually demonstrates how different algorithms work in real time.
-                            Users can input a starting point and an ending point, and the visualizer will showcase how algorithms such as Dijkstra's algorithm
-                            or A* algorithm find the shortest path between the two points. This project provides an intuitive and interactive way for users to
+                            Users can input a starting point, and the visualizer will showcase how popular algorithms (i.e. BFS
+                            or DFS) traverse a 2-D grid. This project provides an intuitive and interactive way for users to
                             understand and learn about algorithms.
                         </p>
                     </div>
@@ -92,9 +97,6 @@
                         </p>
                         <p>
                             The program utilizes <span>Java Oriented Programming</span> to create objects represented as a user defined task.
-                        </p>
-                        <p>
-                            The task manager utilizes a title (string), priority (bool), and id (int) to <span>set and get</span> task objects as they're created by the user.
                         </p>
                     </div>
                 </div>
@@ -124,7 +126,7 @@
                     <input type="text" id="subject" name="subject" placeholder="Optional" required>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description:</label>
+                    <label for="description">Description</label>
                     <textarea id="description" name="description" placeholder="Brief Description" rows="5" required></textarea>
                 </div>
                 <button type="submit">Send</button>
