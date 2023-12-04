@@ -36,7 +36,7 @@
     z-index: 1;
  }
  .container {
-    padding: 0px 10%;
+    padding: 5px 10%;
  }
 /* nav bar */
 nav {
@@ -136,7 +136,7 @@ nav ul li a:hover::after {
     height: 85%;
     position: absolute;
     right: 100px;
-    top: 50px;
+    top: 30%;
     bottom: 0;
     z-index: -1;
 }
@@ -298,6 +298,10 @@ nav ul li a:hover::after {
   text-align: left;
   padding-top: 50px;
 }
+.contact-container span {
+    color: #d7e7e7;
+    font-size: 12px;
+}
 .form-group {
     color: #d7e7e7;/*#f0f6f6;*/
     margin-bottom: 20px;
@@ -347,6 +351,7 @@ nav #open-menu {
 nav #close-menu {
     display: none;
 }
+/*-- For Mobile users (MAX: 600px) --*/
 @media only screen and (max-width: 600px) {
     nav #open-menu {
         display: block;
@@ -399,16 +404,16 @@ nav #close-menu {
          font-size: 16px;
      }
      .header-text h1 {
-         font-size: 30px;
+         font-size: 36px;
      }
      .header-text a {
          margin: 10px 0;
      }
      .self-pic {
-         width: 10%;
-         height: 75%;
-         right: 150px;
-         top: 225px;
+         width: 30%;
+         height: 60%;
+         right: 15%;
+         top: 30%;
      }
      /*---Portfolio---*/
      .main {
@@ -419,7 +424,7 @@ nav #close-menu {
          font-size: 35px;
      }
      .main p {
-         font-size: 16px;
+         font-size: 18px;
      }
      .row {
          display: grid;

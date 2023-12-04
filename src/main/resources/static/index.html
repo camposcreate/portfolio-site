@@ -40,7 +40,7 @@
             <a href="#contact-section">Contact</a>
         </div>
         <div class="self-pic">
-            <img src="images/self_sample.png" class="me" alt="Self Picture">
+            <img src="images/self_sample1.png" class="me" alt="Self Picture">
         </div>
         <!--</section>-->
     </div>
@@ -112,7 +112,7 @@
     <div class="main-contact">
         <h2>Contact</h2>
         <div class="contact-container">
-            <form id="contact-form">
+            <form name="submit-to-google-sheet" id="contact-form">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -123,7 +123,7 @@
                 </div>
                 <div class="form-group">
                     <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Optional" required>
+                    <input type="text" id="subject" name="subject" placeholder="Optional">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
@@ -131,6 +131,7 @@
                 </div>
                 <button type="submit">Send</button>
             </form>
+            <span id="message-pop-up"></span>
         </div>
     </div>
 </div>
