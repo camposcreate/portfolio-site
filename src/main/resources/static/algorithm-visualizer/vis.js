@@ -29,8 +29,7 @@ stompClient.connect({}, (frame) => {
         updateGrid(updatedGridData);
     });
 });
-
-// Function to clear and reattach event listeners
+/* Function to clear and reattach event listeners
 function addDragAndDropListeners() {
     cellElements.forEach((gridItem) => {
         // when elements are dragged over cells
@@ -58,10 +57,11 @@ function addDragAndDropListeners() {
             spritePosition.col = parseInt(gridItem.id.split("-")[2]);
         });
     });
-}
+    console.log("Registered cells after resetting the grid:", cellElements);
+}*/
 
 // Call this function initially
-addDragAndDropListeners();
+//addDragAndDropListeners();
 
 function resetGrid() {
     console.log('Reset button clicked');
@@ -70,18 +70,48 @@ function resetGrid() {
     const grid = document.querySelector(".grid");
     grid.innerHTML = originalGridHTML;
 
-    // Reattach event listeners to all cells
-    cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
-    addDragAndDropListeners();
-
     // Reset sprite position after reset
     spritePosition = { row: 0, col: 0 };
 
     // Remove the original sprite from its initial position
     const originalSpriteContainer = document.querySelector("#cell-0-0");
-    // Clear the sprite
     originalSpriteContainer.innerHTML = '';
-    originalSpriteContainer.appendChild(activeSprite); // Attach sprite
+    originalSpriteContainer.appendChild(activeSprite);
+
+    // Add event listeners directly to the cells
+    cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
+    cellElements.forEach((gridItem) => {
+        // when elements are dragged over cells
+        gridItem.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            gridItem.classList.add("hovered");
+        });
+
+        // when elements are dragged out of cells
+        gridItem.addEventListener("dragleave", () => {
+            gridItem.classList.remove("hovered");
+        });
+
+        // when elements are dropped in a cell
+        gridItem.addEventListener("drop", () => {
+            console.log("Dropped in cell:", gridItem);
+            if (gridItem.contains(activeSprite)) {
+                return;
+            }
+
+            gridItem.appendChild(activeSprite);
+            gridItem.classList.remove("hovered");
+            // Update the spritePosition
+            spritePosition.row = parseInt(gridItem.id.split("-")[1]);
+            spritePosition.col = parseInt(gridItem.id.split("-")[2]);
+        });
+
+        // cell click change color (obstacles)
+        gridItem.addEventListener('click', handleCellClickForObstacle);
+    });
+
+    // Log after reattaching event listeners
+    console.log("Event listeners reattached after resetting the grid");
 }
 
 // reset button functionality
@@ -199,7 +229,6 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
     }
 
     function updateCellUI(row, col) {
-        // Implement the UI update logic here (e.g., change class, color, etc.)
         console.log(`Processing cell at row: ${row}, col: ${col}`);
         if (updatedGridData[row][col] === 'V') {
 
@@ -399,9 +428,15 @@ function visualize() {
     });
 }
 
+// Your cell click handler function for obstacles
+function handleCellClickForObstacle(e) {
+    const clickedCell = e.target;
+    if (clickedCell.classList.contains("grid-item")) {
+        clickedCell.classList.toggle('obstacle');
+        clickedCell.style.backgroundColor = '#000';
+    }
+}
 // cell click change color (obstacles)
-cellElements.forEach((cellClick) => {
-    cellClick.addEventListener('click', () => {
-        cellClick.style.backgroundColor = '#000';
-    });
+cellElements.forEach((cell) => {
+    cell.addEventListener('click', handleCellClickForObstacle);
 });
