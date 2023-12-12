@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 * {
     margin: 0;
     padding: 0;
-    font-family: "Poppins", sans-serif;
+    font-family: "Inter", sans-serif;
     box-sizing: border-box;
 }
 body {
@@ -17,7 +19,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #0f0f0f;/*#060607;*/
+    background: #0f0f0f;
     position: fixed;
     top: 0;
     left: 0;
@@ -39,25 +41,24 @@ nav {
 /* set color to list items */
 /* increase font size and remove underline */
 nav a {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     text-decoration: none;
     font-size: 18px;
     position: relative;
 }
-/* Style the "return home" link */
+/* Style the "Home" link */
 nav a.nav-link {
     text-decoration: none;
-    color: #d7e7e7;/*#f0f6f6;*/
-    margin: -10px 0;
+    color: #d7e7e7;
     padding: 4px 18px;
-    border-radius: 8px;
+    border-radius: 10px;
     display: inline-block;
+    border: 1px solid #B23BFF;
 }
-/* Add hover effect to the "return home" link */
+/* Add hover effect to the "Home" link */
 nav a.nav-link:hover {
-    background: #AB2AFF; /*#c162ff;*/
-    /*box-shadow: 0 0 10px #AB2AFF; #fc2d61;*/
-    transition: 0.8s ease;
+    background: #B23BFF;
+    transition: 0.3s ease;
 }
 .container ul {
     display: none;
@@ -65,6 +66,34 @@ nav a.nav-link:hover {
 .container {
     padding: 20px 10px;
     margin-bottom: 10px; /* adjust space between nav and grid */
+}
+/* ----------- VISUALIZER DESCRIPTION --------*/
+.description {
+    color: #d7e7e7;
+    background: #0f0f0f;
+    padding: 2%;
+    border-radius: 20px;
+}
+.description ul li {
+    list-style: inside;
+}
+h1 {
+    color: #d7e7e7;
+    font-weight: 900;
+}
+h1 span {
+    font-size: 12px;
+    color: #B23BFF;
+    font-style: italic;
+}
+h2 {
+    color: #B23BFF;
+    font-weight: bold;
+}
+h4 {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 900;
 }
 /* ----------- VISUALIZER BUTTONS -----------*/
 .vis-buttons {
@@ -76,17 +105,17 @@ nav a.nav-link:hover {
     padding: 8px;
 }
 label {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     margin-right: 5px;
 }
 select {
     margin-right: 15px;
 }
 #start-button {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     font-size: 14px;
-    border-color: rgb(76, 187, 23);
-    background: rgb(76, 187, 23);/*#9b00ff;*/
+    border-color: #263F3F;
+    background: #263F3F;
     padding: 8px 14px;
     border-radius: 10px;
     cursor: pointer;
@@ -94,19 +123,21 @@ select {
     margin-left: 50px;
 }
 #start-button:hover {
-    background: rgb(76, 200, 23);
+    background: #2F740E;
+    transition: 0.3s ease;
 }
 #reset-button {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     font-size: 14px;
-    border-color: #9b00ff;
-    background: #9b00ff;
+    border-color: #AB2AFF;
+    background: #0f0f0f;
     padding: 8px 14px;
     border-radius: 10px;
     cursor: pointer;
 }
 #reset-button:hover {
     background: #c162ff;
+    transition: 0.3s ease;
 }
 /* ----------- GRID CSS -----------*/
 body {
@@ -116,62 +147,49 @@ body {
     display: grid;
     grid-template-columns: repeat(10, minmax(70px, 1fr)); /* (# of columns, minmax(min, max)) */
     grid-template-rows: repeat(3, auto);
-    /*color: #f0f6f6; color contents of tiles*/
     gap: 2px;
 }
 .grid > div {
-    background-color: #d7e7e7;/*#f0f6f6;*/
+    background-color: #d7e7e7;
     padding: 1rem;
     border-radius: 3px;
 }
 .grid > div > img {
     display: none;
 }
-/*.grid > div.clicked {
-    background-color: #000;
-}*/
 .grid-item {
     padding: 1rem;
     border-radius: 3px;
     transition: background-color 0.3s;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 :root {
     --open-cell-color: #333;
     --obstacle-color: #666;
 }
-/*
-.open-cell {
-    background-color: #333;
-}
-*/
 .obstacle {
     background-color: #fff;
 }
 .dynamic-color {
     background-color: #fff;
 }
-/*
-.visited-cell {
-    background-color: #333 !important;
-}
-*/
 .update-cell {
     background-color: #333 !important;
 }
-/* Starting Sprite */
+/* initial sprite */
 .grid-item .image {
     background-image: url("../../images/circle.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
+/* second sprite (not yet implemented)
 .grid-item .image2 {
     background-image: url("../../images/diamond-symbol.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-}
+}*/
 /* hover cell effect (not dragging sprite) */
 .grid-item:hover {
     background-color: yellow;
@@ -181,4 +199,31 @@ body {
     transition: transform 0.5s ease;
     transform: scale(1.1);
     box-shadow: 0 0 25px #f0f6f6;
+}
+/*-- For Mobile users (MAX: 600px) --*/
+@media only screen and (max-width: 600px) {
+    /* ----------- VISUALIZER DESCRIPTION --------*/
+    h1 {
+        font-size: 28px;
+    }
+    h1 span {
+        display: none;
+    }
+    p {
+        font-size: 14px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    h4 {
+        display: none;
+    }
+    ul li {
+        font-size: 14px;
+    }
+    /* ----------- GRID CSS -----------*/
+    .grid {
+        grid-template-columns: repeat(10, minmax(45px, 1fr)); /* (# of columns, minmax(min, max)) */
+        gap: 1px;
+    }
 }

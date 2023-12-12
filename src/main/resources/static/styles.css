@@ -84,7 +84,7 @@ nav ul li a::after {
     content: '';
     width: 0%;
     height: 3px;
-    background: #AB2AFF;/*#9b00ff;*/
+    background: #AB2AFF;
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -183,7 +183,7 @@ nav ul li a:hover::after {
     padding-top: 20px;
     margin: 0 auto;
 }
-.column-1, .column-2, .column-3 {
+.column-2, .column-3 { /*.column-1, */
     flex: 1;
     padding: 10px;
     width: 273px;
@@ -235,17 +235,17 @@ nav ul li a:hover::after {
 .tile:active {
     background-color: #fff;
 }
-/* work in progress header */
+/* work in progress header
 .column1-layer h3{
     color: #d7e7e7;
     padding-top: 12px;
 }
-/* work in progress description */
+ work in progress description
 .column1-layer p {
     font-size: 17px;
     text-align: left;
     padding-top: 10px;
-}
+} */
 /* algorithm visualizer header */
 .column2-layer h3{
     color: #d7e7e7;
@@ -429,19 +429,19 @@ nav #close-menu {
      .row {
          display: grid;
      }
-     .column-1, .column-2, .column-3 {
+     .column-2, .column-3 { /*.column-1*/
          padding-bottom: 50px;
          width: 325px;
          height: 675px;
      }
      .tile {
-        background: #AB2AFF;/*#d390ff;*/
+        background: #AB2AFF;
      }
      .tile img {
          max-width: 96%;
          max-height: 100%;
      }
-     .column1-layer h3, .column2-layer h3, .column3-layer h3{
+     .column2-layer h3, .column3-layer h3{ /*.column1-layer h3,*/
          text-align: left;
      }
      /*----Contact----*/

@@ -12,8 +12,6 @@ body {
 }
 #header {
     position: relative;
-    /*width: 100%;
-    height: 100vh;*/
     background-size: cover;
     background-position: center;
 }
@@ -22,7 +20,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #0f0f0f;/*#060607;*/
+    background: #0f0f0f;
     position: fixed;
     top: 0;
     left: 0;
@@ -43,25 +41,24 @@ nav {
 /* set color to list items */
 /* increase font size and remove underline */
 nav a {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     text-decoration: none;
     font-size: 18px;
     position: relative;
 }
 /* Style the "Home" link */
 nav a.nav-link {
-    text-decoration: none;
-    color: #d7e7e7;/*#f0f6f6;*/
-    margin: -10px 0;
+    color: #d7e7e7;
     padding: 4px 18px;
-    border-radius: 8px;
+    border-radius: 10px;
+    border-right: red;
     display: inline-block;
+    border: 1px solid #B23BFF;
 }
 /* Add hover effect to the "Home" link */
 nav a.nav-link:hover {
-    background: #fc2d61; /*#c162ff;*/
-    box-shadow: 0 0 10px #fc2d61;
-    transition: 0.8s ease;
+    background: #B23BFF;
+    transition: 0.3s ease;
 }
 .container ul {
     display: none;
@@ -71,27 +68,25 @@ nav a.nav-link:hover {
 }
 /*--------- TEXT HEADING -----------*/
 .header-text {
-    padding: 15px 20px;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin: 4% 2% 4% 2%;
+    color: #d7e7e7;
+    background: #0f0f0f;
+    padding: 2%;
+    border-radius: 20px;
 }
 .header-text h1 {
-    color: #d7e7e7;/*#f0f6f6;*/
     font-size: 34px;
     padding-bottom: 5px;
+    font-weight: 900;
 }
 .header-text h1 span {
-    color: #AB2AFF;
-    font-size: 14px;
+    color: #B23BFF;
+    font-size: 12px;
+    font-style: italic;
 }
-.header-text h7 {
-    color: #060607;
-    font-size: 16px;
-    background: #d7e7e7;
-    padding: 4px;
-}
-.header-text h7 span {
-    color: #AB2AFF;
+.header-text h2 {
+    color: #B23BFF;
+    font-weight: bold;
 }
 /*--------- PROGRAM FIELDS ----------*/
 .task-program {
@@ -101,7 +96,7 @@ nav a.nav-link:hover {
     justify-content: center;
 }
 .task-program p {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     padding-right: 5px;
 }
 .add-task {
@@ -109,7 +104,6 @@ nav a.nav-link:hover {
     align-items: center;
     justify-content: center;
 }
-
 /*------ TASK INPUT FIELD --------*/
 #task-input {
     width: 290px;
@@ -120,12 +114,12 @@ nav a.nav-link:hover {
     margin-bottom: 5px;
 }
 label {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
 }
 #add-button {
     text-decoration: none;
-    color: #d7e7e7;/*#f0f6f6;*/
-    background: #AB2AFF; /*#9b00ff;*/
+    color: #d7e7e7;
+    background: #AB2AFF;
     padding: 10px 18px;
     border-radius: 10px;
     font-size: 16px;
@@ -144,7 +138,7 @@ h2 {
     font-size: 24px;
     margin-top: 10px;
     margin-bottom: 10px;
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
 }
 .task-headers {
     display: flex;
@@ -155,7 +149,7 @@ h2 {
 }
 .task-headers h3 {
     font-size: 18px;
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     width: 50%;
 }
 .task-display {
@@ -180,7 +174,7 @@ li {
     align-items: center;
     justify-content: space-between;
     padding: 8px;
-    border-bottom: 1px solid #d7e7e7;/*#f0f6f6;*/
+    border-bottom: 1px solid #d7e7e7;
 }
 .task-buttons {
     display: flex;
@@ -189,32 +183,32 @@ li {
     margin: 5px;
 }
 #delete-button {
-    text-decoration: none;
-    color: #d7e7e7;/*#f0f6f6;*/
-    background: #e61045;
+    color: #d7e7e7;
+    background: #0f0f0f;
+    border-color: #e61045;
     padding: 10px 18px;
     border-radius: 10px;
     font-size: 16px;
-    border: none;
     cursor: pointer;
     margin-left: 3%;
 }
 #delete-button:hover {
     background: #fc2d61;
+    transition: 0.3s ease;
 }
 #clear-button {
-    text-decoration: none;
-    color: #d7e7e7;/*#f0f6f6;*/
-    background: #AB2AFF;/*#9b00ff;*/
+    color: #d7e7e7;
     padding: 8px 16px;
     border-radius: 10px;
     font-size: 16px;
-    border: none;
+    background: #0f0f0f;
+    border-color: #AB2AFF;
     cursor: pointer;
     margin-top: 10px;
 }
 #clear-button:hover {
     background: #c162ff;
+    transition: 0.3s ease;
 }
 .task-item {
     display: flex;
@@ -226,4 +220,39 @@ li {
 .task-item p {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+/*-- For Mobile users (MAX: 600px) --*/
+@media only screen and (max-width: 600px) {
+    /*--------- TEXT HEADING -----------*/
+    .header-text {
+        margin: 5%;
+        padding: 5%;
+    }
+    .header-text h1 {
+        font-size: 28px;
+    }
+    .header-text h1 span {
+        display: none;
+    }
+    p {
+        font-size: 14px;
+    }
+    .header-text h2 {
+        font-size: 22px;
+    }
+    /*------ TASK INPUT FIELD --------*/
+    #task-input {
+        width: 160px;
+        padding: 8px;
+        margin: 2%;
+    }
+    .task-list {
+        width: 400px;
+        margin: 2%;
+    }
+    .add-task {
+        margin: 2%;
+        margin-left: -10%;
+    }
 }

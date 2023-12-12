@@ -13,7 +13,7 @@ const activeSprite = document.querySelector(".image");
 
 // cell as an HTML element
 let cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
-const numRows = 5; // number of rows
+const numRows = 10; // number of rows
 const numColumns = cellElements.length / numRows; // number of columns
 
 console.log("Number of rows: " + numRows);
@@ -60,13 +60,13 @@ function addDragAndDropListeners() {
     console.log("Registered cells after resetting the grid:", cellElements);
 }*/
 
-// Call this function initially
-//addDragAndDropListeners();
+// Call reset function initially
+resetGrid();
 
 function resetGrid() {
     console.log('Reset button clicked');
 
-    // Clear the grid
+    // clear grid
     const grid = document.querySelector(".grid");
     grid.innerHTML = originalGridHTML;
 
@@ -194,6 +194,10 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
     // delay between painting cells
     const delay = 100;
 
+    function isValid(row, col) {
+        return row >= 0 && col >= 0 && row < ROW && col < COL && !visitedCells[row][col] && updatedGridData[row][col] !== 'X';
+    }
+
     function processNextStep() {
         if (stack.length === 0) {
             console.log('DFS visualization completed');
@@ -223,10 +227,6 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
     }
     console.log('Starting DFS visualization');
     processNextStep();
-
-    function isValid(row, col) {
-        return row >= 0 && col >= 0 && row < ROW && col < COL && !visitedCells[row][col];
-    }
 
     function updateCellUI(row, col) {
         console.log(`Processing cell at row: ${row}, col: ${col}`);
@@ -428,7 +428,7 @@ function visualize() {
     });
 }
 
-// Your cell click handler function for obstacles
+// cell click handler function for obstacles
 function handleCellClickForObstacle(e) {
     const clickedCell = e.target;
     if (clickedCell.classList.contains("grid-item")) {
