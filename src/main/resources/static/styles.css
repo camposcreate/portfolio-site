@@ -36,14 +36,14 @@
     z-index: 1;
  }
  .container {
-    padding: 5px 10%;
+    padding: 10px 10%;
  }
 /* nav bar */
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #0f0f0f;/*#1a1a1b;#060607;*/
+    background: #0f0f0f;
     position: fixed;
     top: 0;
     left: 0;
@@ -74,7 +74,7 @@ nav ul li {
 /* set color to list items */
 /* increase font size and remove underline */
 nav ul li a {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     text-decoration: none;
     font-size: 18px;
     position: relative;

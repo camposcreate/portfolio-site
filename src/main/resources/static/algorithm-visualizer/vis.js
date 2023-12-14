@@ -179,7 +179,7 @@ function handleDrop(e) {
     }
 }
 
-// DFS (work in progress)
+// DFS
 function visualizeDFS(updatedGridData, startRow, startCol) {
     console.log('Visualize DFS');
 
@@ -363,7 +363,7 @@ function getAlgorithm() {
     console.log(selectedAlgorithm);
 }
 
-// connect to the WebSocket and listen for updates
+/* connect to the WebSocket and listen for updates
 function connectWebSocket() {
     const socket = new SockJS('/Algorithms/websocket'); // Use the correct WebSocket endpoint
     const stompClient = Stomp.over(socket);
@@ -404,17 +404,8 @@ stompClient.connect({}, (frame) => {
 // Call the connectWebSocket function when the page loads
 window.onload = function () {
     connectWebSocket();
-};
+};*/
 
-// Visualize button functionality
-/*const visualizeButton = document.getElementById("start-button");
-visualizeButton.addEventListener("click", () => {
-    console.log("Visualize button clicked");
-    sendGridData().then(updatedGridData => {
-        visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col);
-    });
-
-});*/
 // Visualize button functionality
 function visualize() {
     console.log("Visualize button clicked");
