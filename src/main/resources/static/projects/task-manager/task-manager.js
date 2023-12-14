@@ -9,8 +9,8 @@ function addTask() {
         priority: priorityCheckbox
     };
 
-    // Send the POST request to the backend
-    fetch('https://localhost:8080/tasks/addTask', {
+    // Send the POST request to the backend ('http://localhost:8080/tasks/addTask')
+    fetch('https://portfolio-web-app-719n.onrender.com/tasks/addTask', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ window.onload = function() {
 // Function to retrieve tasks from the backend
 // Send a GET request to the /tasks/getTitle endpoint
 function getTasks() {
-    fetch('https://localhost:8080/tasks/getTasks')
+    fetch('https://portfolio-web-app-719n.onrender.com/tasks/getTasks')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error retrieving tasks: ' + response.status);
@@ -97,7 +97,7 @@ function updateTaskDisplay(tasks) {
 // Function to clear all tasks
 function clearAllTasks() {
     console.log('Clear all tasks button clicked'); // for debugging
-    fetch('https://localhost:8080/tasks', {
+    fetch('https://portfolio-web-app-719n.onrender.com/tasks', {
         method: 'DELETE'
     })
     .then(response => {
@@ -124,7 +124,7 @@ function deleteTask() {
   }
 
   // Send the DELETE request to the backend with the selected task IDs
-  fetch('https://localhost:8080/tasks/deleteSelected', {
+  fetch('https://portfolio-web-app-719n.onrender.com/tasks/deleteSelected', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
