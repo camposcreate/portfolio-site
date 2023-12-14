@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
-@CrossOrigin(origins = "http://localhost:8080")
+//@CrossOrigin(origins = "http://localhost:8080")
 public class main {
 
 	private List<tasks> taskObject = new ArrayList<>();

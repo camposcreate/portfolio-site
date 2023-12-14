@@ -95,6 +95,9 @@ h4 {
     font-style: italic;
     font-weight: 900;
 }
+h4 span {
+    color: #B23BFF;
+}
 /* ----------- VISUALIZER BUTTONS -----------*/
 .vis-buttons {
     display: flex;
@@ -215,11 +218,16 @@ body {
     h2 {
         font-size: 22px;
     }
-    h4 {
-        display: none;
-    }
     ul li {
         font-size: 14px;
+    }
+    h4 {
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 900;
+    }
+    h4 span {
+        color: #B23BFF;
     }
     /* ----------- GRID CSS -----------*/
     .grid {
