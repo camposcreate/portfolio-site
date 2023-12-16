@@ -89,6 +89,9 @@ nav a.nav-link:hover {
     color: #B23BFF;
     font-weight: bold;
 }
+.header-text ul li {
+    list-style: inside;
+}
 /*--------- PROGRAM FIELDS ----------*/
 .task-program {
     display: flex;
@@ -170,13 +173,13 @@ h2 {
     position: absolute;
     padding-left: 325px;
 }
-li {
+/*li {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 8px;
     border-bottom: 1px solid #d7e7e7;
-}
+}*/
 .task-buttons {
     display: flex;
     align-items: center;
@@ -216,7 +219,7 @@ li {
     align-items: center;
     justify-content: space-between;
     padding: 8px;
-    border-bottom: 1px solid #d7e7e7;/*#f0f6f6;*/
+    border-bottom: 1px solid #d7e7e7;
 }
 .task-item p {
     margin-left: 10px;

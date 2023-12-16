@@ -90,13 +90,16 @@ h2 {
     color: #B23BFF;
     font-weight: bold;
 }
+h3 {
+    font-weight: bold;
+}
 h4 {
     font-size: 14px;
     font-style: italic;
     font-weight: 900;
 }
 h4 span {
-    color: #B23BFF;
+    color: #0f0f0f;
 }
 /* ----------- VISUALIZER BUTTONS -----------*/
 .vis-buttons {
