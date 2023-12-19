@@ -1,7 +1,14 @@
 function addTask() {
-    const taskInput = document.getElementById('task-input').value;
+    const taskInput = document.getElementById('task-input').value.trim();
     const priorityCheckbox = document.getElementById('priority').checked;
     console.log('addTask() function called');
+
+    // validate input field is not empty
+    if (!taskInput) {
+        // alert user of empty task
+        alert('Invalid input! Please enter a task.');
+        return;
+    }
 
     // Create the task object
     const task = {
@@ -10,6 +17,7 @@ function addTask() {
     };
 
     // Send the POST request to the backend ('http://localhost:8080/tasks/addTask')
+    //('https://portfolio-web-app-719n.onrender.com/tasks/addTask')
     fetch('https://portfolio-web-app-719n.onrender.com/tasks/addTask', {
         method: 'POST',
         headers: {
@@ -49,6 +57,8 @@ window.onload = function() {
     }
 };
 
+// ('http://localhost:8080/tasks/getTasks')
+// ('https://portfolio-web-app-719n.onrender.com/tasks/getTasks')
 // Function to retrieve tasks from the backend
 // Send a GET request to the /tasks/getTitle endpoint
 function getTasks() {
@@ -94,6 +104,8 @@ function updateTaskDisplay(tasks) {
     });
 }
 
+//('http://localhost:8080/tasks')
+//('https://portfolio-web-app-719n.onrender.com/tasks')
 // Function to clear all tasks
 function clearAllTasks() {
     console.log('Clear all tasks button clicked'); // for debugging
@@ -122,7 +134,8 @@ function deleteTask() {
     console.log('No tasks selected for deletion.');
     return;
   }
-
+  // ('http://localhost:8080/deleteSelected')
+  // ('https://portfolio-web-app-719n.onrender.com/tasks/deleteSelected')
   // Send the DELETE request to the backend with the selected task IDs
   fetch('https://portfolio-web-app-719n.onrender.com/tasks/deleteSelected', {
     method: 'DELETE',

@@ -13,11 +13,11 @@ window.addEventListener('scroll', updateProgressBar);
 function openmenu() {
     sidemenu.classList.add("menu-open");
 }
-
 function closemenu() {
     sidemenu.classList.remove("menu-open");
 }
 
+// contact form
 document.addEventListener('DOMContentLoaded', function () {
   const scriptURL = 'https://script.google.com/macros/s/AKfycbwpAgKQRx-iSv9C7LEIhiey-h6HGEDa8Sk8ZaKz-BnWIJohVk4t642AywpOU1DTYpqu8A/exec';
   const form = document.forms['submit-to-google-sheet'];

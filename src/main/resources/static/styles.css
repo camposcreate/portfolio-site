@@ -99,21 +99,21 @@ nav ul li a:hover::after {
     margin-top: 10%;
 }
 .header-text p {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     margin-bottom: 1%;
     font-size: 18px;
 }
 .header-text h1 {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     font-size: 34px;
 }
 .header-text h1 span {
-    color: #AB2AFF; /*#9b00ff;*/
+    color: #AB2AFF;
 }
 .header-text a {
     text-decoration: none;
-    color: #d7e7e7;/*#f0f6f6;*/
-    background: #AB2AFF;/*#9b00ff;*/
+    color: #d7e7e7;
+    background: #AB2AFF;
     margin: 26px 0;
     padding: 10px 18px;
     border-radius: 10px;
@@ -248,6 +248,9 @@ nav ul li a:hover::after {
     font-size: 16px;
     padding-top: 10px;
 }
+.column2-layer p span {
+    color: #B23BFF;
+}
 /* task manager header */
 .column3-layer h3{
     color: #d7e7e7;
@@ -258,6 +261,9 @@ nav ul li a:hover::after {
 .column3-layer p {
     font-size: 16px;
     padding-top: 10px;
+}
+.column3-layer p span {
+    color: #B23BFF;
 }
 /*----------- CONTACT ----------- */
 #contact {
@@ -363,8 +369,8 @@ nav #close-menu {
         background: #0f0f0f;
         position: fixed;
         top: 0;
-        right: -200px;
-        width: 200px;
+        right: -150px;
+        width: 150px;
         height: 100vh;
         padding-top: 50px;
         transition: right 0.5s;

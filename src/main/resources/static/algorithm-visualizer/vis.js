@@ -15,6 +15,7 @@ const activeSprite = document.querySelector(".image");
 let cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
 const numRows = 10; // number of rows
 const numColumns = cellElements.length / numRows; // number of columns
+const reset
 
 console.log("Number of rows: " + numRows);
 console.log("Number of columns: " + numColumns);
