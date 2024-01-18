@@ -55,6 +55,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 If you have any questions or would like to get in touch, you can reach me at:
 - Email: uricampos123@gmail.com
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/uriel-campos-a76838214/)
+- LinkedIn: [Profile](https://www.linkedin.com/in/uriel-campos-a76838214/)
 
 Thank you for visiting my portfolio website repository! I hope you find my projects interesting and see the potential for us to work together. Your feedback is valuable, and I'm continuously improving the website to showcase my abilities.
