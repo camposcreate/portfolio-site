@@ -7,9 +7,14 @@ let spritePosition = {
     row: 0,
     col: 0,
 };
-
+// end sprite position (starting position)
+let spriteEndPosition = {
+    row: 9,
+    col: 9,
+};
 // activeSprite as an HTML element
 const activeSprite = document.querySelector(".image");
+const activeEndSprite = document.querySelector(".image2");
 
 // cell as an HTML element
 let cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
@@ -29,36 +34,6 @@ stompClient.connect({}, (frame) => {
         updateGrid(updatedGridData);
     });
 });
-/* Function to clear and reattach event listeners
-function addDragAndDropListeners() {
-    cellElements.forEach((gridItem) => {
-        // when elements are dragged over cells
-        gridItem.addEventListener("dragover", (e) => {
-            e.preventDefault();
-            gridItem.classList.add("hovered");
-        });
-
-        // when elements are dragged out of cells
-        gridItem.addEventListener("dragleave", () => {
-            gridItem.classList.remove("hovered");
-        });
-
-        // when elements are dropped in a cell
-        gridItem.addEventListener("drop", () => {
-            console.log("Dropped in cell:", gridItem);
-            if (gridItem.contains(activeSprite)) {
-                return;
-            }
-
-            gridItem.appendChild(activeSprite);
-            gridItem.classList.remove("hovered");
-            // Update the spritePosition
-            spritePosition.row = parseInt(gridItem.id.split("-")[1]);
-            spritePosition.col = parseInt(gridItem.id.split("-")[2]);
-        });
-    });
-    console.log("Registered cells after resetting the grid:", cellElements);
-}*/
 
 // Call reset function initially
 resetGrid();
@@ -307,6 +282,17 @@ function visualizeBFS(updatedGridData, startRow, startCol) {
 
     // add a neighboring cells to the queue for traversal
     function enqueue(row, col) {
+        // if starting position
+        if (isValid(row, col) && gridData[row][col] === 'S') {
+            queue.push({ row, col });
+
+            const cellId = `cell-${row}-${col}`;
+            const cellElement = document.getElementById(cellId);
+
+            if (cellElement) {
+                cellElement.className = 'start-cell';
+            }
+        }
         if (isValid(row, col) && gridData[row][col] === 'V') {
             queue.push({ row, col });
 
@@ -317,7 +303,7 @@ function visualizeBFS(updatedGridData, startRow, startCol) {
                 cellElement.className = 'update-cell';
             }
         }
-    }
+    } // end enqueue()
 
     // for debugging
     console.log('Starting BFS visualization');
@@ -327,6 +313,9 @@ function visualizeBFS(updatedGridData, startRow, startCol) {
 }
 
 // Retrieve the current state of the grid as a 2D array
+// S -> starting position
+// O -> open cells
+// X -> blocked cells
 function getGrid() {
     const gridData = [];
 
@@ -335,6 +324,11 @@ function getGrid() {
         for (let col = 0; col < numColumns; col++) {
             const cellId = `cell-${row}-${col}`;
             const gridItem = document.getElementById(cellId);
+            if (spritePosition.row == row && spritePosition.col == col) { // mark starting position
+                const cellValue = "S";
+                rowData.push(cellValue);
+                continue;
+            }
             const cellValue = gridItem.classList.contains("obstacle") ? "X" : "O";
             rowData.push(cellValue);
         }
@@ -342,7 +336,7 @@ function getGrid() {
     }
     return gridData;
 }
-
+let startItem;
 // Retrieve the sprite's current position
 function getSpritePosition() {
     const activeCell = document.querySelector(".grid-item .image");
@@ -351,7 +345,17 @@ function getSpritePosition() {
         const col = activeCell.cellIndex;
         return { row, col };
     }
-    return null; // Return null if sprite is not present
+    return null; // if sprite is not present
+}
+// Retrieve end sprite's current position
+function getEndSpritePosition() {
+    const activeCell = document.querySelector(".grid-item .image2");
+    if (activeCell) {
+        const row = activeCell.parentElement.rowIndex;
+        const col = activeCell.cellIndex;
+        return { row, col };
+    }
+    return null; // if sprite is not present
 }
 
 // Default to BFS

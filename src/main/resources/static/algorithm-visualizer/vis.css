@@ -173,6 +173,9 @@ body {
     --open-cell-color: #333;
     --obstacle-color: #666;
 }
+.start-cell {
+    background-color: #0080FF !important;
+}
 .obstacle {
     background-color: #fff;
 }
@@ -189,13 +192,13 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
-/* second sprite (not yet implemented)
+/* second sprite (not yet implemented) */
 .grid-item .image2 {
     background-image: url("../../images/diamond-symbol.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-}*/
+}
 /* hover cell effect (not dragging sprite) */
 .grid-item:hover {
     background-color: yellow;
@@ -205,6 +208,9 @@ body {
     transition: transform 0.5s ease;
     transform: scale(1.1);
     box-shadow: 0 0 25px #f0f6f6;
+}
+.test-pic .image3 {
+    background-image: url("../../images/circle.png");
 }
 /*-- For Mobile users (MAX: 600px) --*/
 @media only screen and (max-width: 600px) {

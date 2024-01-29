@@ -3,6 +3,7 @@ package visualizer;
 public class GridData {
     private char[][] grid;
     private SpritePosition spritePosition;
+    private EndSpritePosition endSpritePosition;
 
     public GridData() {}
 
@@ -25,4 +26,7 @@ public class GridData {
     public void setSpritePosition(SpritePosition spritePosition) {
         this.spritePosition = spritePosition;
     }
+
+    public EndSpritePosition getEndSpritePosition() {return endSpritePosition;}
+    public void setEndSpritePosition(EndSpritePosition endSpritePosition) {this.endSpritePosition = endSpritePosition;}
 }

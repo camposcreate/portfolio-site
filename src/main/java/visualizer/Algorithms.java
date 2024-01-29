@@ -17,6 +17,7 @@ public class Algorithms {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{startRow, startCol}); // add starting node
         visited[startRow][startCol] = true; // mark as visited
+        grid[startRow][startCol] = 'S'; // mark starting position
 
         // Offsets for neighboring cells
         int[] dr = {-1, 1, 0, 0};
@@ -26,9 +27,6 @@ public class Algorithms {
             int[] current = queue.poll(); // current node
             int r = current[0]; // node row
             int c = current[1]; // node col
-
-            // Mark current cell as visited
-            grid[r][c] = 'V';
 
             // Send updated grid data to frontend
             messagingTemplate.convertAndSend("/topic/updatedGrid", convertGridToStringList(grid));
@@ -42,6 +40,8 @@ public class Algorithms {
                         && grid[newRow][newCol] == 'O' && !visited[newRow][newCol]) {
                     queue.add(new int[]{newRow, newCol});
                     visited[newRow][newCol] = true;
+                    // Mark current cell as visited
+                    grid[newRow][newCol] = 'V';
                 }
             }
         }
