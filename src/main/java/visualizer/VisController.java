@@ -29,6 +29,7 @@ public class VisController {
             // Retrieve the grid data from the 'data' object
             char[][] grid = data.getGrid();
             SpritePosition spritePosition = data.getSpritePosition();
+            EndSpritePosition endSpritePosition = data.getEndSpritePosition();
 
             // Call BFS algorithm
             Algorithms.bfs(grid, spritePosition.getRow(), spritePosition.getCol(), messagingTemplate);

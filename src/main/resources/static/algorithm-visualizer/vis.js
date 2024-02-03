@@ -35,7 +35,7 @@ stompClient.connect({}, (frame) => {
     });
 });
 
-// Call reset function initially
+// call initially
 resetGrid();
 
 function resetGrid() {
@@ -45,15 +45,23 @@ function resetGrid() {
     const grid = document.querySelector(".grid");
     grid.innerHTML = originalGridHTML;
 
-    // Reset sprite position after reset
+    // reset start sprite position after reset
     spritePosition = { row: 0, col: 0 };
 
-    // Remove the original sprite from its initial position
+    // reset end sprite position after reset
+    spriteEndPosition = { row: 9, col: 9 };
+
+    // Remove original start sprite from its initial position
     const originalSpriteContainer = document.querySelector("#cell-0-0");
     originalSpriteContainer.innerHTML = '';
     originalSpriteContainer.appendChild(activeSprite);
 
-    // Add event listeners directly to the cells
+    // remove original end sprite from its initial position
+    const originalEndSpriteContainer = document.querySelector("#cell-9-9");
+    originalEndSpriteContainer.innerHTML = '';
+    originalEndSpriteContainer.appendChild(activeEndSprite);
+
+    // add event listeners directly to the cells
     cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
     cellElements.forEach((gridItem) => {
         // when elements are dragged over cells
@@ -68,24 +76,56 @@ function resetGrid() {
         });
 
         // when elements are dropped in a cell
-        gridItem.addEventListener("drop", () => {
+        gridItem.addEventListener("drop", (e) => {
+            e.preventDefault();
             console.log("Dropped in cell:", gridItem);
-            if (gridItem.contains(activeSprite)) {
+
+            const draggedElement = document.querySelector(".dragging");
+            if (!draggedElement) {
                 return;
             }
 
-            gridItem.appendChild(activeSprite);
+            // check dropped element is not same as dragged element
+            if (gridItem.contains(draggedElement)) {
+                return;
+            }
+
+            if (draggedElement.classList.contains("image")) {
+                // update the starting position
+                spritePosition.row = parseInt(gridItem.id.split("-")[1]);
+                spritePosition.col = parseInt(gridItem.id.split("-")[2]);
+                gridItem.appendChild(activeSprite);
+            } else if (draggedElement.classList.contains("image2")) {
+                // update the ending position
+                spriteEndPosition.row = parseInt(gridItem.id.split("-")[1]);
+                spriteEndPosition.col = parseInt(gridItem.id.split("-")[2]);
+                gridItem.appendChild(activeEndSprite);
+            }
+            //gridItem.appendChild(draggedElement);
             gridItem.classList.remove("hovered");
-            // Update the spritePosition
-            spritePosition.row = parseInt(gridItem.id.split("-")[1]);
-            spritePosition.col = parseInt(gridItem.id.split("-")[2]);
+
         });
 
         // cell click change color (obstacles)
         gridItem.addEventListener('click', handleCellClickForObstacle);
     });
+    // attach dragstart event listeners to make sprites draggable
+    document.querySelectorAll('.image, .image2').forEach((element) => {
+        element.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', ''); // for firefox
+            element.classList.add('dragging');
+        });
 
-    // Log after reattaching event listeners
+        element.addEventListener('dragend', () => {
+            document.querySelectorAll('.grid-item').forEach((gridItem) => {
+                gridItem.classList.remove('hovered');
+            });
+
+            element.classList.remove('dragging');
+        });
+    });
+
+    // reattaching event listeners log
     console.log("Event listeners reattached after resetting the grid");
 }
 
@@ -93,11 +133,11 @@ function resetGrid() {
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", resetGrid);
 
-// Function to send grid data to the backend
+// function to send grid data to the backend
 function sendGridData() {
     console.log("Sending grid data to backend");
 
-    // Prepare grid data
+    // prepare grid data
     const gridData = {
         grid: getGrid(),
         spritePosition: spritePosition,
@@ -105,7 +145,7 @@ function sendGridData() {
 
     console.log("Grid data sent to backend:", gridData);
 
-    // Send grid data as JSON to the backend and handle the response
+    // send grid data as JSON to the backend and handle the response
     return fetch('/Algorithms/visualize', {
         method: 'POST',
         headers: {
@@ -119,38 +159,62 @@ function sendGridData() {
             console.error('Server returned an error:', response.status, response.statusText);
             throw new Error('Network response was not ok');
         }
-        return response.json(); // Parse the response as JSON
+        return response.json(); // parse the response as JSON
     })
     .then(data => {
         console.log('Data:', data);
-        return data; // Resolve the promise with the received data
+        return data; // resolve the promise with the received data
     })
     .catch(error => {
         console.error('Error:', error);
-        // Handle errors
+        // handle errors
         throw error;
     });
 }
 
-// Drop sprite and record position (row, col)
-function handleDrop(e) {
+// drop sprite and record position (row, col)
+function handleDrop(e, n) {
     e.preventDefault();
+    n.preventDefault();
     const targetCell = e.target;
+    const targetEndCell = n.target;
+
+    // if contains grid item
     if (targetCell.classList.contains("grid-item")) {
-        targetCell.appendChild(activeSprite);
-        targetCell.classList.remove("hovered");
+        var start = targetCell.querySelector('.image');
+        var end = targetEndCell.querySelector('.image2');
+        // record dropped starting sprite
+        if (start) {
+            targetCell.appendChild(activeSprite);
+            targetCell.classList.remove("hovered");
 
-        // Get the row and column values of the dropped cell
-        const row = targetCell.parentElement.rowIndex;
-        const col = targetCell.cellIndex;
+            // get row and column values of the dropped cell
+            const row = targetCell.parentElement.rowIndex;
+            const col = targetCell.cellIndex;
 
-        // Update the spritePosition
-        spritePosition.row = row;
-        spritePosition.col = col;
+            // update the spritePosition
+            spritePosition.row = row;
+            spritePosition.col = col;
 
-        console.log('Sprite dropped at row:', row, 'col:', col);
-        console.log('Updated spritePosition:', spritePosition);
+            console.log('Sprite dropped at row:', row, 'col:', col);
+            console.log('Updated spritePosition:', spritePosition);
+        }
+        // record dropped ending sprite
+        if (end) {
+            targetEndCell.appendChild(activeEndSprite);
+            targetEndCell.classList.remove("hovered");
 
+            // get row and column values of the dropped cell
+            const row = targetEndCell.parentElement.rowIndex;
+            const col = targetEndCell.cellIndex;
+
+            // update the spriteEndPosition
+            spriteEndPosition.row = row;
+            spriteEndPosition.col = col;
+
+            console.log('Sprite dropped at row:', row, 'col:', col);
+            console.log('Updated spritePosition:', spriteEndPosition);
+        }
     }
 }
 
@@ -329,6 +393,11 @@ function getGrid() {
                 rowData.push(cellValue);
                 continue;
             }
+            if (spriteEndPosition.row == row && spriteEndPosition.col == col) { // mark ending position
+                const cellValue = "E";
+                rowData.push(cellValue);
+                continue;
+            }
             const cellValue = gridItem.classList.contains("obstacle") ? "X" : "O";
             rowData.push(cellValue);
         }
@@ -336,8 +405,8 @@ function getGrid() {
     }
     return gridData;
 }
-let startItem;
-// Retrieve the sprite's current position
+//let startItem;
+// Retrieve starting sprite's current position
 function getSpritePosition() {
     const activeCell = document.querySelector(".grid-item .image");
     if (activeCell) {
