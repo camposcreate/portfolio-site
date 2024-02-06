@@ -35,7 +35,11 @@ To run this project locally, follow these steps:
 
 ## Usage
 
-Feel free to explore the website and check out my projects. Click on project tiles to view more details, and interact with the site to get a glimpse of my portfolio projects.
+Feel free to explore the website and check out my projects: [Click Here](https://web-app-ub20.onrender.com)
+
+Click on project tiles to view more details, and interact with the site to get a glimpse of my portfolio projects.
+
+#### Note: The site will take a minute to load initially since I'm utilizing a free service from [Render](https://render.com) for hosting. Please refresh after some time :)
 
 ## License
 
