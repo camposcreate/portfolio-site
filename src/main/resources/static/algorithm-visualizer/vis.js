@@ -78,7 +78,7 @@ function resetGrid() {
         // when elements are dropped in a cell
         gridItem.addEventListener("drop", (e) => {
             e.preventDefault();
-            console.log("Dropped in cell:", gridItem);
+            //console.log("Dropped in cell:", gridItem);
 
             const draggedElement = document.querySelector(".dragging");
             if (!draggedElement) {
@@ -95,11 +95,13 @@ function resetGrid() {
                 spritePosition.row = parseInt(gridItem.id.split("-")[1]);
                 spritePosition.col = parseInt(gridItem.id.split("-")[2]);
                 gridItem.appendChild(activeSprite);
+                console.log("Dropped 'starting' sprite in cell:", gridItem);
             } else if (draggedElement.classList.contains("image2")) {
                 // update the ending position
                 spriteEndPosition.row = parseInt(gridItem.id.split("-")[1]);
                 spriteEndPosition.col = parseInt(gridItem.id.split("-")[2]);
                 gridItem.appendChild(activeEndSprite);
+                console.log("Dropped 'ending' sprite in cell:", gridItem);
             }
             //gridItem.appendChild(draggedElement);
             gridItem.classList.remove("hovered");
@@ -126,16 +128,16 @@ function resetGrid() {
     });
 
     // reattaching event listeners log
-    console.log("Event listeners reattached after resetting the grid");
+    console.log("event listeners reattached after reset");
 }
 
 // reset button functionality
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", resetGrid);
 
-// function to send grid data to the backend
+// function to send grid data to backend
 function sendGridData() {
-    console.log("Sending grid data to backend");
+    console.log("sending grid data to backend");
 
     // prepare grid data
     const gridData = {
