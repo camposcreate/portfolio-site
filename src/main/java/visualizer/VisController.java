@@ -32,7 +32,8 @@ public class VisController {
             EndSpritePosition endSpritePosition = data.getEndSpritePosition();
 
             // Call BFS algorithm
-            Algorithms.bfs(grid, spritePosition.getRow(), spritePosition.getCol(), messagingTemplate);
+            Algorithms.bfs(grid, spritePosition.getRow(), spritePosition.getCol(),
+                    endSpritePosition.getRow(), endSpritePosition.getCol(), messagingTemplate);
 
             // Convert the updated grid data back to JSON
             String jsonData = new ObjectMapper().writeValueAsString(grid);

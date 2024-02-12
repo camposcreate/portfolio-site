@@ -27,6 +27,6 @@ public class GridData {
         this.spritePosition = spritePosition;
     }
 
-    public EndSpritePosition getEndSpritePosition() {return endSpritePosition;}
-    public void setEndSpritePosition(EndSpritePosition endSpritePosition) {this.endSpritePosition = endSpritePosition;}
+    public EndSpritePosition getEndSpritePosition() { return endSpritePosition; }
+    public void setEndSpritePosition(EndSpritePosition endSpritePosition) { this.endSpritePosition = endSpritePosition; }
 }

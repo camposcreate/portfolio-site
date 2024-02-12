@@ -30,14 +30,17 @@ public class WebSocketController {
             char[][] grid = data.getGrid();
 
             SpritePosition spritePosition = data.getSpritePosition();
+            EndSpritePosition endSpritePosition = data.getEndSpritePosition();
 
             int startRow = spritePosition.getRow();
             int startCol = spritePosition.getCol();
+            int endRow = endSpritePosition.getRow();
+            int endCol = endSpritePosition.getCol();
             System.out.println("Start Row: " + startRow);
             System.out.println("Start Col: " + startCol);
 
             // Call BFS algorithm
-            Algorithms.bfs(grid, spritePosition.getRow(), spritePosition.getCol(), messagingTemplate);
+            Algorithms.bfs(grid, startRow, startCol, endRow, endCol, messagingTemplate);
 
             // Send the updated grid data to the frontend using WebSocket
             messagingTemplate.convertAndSend("/topic/updatedGrid", grid);

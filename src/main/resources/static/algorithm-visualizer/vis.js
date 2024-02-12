@@ -8,7 +8,7 @@ let spritePosition = {
     col: 0,
 };
 // end sprite position (starting position)
-let spriteEndPosition = {
+let endSpritePosition = {
     row: 9,
     col: 9,
 };
@@ -23,7 +23,7 @@ const numColumns = cellElements.length / numRows; // number of columns
 
 console.log("Number of rows: " + numRows);
 console.log("Number of columns: " + numColumns);
-
+/*
 const socket = new SockJS('/Algorithms/websocket');
 const stompClient = Stomp.over(socket);
 
@@ -34,7 +34,7 @@ stompClient.connect({}, (frame) => {
         updateGrid(updatedGridData);
     });
 });
-
+*/
 // call initially
 resetGrid();
 
@@ -49,7 +49,7 @@ function resetGrid() {
     spritePosition = { row: 0, col: 0 };
 
     // reset end sprite position after reset
-    spriteEndPosition = { row: 9, col: 9 };
+    endSpritePosition = { row: 9, col: 9 };
 
     // Remove original start sprite from its initial position
     const originalSpriteContainer = document.querySelector("#cell-0-0");
@@ -98,8 +98,8 @@ function resetGrid() {
                 console.log("Dropped 'starting' sprite in cell:", gridItem);
             } else if (draggedElement.classList.contains("image2")) {
                 // update the ending position
-                spriteEndPosition.row = parseInt(gridItem.id.split("-")[1]);
-                spriteEndPosition.col = parseInt(gridItem.id.split("-")[2]);
+                endSpritePosition.row = parseInt(gridItem.id.split("-")[1]);
+                endSpritePosition.col = parseInt(gridItem.id.split("-")[2]);
                 gridItem.appendChild(activeEndSprite);
                 console.log("Dropped 'ending' sprite in cell:", gridItem);
             }
@@ -143,6 +143,7 @@ function sendGridData() {
     const gridData = {
         grid: getGrid(),
         spritePosition: spritePosition,
+        endSpritePosition: endSpritePosition,
     };
 
     console.log("Grid data sent to backend:", gridData);
@@ -210,15 +211,16 @@ function handleDrop(e, n) {
             const row = targetEndCell.parentElement.rowIndex;
             const col = targetEndCell.cellIndex;
 
-            // update the spriteEndPosition
-            spriteEndPosition.row = row;
-            spriteEndPosition.col = col;
+            // update the endSpritePosition
+            endSpritePosition.row = row;
+            endSpritePosition.col = col;
 
             console.log('Sprite dropped at row:', row, 'col:', col);
-            console.log('Updated spritePosition:', spriteEndPosition);
+            console.log('Updated spritePosition:', endSpritePosition);
         }
     }
 }
+
 
 // DFS
 function visualizeDFS(updatedGridData, startRow, startCol) {
@@ -284,7 +286,7 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
 }
 
 // BFS
-function visualizeBFS(updatedGridData, startRow, startCol) {
+function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
     console.log('Visualizing BFS');
 
     // create new 2D array to represent the grid without original class information
@@ -374,14 +376,15 @@ function visualizeBFS(updatedGridData, startRow, startCol) {
     // for debugging
     console.log('Starting BFS visualization');
 
-    // Start the BFS visualization
+    // start bfs
     processNextStep();
 }
 
-// Retrieve the current state of the grid as a 2D array
+// retrieve the current state of the grid as a 2D array
 // S -> starting position
 // O -> open cells
 // X -> blocked cells
+// E -> ending position
 function getGrid() {
     const gridData = [];
 
@@ -395,7 +398,7 @@ function getGrid() {
                 rowData.push(cellValue);
                 continue;
             }
-            if (spriteEndPosition.row == row && spriteEndPosition.col == col) { // mark ending position
+            if (endSpritePosition.row == row && endSpritePosition.col == col) { // mark ending position
                 const cellValue = "E";
                 rowData.push(cellValue);
                 continue;
@@ -407,8 +410,8 @@ function getGrid() {
     }
     return gridData;
 }
-//let startItem;
-// Retrieve starting sprite's current position
+
+// retrieve starting sprite's current position
 function getSpritePosition() {
     const activeCell = document.querySelector(".grid-item .image");
     if (activeCell) {
@@ -416,17 +419,17 @@ function getSpritePosition() {
         const col = activeCell.cellIndex;
         return { row, col };
     }
-    return null; // if sprite is not present
+    return null; // if starting sprite is not present
 }
-// Retrieve end sprite's current position
+// retrieve end sprite's current position
 function getEndSpritePosition() {
-    const activeCell = document.querySelector(".grid-item .image2");
-    if (activeCell) {
-        const row = activeCell.parentElement.rowIndex;
-        const col = activeCell.cellIndex;
+    const activeEndCell = document.querySelector(".grid-item .image2");
+    if (activeEndCell) {
+        const row = activeEndCell.parentElement.rowIndex;
+        const col = activeEndCell.cellIndex;
         return { row, col };
     }
-    return null; // if sprite is not present
+    return null; // if ending sprite is not present
 }
 
 // Default to BFS
@@ -487,9 +490,9 @@ function visualize() {
 
     sendGridData().then(updatedGridData => {
         if (selectedAlgorithm === "BFS") {
-            visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col);
+            visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col, endSpritePosition.row, endSpritePosition.col);
         } else if (selectedAlgorithm === "DFS") {
-            visualizeDFS(updatedGridData, spritePosition.row, spritePosition.col);
+            visualizeDFS(updatedGridData, spritePosition.row, spritePosition.col, endSpritePosition.row, endSpritePosition.col);
         }
     });
 }

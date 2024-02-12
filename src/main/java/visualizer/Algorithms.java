@@ -9,7 +9,8 @@ import java.util.Queue;
 
 public class Algorithms {
 
-    public static void bfs(char[][] grid, int startRow, int startCol, SimpMessagingTemplate messagingTemplate) {
+    public static void bfs(char[][] grid, int startRow, int startCol, int endRow, int endCol, SimpMessagingTemplate messagingTemplate) {
+        System.out.println("Starting BFS algorithm...");
         int rows = grid.length; // get row length
         int cols = grid[0].length; // get col length
         boolean[][] visited = new boolean[rows][cols];
@@ -17,7 +18,8 @@ public class Algorithms {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{startRow, startCol}); // add starting node
         visited[startRow][startCol] = true; // mark as visited
-        grid[startRow][startCol] = 'S'; // mark starting position
+        //grid[startRow][startCol] = 'S'; // mark starting position
+        //grid[endRow][endCol] = 'E'; // mark ending position
 
         // Offsets for neighboring cells
         int[] dr = {-1, 1, 0, 0};
