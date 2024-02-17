@@ -298,6 +298,10 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
     // BFS traversal queue
     const queue = [{ row: startRow, col: startCol }];
 
+    // collect shortest path
+    // const shortestPath = [{ row: startRow, col: startCol }];
+    const shortestPath = [];
+
     // check if cell is within grid boundaries
     function isValid(row, col) {
         return row >= 0 && row < gridData.length && col >= 0 && col < gridData[0].length;
@@ -315,7 +319,23 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
     // start BFS
     function processNextStep() {
         console.log('Count: ', iterationCount);
+
+        // stop BFS
         if (queue.length === 0 || iterationCount >= maxIterations) {
+            console.log('Length of Stack: ' + shortestPath.length);
+            // paint shortest path
+            let i = 0;
+            while (i < shortestPath.length) {
+                const { row, col } = shortestPath[i];
+                const cellId = `cell-${row}-${col}`;
+                const cellElement = document.getElementById(cellId);
+                // console.log('Row: ', row + '-', 'Col: ', col);
+
+                if (cellElement) {
+                    cellElement.className = 'shortest-path-cell';
+                }
+                i++;
+            }
             console.log('BFS visualization completed');
             return;
         }
@@ -330,7 +350,8 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
                 continue;
             }
 
-            console.log(`Processing cell at row: ${row}, col: ${col}`); // Log current cell
+            // Log current cell
+            console.log(`Processing cell at row: ${row}, col: ${col}`);
 
             // mark visited cell
             visitedCells.push({ row, col });
@@ -350,7 +371,7 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
 
     // add a neighboring cells to the queue for traversal
     function enqueue(row, col) {
-        // if starting position
+        /* if starting position
         if (isValid(row, col) && gridData[row][col] === 'S') {
             queue.push({ row, col });
 
@@ -360,8 +381,14 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
             if (cellElement) {
                 cellElement.className = 'start-cell';
             }
-        }
-        if (isValid(row, col) && gridData[row][col] === 'V') {
+        }*/
+        if (isValid(row, col) && gridData[row][col] === 'V' ||
+                isValid(row, col) && gridData[row][col] === 'W') {
+
+            // push cells for shortest path
+            if (gridData[row][col] === 'W') {
+                shortestPath.push({ row, col });
+            }
             queue.push({ row, col });
 
             const cellId = `cell-${row}-${col}`;
@@ -393,12 +420,14 @@ function getGrid() {
         for (let col = 0; col < numColumns; col++) {
             const cellId = `cell-${row}-${col}`;
             const gridItem = document.getElementById(cellId);
-            if (spritePosition.row == row && spritePosition.col == col) { // mark starting position
+            // mark starting position
+            if (spritePosition.row == row && spritePosition.col == col) {
                 const cellValue = "S";
                 rowData.push(cellValue);
                 continue;
             }
-            if (endSpritePosition.row == row && endSpritePosition.col == col) { // mark ending position
+            // mark ending position
+            if (endSpritePosition.row == row && endSpritePosition.col == col) {
                 const cellValue = "E";
                 rowData.push(cellValue);
                 continue;
@@ -441,53 +470,10 @@ function getAlgorithm() {
     console.log(selectedAlgorithm);
 }
 
-/* connect to the WebSocket and listen for updates
-function connectWebSocket() {
-    const socket = new SockJS('/Algorithms/websocket'); // Use the correct WebSocket endpoint
-    const stompClient = Stomp.over(socket);
-
-    stompClient.connect({}, function (frame) {
-        console.log('Connected to WebSocket');
-        stompClient.subscribe('/topic/updatedGrid', function (response) {
-            const updatedGridData = JSON.parse(response.body);
-            console.log('Received updated grid data:', updatedGridData);
-
-        });
-    });
-}
-
-// WebSocket message handler
-stompClient.connect({}, (frame) => {
-    // Subscription code goes here
-    stompClient.subscribe('/topic/updatedGrid', (message) => {
-        console.log('Received WebSocket message:', message.body);
-        try {
-            const data = message.body;
-            if (data && typeof data === 'string') {
-                const updatedGridData = JSON.parse(data);
-                console.log('Received updated grid data:', updatedGridData);
-
-                // Update the grid on the frontend with the updatedGridData
-                updateGrid(updatedGridData);
-
-            } else {
-                console.error('Received invalid data:', data);
-            }
-        } catch (error) {
-            console.error('Error parsing JSON:', error);
-        }
-    });
-});
-
-// Call the connectWebSocket function when the page loads
-window.onload = function () {
-    connectWebSocket();
-};*/
-
-// Visualize button functionality
+// 'Visualize' button functionality
 function visualize() {
     console.log("Visualize button clicked");
-
+    // call algorithm function
     sendGridData().then(updatedGridData => {
         if (selectedAlgorithm === "BFS") {
             visualizeBFS(updatedGridData, spritePosition.row, spritePosition.col, endSpritePosition.row, endSpritePosition.col);

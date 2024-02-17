@@ -99,7 +99,7 @@ h4 {
     font-weight: 900;
 }
 h4 span {
-    color: #0f0f0f;
+    color: #B23BFF;
 }
 /* ----------- VISUALIZER BUTTONS -----------*/
 .vis-buttons {
@@ -120,7 +120,7 @@ select {
 #start-button {
     color: #d7e7e7;
     font-size: 14px;
-    border-color: #263F3F;
+    border-color: #d7e7e7;
     background: #263F3F;
     padding: 8px 14px;
     border-radius: 10px;
@@ -129,7 +129,8 @@ select {
     margin-left: 50px;
 }
 #start-button:hover {
-    background: #2F740E;
+    background: #00C763;
+    border-color: #00C763;
     transition: 0.3s ease;
 }
 #reset-button {
@@ -154,13 +155,15 @@ body {
     grid-template-columns: repeat(10, minmax(70px, 1fr)); /* (# of columns, minmax(min, max)) */
     grid-template-rows: repeat(10, minmax(60px, auto)); /* Fixed width for each column */
     gap: 2px;
+    background-color: #1f1f1f;
+    padding: 10px;
+    border-radius: 10px;
 }
 .grid > div {
     background-color: #d7e7e7;
     padding: 1rem;
     border-radius: 3px;
 }
-
 .grid > div > img {
     display: none;
 }
@@ -185,37 +188,34 @@ body {
     --open-cell-color: #333;
     --obstacle-color: #666;
 }
-.start-cell {
-    background-color: #0080FF !important;
-}
 .obstacle {
-    background-color: #fff;
-}
-.dynamic-color {
     background-color: #fff;
 }
 .update-cell {
     background-color: #333 !important;
 }
+.shortest-path-cell {
+    background-color: #0080FF !important;
+}
 /* initial sprite */
 .grid-item .image {
-    background-image: url("../../images/circle.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-/* second sprite (implementing currently) */
-.grid-item .image2 {
     background-image: url("../../images/favicon.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
-/* hover cell effect (not dragging sprite) */
+/* second sprite */
+.grid-item .image2 {
+    background-image: url("../../images/circle.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* mouse hover (not dragging sprite) */
 .grid-item:hover {
     background-color: yellow;
 }
-/* hover cell effect when dragging sprite */
+/* mouse hover when dragging sprite */
 .grid-item.hovered {
     transition: transform 0.5s ease;
     transform: scale(1.1);
@@ -224,6 +224,10 @@ body {
 /*-- For Mobile users (MAX: 600px) --*/
 @media only screen and (max-width: 600px) {
     /* ----------- VISUALIZER DESCRIPTION --------*/
+    .description {
+        padding: 5%;
+        border-radius: 20px;
+    }
     h1 {
         font-size: 28px;
     }
@@ -244,12 +248,11 @@ body {
         font-style: italic;
         font-weight: 900;
     }
-    h4 span {
-        color: #B23BFF;
-    }
     /* ----------- GRID CSS -----------*/
     .grid {
-        grid-template-columns: repeat(10, minmax(45px, 1fr)); /* (# of columns, minmax(min, max)) */
+        padding: 20px;
+        grid-template-columns: repeat(10, minmax(40px, 1fr)); /* (# of columns, minmax(min, max)) */
+        grid-template-rows: repeat(10, minmax(40px, auto)); /* Fixed width for each column */
         gap: 1px;
     }
 }
