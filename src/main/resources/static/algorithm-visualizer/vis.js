@@ -1,4 +1,3 @@
-console.log("Script loaded. Starting debugging.");
 // capture original HTML content of grid
 const originalGridHTML = document.querySelector(".grid").innerHTML;
 
@@ -16,6 +15,8 @@ let endSpritePosition = {
 const activeSprite = document.querySelector(".image");
 const activeEndSprite = document.querySelector(".image2");
 
+var isClicked = false;
+
 // cell as an HTML element
 let cellElements = document.querySelectorAll(".grid-item:not(.visited-cell)");
 const numRows = 10; // number of rows
@@ -23,23 +24,13 @@ const numColumns = cellElements.length / numRows; // number of columns
 
 console.log("Number of rows: " + numRows);
 console.log("Number of columns: " + numColumns);
-/*
-const socket = new SockJS('/Algorithms/websocket');
-const stompClient = Stomp.over(socket);
 
-stompClient.connect({}, (frame) => {
-    stompClient.subscribe('/topic/updatedGrid', (message) => {
-        const updatedGridData = JSON.parse(message.body);
-        console.log('Received updated grid data:', updatedGridData);
-        updateGrid(updatedGridData);
-    });
-});
-*/
 // call initially
 resetGrid();
 
 function resetGrid() {
     console.log('Reset button clicked');
+    isClicked = true;
 
     // clear grid
     const grid = document.querySelector(".grid");
@@ -292,6 +283,25 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
     // create new 2D array to represent the grid without original class information
     const gridData = JSON.parse(JSON.stringify(updatedGridData));
 
+    /* NOT WORKING BELOW - TESTING FOR NO DIRECT PATH CASES
+    let count = 0;
+    if (gridData[endRow + 1][endCol] === 'W') {
+        count++;
+    } else if (gridData[endRow - 1][endCol] === 'W') {
+        count++;
+    } else if (gridData[endRow][endCol + 1] === 'W') {
+        count++;
+    } else if (gridData[endRow][endCol - 1] === 'W') {
+        console.log('Check check check');
+        count++;
+    }
+
+    if (count === 1) {
+        alert('Direct path not found! Please try again!');
+        return;
+    }
+    */
+
     // delay between painting cells
     const delay = 100;
 
@@ -299,7 +309,6 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
     const queue = [{ row: startRow, col: startCol }];
 
     // collect shortest path
-    // const shortestPath = [{ row: startRow, col: startCol }];
     const shortestPath = [];
 
     // check if cell is within grid boundaries
@@ -320,6 +329,12 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
     function processNextStep() {
         console.log('Count: ', iterationCount);
 
+        // force reset if button is clicked
+        if (isClicked) {
+            //console.log('boolean marker true');
+            return;
+        }
+
         // stop BFS
         if (queue.length === 0 || iterationCount >= maxIterations) {
             console.log('Length of Stack: ' + shortestPath.length);
@@ -329,7 +344,6 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
                 const { row, col } = shortestPath[i];
                 const cellId = `cell-${row}-${col}`;
                 const cellElement = document.getElementById(cellId);
-                // console.log('Row: ', row + '-', 'Col: ', col);
 
                 if (cellElement) {
                     cellElement.className = 'shortest-path-cell';
@@ -371,17 +385,8 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
 
     // add a neighboring cells to the queue for traversal
     function enqueue(row, col) {
-        /* if starting position
-        if (isValid(row, col) && gridData[row][col] === 'S') {
-            queue.push({ row, col });
 
-            const cellId = `cell-${row}-${col}`;
-            const cellElement = document.getElementById(cellId);
-
-            if (cellElement) {
-                cellElement.className = 'start-cell';
-            }
-        }*/
+        // avoid blocked paths
         if (isValid(row, col) && gridData[row][col] === 'V' ||
                 isValid(row, col) && gridData[row][col] === 'W') {
 
@@ -473,6 +478,7 @@ function getAlgorithm() {
 // 'Visualize' button functionality
 function visualize() {
     console.log("Visualize button clicked");
+    isClicked = false;
     // call algorithm function
     sendGridData().then(updatedGridData => {
         if (selectedAlgorithm === "BFS") {
