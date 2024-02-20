@@ -214,13 +214,19 @@ function handleDrop(e, n) {
 
 
 // DFS
-function visualizeDFS(updatedGridData, startRow, startCol) {
-    console.log('Visualize DFS');
+function visualizeDFS(updatedGridData, startRow, startCol, endRow, endCol) {
+    // console.log('Visualize DFS');
 
     const ROW = updatedGridData.length;
     const COL = updatedGridData[0].length;
     const stack = [[startRow, startCol]];
     const visitedCells = Array.from(Array(ROW), () => Array(COL).fill(false));
+
+    // direct path not found
+    if (updatedGridData[endRow][endCol] === 'U') {
+        alert('Direct path not found! Please try again!');
+        return;
+    }
 
     var dRow = [0, 1, 0, -1];
     var dCol = [-1, 0, 1, 0];
@@ -228,15 +234,40 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
     // delay between painting cells
     const delay = 100;
 
+    // collect shortest path
+    const shortestPath = [];
+
     function isValid(row, col) {
         return row >= 0 && col >= 0 && row < ROW && col < COL && !visitedCells[row][col] && updatedGridData[row][col] !== 'X';
     }
 
+    // start DFS
     function processNextStep() {
+        // force reset if button is clicked
+        if (isClicked) {
+            //console.log('boolean marker true');
+            return;
+        }
+
+        // stop DFS
         if (stack.length === 0) {
+            // console.log('Length of Stack: ' + shortestPath.length);
+            // paint shortest path
+            let i = 0;
+            while (i < shortestPath.length) {
+                const { row, col } = shortestPath[i];
+                const cellId = `cell-${row}-${col}`;
+                const cellElement = document.getElementById(cellId);
+
+                if (cellElement) {
+                    cellElement.className = 'shortest-path-cell';
+                }
+                i++;
+            }
             console.log('DFS visualization completed');
             return;
         }
+
         const [r, c] = stack.pop();
 
         if (!isValid(r, c) || visitedCells[r][c]) {
@@ -244,13 +275,13 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
             return;
         }
 
-        // Mark cell as visited
+        // mark cell as visited
         visitedCells[r][c] = true;
 
-        // Update cell color
+        // update cell color
         updateCellUI(r, c);
 
-        // Push incoming neighbors
+        // push incoming neighbors
         for (let i = 0; i < 4; i++) {
             const pathR = r + dRow[i];
             const pathC = c + dCol[i];
@@ -263,8 +294,12 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
     processNextStep();
 
     function updateCellUI(row, col) {
-        console.log(`Processing cell at row: ${row}, col: ${col}`);
-        if (updatedGridData[row][col] === 'V') {
+        // console.log(`Processing cell at row: ${row}, col: ${col}`);
+        if (updatedGridData[row][col] === 'V' || updatedGridData[row][col] === 'W') {
+
+            if (updatedGridData[row][col] === 'W') {
+                shortestPath.push({ row, col });
+            }
 
             const cellId = `cell-${row}-${col}`;
             const cellElement = document.getElementById(cellId);
@@ -278,29 +313,16 @@ function visualizeDFS(updatedGridData, startRow, startCol) {
 
 // BFS
 function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
-    console.log('Visualizing BFS');
+    // console.log('Visualizing BFS');
 
     // create new 2D array to represent the grid without original class information
     const gridData = JSON.parse(JSON.stringify(updatedGridData));
 
-    /* NOT WORKING BELOW - TESTING FOR NO DIRECT PATH CASES
-    let count = 0;
-    if (gridData[endRow + 1][endCol] === 'W') {
-        count++;
-    } else if (gridData[endRow - 1][endCol] === 'W') {
-        count++;
-    } else if (gridData[endRow][endCol + 1] === 'W') {
-        count++;
-    } else if (gridData[endRow][endCol - 1] === 'W') {
-        console.log('Check check check');
-        count++;
-    }
-
-    if (count === 1) {
+    // direct path not found
+    if (gridData[endRow][endCol] === 'U') {
         alert('Direct path not found! Please try again!');
         return;
     }
-    */
 
     // delay between painting cells
     const delay = 100;
@@ -337,7 +359,7 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
 
         // stop BFS
         if (queue.length === 0 || iterationCount >= maxIterations) {
-            console.log('Length of Stack: ' + shortestPath.length);
+            // console.log('Length of Queue: ' + shortestPath.length);
             // paint shortest path
             let i = 0;
             while (i < shortestPath.length) {
@@ -364,8 +386,8 @@ function visualizeBFS(updatedGridData, startRow, startCol, endRow, endCol) {
                 continue;
             }
 
-            // Log current cell
-            console.log(`Processing cell at row: ${row}, col: ${col}`);
+            // log current cell
+            // console.log(`Processing cell at row: ${row}, col: ${col}`);
 
             // mark visited cell
             visitedCells.push({ row, col });

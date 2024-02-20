@@ -21,6 +21,8 @@ public class Algorithms {
         int[] dr = {-1, 1, 0, 0};
         int[] dc = {0, 0, -1, 1};
 
+        boolean pathFound = false;
+
         while (!queue.isEmpty()) {
             int[] current = queue.poll(); // current node
             int r = current[0]; // node row
@@ -31,6 +33,7 @@ public class Algorithms {
 
             // exit when end position is reached
             if (r == endRow && c == endCol) {
+                pathFound = true;
                 break;
             }
 
@@ -52,21 +55,30 @@ public class Algorithms {
             }
         } // end while()
 
-        // backtrack shortest path
-        ArrayList<int[]> shortestPath = new ArrayList<>();
-        int[] currentNode = new int[]{endRow, endCol};
-        while (!Arrays.equals(currentNode, new int[]{startRow, startCol})) {
-            shortestPath.add(currentNode);
-            String key = currentNode[0] + "," + currentNode[1];
-            currentNode = path.get(key);
-        } // end while ()
-        shortestPath.add(new int[]{startRow, startCol});
-        Collections.reverse(shortestPath);
-        for (int[] node : shortestPath) {
-            int nRow = node[0];
-            int nCol = node[1];
-            if (grid[nRow][nCol] == 'V') {
-                grid[nRow][nCol] = 'W';
+        // direct path not found
+        if (!pathFound) {
+            System.out.println("Direct path not found!");
+            grid[endRow][endCol] = 'U';
+        }
+
+        // direct path found
+        if (pathFound) {
+            // backtrack shortest path
+            ArrayList<int[]> shortestPath = new ArrayList<>();
+            int[] currentNode = new int[]{endRow, endCol};
+            while (!Arrays.equals(currentNode, new int[]{startRow, startCol})) {
+                shortestPath.add(currentNode);
+                String key = currentNode[0] + "," + currentNode[1];
+                currentNode = path.get(key);
+            } // end while ()
+            shortestPath.add(new int[]{startRow, startCol});
+            Collections.reverse(shortestPath);
+            for (int[] node : shortestPath) {
+                int nRow = node[0];
+                int nCol = node[1];
+                if (grid[nRow][nCol] == 'V') {
+                    grid[nRow][nCol] = 'W';
+                }
             }
         }
     } // end bfs()
