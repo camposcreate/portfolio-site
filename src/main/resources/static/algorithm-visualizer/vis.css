@@ -73,6 +73,7 @@ nav a.nav-link:hover {
     background: #0f0f0f;
     padding: 2%;
     border-radius: 20px;
+    text-align: center;
 }
 .description ul li {
     list-style: inside;
@@ -80,26 +81,44 @@ nav a.nav-link:hover {
 h1 {
     color: #d7e7e7;
     font-weight: 900;
+    text-align: center;
+    font-size: 38px;
 }
 h1 span {
     font-size: 12px;
-    color: #B23BFF;
+    color: #d7e7e7;
     font-style: italic;
+    background-color: #263F3F;
+    padding: 1px;
+}
+p {
+    text-align: center;
+}
+.call {
+    margin-top: -12px;
+    text-decoration: underline;
+}
+.algorithm-images {
+    display: inline-block;
+    margin: auto;
+    object-fit: contain;
+    margin-top: 5px;
+}
+.algorithm-images img {
+    width: 30%;
 }
 h2 {
     color: #B23BFF;
     font-weight: bold;
 }
-h3 {
-    font-weight: bold;
+ul {
+    text-align: left;
 }
 h4 {
-    font-size: 14px;
+    font-size: 12px;
     font-style: italic;
     font-weight: 900;
-}
-h4 span {
-    color: #B23BFF;
+    text-align: center;
 }
 /* ----------- VISUALIZER BUTTONS -----------*/
 .vis-buttons {
@@ -146,7 +165,45 @@ select {
     background: #c162ff;
     transition: 0.3s ease;
 }
-/* ----------- GRID CSS -----------*/
+/* ----------- LEGEND ------------- */
+.legend-section {
+    display: flex;
+    background: linear-gradient(#1f1f1f, #a822ff);
+    border-color: #1f1f1f;
+    border-style: solid;
+    color: #d7e7e7;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 6px;
+}
+.start-key, .end-key {
+    width: 11px;
+    margin-right: 8px;
+}
+.open-key, .blocked-key, .visited-key, .shortest-key {
+    width: 12px;
+    height: 10px;
+    float: right;
+    margin-top: 3%;
+    margin-right: 8px;
+    margin-left: 4px;
+    border-radius: 2px;
+}
+.open-key {
+    background-color: #d7e7e7;
+}
+.blocked-key {
+    background-color: #000;
+}
+.visited-key {
+    background-color: #333;
+}
+.shortest-key {
+    background-color: #0080FF;
+}
+/* ----------- GRID CSS ----------- */
 body {
     margin: 2rem;
 }
@@ -237,6 +294,9 @@ body {
     p {
         font-size: 14px;
     }
+    .algorithm-images img {
+        width: 50%;
+    }
     h2 {
         font-size: 22px;
     }
@@ -248,11 +308,9 @@ body {
         font-style: italic;
         font-weight: 900;
     }
-    /* ----------- GRID CSS -----------*/
-    .grid {
-        padding: 20px;
-        grid-template-columns: repeat(10, minmax(40px, 1fr)); /* (# of columns, minmax(min, max)) */
-        grid-template-rows: repeat(10, minmax(40px, auto)); /* Fixed width for each column */
-        gap: 1px;
+    /* ----------- LEGEND -------------*/
+    .legend-section {
+        font-size: 12px;
+        padding: 9px;
     }
 }

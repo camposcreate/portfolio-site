@@ -95,29 +95,56 @@ nav ul li a:hover::after {
     width: 100%;
 }
 .header-text {
-    padding: 75px 20px;
+    padding: 70px 20px;
     margin-top: 10%;
 }
 .header-text p {
     color: #d7e7e7;
-    margin-bottom: 1%;
+    margin-top: 2px;
     font-size: 18px;
+    font-style: italic;
 }
 .header-text h1 {
     color: #d7e7e7;
-    font-size: 34px;
+    font-size: 38px;
 }
 .header-text h1 span {
-    color: #AB2AFF;
+    color: #B23BFF;
 }
+/*
+.contact-fx {
+    display: inline-block;
+    background-color: rgb(171,42,255, 0.3);
+    position: absolute;
+    width: 3%;
+    height: 2.5%;
+    padding: 6px;
+    border-radius: 16px;
+    margin-top: 2.5%;
+    margin-left: 2.25%;
+    animation: pulse 3s infinite;
+    z-index: -1;
+}
+@keyframes pulse {
+ 0% {
+    transform: scale(.5);
+ }
+ 70% {
+    transform: scale(3.0);
+ }
+ 100% {
+    transform: scale(2.0);
+ }
+}
+*/
 .header-text a {
     text-decoration: none;
     color: #d7e7e7;
-    background: #AB2AFF;
-    margin: 26px 0;
+    background: #B23BFF;
     padding: 10px 18px;
     border-radius: 10px;
     display: inline-block;
+    margin-top: 2%;
 }
 .header-text a:hover {
     background: #c162ff;
@@ -159,13 +186,13 @@ nav ul li a:hover::after {
     padding-bottom: 400px;
 }
 .main h2 {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     padding-left: 130px;
     font-size: 40px;
     padding-top: 50px;
 }
 .main p {
-    color: #d7e7e7;/*#f0f6f6;*/
+    color: #d7e7e7;
     margin: 0 auto;
     font-size: 20px;
     text-align: left;
@@ -349,20 +376,25 @@ nav #close-menu {
         padding: 5px 5px 0px 5px;
         margin: 5px;
         background-color: #0f0f0f;
-        border: 1px solid #AB2AFF;
+        border: 1px solid #B23BFF;
     }
     nav #open-menu img {
         padding: 10%;
     }
     nav #open-menu:hover {
-        background-color: #AB2AFF;
+        background-color: #B23BFF;
     }
     nav #close-menu {
         display: block;
+        background: #0f0f0f;
+        border: 1px solid #B23BFF;
         position: absolute;
         padding: 5px 5px 0px 5px;
         top: 15px;
         left: 15px;
+    }
+    nav #close-menu:hover {
+        background-color: #B23BFF;
     }
     nav #sidemenu {
         display: block;

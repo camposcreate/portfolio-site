@@ -212,7 +212,6 @@ function handleDrop(e, n) {
     }
 }
 
-
 // DFS
 function visualizeDFS(updatedGridData, startRow, startCol, endRow, endCol) {
     // console.log('Visualize DFS');

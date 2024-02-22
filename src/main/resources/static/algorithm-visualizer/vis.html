@@ -24,18 +24,26 @@
 </div>
 <!------ DESCRIPTION ----->
 <div class="description">
-    <h1>Welcome to the Algorithm Visualizer!<span> visualize algorithms in real time.</span></h1>
-    <p>The application provides a grid-based environment where you can navigate a sprite, customize blocked paths, and witness the real-time visualization of two powerful search algorithms: Breadth-First Search (BFS) and Depth-First Search (DFS).</p>
+    <h1>Welcome to the Algorithm Visualizer! <span> visualize algorithms in real time.</span></h1>
+    <p class="call"><br>Witness the visualization of two powerful search algorithms: Breadth-First Search (BFS) and Depth-First Search (DFS)!</p>
+    <div class="algorithm-images">
+        <img src="../images/bfs.jpeg">
+        <img src="../images/dfs.jpeg">
+    </div>
+    <h2><br>Learning Objective</h2>
+    <p class="objective">Provide a user-friendly platform for exploring search algorithms designed to find the shortest path between two points.
+        Featuring two widely-used algorithms, BFS and DFS, this application illustrates their execution on a grid.
+        Users can gain a comprehensive understanding of these algorithms' mechanics and their crucial role in pathfinding.
+    </p>
     <h2><br>How to Use</h2>
     <ul>
-        <li>Drag and drop the sprite across the grid to set its initial position.</li>
+        <li>Drag and drop the sprites across the grid to set their initial and ending position.</li>
         <li>Select an algorithm from the dropdown menu.</li>
-        <li>Influence the algorithm's pathfinding behavior by creating blocked paths. Simply click on grid cells to customize your environment.</li>
-        <li>Click the "Visualize" button to see the algorithm adapting to the obstacles you've set.</li>
+        <li>Influence the algorithm's pathfinding behavior by creating obstacles. Simply click on grid cells to customize your environment.</li>
+        <li>Click the 'Visualize' button to see the algorithm adapting to the obstacles you've set.</li>
         <li>After the visualization is complete, click the 'Reset' button to start fresh.</li>
     </ul>
-    <h3><br>Note</h3>
-    <h4>Currently only supports BFS (Breadth-first-search) and DFS (Depth-first-search) algorithms. <span>Cannot currently drag-n-drop on Mobile Devices :/</span></h4>
+    <h4><br>Cannot currently drag-n-drop on Mobile Devices :/</h4>
 </div>
 <!--------- BUTTONS -------->
 <div class="vis-buttons">
@@ -46,6 +54,15 @@
     </select>
     <button id="start-button" onclick="visualize()">Visualize</button>
     <button id="reset-button">Reset</button>
+</div>
+<!--------- LEGEND --------->
+<div class="legend-section">
+    <h5>Starting Sprite <img src="../images/favicon.png" class="start-key"></h5>
+    <h5>Ending Sprite <img src="../images/circle.png" class="end-key"></h5>
+    <h5>Open Cell <div class="open-key"></div></h5>
+    <h5>Blocked Cell <div class="blocked-key"></div></h5>
+    <h5>Visited Cell <div class="visited-key"></div></h5>
+    <h5>Shortest Path Cell <div class="shortest-key"></div></h5>
 </div>
 <!--------- GRID ----------->
 <div class="grid">
