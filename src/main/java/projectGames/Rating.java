@@ -8,16 +8,14 @@ public class Rating {
         this.id = id;
         this.score = score;
     }
-    private String getId(){
-        return id;
-    }
-    private void setId(String id) {
+    public String getId(){ return id; }
+    public void setId(String id) {
         this.id = id;
     }
-    private int getScore() {
+    public int getScore() {
         return score;
     }
-    private void setScore(int score) {
+    public void setScore(int score) {
         this.score = score;
     }
 }
