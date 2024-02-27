@@ -371,6 +371,10 @@ nav #close-menu {
 }
 /*-- For Mobile users (MAX: 600px) --*/
 @media only screen and (max-width: 600px) {
+    /* ----------- NAV --------*/
+    nav {
+        padding: 5px 15px;
+    }
     nav #open-menu {
         display: block;
         padding: 5px 5px 0px 5px;

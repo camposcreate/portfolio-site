@@ -74,6 +74,7 @@ nav a.nav-link:hover {
     background: #0f0f0f;
     padding: 2%;
     border-radius: 20px;
+    text-align: center;
 }
 .header-text h1 {
     font-size: 34px;
@@ -91,6 +92,7 @@ nav a.nav-link:hover {
 }
 .header-text ul li {
     list-style: inside;
+    text-align: left;
 }
 /*--------- PROGRAM FIELDS ----------*/
 .task-program {
@@ -228,6 +230,10 @@ h2 {
 
 /*-- For Mobile users (MAX: 600px) --*/
 @media only screen and (max-width: 600px) {
+    /* ----------- NAV --------*/
+    nav {
+        padding: 5px 15px;
+    }
     /*--------- TEXT HEADING -----------*/
     .header-text {
         margin: 5%;
