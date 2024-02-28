@@ -9,12 +9,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 public class GameService {
+    // fetch url
     @Value("${igdb.api.url}")
     private String igdbApiUrl;
-
+    // fetch client id
     @Value("${igdb.client.id}")
     private String igdbClientId;
-
+    // fetch access token
     @Value("${igdb.access.token}")
     private String igdbAccessToken;
 
@@ -28,7 +29,7 @@ public class GameService {
         String endpoint = igdbApiUrl + "/games";
         String authorizationHeader = "Bearer " + igdbAccessToken;
 
-        // Set up the headers
+        // headers set up
         HttpHeaders headers = new HttpHeaders();
         headers.set("Client-ID", igdbClientId);
         headers.set("Authorization", authorizationHeader);
@@ -37,14 +38,14 @@ public class GameService {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint)
                 .queryParam("search", gameName).queryParam("fields", "name");
 
-        // Make the API request
+        // API request
         ResponseEntity<String> response = restTemplate.exchange(
                 builder.toUriString(),
                 HttpMethod.GET,
                 new HttpEntity<>(headers),
                 String.class);
 
-        // Return the response body
+        // return response
         return response.getBody();
     }
 }
