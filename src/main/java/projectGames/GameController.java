@@ -23,7 +23,9 @@ public class GameController {
 
     @GetMapping("/search")
     public String getGames(@RequestParam String name) {
-        return gameService.searchGameByName(name);
+        // strip whitespaces --> replace with underscores
+        String cleanName = name.replaceAll(" ", "_").toLowerCase();
+        return gameService.searchGameByName(cleanName);
     }
 
     @PostMapping("/create")
@@ -35,6 +37,11 @@ public class GameController {
         ResponseEntity.ok("{\"message\": \"Games added successfully\"}");
         // return updated list
         return gamesList;
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteGameContent() {
+        gamesList.clear();
     }
 
 }

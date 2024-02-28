@@ -1,3 +1,18 @@
+function deleteGames() {
+    fetch('/games/delete', {
+        method: 'DELETE'
+    })
+    .then(response => {
+        console.log('Response status:', response.status); // for debugging
+        if (!response.ok) {
+            throw new Error('Error clearing games: ' + response.status);
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
+
 function updateGamesDisplay(cleanGames) {
     const gameDisplay = document.getElementById('game-display');
 
@@ -5,19 +20,23 @@ function updateGamesDisplay(cleanGames) {
     gameDisplay.innerHTML = '';
 
     // iterate games and create HTML elements for display
-    cleanGames.forEach(game => {
-        const gameItem = document.createElement('div');
-        gameItem.classList.add('game-item');
-        gameItem.innerHTML = `
-            <div class="game-container">
-                <div class="game-content">
-                    <p class="game-title">${game.title}</p>
+    if (cleanGames != null) {
+        cleanGames.forEach(game => {
+            const gameItem = document.createElement('div');
+            gameItem.classList.add('game-item');
+            gameItem.innerHTML = `
+                <div class="game-container">
+                    <div class="game-content">
+                        <p class="game-title">${game.title}</p>
+                    </div>
                 </div>
-            </div>
-        `;
-        gameDisplay.appendChild(gameItem);
-    });
+            `;
+            gameDisplay.appendChild(gameItem);
+        });
+    } // end if
+    return;
 }
+
 function addGameData(games) {
     // array of response
     const gameArray = [];
@@ -50,8 +69,8 @@ function addGameData(games) {
     })
     .then(data => {
         console.log('Data:', data);
+        // games added successfully --> update frontend
         updateGamesDisplay(data);
-        // games added successfully, update games list
 
     })
     .catch(error => {
@@ -62,7 +81,7 @@ function addGameData(games) {
 }
 
 function searchGame(){
-    const inputName = document.getElementById('game-input').value;
+    const inputName = document.getElementById('game-input').value.trim();
 
     // validate input field is not empty
     if (!inputName) {
@@ -70,6 +89,9 @@ function searchGame(){
         alert('Invalid input! Please enter a video game title.');
         return;
     }
+
+    // delete any pre-existing data
+    deleteGames();
 
     // GET request to backend endpoint
     fetch(`/games/search?name=${encodeURIComponent(inputName)}`)
