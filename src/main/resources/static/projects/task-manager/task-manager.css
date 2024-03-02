@@ -7,8 +7,7 @@
     box-sizing: border-box;
 }
 body {
-    background: #000000;
-    color: #000000;
+    background: #060607;
 }
 #header {
     position: relative;
@@ -20,7 +19,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-image: linear-gradient(#0f0f0f, #000);
+    background-color: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     left: 0;
@@ -51,7 +51,7 @@ nav a {
 nav a.nav-link {
     color: #d7e7e7;
     padding: 4px 18px;
-    border-radius: 10px;
+    border-radius: 18px;
     border-right: red;
     display: inline-block;
     border: 1px solid #B23BFF;
@@ -74,6 +74,7 @@ nav a.nav-link:hover {
     background: #0f0f0f;
     padding: 2%;
     border-radius: 20px;
+    text-align: center;
 }
 .header-text h1 {
     font-size: 34px;
@@ -81,16 +82,31 @@ nav a.nav-link:hover {
     font-weight: 900;
 }
 .header-text h1 span {
-    color: #B23BFF;
+    color: #d7e7e7;
     font-size: 12px;
     font-style: italic;
+    background-color: #263F3F;
+    padding: 1px;
+}
+p {
+    text-decoration: underline;
+    padding-bottom: 4px;
 }
 .header-text h2 {
     color: #B23BFF;
     font-weight: bold;
+    margin-top: -22px;
+}
+.instructions-wrapper {
+    padding: 14px;
+    border: 1px solid rgba(94, 96, 96, .9);
+    border-radius: 20px;
+    background: #0f0f0f;
+    margin-bottom: 4px;
 }
 .header-text ul li {
     list-style: inside;
+    text-align: left;
 }
 /*--------- PROGRAM FIELDS ----------*/
 .task-program {
@@ -113,7 +129,7 @@ nav a.nav-link:hover {
     width: 290px;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 18px;
     margin-right: 10px;
     margin-bottom: 5px;
 }
@@ -125,7 +141,7 @@ label {
     color: #d7e7e7;
     background: #AB2AFF;
     padding: 10px 18px;
-    border-radius: 10px;
+    border-radius: 18px;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -191,7 +207,7 @@ h2 {
     background: #0f0f0f;
     border-color: #e61045;
     padding: 10px 18px;
-    border-radius: 10px;
+    border-radius: 18px;
     font-size: 16px;
     cursor: pointer;
     margin-left: 3%;
@@ -203,7 +219,7 @@ h2 {
 #clear-button {
     color: #d7e7e7;
     padding: 8px 16px;
-    border-radius: 10px;
+    border-radius: 18px;
     font-size: 16px;
     background: #0f0f0f;
     border-color: #AB2AFF;
@@ -228,6 +244,10 @@ h2 {
 
 /*-- For Mobile users (MAX: 600px) --*/
 @media only screen and (max-width: 600px) {
+    /* ----------- NAV --------*/
+    nav {
+        padding: 5px 15px;
+    }
     /*--------- TEXT HEADING -----------*/
     .header-text {
         margin: 5%;

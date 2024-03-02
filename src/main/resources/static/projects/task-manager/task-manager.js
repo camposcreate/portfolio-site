@@ -16,9 +16,8 @@ function addTask() {
         priority: priorityCheckbox
     };
 
-    // Send the POST request to the backend ('http://localhost:8080/tasks/addTask')
-    //('https://portfolio-web-app-719n.onrender.com/tasks/addTask')
-    fetch('https://portfolio-web-app-719n.onrender.com/tasks/addTask', {
+    // send the POST request to the backend ('http://localhost:8080/tasks/addTask')
+    fetch('https://web-app-ub20.onrender.com/tasks/addTask', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,7 +33,7 @@ function addTask() {
     })
     .then(data => {
         console.log('Data:', data);
-        // Task added successfully, update the task list display
+        // task added successfully, update the task list display
         getTasks();
         setTimeout(() => {
             document.getElementById('task-input').value = '';
@@ -42,7 +41,7 @@ function addTask() {
         }, 100);
     })
     .catch(error => {
-        // Handle errors if any
+        // handle errors if any
         console.error(error);
     });
 }
@@ -58,11 +57,9 @@ window.onload = function() {
 };
 
 // ('http://localhost:8080/tasks/getTasks')
-// ('https://portfolio-web-app-719n.onrender.com/tasks/getTasks')
-// Function to retrieve tasks from the backend
-// Send a GET request to the /tasks/getTitle endpoint
+// send a GET request to the /tasks/getTitle endpoint
 function getTasks() {
-    fetch('https://portfolio-web-app-719n.onrender.com/tasks/getTasks')
+    fetch('https://web-app-ub20.onrender.com/tasks/getTasks')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error retrieving tasks: ' + response.status);
@@ -105,11 +102,10 @@ function updateTaskDisplay(tasks) {
 }
 
 //('http://localhost:8080/tasks')
-//('https://portfolio-web-app-719n.onrender.com/tasks')
-// Function to clear all tasks
+// function to clear all tasks
 function clearAllTasks() {
     console.log('Clear all tasks button clicked'); // for debugging
-    fetch('https://portfolio-web-app-719n.onrender.com/tasks', {
+    fetch('https://web-app-ub20.onrender.com/tasks', {
         method: 'DELETE'
     })
     .then(response => {
@@ -125,7 +121,7 @@ function clearAllTasks() {
     });
 }
 
-// Function to delete selected tasks
+// function to delete selected tasks
 function deleteTask() {
   const deleteCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
   const taskIds = Array.from(deleteCheckboxes).map(checkbox => parseInt(checkbox.id.split('-')[1]));
@@ -135,9 +131,8 @@ function deleteTask() {
     return;
   }
   // ('http://localhost:8080/deleteSelected')
-  // ('https://portfolio-web-app-719n.onrender.com/tasks/deleteSelected')
-  // Send the DELETE request to the backend with the selected task IDs
-  fetch('https://portfolio-web-app-719n.onrender.com/tasks/deleteSelected', {
+  // send the DELETE request to the backend with the selected task IDs
+  fetch('https://web-app-ub20.onrender.com/tasks/deleteSelected', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
