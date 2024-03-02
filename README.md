@@ -29,9 +29,10 @@ This repository contains the source code for my personal portfolio website. The 
 
 To run this project locally, follow these steps:
 
-1. Clone this repository to your local machine using `git clone https://github.com/camposcreate/portfolio.git`.
-2. Navigate to the project's root directory.
-3. Open `index.html` in your preferred web browser.
+1. Clone this repository to your local machine using `git clone https://github.com/camposcreate/portfolio-site.git`.
+2. Run the `./gradlew bootRun` command to start the application.
+3. Open your preferred web browser and navigate to `localhost:8080`.
+4. Use `CTRL + C` to stop the application.
 
 ## Usage
 
