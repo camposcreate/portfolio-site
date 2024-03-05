@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import taskmanager.tasks;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +33,14 @@ public class GameController {
     public List<Games> createGame(@RequestBody List<Games> incomingGames) {
         // add game objects to arraylist
         for (Games game : incomingGames) {
+            // convert unix timestamp to human readable format
+            long date = Long.parseLong(game.getReleaseDate());
+            SimpleDateFormat nDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            String convertedDate = nDate.format(new java.util.Date(date*1000));
+            game.setReleaseDate(convertedDate);
             gamesList.add(game);
         }
-        ResponseEntity.ok("{\"message\": \"Games added successfully\"}");
+        // ResponseEntity.ok("{\"message\": \"Games added successfully\"}");
         // return updated list
         return gamesList;
     }

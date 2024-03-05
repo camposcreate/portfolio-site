@@ -35,8 +35,13 @@ public class GameService {
         headers.set("Authorization", authorizationHeader);
 
         // query parameters
+        String query = gameName;
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint)
-                .queryParam("search", gameName).queryParam("fields", "name");
+                .queryParam("search", query)
+                .queryParam("fields", "id,name,first_release_date,genres.name,rating")
+                .queryParam("limit", 100)
+                .queryParam("filter[category][eq]", 0)
+                .queryParam("filter[rating][gte]", 1);
 
         // API request
         ResponseEntity<String> response = restTemplate.exchange(

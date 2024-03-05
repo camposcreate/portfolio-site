@@ -9,18 +9,18 @@ public class Games {
     private String cover;
     private List<String> genres;
     private List<String> artwork;
-    private List<Rating> ratings;
+    private double rating;
 
     // constructor
     public Games(String id, String title, String releaseDate, String cover,
-                    List<String> genres, List<String> artwork, List<Rating> ratings) {
+                    List<String> genres, List<String> artwork, double rating) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
         this.cover = cover;
         this.genres = genres;
         this.artwork = artwork;
-        this.ratings = ratings;
+        this.rating = rating;
     }
     public String getId(){
         return id;
@@ -31,9 +31,7 @@ public class Games {
     public String getTitle() {
         return title;
     }
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setTitle(String title) { this.title = title;}
     public String getReleaseDate() {
         return releaseDate;
     }
@@ -58,10 +56,8 @@ public class Games {
     public void setArtwork(List<String> artwork) {
         this.artwork = artwork;
     }
-    public List<Rating> getRatings() {
-        return ratings;
-    }
-    public void setRatings (List<Rating> ratings) {
-        this.ratings = ratings;
+    public double getRatings() { return rating; }
+    public void setRatings(double rating) {
+        this.rating = rating;
     }
 }

@@ -28,6 +28,7 @@ function updateGamesDisplay(cleanGames) {
                 <div class="game-container">
                     <div class="game-content">
                         <p class="game-title">${game.title}</p>
+                        <p class="game-rating">Ratings: ${game.ratings} Genres: ${game.genres} Release Date: ${game.releaseDate}</p>
                     </div>
                 </div>
             `;
@@ -43,10 +44,15 @@ function addGameData(games) {
 
     // iterate and retrieve name
     games.forEach(gameData => {
-        const { name } = gameData;
+        const { id, name, first_release_date, genres, rating } = gameData;
+        const genreName = genres ? genres.map(genre => genre.name) : [];
         // create game object
         const game = {
-            title: name
+            id: id,
+            title: name,
+            releaseDate: first_release_date,
+            genres: genreName,
+            rating: rating
         };
         // push object
         gameArray.push(game);
@@ -80,7 +86,7 @@ function addGameData(games) {
 
 }
 
-function searchGame(){
+function searchGame() {
     const inputName = document.getElementById('game-input').value.trim();
 
     // validate input field is not empty
