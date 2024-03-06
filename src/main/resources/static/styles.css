@@ -23,7 +23,7 @@
     border-radius: 10px;
  }
  body {
-    background-image: url('images/long_compressed.png');
+    background-image: url('images/long.jpg');
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -43,8 +43,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(15, 15, 15, 0.9);
-    backdrop-filter: blur(26px);
+    background-color: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     left: 0;
