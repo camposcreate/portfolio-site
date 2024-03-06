@@ -19,20 +19,20 @@
  .filled {
     width: 0%;
     height: 100%;
-    background-image: linear-gradient(to right, #AB2AFF, #fff);
+    background-image: linear-gradient(to right, #B23BFF, #fff);
     border-radius: 10px;
  }
  body {
-    background: #000000;
-    color: #000000;
+    background-image: url('images/long_compressed.png');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
  }
  #header {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-image: url('images/splash1-compressed.png');
+    border-bottom: 1px solid rgba(94, 96, 96, .5);
     z-index: 1;
  }
  .container {
@@ -43,8 +43,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(15, 15, 15, 0.8);
-    backdrop-filter: blur(10px);
+    background-color: rgba(15, 15, 15, 0.9);
+    backdrop-filter: blur(26px);
     position: fixed;
     top: 0;
     left: 0;
@@ -112,32 +112,6 @@ nav ul li a:hover::after {
 .header-text h1 span {
     color: #B23BFF;
 }
-/*
-.contact-fx {
-    display: inline-block;
-    background-color: rgb(171,42,255, 0.3);
-    position: absolute;
-    width: 2.8%;
-    height: 3%;
-    padding: 6px;
-    border-radius: 16px;
-    margin-top: 2.25%;
-    margin-left: 2%;
-    animation: pulse 4s infinite;
-    z-index: -1;
-}
-@keyframes pulse {
- 0% {
-    transform: scale(.5);
- }
- 70% {
-    transform: scale(3.0);
- }
- 100% {
-    transform: scale(1.5);
- }
-}
-*/
 .header-text a {
     text-decoration: none;
     color: #d7e7e7;
@@ -182,9 +156,9 @@ nav ul li a:hover::after {
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
-    background-color: #060607;
     min-height: 100vh;
     padding-bottom: 400px;
+    border-bottom: 1px solid rgba(94, 96, 96, .5);
 }
 .main h2 {
     color: #d7e7e7;
@@ -296,7 +270,6 @@ nav ul li a:hover::after {
 /*----------- CONTACT ----------- */
 #contact {
   padding: 25px 0;
-  background-image: url('images/contact_bg-compressed.png');
   margin-top: -29px;
 }
 .contact-section {
@@ -363,6 +336,8 @@ button:hover {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    background-color: rgba(15, 15, 15, 0.9);
+    backdrop-filter: blur(26px);
 }
 /*--------CSS for Small Screens--------*/
 nav #open-menu {
