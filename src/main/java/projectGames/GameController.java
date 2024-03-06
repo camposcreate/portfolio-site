@@ -34,10 +34,12 @@ public class GameController {
         // add game objects to arraylist
         for (Games game : incomingGames) {
             // convert unix timestamp to human readable format
-            long date = Long.parseLong(game.getReleaseDate());
-            SimpleDateFormat nDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-            String convertedDate = nDate.format(new java.util.Date(date*1000));
-            game.setReleaseDate(convertedDate);
+            if (game.getReleaseDate() != "") {
+                long date = Long.parseLong(game.getReleaseDate());
+                SimpleDateFormat nDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                String convertedDate = nDate.format(new java.util.Date(date * 1000));
+                game.setReleaseDate(convertedDate);
+            }
             gamesList.add(game);
         }
         // ResponseEntity.ok("{\"message\": \"Games added successfully\"}");

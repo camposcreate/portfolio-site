@@ -38,8 +38,8 @@ public class GameService {
         String query = gameName;
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint)
                 .queryParam("search", query)
-                .queryParam("fields", "id,name,first_release_date,genres.name,rating")
-                .queryParam("limit", 100)
+                .queryParam("fields", "id,name,first_release_date,cover.url,genres.name,rating")
+                .queryParam("limit", 75)
                 .queryParam("filter[category][eq]", 0)
                 .queryParam("filter[rating][gte]", 1);
 

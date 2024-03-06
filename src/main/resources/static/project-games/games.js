@@ -29,6 +29,7 @@ function updateGamesDisplay(cleanGames) {
                     <div class="game-content">
                         <p class="game-title">${game.title}</p>
                         <p class="game-rating">Ratings: ${game.ratings} Genres: ${game.genres} Release Date: ${game.releaseDate}</p>
+                        <img class="game-cover" src="${game.cover}" alt="${game.title}">
                     </div>
                 </div>
             `;
@@ -44,15 +45,21 @@ function addGameData(games) {
 
     // iterate and retrieve name
     games.forEach(gameData => {
-        const { id, name, first_release_date, genres, rating } = gameData;
+        const { id, name, first_release_date, cover, genres, rating } = gameData;
+        const ids = id ? id : "";
+        const names = name ? name : "";
+        const release = first_release_date ? first_release_date : "";
+        const coverURL = cover ? cover.url : "";
         const genreName = genres ? genres.map(genre => genre.name) : [];
+        const ratings = rating ? rating : "";
         // create game object
         const game = {
-            id: id,
-            title: name,
-            releaseDate: first_release_date,
+            id: ids,
+            title: names,
+            releaseDate: release,
+            cover: coverURL,
             genres: genreName,
-            rating: rating
+            rating: ratings
         };
         // push object
         gameArray.push(game);
