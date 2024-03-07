@@ -23,6 +23,7 @@
     border-radius: 10px;
  }
  body {
+    background-color: #000000;
     background-image: url('images/long.jpg');
     background-size: cover;
     background-position: center;
@@ -44,7 +45,9 @@ nav {
     align-items: center;
     justify-content: space-between;
     background-color: rgba(15, 15, 15, 0.8);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    transform: translate3d(0, 0, 0);
     position: fixed;
     top: 0;
     left: 0;
