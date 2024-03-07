@@ -1,3 +1,12 @@
+// modify image url for resizing
+function editCoverImageURL(url) {
+    const baseURL = "//images.igdb.com/igdb/image/upload/t_cover_small/";
+    const parts = url.split('/');
+    const extension = parts[parts.length - 1];
+    return baseURL + extension;
+}
+
+// delete list
 function deleteGames() {
     fetch('/games/delete', {
         method: 'DELETE'
@@ -13,6 +22,7 @@ function deleteGames() {
     });
 }
 
+// update frontend results
 function updateGamesDisplay(cleanGames) {
     const gameDisplay = document.getElementById('game-display');
 
@@ -39,6 +49,7 @@ function updateGamesDisplay(cleanGames) {
     return;
 }
 
+// add game objects to list
 function addGameData(games) {
     // array of response
     const gameArray = [];
@@ -46,18 +57,26 @@ function addGameData(games) {
     // iterate and retrieve name
     games.forEach(gameData => {
         const { id, name, first_release_date, cover, genres, rating } = gameData;
+        // if parameters are not found --> assign empty values
         const ids = id ? id : "";
         const names = name ? name : "";
         const release = first_release_date ? first_release_date : "";
         const coverURL = cover ? cover.url : "";
         const genreName = genres ? genres.map(genre => genre.name) : [];
         const ratings = rating ? rating : "";
+
+        // reconstruct cover image url (for results screen)
+        let newCoverURL = "";
+        if (coverURL != null) {
+            newCoverURL = editCoverImageURL(coverURL);
+        }
+
         // create game object
         const game = {
             id: ids,
             title: names,
             releaseDate: release,
-            cover: coverURL,
+            cover: newCoverURL,
             genres: genreName,
             rating: ratings
         };
