@@ -9,6 +9,7 @@ import taskmanager.tasks;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -36,10 +37,13 @@ public class GameController {
             // convert unix timestamp to human readable format
             if (game.getReleaseDate() != "") {
                 long date = Long.parseLong(game.getReleaseDate());
-                SimpleDateFormat nDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                SimpleDateFormat nDate = new SimpleDateFormat("MM/dd/yyyy");
                 String convertedDate = nDate.format(new java.util.Date(date * 1000));
                 game.setReleaseDate(convertedDate);
             }
+            // remove decimal from rating
+            String truncated = String.valueOf((int) game.getRatings());
+            game.setRatings(Double.parseDouble(truncated));
             gamesList.add(game);
         }
         // ResponseEntity.ok("{\"message\": \"Games added successfully\"}");

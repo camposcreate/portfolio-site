@@ -1,4 +1,9 @@
-// modify image url for resizing
+// game click behavior
+function handleGameItemClick() {
+    console.log('div clicked!');
+}
+
+// modify cover image url for resizing
 function editCoverImageURL(url) {
     const baseURL = "//images.igdb.com/igdb/image/upload/t_cover_small/";
     const parts = url.split('/');
@@ -34,11 +39,12 @@ function updateGamesDisplay(cleanGames) {
         cleanGames.forEach(game => {
             const gameItem = document.createElement('div');
             gameItem.classList.add('game-item');
+            gameItem.addEventListener('click', handleGameItemClick);
             gameItem.innerHTML = `
                 <div class="game-container">
                     <div class="game-content">
                         <p class="game-title">${game.title}</p>
-                        <p class="game-rating">Ratings: ${game.ratings} Genres: ${game.genres} Release Date: ${game.releaseDate}</p>
+                        <p class="game-rating">Ratings: ${game.ratings} Genres: ${game.genres} Release Date: ${game.releaseDate} Platform: ${game.platform}</p>
                         <img class="game-cover" src="${game.cover}" alt="${game.title}">
                     </div>
                 </div>
@@ -56,14 +62,22 @@ function addGameData(games) {
 
     // iterate and retrieve name
     games.forEach(gameData => {
-        const { id, name, first_release_date, cover, genres, rating } = gameData;
+        const { id, name, first_release_date, cover, platforms, genres, artworks, rating } = gameData;
         // if parameters are not found --> assign empty values
         const ids = id ? id : "";
         const names = name ? name : "";
         const release = first_release_date ? first_release_date : "";
         const coverURL = cover ? cover.url : "";
+        const platformName = platforms ? platforms.map(platform => platform.name) : [];
         const genreName = genres ? genres.map(genre => genre.name) : [];
+        /*const artworkURL = artworks ? artworks.map(art => art.url) : [];*/
         const ratings = rating ? rating : "";
+
+        /* retrieve last artwork image element
+        let artworkSelect = 0;
+        if (artworkURL > 0) {
+            artworkSelect = artworkURL.length - 2;
+        }*/
 
         // reconstruct cover image url (for results screen)
         let newCoverURL = "";
@@ -77,8 +91,11 @@ function addGameData(games) {
             title: names,
             releaseDate: release,
             cover: newCoverURL,
+            platform: platformName,
             genres: genreName,
+            /*artwork: artworkURL,*/
             rating: ratings
+            /*artNumber: artworkSelect*/
         };
         // push object
         gameArray.push(game);
