@@ -129,6 +129,36 @@ function addGameData(games) {
 
 }
 
+// call function initially
+recentlyReleasedGames();
+function recentlyReleasedGames() {
+
+    // delete any pre-existing data
+    deleteGames();
+
+    // GET request to backend endpoint
+    fetch('/games/searchRecentGames')
+        .then(response => {
+            // check response
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // parse JSON response
+            return response.json();
+        })
+        .then(data => {
+            //const games = JSON.parse(data);
+            // handle data
+            addGameData(data);
+            console.log(data);
+        })
+        .catch(error => {
+            // handle error
+            console.log('Problem with fetch:', error);
+        });
+}
+
+// send user input to backend
 function searchGame() {
     const inputName = document.getElementById('game-input').value.trim();
 

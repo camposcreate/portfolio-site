@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.util.List;
+
 @Service
 public class GameService {
     // fetch url
@@ -43,6 +48,44 @@ public class GameService {
                 .queryParam("filter[rating][gte]", 1);
 
         // System.out.println(builder.toUriString());
+
+        // API request
+        ResponseEntity<String> response = restTemplate.exchange(
+                builder.toUriString(),
+                HttpMethod.GET,
+                new HttpEntity<>(headers),
+                String.class);
+
+        //searchRecentGames();
+        // return response
+        return response.getBody();
+    }
+
+    public String searchRecentGames() {
+        String endpoint = igdbApiUrl + "/games";
+        String authorizationHeader = "Bearer " + igdbAccessToken;
+
+        // headers set up
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Client-ID", igdbClientId);
+        headers.set("Authorization", authorizationHeader);
+
+        LocalDate startOfMonth = LocalDate.now().withDayOfMonth(1);
+        long timestamp = startOfMonth.atStartOfDay().toEpochSecond(ZoneOffset.UTC);
+        long timeStampMillis = timestamp * 1000; // seconds to milliseconds
+
+        // query parameters
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint)
+                .queryParam("fields", "id,name,first_release_date,cover.url,platforms.name,genres.name,artworks.url,rating")
+                .queryParam("limit", 50)
+                .queryParam("order", "first_release_date:desc")
+                .queryParam("filter[category][eq]", 0)
+                .queryParam("filter[rating][gte]", 1)
+                .queryParam("filter[first_release_date][gt]", timeStampMillis);
+
+        //.queryParam("filter[release_dates.date-gt]", Instant.now().getEpochSecond())
+
+        System.out.println(builder.toUriString());
 
         // API request
         ResponseEntity<String> response = restTemplate.exchange(

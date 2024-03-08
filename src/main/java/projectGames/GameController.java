@@ -1,5 +1,6 @@
 package projectGames;
 
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,12 @@ public class GameController {
         // strip whitespaces --> replace with underscores
         String cleanName = name.replaceAll(" ", "_").toLowerCase();
         return gameService.searchGameByName(cleanName);
+    }
+
+    @GetMapping("/searchRecentGames")
+    public ResponseEntity<String> getRecentlyReleasedGames() {
+        String data = gameService.searchRecentGames();
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @PostMapping("/create")
