@@ -42,8 +42,8 @@ public class GameService {
         // query parameters
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint)
                 .queryParam("search", gameName.trim())
-                .queryParam("fields", "id,name,first_release_date,cover.url,platforms.name,genres.name,artworks.url,rating")
-                .queryParam("limit", 75)
+                .queryParam("fields", "id,name,first_release_date,cover.url,platforms.name,genres.name,artworks.url,rating,involved_companies.company.name")
+                .queryParam("limit", 50)
                 .queryParam("filter[category][eq]", 0)
                 .queryParam("filter[rating][gte]", 1);
 
@@ -76,16 +76,14 @@ public class GameService {
 
         // query parameters
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint)
-                .queryParam("fields", "id,name,first_release_date,cover.url,platforms.name,genres.name,artworks.url,rating")
+                .queryParam("fields", "id,name,first_release_date,cover.url,platforms.name,genres.name,artworks.url,rating,involved_companies.company.name")
                 .queryParam("limit", 50)
-                .queryParam("order", "first_release_date:desc")
-                .queryParam("filter[category][eq]", 0)
-                .queryParam("filter[rating][gte]", 1)
+                .queryParam("order", "first_release_date:desc") // sort by release date: descending
+                .queryParam("filter[category][eq]", 0) // exclude expansions and dlc
+                .queryParam("filter[rating][gte]", 1) // rating >= 1
                 .queryParam("filter[first_release_date][gt]", timeStampMillis);
 
-        //.queryParam("filter[release_dates.date-gt]", Instant.now().getEpochSecond())
-
-        System.out.println(builder.toUriString());
+        // System.out.println(builder.toUriString());
 
         // API request
         ResponseEntity<String> response = restTemplate.exchange(

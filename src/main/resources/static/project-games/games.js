@@ -1,6 +1,25 @@
+const modal = document.querySelector('#game-window');
+// close modal
+function closeModalClick() {
+    modal.close();
+}
+
 // game click behavior
-function handleGameItemClick() {
-    console.log('div clicked!');
+function openModalClick(game) {
+    return function () {
+        console.log('div clicked!');
+
+        // set cover model image
+        const image = document.querySelector('.model-image');
+        image.setAttribute('src', game.cover);
+
+        // set title model
+        const title = document.querySelector('.model-title');
+        title.textContent = game.title;
+
+        // open modal
+        modal.showModal();
+    }
 }
 
 // modify cover image url for resizing
@@ -39,12 +58,13 @@ function updateGamesDisplay(cleanGames) {
         cleanGames.forEach(game => {
             const gameItem = document.createElement('div');
             gameItem.classList.add('game-item');
-            gameItem.addEventListener('click', handleGameItemClick);
+            gameItem.addEventListener('click', openModalClick(game));
             gameItem.innerHTML = `
                 <div class="game-container">
                     <div class="game-content">
                         <p class="game-title">${game.title}</p>
-                        <p class="game-rating">Ratings: ${game.ratings} Genres: ${game.genres} Release Date: ${game.releaseDate} Platform: ${game.platform}</p>
+                        <p class="game-rating">Ratings: ${game.ratings} Genres: ${game.genres} Release Date: ${game.releaseDate}
+                                Platform: ${game.platform} Developer: ${game.developer}</p>
                         <img class="game-cover" src="${game.cover}" alt="${game.title}">
                     </div>
                 </div>
@@ -62,16 +82,18 @@ function addGameData(games) {
 
     // iterate and retrieve name
     games.forEach(gameData => {
-        const { id, name, first_release_date, cover, platforms, genres, artworks, rating } = gameData;
+        const { id, name, first_release_date, cover, platforms, genres, artworks, rating, involved_companies } = gameData;
         // if parameters are not found --> assign empty values
         const ids = id ? id : "";
         const names = name ? name : "";
         const release = first_release_date ? first_release_date : "";
-        const coverURL = cover ? cover.url : "";
+        const coverURL = cover ? cover.url : "Image Unavailable";
         const platformName = platforms ? platforms.map(platform => platform.name) : [];
         const genreName = genres ? genres.map(genre => genre.name) : [];
         /*const artworkURL = artworks ? artworks.map(art => art.url) : [];*/
         const ratings = rating ? rating : "";
+        const devName = involved_companies && involved_companies.length > 0
+            ? involved_companies.map(dev => dev.company.name) : ["Information Unavailable"];
 
         /* retrieve last artwork image element
         let artworkSelect = 0;
@@ -94,8 +116,9 @@ function addGameData(games) {
             platform: platformName,
             genres: genreName,
             /*artwork: artworkURL,*/
-            rating: ratings
+            rating: ratings,
             /*artNumber: artworkSelect*/
+            developer: devName
         };
         // push object
         gameArray.push(game);
@@ -129,7 +152,7 @@ function addGameData(games) {
 
 }
 
-// call function initially
+// call function initially --> initial splash screen
 recentlyReleasedGames();
 function recentlyReleasedGames() {
 

@@ -12,10 +12,12 @@ public class Games {
     private List<String> artwork;
     private double rating;
     private int artNumber;
+    private List<String> developer;
 
     // constructor
     public Games(String id, String title, String releaseDate, String cover,
-                 List<String> platform, List<String> genres, List<String> artwork, double rating) {
+                 List<String> platform, List<String> genres, List<String> artwork,
+                 double rating, List<String> developer) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -24,6 +26,7 @@ public class Games {
         this.genres = genres;
         this.artwork = artwork;
         this.rating = rating;
+        this.developer = developer;
     }
     public String getId(){
         return id;
@@ -67,4 +70,6 @@ public class Games {
     }
     public int getArtNumber() { return artNumber; }
     public void setArtNumber(int artNumber) { this.artNumber = artNumber; }
+    public List<String> getDeveloper() { return developer; }
+    public void setDeveloper(List<String> developer) { this.developer = developer; }
 }

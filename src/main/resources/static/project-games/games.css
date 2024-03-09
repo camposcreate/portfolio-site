@@ -1,21 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
-    box-sizing: border-box;
+    border: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 body {
-    color: #000000;
+    color: rgb(239, 255, 250);
+    background: #000000;
+}
+.search, .search-tools {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.game-item {
+    padding: 1em;
 }
 .game-container {
-    display: grid;
+    padding: 0.5em;
+    background: #131513;
+    border-radius: 14px;
+    border: 2px solid #002E52;
+}
+.game-container:hover {
+    background-color: rgb(26, 29, 26);
+    cursor: pointer;
 }
 .game-content {
 
 }
-.game-item:hover {
-    background-color: yellow;
-    cursor: pointer;
+.game-window {
+    padding: 1em;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    color: rgb(239, 255, 250);
+    background: #131513;
+    box-shadow: 0 0 1em rgba(239, 255, 250, .1);
+    text-align: center;
 }
