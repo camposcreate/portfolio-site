@@ -56,7 +56,6 @@ public class GameService {
                 new HttpEntity<>(headers),
                 String.class);
 
-        //searchRecentGames();
         // return response
         return response.getBody();
     }
@@ -84,6 +83,33 @@ public class GameService {
                 .queryParam("filter[first_release_date][gt]", timeStampMillis);
 
         // System.out.println(builder.toUriString());
+
+        // API request
+        ResponseEntity<String> response = restTemplate.exchange(
+                builder.toUriString(),
+                HttpMethod.GET,
+                new HttpEntity<>(headers),
+                String.class);
+
+        // return response
+        return response.getBody();
+    }
+
+    // search data for modal (by name)
+    public String searchModalData(String id) {
+        String endpoint = igdbApiUrl + "/games/";
+        String authorizationHeader = "Bearer " + igdbAccessToken;
+
+        // headers set up
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Client-ID", igdbClientId);
+        headers.set("Authorization", authorizationHeader);
+
+        // query parameters
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint + id + "?")
+                .queryParam("fields", "summary,videos.video_id,similar_games.name");
+
+        System.out.println(builder.toUriString());
 
         // API request
         ResponseEntity<String> response = restTemplate.exchange(

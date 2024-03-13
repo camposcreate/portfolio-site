@@ -19,6 +19,7 @@ public class GameController {
 
     private final GameService gameService;
     private List<Games> gamesList = new ArrayList<>();
+    private List<ModalGameData> gameModal = new ArrayList<>();
 
     public GameController(GameService gameService) {
         this.gameService = gameService;
@@ -35,6 +36,11 @@ public class GameController {
     public ResponseEntity<String> getRecentlyReleasedGames() {
         String data = gameService.searchRecentGames();
         return new ResponseEntity<>(data, HttpStatus.OK);
+    }
+
+    @GetMapping("/searchModalData")
+    public String getModalData(@RequestParam String id) {
+        return gameService.searchModalData(id);
     }
 
     @PostMapping("/create")
@@ -58,9 +64,22 @@ public class GameController {
         return gamesList;
     }
 
+    @PostMapping("/createModal")
+    public List<ModalGameData> createModal(@RequestBody List<ModalGameData> games) {
+        for (ModalGameData game : games) {
+            gameModal.add(game);
+        }
+        return gameModal;
+    }
+
     @DeleteMapping("/delete")
     public void deleteGameContent() {
         gamesList.clear();
+    }
+
+    @DeleteMapping("/deleteModal")
+    public void deleteModalContent() {
+        gameModal.clear();
     }
 
 }

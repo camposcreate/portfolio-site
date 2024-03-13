@@ -1,21 +1,135 @@
 const modal = document.querySelector('#game-window');
+
+// delete list
+function deleteModalGame() {
+    fetch('/games/deleteModal', {
+        method: 'DELETE'
+    })
+    .then(response => {
+        console.log('Response status:', response.status); // for debugging
+        if (!response.ok) {
+            throw new Error('Error clearing games: ' + response.status);
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
+
+// add game objects to list
+function addModalData(modalGameDataArray) {
+    // array of response
+    const gameArray = [];
+
+    // iterate and retrieve name
+    modalGameDataArray.forEach(modalData => {
+        const { summary, videos, similarGames } = modalData;
+        // if parameters are not found --> assign empty values
+        const sum = summary ? summary : "Summary Not Available";
+        const video = videos ? videos.map(videos => videos.video_id) : [];
+        const similar = similarGames ? similarGames.map(sim => sim.name) : [];
+
+        // create game object
+        const gameData = {
+            summary: sum,
+            videos: video,
+            similarGames: similar
+        };
+        // push object
+        gameArray.push(gameData);
+    });
+
+    // send the POST request to the backend
+    fetch('/games/createModal', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(gameArray)
+    })
+    .then(response => {
+        console.log('Response:', response);
+        if (!response.ok) {
+            throw new Error('Error adding game: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data:', data);
+        // games added successfully --> update frontend
+        console.log('Successfully added game modal data');
+
+    })
+    .catch(error => {
+        // handle errors if any
+        console.error(error);
+    });
+}
+
+function searchModalData(gameID) {
+
+    // GET request to backend endpoint
+    fetch(`/games/searchModalData?id=${encodeURIComponent(gameID)}`)
+        .then(response => {
+            // check response
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // parse JSON response
+            return response.json();
+        })
+        .then(data => {
+            // handle data
+            addModalData(data);
+            console.log(data);
+        })
+        .catch(error => {
+            // handle error
+            console.log('Problem with fetch:', error);
+        });
+}
+
 // close modal
 function closeModalClick() {
     modal.close();
 }
 
-// game click behavior
+// game click behavior --> open modal
 function openModalClick(game) {
     return function () {
         console.log('div clicked!');
-
-        // set cover model image
-        const image = document.querySelector('.model-image');
+        deleteModalGame();
+        searchModalData(game.id);
+        // set cover modal image
+        const image = document.querySelector('.modal-image');
         image.setAttribute('src', game.cover);
 
-        // set title model
-        const title = document.querySelector('.model-title');
+        // set title modal
+        const title = document.querySelector('.modal-title');
         title.textContent = game.title;
+
+        // set genre modal
+        const genre = document.querySelector('.modal-genre');
+        genre.textContent = game.genres;
+
+        // set release modal
+        const release = document.querySelector('.modal-release');
+        release.textContent = game.releaseDate;
+
+        // set developer modal
+        const developer = document.querySelector('.modal-developer');
+        developer.textContent = 'Developer:' + game.developer;
+
+        // set rating modal
+        const rating = document.querySelector('.modal-rating');
+        rating.textContent = game.ratings;
+
+        // set summary modal
+        const sum = document.querySelector('.modal-summary');
+        sum.textContent = game.summary;
+
+        const similar = document.querySelector('.modal-similar-games');
+        similar.textContent = game.similarGames;
 
         // open modal
         modal.showModal();
@@ -149,7 +263,6 @@ function addGameData(games) {
         // handle errors if any
         console.error(error);
     });
-
 }
 
 // call function initially --> initial splash screen
