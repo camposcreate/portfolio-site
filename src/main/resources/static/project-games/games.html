@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>codename u-games</title>
     <link rel="stylesheet" href="games.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
 </head>
 <body>
     <div class="search">
@@ -21,19 +22,31 @@
 
     <!-- GAME MODAL -->
     <dialog class="game-window" id="game-window">
-        <img class="modal-image">
-        <p class="modal-title"></p>
-        <p class="modal-developer"></p>
-        <p class="modal-genre"></p>
+        <div class="first-container">
+            <img class="modal-image">
+            <p class="modal-title"></p>
+            <p class="modal-developer"></p>
+            <p class="modal-genre"></p>
+        </div>
         <p class="modal-release"></p>
         <p class="modal-platform"></p>
         <p class="modal-rating"></p>
         <p class="modal-summary"></p>
-        <div class="modal-videos"></div>
+        <div class="slider">
+            <button id="prev-slide" class="slide-button material-symbols-rounded"><</button>
+            <div class="modal-videos"></div>
+            <button id="next-slide" class="slide-button material-symbols-rounded">></button>
+        </div>
+        <div class="custom-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb"></div>
+            </div>
+        </div>
         <p class="modal-similar-games"></p>
         <!--<button class="close-modal" onclick="closeModalClick()">close</button>-->
     </dialog>
 
     <script src="games.js"></script>
+    <script src="functionality.js"></script>
 </body>
 </html>

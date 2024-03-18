@@ -31,10 +31,12 @@ body {
 .game-content {
 
 }
+/* ------- GAME MODAL ------- */
 .game-window {
     padding: 1em;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 850px;
+    max-height: 80ch;
+    min-width: 600px;
     z-index: 1;
     position: fixed;
     top: 50%;
@@ -44,5 +46,100 @@ body {
     color: rgb(239, 255, 250);
     background: #131513;
     box-shadow: 0 0 1em rgba(239, 255, 250, .1);
+    text-align: left;
+}
+.first-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr;
+    grid-gap: 10px;
+}
+.modal-image {
+    grid-column: 1;
+    grid-row: span 3;
+}
+.modal-title, .modal-developer, .modal-genre {
+    grid-column: 2;
+}
+.modal-summary {
     text-align: center;
+}
+/* ------- GAME MODAL => SLIDER ------- */
+.slider {
+    position: relative;
+}
+.slider .slide-button {
+    position: absolute;
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    background: #000;
+    border: none;
+    font-size: 2.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+.slider .slide-button:hover {
+    background: #444;
+}
+.slider .slide-button#prev-slide {
+    left: -20px;
+    margin-left: 10px;
+    display: none;
+}
+.slider .slide-button#next-slide {
+    right: -20px;
+    margin-right: 10px;
+}
+.slider .modal-videos {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s ease;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-bottom: 15px;
+}
+.slider .modal-videos::-webkit-scrollbar {
+    display: none;
+}
+.slider .modal-videos video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.custom-scrollbar {
+    height: 24px;
+    width: 100%;
+}
+.custom-scrollbar .scrollbar-track {
+    height: 2px;
+    width: 100%;
+    background: #ccc;
+    position: relative;
+    border-radius: 4px;
+}
+.custom-scrollbar:hover .scrollbar-track {
+    height: 4px;
+}
+.custom-scrollbar .scrollbar-thumb {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: #000;
+    border-radius: inherit;
+    cursor: grab;
+}
+.custom-scrollbar .scrollbar-thumb:active {
+    cursor: grabbing;
+    height: 8px;
+    top: -2px;
+}
+.custom-scrollbar .scrollbar-thumb::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
 }

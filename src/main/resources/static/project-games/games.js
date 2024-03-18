@@ -10,8 +10,8 @@ function addVideosToModal(videos) {
     // iterate video IDs and create iframes for each
     videos.forEach(videoId => {
         const iframe = document.createElement('iframe');
-        iframe.setAttribute('width', '560');
-        iframe.setAttribute('height', '315');
+        iframe.setAttribute('width', '545');
+        iframe.setAttribute('height', '300');
         iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}`);
         iframe.setAttribute('title', 'YouTube video player');
         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
