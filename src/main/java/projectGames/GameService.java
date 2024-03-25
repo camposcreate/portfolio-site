@@ -107,9 +107,9 @@ public class GameService {
 
         // query parameters
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint + id + "?")
-                .queryParam("fields", "summary,videos.video_id,similar_games.name");
+                .queryParam("fields", "summary,videos.video_id,similar_games.name,similar_games.first_release_date,similar_games.cover.url");
 
-        System.out.println(builder.toUriString());
+        // System.out.println(builder.toUriString());
 
         // API request
         ResponseEntity<String> response = restTemplate.exchange(

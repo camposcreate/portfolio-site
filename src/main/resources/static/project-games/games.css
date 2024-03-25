@@ -10,11 +10,13 @@ body {
     color: rgb(239, 255, 250);
     background: #000000;
 }
+/* ----- NAVIGATION ----- */
 .search, .search-tools {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+/* ----- GAMES DISPLAY -----*/
 .game-item {
     padding: 1em;
 }
@@ -32,6 +34,9 @@ body {
 
 }
 /* ------- GAME MODAL ------- */
+.modal-open {
+    overflow: hidden;
+}
 .game-window {
     padding: 1em;
     max-width: 850px;

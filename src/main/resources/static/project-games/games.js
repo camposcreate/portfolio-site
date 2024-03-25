@@ -1,6 +1,8 @@
 const modal = document.querySelector('#game-window');
 let initialGameData;
+let similarGameData;
 
+// embed videos to modal
 function addVideosToModal(videos) {
     const videoContainer = document.querySelector('.modal-videos');
 
@@ -23,12 +25,20 @@ function addVideosToModal(videos) {
 
 // close modal
 function closeModalClick() {
+    // re-enable body scroll
+    document.body.classList.remove('modal-open');
     modal.close();
 }
 
 // game click behavior --> open modal w/ data
 // modalGameData = array of objects
 function openModal(modalGameData) {
+
+    // disable body scroll
+    document.body.classList.add('modal-open');
+
+    resetSliderPosition(); // not currently working
+
     // set cover data
     const image = document.querySelector('.modal-image');
     image.setAttribute('src', initialGameData.cover);
@@ -59,18 +69,31 @@ function openModal(modalGameData) {
     const summary = document.querySelector('.modal-summary');
     summary.textContent = 'Summary:' + modalGameData[0].summary;
 
-    // set similarGames data
-    const similar = document.querySelector('.modal-similar-games');
-    similar.textContent = modalGameData[0].similarGames;
+    const parentSlider = document.querySelector('.parent-slider');
+    // check video availability
+    if (modalGameData[0].videos && modalGameData[0].videos.length > 0) {
+        // display videos
+        addVideosToModal(modalGameData[0].videos);
+        // show slider
+        parentSlider.style.display = 'block';
+    } else {
+        // hide slider and scrollbar
+        parentSlider.style.display = 'none';
+    }
 
-    // display videos
-    addVideosToModal(modalGameData[0].videos);
+    // Check if similarGameData is defined and has the expected structure
+    if (similarGameData && typeof similarGameData === 'object' && 'coverImage' in similarGameData) {
+        const similarImage = document.querySelector('.similar-image');
+        similarImage.setAttribute('src', similarGameData.coverImage);
+    } else {
+        console.error('Invalid or missing data in similarGameData:', similarGameData);
+    }
 
     // open modal
     modal.showModal();
 }
 
-// delete list
+// delete existing game modal data
 function deleteModalGame() {
     fetch('/games/deleteModal', {
         method: 'DELETE'
@@ -86,10 +109,60 @@ function deleteModalGame() {
     });
 }
 
+// delete existing similar games data
+function deleteSimilarGames() {
+    fetch('/games/deleteSimilarGames', {
+        method: 'DELETE'
+    })
+    .then(response => {
+        console.log('Response status:', response.status); // for debugging
+        if (!response.ok) {
+            throw new Error('Error clearing games: ' + response.status);
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
+
+// create list of similar game objects
+function createSimilarGameObjects(similar) {
+    // delete any existing data
+    deleteSimilarGames();
+
+    // send the POST request to the backend
+    fetch('/games/createSimilarGame', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(similar)
+    })
+    .then(response => {
+        console.log('Response:', response);
+        if (!response.ok) {
+            throw new Error('Error adding game: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Similar Game Data:', data);
+        // similar games added successfully --> update modal
+        console.log('Successfully added game modal data');
+        similarGameData = data;
+    })
+    .catch(error => {
+        // handle errors if any
+        console.error(error);
+    });
+}
+
 // add game objects to list
 function addModalData(modalGameDataArray) {
+
     // array of response
     const gameModalArray = [];
+    const similarGameArray = [];
 
     // iterate and retrieve name
     modalGameDataArray.forEach(modalData => {
@@ -105,11 +178,26 @@ function addModalData(modalGameDataArray) {
             videos: video,
             similarGames: similar
         };
+
+        // create similarGames each as an object --> process data
+        const similarGameData = similar_games.map(similarGame => {
+            return {
+                id: similarGame.id,
+                coverImage: editCoverImageURL(similarGame.cover.url), // Assuming editCoverImageURL is a function that processes the cover URL
+                coverTitle: similarGame.name,
+                releaseDate: similarGame.first_release_date // Assuming this field contains the release date
+            };
+        });
+
+        // console.log('similar game data: ', similarGameData);
+
         // push object
         gameModalArray.push(gameData);
+        similarGameArray.push(similarGameData);
     });
 
-    console.log('Game modal array:', gameModalArray);
+    // console.log('Game modal array:', gameModalArray);
+    createSimilarGameObjects(similarGameArray.flat());
 
     // send the POST request to the backend
     fetch('/games/createModal', {
@@ -161,11 +249,12 @@ function searchModalData(gameID) {
         });
 }
 
-// game click behavior --> fetch (by id) additional modal data -->
+// upon game click --> fetch (by id) additional modal data -->
 function fetchModalData(game) {
     return function () {
         console.log('modal div clicked!');
         deleteModalGame();
+        deleteSimilarGames();
         initialGameData = game;
         searchModalData(game.id);
     }

@@ -1,3 +1,8 @@
+function resetSliderPosition() {
+    const imageList = document.querySelector(".slider .modal-videos");
+    imageList.scrollLeft = 0;
+}
+
 // video slider functionality
 const initSlider = () => {
     const imageList = document.querySelector(".slider .modal-videos");

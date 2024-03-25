@@ -20,6 +20,7 @@ public class GameController {
     private final GameService gameService;
     private List<Games> gamesList = new ArrayList<>();
     private List<ModalGameData> gameModal = new ArrayList<>();
+    private List<SimilarGames> similarGames = new ArrayList<>();
 
     public GameController(GameService gameService) {
         this.gameService = gameService;
@@ -72,6 +73,26 @@ public class GameController {
         return gameModal;
     }
 
+    @PostMapping("/createSimilarGame")
+    public List<SimilarGames> createSimilarGames(@RequestBody List<SimilarGames> incomingGames) {
+        // add game objects to arraylist
+        for (SimilarGames game : incomingGames) {
+
+            // convert unix timestamp to human readable format
+            if (game.getReleaseDate() != "") {
+                long date = Long.parseLong(game.getReleaseDate());
+                SimpleDateFormat nDate = new SimpleDateFormat("MM/dd/yyyy");
+                String convertedDate = nDate.format(new java.util.Date(date * 1000));
+                game.setReleaseDate(convertedDate);
+            }
+            // add games
+            similarGames.add(game);
+        }
+        // ResponseEntity.ok("{\"message\": \"Games added successfully\"}");
+        // return updated list
+        return similarGames;
+    }
+
     @DeleteMapping("/delete")
     public void deleteGameContent() {
         gamesList.clear();
@@ -81,5 +102,8 @@ public class GameController {
     public void deleteModalContent() {
         gameModal.clear();
     }
+
+    @DeleteMapping("/deleteSimilarGames")
+    public void deleteSimilarGames() { similarGames.clear(); }
 
 }
