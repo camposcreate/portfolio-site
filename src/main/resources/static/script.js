@@ -36,6 +36,7 @@ const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
 // function updates scroll progress bar
+/* DISABLED
 function updateProgressBar() {
     const documentHeight = document.documentElement.scrollHeight;
     const viewportHeight = window.innerHeight;
@@ -45,8 +46,9 @@ function updateProgressBar() {
     progressBar.style.width = progressBarWidth + '%';
 }
 window.addEventListener('scroll', updateProgressBar);
+*/
 
-// Open/close side menu for mobile view
+// open/close side menu for mobile view
 function openmenu() {
     sidemenu.classList.add("menu-open");
 }
