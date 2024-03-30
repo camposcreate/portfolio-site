@@ -52,15 +52,12 @@ nav a {
 nav a.nav-link {
     text-decoration: none;
     color: #d7e7e7;
-    padding: 4px 18px;
-    border-radius: 18px;
     display: inline-block;
-    border: 1px solid #B23BFF;
+    border-bottom: 1px solid #d7e7e7;
 }
 /* Add hover effect to the "Home" link */
 nav a.nav-link:hover {
-    background: #B23BFF;
-    transition: 0.3s ease;
+    color: #a7caca;
 }
 .container ul {
     display: none;
@@ -76,6 +73,8 @@ nav a.nav-link:hover {
     padding: 2%;
     border-radius: 20px;
     text-align: center;
+    box-shadow: rgba(255, 255, 255, 0.05) 0px 10px 15px -3px, rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
+    margin-bottom: 2%;
 }
 .description ul li {
     list-style: inside;
@@ -188,8 +187,7 @@ select {
 .legend-section {
     display: flex;
     background: linear-gradient(#333, #B23BFF);
-    border-color: #1f1f1f;
-    border-style: solid;
+    border: 1px solid #d7e7e7;
     color: #d7e7e7;
     justify-content: center;
     align-items: center;
