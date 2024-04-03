@@ -77,18 +77,18 @@ public class GameController {
     public List<SimilarGames> createSimilarGames(@RequestBody List<SimilarGames> incomingGames) {
         // add game objects to arraylist
         for (SimilarGames game : incomingGames) {
-
             // convert unix timestamp to human readable format
-            if (game.getReleaseDate() != "") {
+            if (game.getReleaseDate() != null) {
                 long date = Long.parseLong(game.getReleaseDate());
                 SimpleDateFormat nDate = new SimpleDateFormat("MM/dd/yyyy");
                 String convertedDate = nDate.format(new java.util.Date(date * 1000));
                 game.setReleaseDate(convertedDate);
+            } else {
+                game.setReleaseDate("information unavailable");
             }
             // add games
             similarGames.add(game);
         }
-        // ResponseEntity.ok("{\"message\": \"Games added successfully\"}");
         // return updated list
         return similarGames;
     }

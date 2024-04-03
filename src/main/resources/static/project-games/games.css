@@ -97,7 +97,7 @@ body {
     right: -20px;
     margin-right: 10px;
 }
-.slider .modal-videos {
+.slider .modal-videos, .modal-similar-games {
     display: flex;
     gap: 10px;
     transition: transform 0.5s ease;

@@ -1,6 +1,7 @@
 const modal = document.querySelector('#game-window');
 let initialGameData;
-let similarGameData;
+var similarGameData;
+const similarGamesContainer = document.querySelector('.modal-similar-games');
 
 // embed videos to modal
 function addVideosToModal(videos) {
@@ -23,16 +24,26 @@ function addVideosToModal(videos) {
     });
 }
 
-// close modal
+// close modal --> clear data
 function closeModalClick() {
+
+    modal.close();
+
+    // clear any previous data
+    deleteModalGame();
+    deleteSimilarGames();
+    similarGamesContainer.innerHTML = '';
+    similarGameData = [];
+
     // re-enable body scroll
     document.body.classList.remove('modal-open');
-    modal.close();
+    console.log('modal-closed');
 }
 
 // game click behavior --> open modal w/ data
 // modalGameData = array of objects
 function openModal(modalGameData) {
+    console.log('opening modal with data');
 
     // disable body scroll
     document.body.classList.add('modal-open');
@@ -63,7 +74,7 @@ function openModal(modalGameData) {
     const rating = document.querySelector('.modal-rating');
     rating.textContent = initialGameData.ratings;
 
-    console.log('Open Modal data:', modalGameData);
+    // console.log('Open Modal data:', modalGameData);
 
     // set summary data
     const summary = document.querySelector('.modal-summary');
@@ -81,12 +92,37 @@ function openModal(modalGameData) {
         parentSlider.style.display = 'none';
     }
 
-    // Check if similarGameData is defined and has the expected structure
-    if (similarGameData && typeof similarGameData === 'object' && 'coverImage' in similarGameData) {
-        const similarImage = document.querySelector('.similar-image');
-        similarImage.setAttribute('src', similarGameData.coverImage);
+    // check similarGameData is an array before using forEach
+    if (Array.isArray(similarGameData)) {
+        console.log('similarGameData is an array');
+        // iterate similar games
+        similarGameData.forEach(game => {
+            // create elements for each game
+            const gameDiv = document.createElement('div');
+            gameDiv.classList.add('similar-game');
+
+            const image = document.createElement('img');
+            image.classList.add('similar-image');
+            image.src = game.coverImage;
+            gameDiv.appendChild(image);
+
+            const title = document.createElement('p');
+            title.classList.add('similar-title');
+            title.textContent = game.coverTitle;
+            gameDiv.appendChild(title);
+
+            const release = document.createElement('p');
+            release.classList.add('similar-release');
+            release.textContent = game.releaseDate;
+            gameDiv.appendChild(release);
+
+            // append game div to the container
+            similarGamesContainer.appendChild(gameDiv);
+        });
     } else {
-        console.error('Invalid or missing data in similarGameData:', similarGameData);
+        // clear previous data
+        similarGamesContainer.innerHTML = '';
+        console.error('similarGameData is not an array:', similarGameData);
     }
 
     // open modal
@@ -109,7 +145,7 @@ function deleteModalGame() {
     });
 }
 
-// delete existing similar games data
+// delete existing similar game data
 function deleteSimilarGames() {
     fetch('/games/deleteSimilarGames', {
         method: 'DELETE'
@@ -126,135 +162,143 @@ function deleteSimilarGames() {
 }
 
 // create list of similar game objects
-function createSimilarGameObjects(similar) {
-    // delete any existing data
-    deleteSimilarGames();
+async function createSimilarGameObjects(similar) {
+    try {
+        console.log('entering createSimilarGameObjects function');
+        // delete any existing data
+        deleteSimilarGames();
 
-    // send the POST request to the backend
-    fetch('/games/createSimilarGame', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(similar)
-    })
-    .then(response => {
-        console.log('Response:', response);
-        if (!response.ok) {
-            throw new Error('Error adding game: ' + response.status);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Similar Game Data:', data);
-        // similar games added successfully --> update modal
-        console.log('Successfully added game modal data');
-        similarGameData = data;
-    })
-    .catch(error => {
-        // handle errors if any
-        console.error(error);
-    });
-}
-
-// add game objects to list
-function addModalData(modalGameDataArray) {
-
-    // array of response
-    const gameModalArray = [];
-    const similarGameArray = [];
-
-    // iterate and retrieve name
-    modalGameDataArray.forEach(modalData => {
-        const { summary, videos, similar_games } = modalData;
-        // if parameters are not found --> assign empty values
-        const sum = summary ? summary : "Summary Not Available";
-        const video = videos ? videos.map(videos => videos.video_id) : [];
-        const similar = similar_games ? similar_games.map(sim => sim.name) : [];
-
-        // create game modal object
-        const gameData = {
-            summary: sum,
-            videos: video,
-            similarGames: similar
-        };
-
-        // create similarGames each as an object --> process data
-        const similarGameData = similar_games.map(similarGame => {
-            return {
-                id: similarGame.id,
-                coverImage: editCoverImageURL(similarGame.cover.url), // Assuming editCoverImageURL is a function that processes the cover URL
-                coverTitle: similarGame.name,
-                releaseDate: similarGame.first_release_date // Assuming this field contains the release date
-            };
-        });
-
-        // console.log('similar game data: ', similarGameData);
-
-        // push object
-        gameModalArray.push(gameData);
-        similarGameArray.push(similarGameData);
-    });
-
-    // console.log('Game modal array:', gameModalArray);
-    createSimilarGameObjects(similarGameArray.flat());
-
-    // send the POST request to the backend
-    fetch('/games/createModal', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(gameModalArray)
-    })
-    .then(response => {
-        console.log('Response:', response);
-        if (!response.ok) {
-            throw new Error('Error adding game: ' + response.status);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Data:', data);
-        // games added successfully --> update modal
-        console.log('Successfully added game modal data');
-        openModal(data);
-    })
-    .catch(error => {
-        // handle errors if any
-        console.error(error);
-    });
-}
-
-function searchModalData(gameID) {
-
-    // GET request to backend endpoint
-    fetch(`/games/searchModalData?id=${encodeURIComponent(gameID)}`)
+        // send the POST request to the backend
+        await fetch('/games/createSimilarGame', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(similar)
+        })
         .then(response => {
-            // check response
+            console.log('Response:', response);
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Error adding game: ' + response.status);
             }
-            // parse JSON response
             return response.json();
         })
         .then(data => {
-            // handle data
-            console.log('Modal data:', data);
-            addModalData(data);
+            // console.log('Similar Game Data:', data);
+            // similar games added successfully --> update modal
+            console.log('Successfully added game modal data');
+            similarGameData = data;
         })
         .catch(error => {
-            // handle error
-            console.log('Problem with fetch:', error);
+            // handle errors if any
+            console.error(error);
         });
+    } catch (error) {
+      console.error('Error handling delete function:', error);
+  }
+}
+
+// add game objects to list
+async function addModalData(modalGameDataArray) {
+    try {
+        // array of response
+        const gameModalArray = [];
+        const similarGameArray = [];
+
+        // iterate and retrieve name
+        modalGameDataArray.forEach(modalData => {
+            const { summary, videos, similar_games } = modalData;
+            // if parameters are not found --> assign empty values
+            const sum = summary ? summary : "Summary Not Available";
+            const video = videos ? videos.map(videos => videos.video_id) : [];
+            const similar = similar_games ? similar_games.map(sim => sim.name) : [];
+
+            // create game modal object
+            const gameData = {
+                summary: sum,
+                videos: video,
+                similarGames: similar
+            };
+
+            // create similarGames each as an object --> process data
+            const similarGamesObject = similar_games.map(similarGame => {
+                return {
+                    id: similarGame.id,
+                    coverImage: editCoverImageURL(similarGame.cover.url),
+                    coverTitle: similarGame.name,
+                    releaseDate: similarGame.first_release_date
+                };
+            });
+
+            // push object
+            gameModalArray.push(gameData);
+            similarGameArray.push(similarGamesObject);
+        });
+
+        await createSimilarGameObjects(similarGameArray.flat());
+
+        // send the POST request to the backend
+        await fetch('/games/createModal', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(gameModalArray)
+        })
+        .then(response => {
+            console.log('Response:', response);
+            if (!response.ok) {
+                throw new Error('Error adding game: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data:', data);
+            // games added successfully --> update modal
+            console.log('Successfully added game modal data');
+            openModal(data);
+        })
+        .catch(error => {
+            // handle errors if any
+            console.error(error);
+        });
+    } catch (error) {
+        console.error('Error handling similar games:', error);
+    }
+}
+
+// try/catch?
+// search similar games list w/ id
+async function searchModalData(gameID) {
+    try {
+        // GET request to backend endpoint
+        await fetch(`/games/searchModalData?id=${encodeURIComponent(gameID)}`)
+            .then(response => {
+                // check response
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // parse JSON response
+                return response.json();
+            })
+            .then(data => {
+                // handle data
+                console.log('Modal data:', data);
+                addModalData(data);
+            })
+            .catch(error => {
+                // handle error
+                console.log('Problem with fetch:', error);
+            });
+    } catch (error) {
+      console.error('Error handling searching games:', error);
+  }
 }
 
 // upon game click --> fetch (by id) additional modal data -->
 function fetchModalData(game) {
     return function () {
         console.log('modal div clicked!');
-        deleteModalGame();
-        deleteSimilarGames();
         initialGameData = game;
         searchModalData(game.id);
     }
@@ -395,6 +439,8 @@ function recentlyReleasedGames() {
 
     // delete any pre-existing data
     deleteGames();
+    deleteModalGame();
+    deleteSimilarGames();
 
     // GET request to backend endpoint
     fetch('/games/searchRecentGames')
@@ -432,6 +478,7 @@ function searchGame() {
     // delete any pre-existing data
     deleteGames();
     deleteModalGame();
+    deleteSimilarGames()
 
     // GET request to backend endpoint
     fetch(`/games/search?name=${encodeURIComponent(inputName)}`)
