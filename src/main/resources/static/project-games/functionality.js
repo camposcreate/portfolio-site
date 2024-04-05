@@ -1,7 +1,9 @@
 function resetSliderPosition() {
+    console.log('resetSliderPosition() called');
     const imageList = document.querySelector(".slider .modal-videos");
     imageList.scrollLeft = 0;
 }
+resetSliderPosition();
 
 // video slider functionality
 const initSlider = () => {
@@ -66,4 +68,4 @@ const initSlider = () => {
         updateScrollThumbPosition();
     })
 }
-window.addEventListener("load", initSlider);
+window.addEventListener("load", () => { initSlider(); });

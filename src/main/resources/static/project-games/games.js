@@ -48,7 +48,7 @@ function openModal(modalGameData) {
     // disable body scroll
     document.body.classList.add('modal-open');
 
-    resetSliderPosition(); // not currently working
+    //resetSliderPosition(); // not currently working
 
     // set cover data
     const image = document.querySelector('.modal-image');
@@ -118,6 +118,7 @@ function openModal(modalGameData) {
 
             // append game div to the container
             similarGamesContainer.appendChild(gameDiv);
+
         });
     } else {
         // clear previous data
@@ -267,7 +268,6 @@ async function addModalData(modalGameDataArray) {
     }
 }
 
-// try/catch?
 // search similar games list w/ id
 async function searchModalData(gameID) {
     try {
@@ -380,7 +380,7 @@ function addGameData(games) {
         /* retrieve last artwork image element
         let artworkSelect = 0;
         if (artworkURL > 0) {
-            artworkSelect = artworkURL.length - 2;
+            artworkSelect = artworkURL.length - 1;
         }*/
 
         // reconstruct cover image url (for results screen)

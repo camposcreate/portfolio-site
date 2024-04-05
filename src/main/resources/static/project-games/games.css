@@ -68,7 +68,7 @@ body {
 .modal-summary {
     text-align: center;
 }
-/* ------- GAME MODAL => SLIDER ------- */
+/* ------- MODAL VIDEO SLIDER ------- */
 .slider {
     position: relative;
 }
@@ -97,7 +97,7 @@ body {
     right: -20px;
     margin-right: 10px;
 }
-.slider .modal-videos, .modal-similar-games {
+.slider .modal-videos {
     display: flex;
     gap: 10px;
     transition: transform 0.5s ease;

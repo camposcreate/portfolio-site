@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>codename u-games</title>
     <link rel="stylesheet" href="games.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="search">
@@ -34,11 +34,15 @@
         <p class="modal-summary"></p>
 
         <!---- VIDEOS ---->
-        <div class="parent-slider">
+        <div class="parent-slider video-slider">
             <div class="slider">
-                <button id="prev-slide" class="slide-button material-symbols-rounded"><</button>
+                <button id="prev-slide" class="slide-button">
+                    left
+                </button>
                 <div class="modal-videos"></div>
-                <button id="next-slide" class="slide-button material-symbols-rounded">></button>
+                <button id="next-slide" class="slide-button">
+                    right
+                </button>
             </div>
             <div class="custom-scrollbar">
                 <div class="scrollbar-track">
@@ -48,15 +52,12 @@
         </div>
 
         <!---- SIMILAR GAMES ---->
-        <div class="parent-slider">
-            <div class="slider">
-                <div class="modal-similar-games">
-                    <img class="similar-image">
-                    <p class="similar-title"></p>
-                    <p class="similar-release"></p>
-                </div>
-            </div>
+        <div class="modal-similar-games">
+            <img class="similar-image">
+            <p class="similar-title"></p>
+            <p class="similar-release"></p>
         </div>
+
         <button class="close-modal" onclick="closeModalClick()">close</button>
     </dialog>
 
