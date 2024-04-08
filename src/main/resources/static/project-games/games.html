@@ -22,6 +22,7 @@
 
     <!-- GAME MODAL (open modal) -->
     <dialog class="game-window" id="game-window">
+        <button class="close-modal" onclick="closeModalClick()">close</button>
         <div class="first-container">
             <img class="modal-image">
             <p class="modal-title"></p>
@@ -36,13 +37,9 @@
         <!---- VIDEOS ---->
         <div class="parent-slider video-slider">
             <div class="slider">
-                <button id="prev-slide" class="slide-button">
-                    left
-                </button>
                 <div class="modal-videos"></div>
-                <button id="next-slide" class="slide-button">
-                    right
-                </button>
+                <button id="prev-slide" class="slide-button">&#10094</button>
+                <button id="next-slide" class="slide-button">&#10095</button>
             </div>
             <div class="custom-scrollbar">
                 <div class="scrollbar-track">
@@ -57,8 +54,6 @@
             <p class="similar-title"></p>
             <p class="similar-release"></p>
         </div>
-
-        <button class="close-modal" onclick="closeModalClick()">close</button>
     </dialog>
 
     <script src="games.js"></script>

@@ -1,71 +1,61 @@
+// function to reset the slider position
 function resetSliderPosition() {
-    console.log('resetSliderPosition() called');
-    const imageList = document.querySelector(".slider .modal-videos");
-    imageList.scrollLeft = 0;
+    const modalVideos = document.querySelector('.modal-videos');
+    const scrollbarThumb = document.querySelector('.scrollbar-thumb');
+
+    // reset currentIndex and scrollbar position
+    currentIndex = 0;
+    scrollbarThumb.style.width = '0%';
+    modalVideos.style.transform = 'translateX(0)';
 }
-resetSliderPosition();
 
-// video slider functionality
-const initSlider = () => {
-    const imageList = document.querySelector(".slider .modal-videos");
-    const slideButtons = document.querySelectorAll(".slider .slide-button");
-    const sliderScrollbar = document.querySelector(".custom-scrollbar");
-    const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
-    let maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+// function to initialize the slider
+function initializeSlider() {
+    const modalVideos = document.querySelector('.modal-videos');
+    const prevButton = document.getElementById('prev-slide');
+    const nextButton = document.getElementById('next-slide');
+    const scrollbarThumb = document.querySelector('.scrollbar-thumb');
 
-    // scroll bar drag
-    scrollbarThumb.addEventListener("mousedown", (e) => {
-        const startX = e.clientX;
-        const thumbPosition = scrollbarThumb.offsetLeft;
+    let currentIndex = 0;
+    let isTransitioning = false;
 
-        // update thumb position on mouse move
-        const handleMouseMove = (e) => {
-            const deltaX = e.clientX - startX;
-            const newThumbPosition = thumbPosition + deltaX;
-            const maxThumbPosition = sliderScrollbar.getBoundingClientRect().width - scrollbarThumb.offsetWidth;
+    function updateScrollbar() {
+        const percent = (currentIndex / (modalVideos.children.length - 1)) * 100;
+        scrollbarThumb.style.transition = 'width 0.5s ease';
+        scrollbarThumb.style.width = percent + '%';
+    }
 
-            const boundedPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
-            const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
-
-            scrollbarThumb.style.left = `${boundedPosition}px`;
-            imageList.scrollLeft = scrollPosition;
+    function nextSlide() {
+        if (!isTransitioning && currentIndex < modalVideos.children.length - 1) {
+            currentIndex += 1;
+            slideToCurrentIndex();
         }
+    }
 
-        // remove event listener
-        const handleMouseUp = () => {
-            document.removeEventListener("mousemove", handleMouseMove);
-            document.removeEventListener("mouseup", handleMouseUp);
+    function prevSlide() {
+        if (!isTransitioning && currentIndex > 0) {
+            currentIndex -= 1;
+            slideToCurrentIndex();
         }
+    }
 
-        // drag interaction
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handleMouseUp);
-    });
+    function slideToCurrentIndex() {
+        isTransitioning = true;
+        const slideWidth = modalVideos.children[currentIndex].clientWidth;
+        const transformValue = `translateX(-${currentIndex * (slideWidth-50)}px)`;
+        modalVideos.style.transition = 'transform 0.5s ease';
+        modalVideos.style.transform = transformValue;
 
-    // slide videos on button click
-    slideButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const direction = button.id === "prev-slide" ? -1 : 1;
-            const scrollAmount = imageList.clientWidth * direction;
-            imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        modalVideos.addEventListener('transitionend', function transitionEndHandler() {
+            isTransitioning = false;
+            modalVideos.style.transition = '';
+            modalVideos.removeEventListener('transitionend', transitionEndHandler);
+            updateScrollbar();
         });
-    });
-
-    const handleSlideButtons = () => {
-        maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
-        slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "block";
-        slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
     }
 
-    const updateScrollThumbPosition = () => {
-        const scrollPosition = imageList.scrollLeft;
-        const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
-        scrollbarThumb.style.left = `${thumbPosition}px`;
-    }
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
 
-    imageList.addEventListener("scroll", () => {
-        handleSlideButtons();
-        updateScrollThumbPosition();
-    })
+    updateScrollbar();
 }
-window.addEventListener("load", () => { initSlider(); });

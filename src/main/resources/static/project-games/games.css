@@ -52,6 +52,7 @@ body {
     background: #131513;
     box-shadow: 0 0 1em rgba(239, 255, 250, .1);
     text-align: left;
+    overflow-y: scroll;
 }
 .first-container {
     display: grid;
@@ -71,6 +72,7 @@ body {
 /* ------- MODAL VIDEO SLIDER ------- */
 .slider {
     position: relative;
+    overflow-x: hidden;
 }
 .slider .slide-button {
     position: absolute;
@@ -84,6 +86,7 @@ body {
     cursor: pointer;
     border-radius: 50%;
     transform: translateY(-50%);
+    z-index: 2;
 }
 .slider .slide-button:hover {
     background: #444;
@@ -91,7 +94,6 @@ body {
 .slider .slide-button#prev-slide {
     left: -20px;
     margin-left: 10px;
-    display: none;
 }
 .slider .slide-button#next-slide {
     right: -20px;
@@ -99,9 +101,9 @@ body {
 }
 .slider .modal-videos {
     display: flex;
+    /*aspect-ratio: 16 / 9;*/
     gap: 10px;
     transition: transform 0.5s ease;
-    overflow-x: auto;
     scrollbar-width: none;
     margin-bottom: 15px;
 }
@@ -133,18 +135,4 @@ body {
     width: 50%;
     background: #000;
     border-radius: inherit;
-    cursor: grab;
-}
-.custom-scrollbar .scrollbar-thumb:active {
-    cursor: grabbing;
-    height: 8px;
-    top: -2px;
-}
-.custom-scrollbar .scrollbar-thumb::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -10px;
-    bottom: -10px;
 }

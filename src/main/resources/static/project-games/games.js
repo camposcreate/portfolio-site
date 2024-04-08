@@ -34,6 +34,7 @@ function closeModalClick() {
     deleteSimilarGames();
     similarGamesContainer.innerHTML = '';
     similarGameData = [];
+    resetSliderPosition()
 
     // re-enable body scroll
     document.body.classList.remove('modal-open');
@@ -47,8 +48,6 @@ function openModal(modalGameData) {
 
     // disable body scroll
     document.body.classList.add('modal-open');
-
-    //resetSliderPosition(); // not currently working
 
     // set cover data
     const image = document.querySelector('.modal-image');
@@ -82,11 +81,12 @@ function openModal(modalGameData) {
 
     const parentSlider = document.querySelector('.parent-slider');
     // check video availability
-    if (modalGameData[0].videos && modalGameData[0].videos.length > 0) {
+    if (modalGameData[0].videos && modalGameData[0].videos.length > 1) {
         // display videos
         addVideosToModal(modalGameData[0].videos);
         // show slider
         parentSlider.style.display = 'block';
+        initializeSlider();
     } else {
         // hide slider and scrollbar
         parentSlider.style.display = 'none';
