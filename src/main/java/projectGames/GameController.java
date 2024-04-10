@@ -60,8 +60,6 @@ public class GameController {
             game.setRatings(Double.parseDouble(truncated));
             gamesList.add(game);
         }
-        // ResponseEntity.ok("{\"message\": \"Games added successfully\"}");
-        // return updated list
         return gamesList;
     }
 

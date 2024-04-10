@@ -52,27 +52,85 @@ body {
     background: #131513;
     box-shadow: 0 0 1em rgba(239, 255, 250, .1);
     text-align: left;
-    overflow-y: scroll;
+}
+.close-modal {
+    float: right;
+    background: #131513;
+    border: 2px solid #EFFFFA;
+    border-radius: 12px;
+    padding: 5px 5px 0px 5px;
+}
+.close-modal:hover {
+    background: #444;
+    cursor: pointer;
 }
 .first-container {
     display: grid;
-    grid-template-columns: auto 1fr auto 1fr;
-    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 5px;
 }
 .modal-image {
     grid-column: 1;
     grid-row: span 3;
+    width: 90%;
+    height: auto;
+    margin: auto;
 }
-.modal-title, .modal-developer, .modal-genre {
-    grid-column: 2;
+.second-container {
+    /* doesn't appear necessary */
+    grid-column: span 2;
+    grid-row: span 3;
+    padding-bottom: 2%;
+}
+.modal-title,
+.modal-developer,
+.modal-genre,
+.modal-release,
+.modal-platform,
+.modal-rating {
+    white-space: nowrap;
+    text-decoration: italic;
+}
+.modal-title::before {
+    content: "Title: ";
+    font-weight: bold;
+    color: #fff;
+}
+.modal-developer::before {
+    content: "Developer: ";
+    font-weight: bold;
+    color: #fff;
+}
+.modal-genre::before {
+    content: "Genre: ";
+    font-weight: bold;
+    color: #fff;
+}
+.modal-release::before {
+    content: "Release: ";
+    font-weight: bold;
+    color: #fff;
+}
+.modal-platform::before {
+    content: "Platform: ";
+    font-weight: bold;
+    color: #fff;
+}
+.modal-rating::before {
+    content: "Rating: ";
+    font-weight: bold;
+    color: #fff;
 }
 .modal-summary {
     text-align: center;
+    background: #000;
+    padding: 5%;
+    border-radius: 12px;
 }
 /* ------- MODAL VIDEO SLIDER ------- */
 .slider {
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 .slider .slide-button {
     position: absolute;
@@ -86,7 +144,6 @@ body {
     cursor: pointer;
     border-radius: 50%;
     transform: translateY(-50%);
-    z-index: 3;
 }
 .slider .slide-button:hover {
     background: #444;
@@ -122,12 +179,9 @@ body {
 .custom-scrollbar .scrollbar-track {
     height: 2px;
     width: 100%;
-    background: #ccc;
+    background: #998DA0;
     position: relative;
     border-radius: 4px;
-}
-.custom-scrollbar:hover .scrollbar-track {
-    height: 4px;
 }
 .custom-scrollbar .scrollbar-thumb {
     position: absolute;

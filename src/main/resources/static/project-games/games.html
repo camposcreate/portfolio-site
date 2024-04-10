@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>codename u-games</title>
+    <title>SPACEMAN</title>
     <link rel="stylesheet" href="games.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="search">
@@ -16,24 +15,26 @@
         <button onclick="">Top 50</button>
         <button onclick="">(Coming Soon)</button>
     </div>
-
     <!-- DISPLAY GAMES -->
     <div id="game-display"></div>
-
     <!-- GAME MODAL (open modal) -->
     <dialog class="game-window" id="game-window">
-        <button class="close-modal" onclick="closeModalClick()">close</button>
+        <button class="close-modal" onclick="closeModalClick()">
+            <img src="../images/x.png" width="30">
+        </button>
         <div class="first-container">
             <img class="modal-image">
-            <p class="modal-title"></p>
-            <p class="modal-developer"></p>
-            <p class="modal-genre"></p>
+            <div clas="second-container">
+                <p class="modal-title"></p>
+                <p class="modal-developer"></p>
+                <p class="modal-genre"></p>
+                <p class="modal-release"></p>
+                <p class="modal-platform"></p>
+                <p class="modal-rating"></p>
+            </div>
         </div>
-        <p class="modal-release"></p>
-        <p class="modal-platform"></p>
-        <p class="modal-rating"></p>
+        <h2>Summary</h2>
         <p class="modal-summary"></p>
-
         <!---- VIDEOS ---->
         <h2>Videos</h2>
         <div class="parent-slider video-slider">
@@ -48,13 +49,11 @@
                 </div>
             </div>
         </div>
-
         <!---- SIMILAR GAMES ---->
         <h2>Similar Games</h2>
         <div class="modal-similar-games"></div>
     </dialog>
-
     <script src="games.js"></script>
-    <script src="functionality.js"></script>
+    <script async src="functionality.js"></script>
 </body>
 </html>
