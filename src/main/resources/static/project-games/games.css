@@ -16,6 +16,22 @@ body {
     align-items: center;
     justify-content: center;
 }
+.search-tools button {
+    margin: 12px;
+    padding: 1%;
+    color: #EFFFFA;
+    background: none;
+    border: none;
+    font-size: 1.0rem;
+    cursor: pointer;
+}
+.search-tools button:hover {
+    background: #444;
+}
+.search-tools #coming-soon:hover {
+    background: none;
+    cursor: default;
+}
 /* ----- GAMES DISPLAY -----*/
 .game-item {
     padding: 1em;
@@ -56,7 +72,7 @@ body {
 .close-modal {
     float: right;
     background: #131513;
-    border: 2px solid #EFFFFA;
+    border: 1px solid #EFFFFA;
     border-radius: 12px;
     padding: 5px 5px 0px 5px;
 }
@@ -68,6 +84,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-gap: 5px;
+    margin-bottom: 15px;
 }
 .modal-image {
     grid-column: 1;
@@ -80,7 +97,6 @@ body {
     /* doesn't appear necessary */
     grid-column: span 2;
     grid-row: span 3;
-    padding-bottom: 2%;
 }
 .modal-title,
 .modal-developer,
@@ -94,38 +110,45 @@ body {
 .modal-title::before {
     content: "Title: ";
     font-weight: bold;
-    color: #fff;
+    color: #EFFFFA;
+    font-style: italic;
 }
 .modal-developer::before {
     content: "Developer: ";
     font-weight: bold;
-    color: #fff;
+    color: #EFFFFA;
+    font-style: italic;
 }
 .modal-genre::before {
     content: "Genre: ";
     font-weight: bold;
-    color: #fff;
+    color: #EFFFFA;
+    font-style: italic;
 }
 .modal-release::before {
     content: "Release: ";
     font-weight: bold;
-    color: #fff;
+    color: #EFFFFA;
+    font-style: italic;
 }
 .modal-platform::before {
     content: "Platform: ";
     font-weight: bold;
-    color: #fff;
+    color: #EFFFFA;
+    font-style: italic;
 }
 .modal-rating::before {
     content: "Rating: ";
     font-weight: bold;
-    color: #fff;
+    color: #EFFFFA;
+    font-style: italic;
 }
 .modal-summary {
     text-align: center;
-    background: #000;
-    padding: 5%;
+    padding: 2%;
+    border: 1px solid rgba(153, 141, 160, 0.6);
     border-radius: 12px;
+    margin-bottom: 15px;
 }
 /* ------- MODAL VIDEO SLIDER ------- */
 .slider {
@@ -137,7 +160,7 @@ body {
     top: 50%;
     height: 50px;
     width: 50px;
-    color: #fff;
+    color: #EFFFFA;
     background: #000;
     border: none;
     font-size: 2.2rem;
@@ -187,7 +210,7 @@ body {
     position: absolute;
     height: 100%;
     width: 50%;
-    background: #000;
+    background: #002E52;
     border-radius: inherit;
 }
 /* -------- SIMILAR GAMES -------- */

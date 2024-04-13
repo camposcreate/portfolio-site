@@ -32,7 +32,6 @@ function closeModalClick() {
 
     // re-enable body scroll
     document.body.classList.remove('modal-open');
-    console.log('modal-closed');
 }
 
 // game click behavior --> open modal w/ data
@@ -60,10 +59,13 @@ function openModal(modalGameData) {
     developer.textContent = initialGameData.developer;
 
     const rating = document.querySelector('.modal-rating');
-    rating.textContent = initialGameData.ratings;
+    rating.textContent = initialGameData.ratings + '%';
+
+    const platform = document.querySelector('.modal-platform');
+    platform.textContent = initialGameData.platform;
 
     const summary = document.querySelector('.modal-summary');
-    summary.textContent = 'Summary:' + modalGameData[0].summary;
+    summary.textContent = modalGameData[0].summary;
 
     const parentSlider = document.querySelector('.parent-slider');
     // check video availability
@@ -78,7 +80,6 @@ function openModal(modalGameData) {
 
     // check similarGameData is an array before using forEach
     if (Array.isArray(similarGameData)) {
-        console.log('similarGameData is an array');
         // iterate similar games
         similarGameData.forEach(game => {
             // create elements for each game
@@ -147,7 +148,6 @@ function deleteSimilarGames() {
 // create list of similar game objects
 async function createSimilarGameObjects(similar) {
     try {
-        console.log('entering createSimilarGameObjects function');
         // send the POST request to the backend
         await fetch('/games/createSimilarGame', {
             method: 'POST',
@@ -257,7 +257,7 @@ async function searchModalData(gameID) {
             })
             .then(data => {
                 // handle data
-                console.log('Modal data:', data);
+                //console.log('Modal data:', data);
                 addModalData(data);
             })
             .catch(error => {
@@ -272,7 +272,6 @@ async function searchModalData(gameID) {
 // upon game click --> fetch (by id) additional modal data -->
 function fetchModalData(game) {
     return function () {
-        console.log('modal div clicked!');
         initialGameData = game;
         searchModalData(game.id);
     }
