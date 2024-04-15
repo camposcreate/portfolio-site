@@ -315,10 +315,15 @@ function updateGamesDisplay(gameData) {
             gameItem.innerHTML = `
                 <div class="game-container">
                     <div class="game-content">
-                        <p class="game-title">${game.title}</p>
-                        <p class="game-rating">Ratings: ${game.ratings} Genres: ${game.genres} Release Date: ${game.releaseDate}
-                                Platform: ${game.platform} Developer: ${game.developer}</p>
                         <img class="game-cover" src="${game.cover}" alt="${game.title}">
+                        <div class="game-details">
+                            <p class="game-title">${game.title}</p>
+                            <p class="game-developer">${game.developer}</p>
+                            <p class="game-genre">${game.genres}</p>
+                            <p class="game-release">${game.releaseDate}</p>
+                            <p class="game-platform">${game.platform}</p>
+                            <p class="game-rating">${game.ratings}</p>
+                        </div>
                     </div>
                 </div>
             `;

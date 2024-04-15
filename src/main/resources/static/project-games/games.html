@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="search">
-        <input type="text" id="game-input" required>
+        <input type="text" id="game-input" placeholder="search your favorite video games..." required>
         <button onclick="searchGame()">Search</button>
     </div>
     <div class="search-tools">
@@ -19,9 +19,11 @@
     <div id="game-display"></div>
     <!-- GAME MODAL (open modal) -->
     <dialog class="game-window" id="game-window">
-        <button class="close-modal" onclick="closeModalClick()">
-            <img src="../images/x.png" width="30">
-        </button>
+        <nav>
+            <button class="close-modal" onclick="closeModalClick()">
+                <img src="../images/x.png" width="30">
+            </button>
+        </nav>
         <div class="first-container">
             <img class="modal-image">
             <div clas="second-container">
@@ -36,8 +38,8 @@
         <h2>Summary</h2>
         <p class="modal-summary"></p>
         <!---- VIDEOS ---->
-        <h2>Videos</h2>
         <div class="parent-slider video-slider">
+            <h2>Videos</h2>
             <div class="slider">
                 <div class="modal-videos"></div>
                 <button id="prev-slide" class="slide-button">&#10094</button>

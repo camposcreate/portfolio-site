@@ -16,6 +16,11 @@ body {
     align-items: center;
     justify-content: center;
 }
+#game-input {
+    width: 250px;
+    border-radius: 12px;
+    padding-right: 12px;
+}
 .search-tools button {
     margin: 12px;
     padding: 1%;
@@ -36,28 +41,78 @@ body {
 .game-item {
     padding: 1em;
 }
+.game-item img {
+    width: 120px;
+    height: 160px;
+}
 .game-container {
     padding: 0.5em;
     background: #131513;
     border-radius: 14px;
     border: 2px solid #002E52;
+    max-width: 1020px;
+    margin-inline: auto;
 }
 .game-container:hover {
     background-color: rgb(26, 29, 26);
     cursor: pointer;
 }
 .game-content {
-
+    display: grid;
+    grid-template-columns: auto repeat(4, 1fr);
+    grid-gap: 1rem;
+    overflow: hidden;
+}
+.game-details {
+    white-space: nowrap;
+}
+.game-title::before {
+    content: "Title: ";
+    font-weight: bold;
+    color: #EFFFFA;
+    font-style: italic;
+}
+.game-developer::before {
+    content: "Developer: ";
+    font-weight: bold;
+    color: #EFFFFA;
+    font-style: italic;
+}
+.game-genre::before {
+    content: "Genre: ";
+    font-weight: bold;
+    color: #EFFFFA;
+    font-style: italic;
+}
+.game-release::before {
+    content: "Release: ";
+    font-weight: bold;
+    color: #EFFFFA;
+    font-style: italic;
+}
+.game-platform::before {
+    content: "Platform: ";
+    font-weight: bold;
+    color: #EFFFFA;
+    font-style: italic;
+}
+.game-rating::before {
+    content: "Rating: ";
+    font-weight: bold;
+    color: #EFFFFA;
+    font-style: italic;
 }
 /* ------- GAME MODAL ------- */
 .modal-open {
     overflow: hidden;
 }
+.game-window::backdrop {
+    background: rgb(0 0 0 / .4);
+}
 .game-window {
     padding: 1em;
-    max-width: 850px;
-    max-height: 80ch;
-    min-width: 600px;
+    width: 80%;
+    min-width: 350px;
     z-index: 1;
     position: fixed;
     top: 50%;
@@ -69,12 +124,15 @@ body {
     box-shadow: 0 0 1em rgba(239, 255, 250, .1);
     text-align: left;
 }
+nav {
+    height: 40px;
+}
 .close-modal {
     float: right;
     background: #131513;
-    border: 1px solid #EFFFFA;
+    border: 2px solid #EFFFFA;
     border-radius: 12px;
-    padding: 5px 5px 0px 5px;
+    padding: 3px 3px 0px 3px;
 }
 .close-modal:hover {
     background: #444;
