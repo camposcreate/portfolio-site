@@ -9,6 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 
@@ -82,8 +83,7 @@ public class GameService {
                 .queryParam("filter[rating][gte]", 1) // rating >= 1
                 .queryParam("filter[first_release_date][gt]", timeStampMillis);
 
-        // System.out.println(builder.toUriString());
-
+        //System.out.println(builder.toUriString());
         // API request
         ResponseEntity<String> response = restTemplate.exchange(
                 builder.toUriString(),
@@ -91,6 +91,40 @@ public class GameService {
                 new HttpEntity<>(headers),
                 String.class);
 
+        // return response
+        return response.getBody();
+    }
+
+    public String searchTopGames() {
+        String endpoint = igdbApiUrl + "/games";
+        String authorizationHeader = "Bearer " + igdbAccessToken;
+
+        // headers set up
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Client-ID", igdbClientId);
+        headers.set("Authorization", authorizationHeader);
+
+        int currentYear = LocalDate.now().getYear();
+        LocalDateTime startOfYear = LocalDate.of(currentYear, 1, 1).atStartOfDay();
+        long timestamp = startOfYear.toEpochSecond(ZoneOffset.UTC);
+        long endTimestamp = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+
+        // query parameters
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint)
+                .queryParam("fields", "id,name,first_release_date,cover.url,platforms.name,genres.name,artworks.url,rating,involved_companies.company.name")
+                .queryParam("limit", 50)
+                .queryParam("order", "rating:desc") // sort by release date: descending
+                .queryParam("filter[category][eq]", 0) // exclude expansions and dlc
+                .queryParam("filter[rating][gte]", 1) // rating >= 1
+                .queryParam("filter[first_release_date][gte]", timestamp)
+                .queryParam("filter[first_release_date][lte]", endTimestamp);
+        // System.out.println(builder.toUriString());
+        // API request
+        ResponseEntity<String> response = restTemplate.exchange(
+                builder.toUriString(),
+                HttpMethod.GET,
+                new HttpEntity<>(headers),
+                String.class);
         // return response
         return response.getBody();
     }

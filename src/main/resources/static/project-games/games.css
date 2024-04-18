@@ -10,6 +10,13 @@ body {
     color: rgb(239, 255, 250);
     background: #000000;
 }
+/* ---- HERO ---- */
+#spaceman {
+    margin: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
 /* ----- NAVIGATION ----- */
 .search, .search-tools {
     display: flex;
@@ -17,33 +24,77 @@ body {
     justify-content: center;
 }
 #game-input {
-    width: 250px;
-    border-radius: 12px;
-    padding-right: 12px;
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    margin-right: 12px;
+}
+.search button {
+    padding: 8px 12px 8px 12px;
+    color: #EFFFFA;
+    background: none;
+    border: 2px solid #002E52;
+    border-radius: 18px;
+}
+.search button:hover {
+    cursor: pointer;
+    background: #444;
+}
+.search-tools {
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
 }
 .search-tools button {
     margin: 12px;
     padding: 1%;
     color: #EFFFFA;
-    background: none;
+    background-color: transparent;
     border: none;
     font-size: 1.0rem;
     cursor: pointer;
 }
+.search-tools button.active {
+    background-color: red;
+}
 .search-tools button:hover {
     background: #444;
+}
+.search-tools #coming-soon {
+    color: rgba(239, 255, 250, .5);
 }
 .search-tools #coming-soon:hover {
     background: none;
     cursor: default;
+}
+/* ----- SKELETON ------ */
+.skeleton {
+    opacity: 0.7;
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+.skeleton-text {
+    width: 100%;
+    height: 1rem;
+    margin-bottom: .75rem;
+    border-radius: .125rem;
+}
+.skeleton-text:last-child {
+    margin-bottom: 0;
+    width: 80%;
+}
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(198, 42%, 12%);
+    }
+    100% {
+        background-color: hsl(199, 18%, 30%);
+    }
 }
 /* ----- GAMES DISPLAY -----*/
 .game-item {
     padding: 1em;
 }
 .game-item img {
-    width: 120px;
-    height: 160px;
+    width: 160px;
+    height: 200px;
 }
 .game-container {
     padding: 0.5em;
@@ -64,43 +115,44 @@ body {
     overflow: hidden;
 }
 .game-details {
-    white-space: nowrap;
+    font-style: italic;
+    grid-column: span 3;
 }
 .game-title::before {
     content: "Title: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .game-developer::before {
     content: "Developer: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .game-genre::before {
     content: "Genre: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .game-release::before {
     content: "Release: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .game-platform::before {
     content: "Platform: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .game-rating::before {
     content: "Rating: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 /* ------- GAME MODAL ------- */
 .modal-open {
@@ -140,66 +192,52 @@ nav {
 }
 .first-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-gap: 5px;
+    grid-template-columns: auto repeat(4, 1fr);
+    grid-gap: 1rem;
     margin-bottom: 15px;
 }
-.modal-image {
-    grid-column: 1;
-    grid-row: span 3;
-    width: 90%;
-    height: auto;
-    margin: auto;
+.first-container > div {
+    grid-column: span 4;
 }
-.second-container {
-    /* doesn't appear necessary */
-    grid-column: span 2;
-    grid-row: span 3;
-}
-.modal-title,
-.modal-developer,
-.modal-genre,
-.modal-release,
-.modal-platform,
-.modal-rating {
-    white-space: nowrap;
-    text-decoration: italic;
+.first-container > div > p {
+    font-style: italic;
+    margin-below: 5px;
 }
 .modal-title::before {
     content: "Title: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .modal-developer::before {
     content: "Developer: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .modal-genre::before {
     content: "Genre: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .modal-release::before {
     content: "Release: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .modal-platform::before {
     content: "Platform: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .modal-rating::before {
     content: "Rating: ";
     font-weight: bold;
     color: #EFFFFA;
-    font-style: italic;
+    font-style: normal;
 }
 .modal-summary {
     text-align: center;
@@ -209,13 +247,15 @@ nav {
     margin-bottom: 15px;
 }
 /* ------- MODAL VIDEO SLIDER ------- */
+.parent-slider {
+    overflow: hidden;
+}
 .slider {
     position: relative;
     overflow: hidden;
 }
-.slider .slide-button {
+.slide-button {
     position: absolute;
-    top: 50%;
     height: 50px;
     width: 50px;
     color: #EFFFFA;
@@ -224,17 +264,17 @@ nav {
     font-size: 2.2rem;
     cursor: pointer;
     border-radius: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-375%);
 }
-.slider .slide-button:hover {
+.slide-button:hover {
     background: #444;
 }
-.slider .slide-button#prev-slide {
-    left: -20px;
+.slide-button#prev-slide {
+    left: -10px;
     margin-left: 10px;
 }
-.slider .slide-button#next-slide {
-    right: -20px;
+.slide-button#next-slide {
+    right: -10px;
     margin-right: 10px;
 }
 .slider .modal-videos {
@@ -275,10 +315,11 @@ nav {
 .modal-similar-games {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 5px;
+    gap: 1rem;
     justify-items: start;
     align-items: center;
     padding: 10px;
+    max-width: 80%;
 }
 .similar-game p {
     font-size: 12px;

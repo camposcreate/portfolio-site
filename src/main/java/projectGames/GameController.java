@@ -39,6 +39,13 @@ public class GameController {
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
+    @GetMapping("/searchTopGames")
+    public ResponseEntity<String> getTopGames() {
+        String data = gameService.searchTopGames();
+        return new ResponseEntity<>(data, HttpStatus.OK);
+
+    }
+
     @GetMapping("/searchModalData")
     public String getModalData(@RequestParam String id) {
         return gameService.searchModalData(id);

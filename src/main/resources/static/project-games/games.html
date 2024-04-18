@@ -6,17 +6,34 @@
     <link rel="stylesheet" href="games.css">
 </head>
 <body>
+    <img src="../images/spaceman.png" id="spaceman" draggable="false">
     <div class="search">
-        <input type="text" id="game-input" placeholder="search your favorite video games..." required>
-        <button onclick="searchGame()">Search</button>
+        <input type="text" id="game-input" placeholder=" ...search your favorite video games" required>
+        <button onclick="searchGame()">search</button>
     </div>
     <div class="search-tools">
         <button onclick="recentlyReleasedGames()">Recently Released</button>
-        <button onclick="">Top 50</button>
+        <button onclick="searchTopGames()">Top 50</button>
         <button id='coming-soon' onclick="">(Coming Soon)</button>
     </div>
     <!-- DISPLAY GAMES -->
-    <div id="game-display"></div>
+    <div id="game-display">
+        <div class="game-item">
+            <div class="game-container">
+                <div class="game-content">
+                    <img class="game-cover skeleton">
+                    <div class="game-details">
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- GAME MODAL (open modal) -->
     <dialog class="game-window" id="game-window">
         <nav>
@@ -42,9 +59,9 @@
             <h2>Videos</h2>
             <div class="slider">
                 <div class="modal-videos"></div>
-                <button id="prev-slide" class="slide-button">&#10094</button>
-                <button id="next-slide" class="slide-button">&#10095</button>
             </div>
+            <button id="prev-slide" class="slide-button">&#10094</button>
+            <button id="next-slide" class="slide-button">&#10095</button>
             <div class="custom-scrollbar">
                 <div class="scrollbar-track">
                     <div class="scrollbar-thumb"></div>
@@ -57,5 +74,14 @@
     </dialog>
     <script src="games.js"></script>
     <script async src="functionality.js"></script>
+    <script>
+        // duplicate skeleton templates
+        const display = document.getElementById('game-display');
+        const template = document.querySelector('.game-item');
+        for (let i = 0; i < 3; i++) {
+            const clone = template.cloneNode(true);
+            display.appendChild(clone);
+        }
+    </script>
 </body>
 </html>

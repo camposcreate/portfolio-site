@@ -1,15 +1,14 @@
-// function to reset the slider position
+// reset the slider position
 function resetSliderPosition() {
     const modalVideos = document.querySelector('.modal-videos');
     const scrollbarThumb = document.querySelector('.scrollbar-thumb');
-
     // reset currentIndex and scrollbar position
     currentIndex = 0;
     scrollbarThumb.style.width = '0%';
     modalVideos.style.transform = 'translateX(0)';
 }
 
-// function to initialize the slider
+// initialize slider
 function initializeSlider() {
     const modalVideos = document.querySelector('.modal-videos');
     const prevButton = document.getElementById('prev-slide');
@@ -24,14 +23,12 @@ function initializeSlider() {
         scrollbarThumb.style.transition = 'width 0.5s ease';
         scrollbarThumb.style.width = percent + '%';
     }
-
     function nextSlide() {
         if (!isTransitioning && currentIndex < modalVideos.children.length - 1) {
             currentIndex += 1;
             slideToCurrentIndex();
         }
     }
-
     function prevSlide() {
         if (!isTransitioning && currentIndex > 0) {
             currentIndex -= 1;
@@ -53,9 +50,8 @@ function initializeSlider() {
             updateScrollbar();
         });
     }
-
     nextButton.addEventListener('click', nextSlide);
     prevButton.addEventListener('click', prevSlide);
-
     updateScrollbar();
 }
+

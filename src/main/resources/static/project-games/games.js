@@ -1,3 +1,5 @@
+
+
 const modal = document.querySelector('#game-window');
 let initialGameData;
 var similarGameData;
@@ -276,10 +278,9 @@ function fetchModalData(game) {
         searchModalData(game.id);
     }
 }
-
-// modify cover image url for resizing
+// modify cover image url for resizing t_logo_med
 function editCoverImageURL(url) {
-    const baseURL = "//images.igdb.com/igdb/image/upload/t_logo_med/";
+    const baseURL = "//images.igdb.com/igdb/image/upload/t_cover_big/";
     const parts = url.split('/');
     const extension = parts[parts.length - 1];
     return baseURL + extension;
@@ -307,6 +308,7 @@ function updateGamesDisplay(gameData) {
     gameDisplay.innerHTML = '';
 
     // iterate games and create HTML elements for display
+    ////onerror="this.onerror=null; this.src='../images/spaceman-compressed.jpeg';"
     if (gameData != null) {
         gameData.forEach(game => {
             const gameItem = document.createElement('div');
@@ -322,7 +324,7 @@ function updateGamesDisplay(gameData) {
                             <p class="game-genre">${game.genres}</p>
                             <p class="game-release">${game.releaseDate}</p>
                             <p class="game-platform">${game.platform}</p>
-                            <p class="game-rating">${game.ratings}</p>
+                            <p class="game-rating">${game.ratings}%</p>
                         </div>
                     </div>
                 </div>
@@ -411,7 +413,6 @@ function recentlyReleasedGames() {
     // delete any pre-existing data
     deleteGames();
     deleteModalGame();
-
     // GET request to backend endpoint
     fetch('/games/searchRecentGames')
         .then(response => {
@@ -423,11 +424,32 @@ function recentlyReleasedGames() {
             return response.json();
         })
         .then(data => {
-            // handle data
             addGameData(data);
         })
         .catch(error => {
-            // handle error
+            console.log('Problem with fetch:', error);
+        });
+}
+function searchTopGames() {
+    // delete any pre-existing data
+    display.innerHTML = '';
+    createSkeleton();
+    deleteGames();
+    deleteModalGame();
+    // GET request to backend endpoint
+    fetch('/games/searchTopGames')
+        .then(response => {
+            // check response
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // parse JSON response
+            return response.json();
+        })
+        .then(data => {
+            addGameData(data);
+        })
+        .catch(error => {
             console.log('Problem with fetch:', error);
         });
 }
