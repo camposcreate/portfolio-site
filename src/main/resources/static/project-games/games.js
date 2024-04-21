@@ -46,7 +46,11 @@ function openModal(modalGameData) {
 
     // set cover/title/genre/release/developer/rating/summary data
     const image = document.querySelector('.modal-image');
-    image.setAttribute('src', initialGameData.cover);
+    if (initialGameData.cover != null) {
+        image.setAttribute('src', initialGameData.cover);
+    } else {
+        image.setAttribute('src', '../images/spaceman-compressed.jpeg')
+    }
 
     const title = document.querySelector('.modal-title');
     title.textContent = initialGameData.title;
@@ -121,9 +125,8 @@ function deleteModalGame() {
         method: 'DELETE'
     })
     .then(response => {
-        console.log('Response status:', response.status); // for debugging
         if (!response.ok) {
-            throw new Error('Error clearing games: ' + response.status);
+            throw new Error('Error clearing moodal data: ' + response.status);
         }
     })
     .catch(error => {
@@ -137,9 +140,8 @@ function deleteSimilarGames() {
         method: 'DELETE'
     })
     .then(response => {
-        console.log('Response status:', response.status); // for debugging
         if (!response.ok) {
-            throw new Error('Error clearing games: ' + response.status);
+            throw new Error('Error clearing similar games: ' + response.status);
         }
     })
     .catch(error => {
@@ -159,7 +161,7 @@ async function createSimilarGameObjects(similar) {
             body: JSON.stringify(similar)
         })
         .then(response => {
-            console.log('Response:', response);
+            // console.log('Response:', response);
             if (!response.ok) {
                 throw new Error('Error adding game: ' + response.status);
             }
@@ -167,7 +169,6 @@ async function createSimilarGameObjects(similar) {
         })
         .then(data => {
             // similar games added successfully --> update modal
-            console.log('Successfully added game modal data');
             similarGameData = data;
         })
         .catch(error => {
@@ -232,7 +233,6 @@ async function addModalData(modalGameDataArray) {
         })
         .then(data => {
             // games added successfully --> update modal
-            console.log('Successfully added game modal data');
             openModal(data);
         })
         .catch(error => {
@@ -259,7 +259,6 @@ async function searchModalData(gameID) {
             })
             .then(data => {
                 // handle data
-                //console.log('Modal data:', data);
                 addModalData(data);
             })
             .catch(error => {
@@ -280,12 +279,15 @@ function fetchModalData(game) {
 }
 // modify cover image url for resizing t_logo_med
 function editCoverImageURL(url) {
-    const baseURL = "//images.igdb.com/igdb/image/upload/t_cover_big/";
-    const parts = url.split('/');
-    const extension = parts[parts.length - 1];
-    return baseURL + extension;
+    if (url) {
+        const baseURL = "//images.igdb.com/igdb/image/upload/t_cover_big/";
+        const parts = url.split('/');
+        const extension = parts[parts.length - 1];
+        return baseURL + extension;
+    } else {
+        return url ? url : '../images/spaceman-compressed.jpeg';
+    }
 }
-
 // delete list
 function deleteGames() {
     fetch('/games/delete', {
@@ -306,9 +308,7 @@ function deleteGames() {
 function updateGamesDisplay(gameData) {
     const gameDisplay = document.getElementById('game-display');
     gameDisplay.innerHTML = '';
-
     // iterate games and create HTML elements for display
-    ////onerror="this.onerror=null; this.src='../images/spaceman-compressed.jpeg';"
     if (gameData != null) {
         gameData.forEach(game => {
             const gameItem = document.createElement('div');
@@ -317,7 +317,7 @@ function updateGamesDisplay(gameData) {
             gameItem.innerHTML = `
                 <div class="game-container">
                     <div class="game-content">
-                        <img class="game-cover" src="${game.cover}" alt="${game.title}">
+                        <img class="game-cover" src="${game.cover}" alt="${game.title}" onerror="this.onerror=null; this.src='../images/spaceman-compressed.jpeg';">
                         <div class="game-details">
                             <p class="game-title">${game.title}</p>
                             <p class="game-developer">${game.developer}</p>
@@ -345,9 +345,9 @@ function addGameData(games) {
         const ids = id ? id : "";
         const names = name ? name : "";
         const release = first_release_date ? first_release_date : "";
-        const coverURL = cover ? cover.url : "Image Unavailable";
-        const platformName = platforms ? platforms.map(platform => platform.name) : [];
-        const genreName = genres ? genres.map(genre => genre.name) : [];
+        const coverURL = cover ? cover.url : "";
+        const platformName = platforms ? platforms.map(platform => platform.name) : ["Platform Unavailable"];
+        const genreName = genres ? genres.map(genre => genre.name) : ["Genre Unavailable"];
         /*const artworkURL = artworks ? artworks.map(art => art.url) : [];*/
         const ratings = rating ? rating : "";
         const devName = involved_companies && involved_companies.length > 0
@@ -364,7 +364,6 @@ function addGameData(games) {
         if (coverURL != null) {
             newCoverURL = editCoverImageURL(coverURL);
         }
-
         // create game object
         const game = {
             id: ids,
@@ -432,8 +431,6 @@ function recentlyReleasedGames() {
 }
 function searchTopGames() {
     // delete any pre-existing data
-    display.innerHTML = '';
-    createSkeleton();
     deleteGames();
     deleteModalGame();
     // GET request to backend endpoint

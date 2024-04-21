@@ -25,16 +25,16 @@ body {
 }
 #game-input {
     width: 300px;
-    height: 30px;
-    border-radius: 10px;
+    height: 35px;
     margin-right: 12px;
+    border-radius: 2px;
 }
 .search button {
     padding: 8px 12px 8px 12px;
     color: #EFFFFA;
     background: none;
-    border: 2px solid #002E52;
-    border-radius: 18px;
+    border: 2px solid #EFFFFA;
+    border-radius: 4px;
 }
 .search button:hover {
     cursor: pointer;
@@ -45,21 +45,19 @@ body {
 }
 .search-tools button {
     margin: 12px;
-    padding: 1%;
+    padding: .65rem;
     color: #EFFFFA;
     background-color: transparent;
-    border: none;
+    border: 2px solid #EFFFFA;
     font-size: 1.0rem;
     cursor: pointer;
-}
-.search-tools button.active {
-    background-color: red;
 }
 .search-tools button:hover {
     background: #444;
 }
 .search-tools #coming-soon {
     color: rgba(239, 255, 250, .5);
+    border: none;
 }
 .search-tools #coming-soon:hover {
     background: none;
@@ -67,14 +65,14 @@ body {
 }
 /* ----- SKELETON ------ */
 .skeleton {
-    opacity: 0.7;
+    opacity: 0.6;
     animation: skeleton-loading 1s linear infinite alternate;
 }
 .skeleton-text {
     width: 100%;
     height: 1rem;
     margin-bottom: .75rem;
-    border-radius: .125rem;
+    border-radius: .45rem;
 }
 .skeleton-text:last-child {
     margin-bottom: 0;
@@ -82,7 +80,7 @@ body {
 }
 @keyframes skeleton-loading {
     0% {
-        background-color: hsl(198, 42%, 12%);
+        background-color: hsl(198, 18%, 15%);
     }
     100% {
         background-color: hsl(199, 18%, 30%);
