@@ -1,3 +1,11 @@
+const buttonList = document.querySelectorAll('.search-tools button');
+buttonList.forEach(button => {
+    button.addEventListener('click', () => {
+        buttonList.forEach(btn => btn.classList.remove('special')); // Remove 'special' class from all buttons
+        button.classList.add('special'); // Add 'special' class to the clicked button
+    });
+});
+
 // reset the slider position
 function resetSliderPosition() {
     const modalVideos = document.querySelector('.modal-videos');

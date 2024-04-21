@@ -48,19 +48,17 @@ body {
     padding: .65rem;
     color: #EFFFFA;
     background-color: transparent;
-    border: 2px solid #EFFFFA;
+    border: 1px solid #EFFFFA;
     font-size: 1.0rem;
     cursor: pointer;
 }
 .search-tools button:hover {
     background: #444;
 }
-.search-tools #coming-soon {
-    color: rgba(239, 255, 250, .5);
-    border: none;
-}
-.search-tools #coming-soon:hover {
-    background: none;
+.search-tools button.special {
+    opacity: 0.95;
+    border: 1px solid #DE1A1A;
+    background: #DE1A1A;
     cursor: default;
 }
 /* ----- SKELETON ------ */

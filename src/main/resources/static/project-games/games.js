@@ -405,9 +405,7 @@ function addGameData(games) {
         console.error(error);
     });
 }
-
 // call function initially --> initial splash screen
-recentlyReleasedGames();
 function recentlyReleasedGames() {
     // delete any pre-existing data
     deleteGames();
@@ -429,6 +427,7 @@ function recentlyReleasedGames() {
             console.log('Problem with fetch:', error);
         });
 }
+recentlyReleasedGames();
 function searchTopGames() {
     // delete any pre-existing data
     deleteGames();
