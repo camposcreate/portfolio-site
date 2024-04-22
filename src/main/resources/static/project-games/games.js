@@ -1,5 +1,3 @@
-
-
 const modal = document.querySelector('#game-window');
 let initialGameData;
 var similarGameData;
@@ -30,8 +28,7 @@ function closeModalClick() {
     deleteSimilarGames();
     similarGamesContainer.innerHTML = '';
     similarGameData = [];
-    resetSliderPosition()
-
+    resetSliderPosition();
     // re-enable body scroll
     document.body.classList.remove('modal-open');
 }
@@ -39,8 +36,6 @@ function closeModalClick() {
 // game click behavior --> open modal w/ data
 // modalGameData = array of objects
 function openModal(modalGameData) {
-    console.log('opening modal with data');
-
     // disable body scroll
     document.body.classList.add('modal-open');
 
@@ -405,11 +400,38 @@ function addGameData(games) {
         console.error(error);
     });
 }
+
+// skeleton animation --> four empty containers
+function skeletonAnimate() {
+    const gameDisplay = document.getElementById('game-display');
+    gameDisplay.innerHTML = '';
+    for (let i = 0; i < 4; i++) {
+        const gameItem = document.createElement('div');
+        gameItem.classList.add('game-item');
+        gameItem.innerHTML = `
+            <div class="game-container">
+                <div class="game-content">
+                    <img class="game-cover skeleton">
+                    <div class="game-details">
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                        <p class="skeleton skeleton-text"></p>
+                    </div>
+                </div>
+            </div>
+        `;
+        gameDisplay.appendChild(gameItem);
+    }
+}
+
 // call function initially --> initial splash screen
 function recentlyReleasedGames() {
+    skeletonAnimate();
     // delete any pre-existing data
     deleteGames();
-    deleteModalGame();
     // GET request to backend endpoint
     fetch('/games/searchRecentGames')
         .then(response => {
@@ -427,8 +449,9 @@ function recentlyReleasedGames() {
             console.log('Problem with fetch:', error);
         });
 }
-recentlyReleasedGames();
+
 function searchTopGames() {
+    skeletonAnimate();
     // delete any pre-existing data
     deleteGames();
     deleteModalGame();
@@ -452,6 +475,7 @@ function searchTopGames() {
 
 // send user input to backend
 function searchGame() {
+    skeletonAnimate();
     const inputName = document.getElementById('game-input').value.trim();
     // validate input field is not empty
     if (!inputName) {
@@ -480,3 +504,4 @@ function searchGame() {
             console.log('Problem with fetch:', error);
         });
 }
+recentlyReleasedGames(); // call initially

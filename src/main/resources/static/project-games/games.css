@@ -55,6 +55,12 @@ body {
 .search-tools button:hover {
     background: #444;
 }
+.search-tools #search-button {
+    border: none;
+
+    cursor: default;
+
+}
 .search-tools button.special {
     opacity: 0.95;
     border: 1px solid #DE1A1A;

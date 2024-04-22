@@ -1,9 +1,14 @@
 const buttonList = document.querySelectorAll('.search-tools button');
+const searchButton = document.querySelector('.search button');
+const searchStyle = document.getElementById('search-button');
 buttonList.forEach(button => {
     button.addEventListener('click', () => {
         buttonList.forEach(btn => btn.classList.remove('special')); // Remove 'special' class from all buttons
         button.classList.add('special'); // Add 'special' class to the clicked button
     });
+});
+searchButton.addEventListener('click', () => {
+    searchStyle.classList.add('special');
 });
 
 // reset the slider position
