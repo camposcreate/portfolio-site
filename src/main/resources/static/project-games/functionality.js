@@ -4,6 +4,7 @@ const searchImage = document.getElementById('search-image');
 buttonList.forEach(button => {
     button.addEventListener('click', () => {
         buttonList.forEach(btn => btn.classList.remove('special'));
+        searchImage.classList.remove('special');
         button.classList.add('special');
     });
 });

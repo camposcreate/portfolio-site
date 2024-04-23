@@ -44,8 +44,8 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, .3);
 }
 .search-tools button {
-    margin: 12px;
-    padding: .65rem;
+    margin: 14px;
+    padding: .70rem;
     color: #EFFFFA;
     background-color: transparent;
     border: 1px solid #EFFFFA;
@@ -58,6 +58,8 @@ body {
 }
 .search-tools #search-image {
     opacity: 0.4;
+    margin-left: .7rem;
+    margin-top: .3rem;
 }
 .search-tools #search-image.special {
     opacity: 1;
@@ -85,7 +87,7 @@ body {
 }
 @keyframes skeleton-loading {
     0% {
-        background-color: hsl(198, 18%, 15%);
+        background-color: hsl(198, 8%, 15%);
     }
     100% {
         background-color: hsl(199, 18%, 30%);
