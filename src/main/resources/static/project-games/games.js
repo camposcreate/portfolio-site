@@ -479,7 +479,6 @@ function searchGame() {
     const inputName = document.getElementById('game-input').value.trim();
     // validate input field is not empty
     if (!inputName) {
-        // alert user
         alert('Invalid input! Please enter a video game title.');
         return;
     }
@@ -497,6 +496,7 @@ function searchGame() {
         })
         .then(data => {
             // handle data
+            document.getElementById('game-input').value = "";
             addGameData(data);
         })
         .catch(error => {
@@ -504,4 +504,4 @@ function searchGame() {
             console.log('Problem with fetch:', error);
         });
 }
-recentlyReleasedGames(); // call initially
+recentlyReleasedGames();

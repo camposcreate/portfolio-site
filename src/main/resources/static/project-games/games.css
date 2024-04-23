@@ -326,6 +326,84 @@ nav {
     padding: 10px;
     max-width: 80%;
 }
+.similar-game img {
+    width: 244px;
+    height: 332px;
+    box-shadow: -25px 0px 12px -20px rgba(0,0,0,0.45);
+}
 .similar-game p {
     font-size: 12px;
+    overflow: hidden;
+}
+.similar-game > .similar-release {
+    font-style: italic;
+}
+@media only screen and (max-width: 600px) {
+    /* ------ GAME DISPLAY ----- */
+    .game-item {
+        padding: 0.5em;
+    }
+    .game-item img {
+        width: 120px;
+        height: 160px;
+    }
+    .game-container {
+        padding: 0.3em;
+    }
+    .game-details {
+        grid-column: span 4;
+    }
+    .game-details p {
+        font-size: 12px;
+    }
+    /* ---- MODAL WINDOW ---- */
+    nav {
+        height: 50px;
+    }
+    .close-modal {
+        padding: 3px 3px 0px 3px;
+    }
+    .first-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .first-container img {
+        width: 264px;
+        height: 374px;
+    }
+    .first-container > div {
+        display: none;
+    }
+    /* --- VIDEOS --- */
+    .slider .modal-videos {
+        margin-bottom: 20px;
+    }
+    .slide-button {
+        height: 45px;
+        width: 45px;
+        font-size: 2.0rem;
+        transform: translateY(-50%);
+    }
+    .slide-button#prev-slide {
+        left: -10px;
+        margin-left: 12px;
+    }
+    .slide-button#next-slide {
+        right: -10px;
+        margin-right: 12px;
+    }
+    .custom-scrollbar .scrollbar-track {
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    /* ---- SIMILAR GAMES ---- */
+    .modal-similar-games {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .similar-game img {
+        width: 174px;
+        height: 252px;
+    }
 }
