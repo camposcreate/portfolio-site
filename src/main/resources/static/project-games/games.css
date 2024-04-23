@@ -51,18 +51,19 @@ body {
     border: 1px solid #EFFFFA;
     font-size: 1.0rem;
     cursor: pointer;
+    border-radius: 4px;
 }
 .search-tools button:hover {
     background: #444;
 }
-.search-tools #search-button {
-    border: none;
-
-    cursor: default;
-
+.search-tools #search-image {
+    opacity: 0.4;
+}
+.search-tools #search-image.special {
+    opacity: 1;
 }
 .search-tools button.special {
-    opacity: 0.95;
+    opacity: 1;
     border: 1px solid #DE1A1A;
     background: #DE1A1A;
     cursor: default;

@@ -1,14 +1,17 @@
 const buttonList = document.querySelectorAll('.search-tools button');
 const searchButton = document.querySelector('.search button');
-const searchStyle = document.getElementById('search-button');
+const searchImage = document.getElementById('search-image');
 buttonList.forEach(button => {
     button.addEventListener('click', () => {
-        buttonList.forEach(btn => btn.classList.remove('special')); // Remove 'special' class from all buttons
-        button.classList.add('special'); // Add 'special' class to the clicked button
+        buttonList.forEach(btn => btn.classList.remove('special'));
+        button.classList.add('special');
     });
 });
 searchButton.addEventListener('click', () => {
-    searchStyle.classList.add('special');
+    buttonList.forEach(button => {
+        button.classList.remove('special');
+    });
+    searchImage.classList.add('special');
 });
 
 // reset the slider position
