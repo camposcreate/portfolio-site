@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="games.css">
 </head>
 <body>
-    <img src="../images/spaceman.png" id="spaceman" draggable="false">
+    <img src="../images/spaceman-large.png"
+         srcset="../images/spaceman-mini.png 400w,
+                 ../images/spaceman-small.png 600w,
+                 ../images/spaceman-medium.png 1200w,
+                 ../images/spaceman-large.png 1900w"
+         id="spaceman" draggable="false">
     <div class="search">
         <input type="text" id="game-input" placeholder=" ...search your favorite video games" required>
         <button onclick="searchGame()">search</button>

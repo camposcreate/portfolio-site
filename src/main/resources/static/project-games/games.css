@@ -45,7 +45,7 @@ body {
 }
 .search-tools button {
     margin: 14px;
-    padding: .70rem;
+    padding: .65rem;
     color: #EFFFFA;
     background-color: transparent;
     border: 2px solid #DE1A1A;
@@ -81,6 +81,7 @@ body {
     border: 1px solid #DE1A1A;
     background: #DE1A1A;
     cursor: default;
+    padding: .75rem;
 }
 /* ----- SKELETON ------ */
 .skeleton {
