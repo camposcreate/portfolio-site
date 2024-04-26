@@ -1,3 +1,4 @@
+// search buttons (stylizing)
 const buttonList = document.querySelectorAll('.search-tools button');
 const searchButton = document.querySelector('.search button');
 const searchImage = document.getElementById('search-image');

@@ -19,11 +19,22 @@ function addVideosToModal(videos) {
         videoContainer.appendChild(iframe);
     });
 }
-
+// if user uses 'esc' key
+const EscapePressed = ()  => {
+    // clear previous data
+    deleteModalGame();
+    deleteSimilarGames();
+    similarGamesContainer.innerHTML = '';
+    similarGameData = [];
+    resetSliderPosition();
+    document.body.classList.remove('modal-open');
+};
+const onEscapePress = (event) => event.key === 'Escape' && EscapePressed();
+document.addEventListener('keydown', onEscapePress);
 // close modal --> clear data
 function closeModalClick() {
     modal.close();
-    // clear any previous data
+    // clear previous data
     deleteModalGame();
     deleteSimilarGames();
     similarGamesContainer.innerHTML = '';
@@ -289,7 +300,7 @@ function deleteGames() {
         method: 'DELETE'
     })
     .then(response => {
-        console.log('Response status:', response.status);
+        //console.log('Response status:', response.status);
         if (!response.ok) {
             throw new Error('Error clearing games: ' + response.status);
         }
@@ -385,7 +396,7 @@ function addGameData(games) {
         body: JSON.stringify(gameArray)
     })
     .then(response => {
-        console.log('Response:', response);
+        //console.log('Response:', response);
         if (!response.ok) {
             throw new Error('Error adding game: ' + response.status);
         }
