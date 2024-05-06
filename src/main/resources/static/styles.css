@@ -228,7 +228,7 @@ nav ul li a:hover {
     padding-top: 20px;
     margin: 0 auto;
 }
-.column-2, .column-3 { /*.column-1, */
+.column-1, .column-2, .column-3 {
     flex: 1;
     padding: 10px;
     width: 273px;
@@ -283,17 +283,17 @@ nav ul li a:hover {
 /*.tile:active {
     background-color: #fff;
 }*/
-/* work in progress header
-.column1-layer h3{
+/* work in progress header */
+.column1-layer h3 {
     color: #d7e7e7;
     padding-top: 12px;
+    text-decoration: underline;
 }
- work in progress description
+/* work in progress description */
 .column1-layer p {
-    font-size: 17px;
-    text-align: left;
+    font-size: 16px;
     padding-top: 10px;
-} */
+}
 /* algorithm visualizer header */
 .column2-layer h3 {
     color: #d7e7e7;

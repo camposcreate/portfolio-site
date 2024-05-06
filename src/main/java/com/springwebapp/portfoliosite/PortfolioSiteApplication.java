@@ -7,7 +7,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.ExecutorSubscribableChannel;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 
-@SpringBootApplication(scanBasePackages = {"com.springwebapp.portfoliosite", "taskmanager", "visualizer"})
+@SpringBootApplication(scanBasePackages = {"com.springwebapp.portfoliosite", "taskmanager", "visualizer", "projectGames"})
 public class PortfolioSiteApplication {
 
 	public static void main(String[] args) {

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPACEMAN</title>
+    <link rel="stylesheet" href="games.css">
+</head>
+<body>
+    <img src="../images/spaceman-large.png"
+         srcset="../images/spaceman-mini.png 400w,
+                 ../images/spaceman-small.png 600w,
+                 ../images/spaceman-medium.png 1200w,
+                 ../images/spaceman-large.png 1900w"
+         id="spaceman" draggable="false">
+    <div class="search">
+        <input type="text" id="game-input" placeholder=" ...search your favorite video games" required>
+        <button onclick="searchGame()">search</button>
+    </div>
+    <div class="search-tools">
+        <button onclick="recentlyReleasedGames()" class="special">Recently Released</button>
+        <button onclick="searchTopGames()">Top 50</button>
+        <img id="search-image" src="../images/mini.png" draggable="false">
+    </div>
+    <!-- DISPLAY GAMES -->
+    <div id="game-display">
+        <div class="game-item">
+        </div>
+    </div>
+    <!-- GAME MODAL (open modal) -->
+    <dialog class="game-window" id="game-window">
+        <nav>
+            <button class="close-modal" onclick="closeModalClick()">
+                <img src="../images/x.png" width="30">
+            </button>
+        </nav>
+        <div class="first-container">
+            <img class="modal-image">
+            <div clas="second-container">
+                <p class="modal-title"></p>
+                <p class="modal-developer"></p>
+                <p class="modal-genre"></p>
+                <p class="modal-release"></p>
+                <p class="modal-platform"></p>
+                <p class="modal-rating"></p>
+            </div>
+        </div>
+        <h2>Summary</h2>
+        <p class="modal-summary"></p>
+        <!---- VIDEOS ---->
+        <div class="parent-slider video-slider">
+            <h2>Videos</h2>
+            <div class="slider">
+                <div class="modal-videos"></div>
+            </div>
+            <button id="prev-slide" class="slide-button">&#10094</button>
+            <button id="next-slide" class="slide-button">&#10095</button>
+            <div class="custom-scrollbar">
+                <div class="scrollbar-track">
+                    <div class="scrollbar-thumb"></div>
+                </div>
+            </div>
+        </div>
+        <!---- SIMILAR GAMES ---->
+        <h2>Similar Games</h2>
+        <div class="modal-similar-games"></div>
+    </dialog>
+    <script src="games.js"></script>
+    <script async src="functionality.js"></script>
+</body>
+</html>
