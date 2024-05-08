@@ -26,15 +26,16 @@ body {
 #game-input {
     width: 300px;
     height: 35px;
-    margin-right: 12px;
-    border-radius: 2px;
+    margin-right: .8em;
+    padding-left: 12px;
+    border-radius: 22px;
 }
 .search button {
-    padding: 8px 12px 8px 12px;
     color: #EFFFFA;
     background: none;
     border: 2px solid #EFFFFA;
-    border-radius: 4px;
+    padding: .75em;
+    border-radius: 22px;
 }
 .search button:hover {
     cursor: pointer;
@@ -45,13 +46,13 @@ body {
 }
 .search-tools button {
     margin: 14px;
-    padding: .65rem;
+    padding: .70em;
     color: #EFFFFA;
     background-color: transparent;
     border: 2px solid #DE1A1A;
     font-size: 1.0rem;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 22px;
 }
 .search-tools button:hover {
     background: #444;
