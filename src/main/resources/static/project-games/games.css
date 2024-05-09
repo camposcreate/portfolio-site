@@ -283,17 +283,17 @@ nav {
     font-size: 2.2rem;
     cursor: pointer;
     border-radius: 50%;
-    transform: translateY(-375%);
+    transform: translateY(-50%);
 }
 .slide-button:hover {
     background: #444;
 }
 .slide-button#prev-slide {
-    left: -10px;
+    left: -8px;
     margin-left: 10px;
 }
 .slide-button#next-slide {
-    right: -10px;
+    right: -8px;
     margin-right: 10px;
 }
 .slider .modal-videos {
@@ -314,7 +314,8 @@ nav {
 }
 .custom-scrollbar {
     height: 24px;
-    width: 100%;
+    width: 89%;
+    margin-left: 2.5em;
 }
 .custom-scrollbar .scrollbar-track {
     height: 2px;
