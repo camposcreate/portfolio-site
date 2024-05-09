@@ -564,7 +564,6 @@ nav #close-menu {
      }
      .tile img {
          max-width: 96%;
-         max-height: 100%;
      }
      .column1-layer h3, .column2-layer h3, .column3-layer h3 {
          text-align: left;
@@ -576,9 +575,6 @@ nav #close-menu {
      }
      .contact-container {
        padding: 5%;
-     }
-     input, textarea {
-         border: 1px solid #B23BFF;
      }
      textarea {
          width: 320px;
