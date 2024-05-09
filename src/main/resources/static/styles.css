@@ -294,6 +294,9 @@ nav ul li a:hover {
     font-size: 16px;
     padding-top: 10px;
 }
+.column1-layer p span {
+    color: #B23BFF;
+}
 /* algorithm visualizer header */
 .column2-layer h3 {
     color: #d7e7e7;
@@ -551,7 +554,7 @@ nav #close-menu {
      .row {
          display: grid;
      }
-     .column-2, .column-3 { /*.column-1*/
+     .column-1, .column-2, .column-3 {
          padding-bottom: 50px;
          width: 325px;
          height: 675px;
@@ -563,7 +566,7 @@ nav #close-menu {
          max-width: 96%;
          max-height: 100%;
      }
-     .column2-layer h3, .column3-layer h3{ /*.column1-layer h3,*/
+     .column1-layer h3, .column2-layer h3, .column3-layer h3 {
          text-align: left;
      }
      /*----Contact----*/
