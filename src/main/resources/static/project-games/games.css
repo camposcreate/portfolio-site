@@ -314,8 +314,8 @@ nav {
 }
 .custom-scrollbar {
     height: 24px;
-    width: 89%;
     margin-left: 2.5em;
+    margin-right: 2.5em;
 }
 .custom-scrollbar .scrollbar-track {
     height: 2px;
@@ -347,14 +347,22 @@ nav {
     box-shadow: -25px 0px 12px -20px rgba(0,0,0,0.45);
 }
 .similar-game p {
+    display: block;
     font-size: 12px;
+    width: 175px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .similar-game > .similar-release {
     font-style: italic;
 }
 @media only screen and (max-width: 600px) {
     /* ------ GAME DISPLAY ----- */
+    .search {
+        margin-right: .8em;
+        margin-left: .8em;
+    }
     .game-item {
         padding: 0.5em;
     }
@@ -408,17 +416,15 @@ nav {
         right: -10px;
         margin-right: 12px;
     }
-    .custom-scrollbar .scrollbar-track {
-        width: 80%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
     /* ---- SIMILAR GAMES ---- */
     .modal-similar-games {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
     }
     .similar-game img {
         width: 174px;
         height: 252px;
+    }
+    .similar-game p {
+        width: 135px;
     }
 }
