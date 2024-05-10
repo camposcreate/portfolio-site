@@ -314,8 +314,8 @@ nav {
 }
 .custom-scrollbar {
     height: 24px;
-    width: 89%;
     margin-left: 2.5em;
+    margin-right: 2.5em;
 }
 .custom-scrollbar .scrollbar-track {
     height: 2px;
@@ -359,6 +359,10 @@ nav {
 }
 @media only screen and (max-width: 600px) {
     /* ------ GAME DISPLAY ----- */
+    .search {
+        margin-right: .8em;
+        margin-left: .8em;
+    }
     .game-item {
         padding: 0.5em;
     }
@@ -412,11 +416,6 @@ nav {
         right: -10px;
         margin-right: 12px;
     }
-    .custom-scrollbar .scrollbar-track {
-        width: 80%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
     /* ---- SIMILAR GAMES ---- */
     .modal-similar-games {
         grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
@@ -426,6 +425,6 @@ nav {
         height: 252px;
     }
     .similar-game p {
-        width: 125px;
+        width: 135px;
     }
 }
