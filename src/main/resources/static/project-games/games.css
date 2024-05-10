@@ -347,8 +347,12 @@ nav {
     box-shadow: -25px 0px 12px -20px rgba(0,0,0,0.45);
 }
 .similar-game p {
+    display: block;
     font-size: 12px;
+    width: 175px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .similar-game > .similar-release {
     font-style: italic;
@@ -415,10 +419,13 @@ nav {
     }
     /* ---- SIMILAR GAMES ---- */
     .modal-similar-games {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
     }
     .similar-game img {
         width: 174px;
         height: 252px;
+    }
+    .similar-game p {
+        width: 125px;
     }
 }
