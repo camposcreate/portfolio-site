@@ -2,6 +2,7 @@ const modal = document.querySelector('#game-window');
 let initialGameData;
 var similarGameData;
 const similarGamesContainer = document.querySelector('.modal-similar-games');
+var inputName = "";
 
 // embed videos to modal
 function addVideosToModal(videos) {
@@ -487,7 +488,8 @@ function searchTopGames() {
 // send user input to backend
 function searchGame() {
     skeletonAnimate();
-    const inputName = document.getElementById('game-input').value.trim();
+    inputName = document.getElementById('game-input').value.trim();
+    document.getElementById("results").innerHTML = "Results for... " + "\""+inputName+"\"";
     // validate input field is not empty
     if (!inputName) {
         alert('Invalid input! Please enter a video game title.');
