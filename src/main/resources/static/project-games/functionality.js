@@ -1,3 +1,12 @@
+// if enter is clicked
+var input = document.getElementById("game-input");
+input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("search-button").click();
+    }
+});
+
 // search buttons (stylizing)
 const buttonList = document.querySelectorAll('.search-tools button');
 const searchButton = document.querySelector('.search button');
