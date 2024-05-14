@@ -276,57 +276,65 @@ nav ul li a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  /*background-color: rgba(0, 0, 25, 0.3); image film*/
   border-radius: 10px;
 }
 .tile:hover {
-    background-color: #abff90;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
-/*.tile:active {
-    background-color: #fff;
-}*/
-/* work in progress header */
-.column1-layer h3 {
+.column1-layer h3, .column2-layer h3, .column3-layer h3 {
+    font-size: 20px;
     color: #d7e7e7;
-    padding-top: 12px;
-    text-decoration: underline;
+    padding-top: 0.5em;
 }
-/* work in progress description */
 .column1-layer p {
     font-size: 16px;
-    padding-top: 10px;
+    padding-top: 1em;
+    padding-bottom: 1.2em;
 }
-.column1-layer p span {
-    color: #B23BFF;
-}
-/* algorithm visualizer header */
-.column2-layer h3 {
-    color: #d7e7e7;
-    padding-top: 12px;
-    text-decoration: underline;
-}
-/* algorithm visualizer description */
 .column2-layer p {
     font-size: 16px;
-    padding-top: 10px;
+    padding-top: 1em;
 }
-.column2-layer p span {
-    color: #B23BFF;
-}
-/* task manager header */
-.column3-layer h3{
-    color: #d7e7e7;
-    padding-top: 12px;
-    text-decoration: underline;
-}
-/* task manager description */
 .column3-layer p {
     font-size: 16px;
-    padding-top: 10px;
+    padding-top: 1em;
+    padding-bottom: 2.44em;
 }
-.column3-layer p span {
-    color: #B23BFF;
+.pulser {
+    background: #B23BFF;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border: none;
+    margin-top: 1.75em;
+}
+.pulser::after {
+    animation: pulse 2s cubic-bezier(1.0, 0.7, 0.6, 0.9) infinite;
+}
+@keyframes pulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    50% {
+        transform: scale(1.4);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+.pulser::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: #C162ff;
 }
 /*----------- CONTACT ----------- */
 #contact {
@@ -383,17 +391,17 @@ textarea {
     height: 100px;
 }
 button {
-    text-decoration: none;
-    color: #d7e7e7;
-    background: rgba(15, 15, 15, 0.9);
+    color: rgba(15, 15, 15, 0.9);
+    background: #d7e7e7;
     padding: 10px 18px;
     border-radius: 18px;
     font-size: 16px;
-    border: 2px solid #d7e7e7;
+    border: 1px solid #d7e7e7;
     cursor: pointer;
 }
 button:hover {
-    background: rgba(50, 50, 50);
+    color: #d7e7e7;
+    background: rgba(15, 15, 15, 0.9);
 }
 /*----------- FOOTER ---------*/
 .icons {
@@ -422,7 +430,7 @@ nav #close-menu {
 @media only screen and (min-width: 320px) and (max-width: 932px) and (max-height: 450px) and (orientation: landscape) {
     #container-landscape {
         display: flex;
-        color: #fff;
+        color: #d7e7e7;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -459,25 +467,25 @@ nav #close-menu {
         padding: 5px 5px 0px 5px;
         margin: 5px;
         background-color: #0f0f0f;
-        border: 2px solid #B23BFF;
+        border: 1px solid #d7e7e7;
     }
     nav #open-menu img {
         padding: 15%;
     }
     nav #open-menu:hover {
-        background-color: #B23BFF;
+        background-color: #444;
     }
     nav #close-menu {
         display: block;
         background: #0f0f0f;
-        border: 2px solid #B23BFF;
+        border: 2px solid #d7e7e7;
         position: absolute;
         padding: 5px 5px 0px 5px;
         top: 15px;
         left: 15px;
     }
     nav #close-menu:hover {
-        background-color: #B23BFF;
+        background-color: #444;
     }
     nav #sidemenu {
         display: block;
@@ -569,7 +577,7 @@ nav #close-menu {
      #inspire {
         display: none;
      }
-     /* --- Portfolio --- */
+     /* --- PORTFOLIO --- */
      .main {
          padding-bottom: 125px;
      }
@@ -585,14 +593,11 @@ nav #close-menu {
      }
      .column-1, .column-2, .column-3 {
          padding-bottom: 50px;
-         width: 325px;
-         height: 675px;
+         width: 300px;
+         height: 650px;
      }
      .tile {
         background: #B23BFF;
-     }
-     .tile img {
-         max-width: 96%;
      }
      .column1-layer h3, .column2-layer h3, .column3-layer h3 {
          text-align: left;
