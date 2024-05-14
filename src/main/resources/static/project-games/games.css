@@ -6,9 +6,13 @@
     border: 0;
     font-family: 'Open Sans', sans-serif;
 }
+html, body {
+    overflow-x: hidden;
+}
 body {
     color: rgb(239, 255, 250);
     background: #000;
+    position: relative;
 }
 /* ---- HERO ---- */
 #spaceman {
