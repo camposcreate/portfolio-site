@@ -8,7 +8,7 @@
 }
 body {
     color: rgb(239, 255, 250);
-    background: #000000;
+    background: #000;
 }
 /* ---- HERO ---- */
 #spaceman {
@@ -33,13 +33,15 @@ body {
 .search button {
     color: #EFFFFA;
     background: none;
+    cursor: pointer;
     border: 2px solid #EFFFFA;
     padding: .75em;
     border-radius: 22px;
+    transition: 0.3s;
 }
 .search button:hover {
-    cursor: pointer;
-    background: #444;
+    color: #000;
+    background: #EFFFFA;
 }
 .search-tools {
     border-bottom: 1px solid rgba(255, 255, 255, .3);
@@ -53,6 +55,7 @@ body {
     font-size: 1.0rem;
     cursor: pointer;
     border-radius: 22px;
+    transition: 0.3s;
 }
 .search-tools button:hover {
     color: #000;
