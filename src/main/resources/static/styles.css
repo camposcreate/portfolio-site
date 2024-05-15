@@ -336,6 +336,10 @@ nav ul li a:hover {
     border-radius: 50%;
     background: #C162ff;
 }
+.pulser:hover {
+    background: #BC55FF;
+    opacity: 0.8;
+}
 /*----------- CONTACT ----------- */
 #contact {
   padding: 30px 0;
@@ -391,8 +395,8 @@ textarea {
     height: 100px;
 }
 button {
-    color: rgba(15, 15, 15, 0.9);
-    background: #d7e7e7;
+    color: #d7e7e7;
+    background: rgba(15, 15, 15, 0.9);
     padding: 10px 18px;
     border-radius: 18px;
     font-size: 16px;
@@ -400,8 +404,8 @@ button {
     cursor: pointer;
 }
 button:hover {
-    color: #d7e7e7;
-    background: rgba(15, 15, 15, 0.9);
+    color: rgba(15, 15, 15, 0.9);
+    background: #d7e7e7;
 }
 /*----------- FOOTER ---------*/
 .icons {
