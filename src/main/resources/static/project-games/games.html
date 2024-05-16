@@ -8,6 +8,9 @@
     <link rel="shortcut icon" type="image/png" href="../images/favicon-resized.png">
 </head>
 <body>
+    <button onclick="scrollUp()" id="scrollUp">
+        <img src="../images/man-logo.png">
+    </button>
     <img src="../images/spaceman-large.png"
          srcset="../images/spaceman-mini.png 400w,
                  ../images/spaceman-small.png 600w,
@@ -16,7 +19,7 @@
          id="spaceman" draggable="false">
     <div class="search">
         <input type="text" id="game-input" placeholder="...wicked man kept searching" required>
-        <button onclick="searchGame()">search</button>
+        <button id="search-button" onclick="searchGame()">search</button>
     </div>
     <div class="search-tools">
         <button onclick="recentlyReleasedGames()" class="special">Recently Released</button>
@@ -24,6 +27,7 @@
         <img id="search-image" src="../images/mini.png" draggable="false">
     </div>
     <!-- DISPLAY GAMES -->
+    <h2 id="results">Games</h2>
     <div id="game-display">
         <div class="game-item">
         </div>

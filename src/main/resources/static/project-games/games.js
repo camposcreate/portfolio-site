@@ -2,6 +2,7 @@ const modal = document.querySelector('#game-window');
 let initialGameData;
 var similarGameData;
 const similarGamesContainer = document.querySelector('.modal-similar-games');
+var inputName = "";
 
 // embed videos to modal
 function addVideosToModal(videos) {
@@ -441,6 +442,7 @@ function skeletonAnimate() {
 // call function initially --> initial splash screen
 function recentlyReleasedGames() {
     skeletonAnimate();
+    document.getElementById("results").innerHTML = "Recently Released Video Games of 2024!";
     // delete any pre-existing data
     deleteGames();
     // GET request to backend endpoint
@@ -463,6 +465,7 @@ function recentlyReleasedGames() {
 
 function searchTopGames() {
     skeletonAnimate();
+    document.getElementById("results").innerHTML = "Top 50 Video Games of 2024!";
     // delete any pre-existing data
     deleteGames();
     deleteModalGame();
@@ -487,7 +490,8 @@ function searchTopGames() {
 // send user input to backend
 function searchGame() {
     skeletonAnimate();
-    const inputName = document.getElementById('game-input').value.trim();
+    inputName = document.getElementById('game-input').value.trim();
+    document.getElementById("results").innerHTML = "Results for... " + "\""+inputName+"\"";
     // validate input field is not empty
     if (!inputName) {
         alert('Invalid input! Please enter a video game title.');

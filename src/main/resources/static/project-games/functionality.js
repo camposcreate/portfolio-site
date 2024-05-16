@@ -1,3 +1,29 @@
+// scroll to top
+let topButton = document.getElementById("scrollUp");
+window.onscroll = function() {
+    scrollFunction();
+};
+function scrollFunction() {
+    if (document.body.scrollTop > 300 ||
+        document.documentElement.scrollTop > 300) {
+        topButton.style.display = "block";
+    } else {
+        topButton.style.display = "none";
+    }
+}
+function scrollUp() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// if enter is clicked --> submit
+var input = document.getElementById("game-input");
+input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("search-button").click();
+    }
+});
+
 // search buttons (stylizing)
 const buttonList = document.querySelectorAll('.search-tools button');
 const searchButton = document.querySelector('.search button');

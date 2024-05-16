@@ -6,9 +6,13 @@
     border: 0;
     font-family: 'Open Sans', sans-serif;
 }
+html, body {
+    overflow-x: hidden;
+}
 body {
     color: rgb(239, 255, 250);
-    background: #000000;
+    background: #000;
+    position: relative;
 }
 /* ---- HERO ---- */
 #spaceman {
@@ -16,6 +20,21 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+}
+#scrollUp {
+    display: none;
+    position: fixed;
+    right: 2em;
+    cursor: pointer;
+    background: none;
+    z-index: 1;
+    opacity: 0.6;
+    padding-bottom: 1em;
+    transform: rotate(9deg);
+    margin: -11px;
+}
+#scrollUp:hover {
+    opacity: 1;
 }
 /* ----- NAVIGATION ----- */
 .search, .search-tools {
@@ -33,13 +52,15 @@ body {
 .search button {
     color: #EFFFFA;
     background: none;
-    border: 1px solid #EFFFFA;
+    cursor: pointer;
+    border: 2px solid #EFFFFA;
     padding: .75em;
     border-radius: 22px;
+    transition: 0.3s;
 }
 .search button:hover {
-    cursor: pointer;
-    background: #444;
+    color: #000;
+    background: #EFFFFA;
 }
 .search-tools {
     border-bottom: 1px solid rgba(255, 255, 255, .3);
@@ -49,13 +70,15 @@ body {
     padding: .70em;
     color: #EFFFFA;
     background-color: transparent;
-    border: 1px solid #DE1A1A;
+    border: 2px solid #EFFFFA;
     font-size: 1.0rem;
     cursor: pointer;
     border-radius: 22px;
+    transition: 0.3s;
 }
 .search-tools button:hover {
-    background: #DE1A1A;
+    color: #000;
+    background: #EFFFFA;
 }
 .search-tools #search-image {
     opacity: 0.4;
@@ -79,7 +102,8 @@ body {
 }
 .search-tools button.special {
     opacity: 1;
-    border: 1px solid #DE1A1A;
+    color: #EFFFFA;
+    border: 2px solid #DE1A1A;
     background: #DE1A1A;
     cursor: default;
 }
@@ -107,6 +131,9 @@ body {
     }
 }
 /* ----- GAMES DISPLAY -----*/
+#results {
+    margin: 0.75em;
+}
 .game-item {
     padding: 1em;
 }
