@@ -1,7 +1,7 @@
 
 # My Portfolio Website
 
-<img width="1021" alt="Screenshot 2024-03-29 at 9 51 53 PM" src="https://github.com/camposcreate/portfolio-site/assets/29357264/5bc486c0-b3e6-43f8-8a58-a6e7147dc8a9">
+<img width="1012" alt="Screenshot 2024-05-15 at 11 31 24 PM" src="https://github.com/camposcreate/portfolio-site/assets/29357264/717344ca-befd-42fd-8e6e-3f053cef4677">
 
 Welcome to my portfolio website repository! This project showcases my skills in web application development using Java/SpringBoot, HTML/CSS, and JavaScript. As I progress, I plan to continuosly introduce or improve existing features: all contained within this web application.
 
