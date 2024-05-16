@@ -310,7 +310,7 @@ nav ul li a:hover {
     margin-top: 1.75em;
 }
 .pulser::after {
-    animation: pulse 2s cubic-bezier(1.0, 0.7, 0.6, 0.9) infinite;
+    animation: pulse 1.8s cubic-bezier(1.0, 0.7, 0.6, 0.9) infinite;
 }
 @keyframes pulse {
     0% {
@@ -596,7 +596,7 @@ nav #close-menu {
          display: grid;
      }
      .column-1, .column-2, .column-3 {
-         padding-bottom: 50px;
+         padding-bottom: 42em;
          width: 300px;
          height: 650px;
      }
@@ -605,6 +605,10 @@ nav #close-menu {
      }
      .column1-layer h3, .column2-layer h3, .column3-layer h3 {
          text-align: left;
+     }
+     .pulser {
+         width: 50px;
+         height: 50px;
      }
      /*----Contact----*/
      .main-contact h2 {
