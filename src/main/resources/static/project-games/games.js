@@ -442,6 +442,7 @@ function skeletonAnimate() {
 // call function initially --> initial splash screen
 function recentlyReleasedGames() {
     skeletonAnimate();
+    document.getElementById("results").innerHTML = "Recently Released Video Games of 2024!";
     // delete any pre-existing data
     deleteGames();
     // GET request to backend endpoint
@@ -464,6 +465,7 @@ function recentlyReleasedGames() {
 
 function searchTopGames() {
     skeletonAnimate();
+    document.getElementById("results").innerHTML = "Top 50 Video Games of 2024!";
     // delete any pre-existing data
     deleteGames();
     deleteModalGame();

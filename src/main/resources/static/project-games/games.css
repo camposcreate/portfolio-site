@@ -29,7 +29,6 @@ body {
     background: none;
     z-index: 1;
     opacity: 0.6;
-    border-radius: 40%;
     padding-bottom: 1em;
     transform: rotate(9deg);
     margin: -11px;
@@ -135,10 +134,6 @@ body {
 /* ----- GAMES DISPLAY -----*/
 #results {
     margin: 0.75em;
-    opacity: 0;
-}
-#results.user-input {
-    opacity: 1;
 }
 .game-item {
     padding: 1em;

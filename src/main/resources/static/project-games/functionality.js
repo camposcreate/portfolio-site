@@ -28,12 +28,10 @@ input.addEventListener("keypress", function(event) {
 const buttonList = document.querySelectorAll('.search-tools button');
 const searchButton = document.querySelector('.search button');
 const searchImage = document.getElementById('search-image');
-const results = document.getElementById('results');
 buttonList.forEach(button => {
     button.addEventListener('click', () => {
         buttonList.forEach(btn => btn.classList.remove('special'));
         searchImage.classList.remove('special');
-        results.classList.remove('user-input');
         button.classList.add('special');
     });
 });
@@ -42,7 +40,6 @@ searchButton.addEventListener('click', () => {
         button.classList.remove('special');
     });
     searchImage.classList.add('special');
-    results.classList.add('user-input');
 });
 
 // reset the slider position
