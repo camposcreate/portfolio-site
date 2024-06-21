@@ -36,17 +36,15 @@ const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
 // function updates scroll progress bar
-/* DISABLED
 function updateProgressBar() {
     const documentHeight = document.documentElement.scrollHeight;
     const viewportHeight = window.innerHeight;
     const scrollProgress = window.scrollY / (documentHeight - viewportHeight);
     const progressBarWidth = scrollProgress * 100;
     const progressBar = document.querySelector('.filled');
-    progressBar.style.width = progressBarWidth + '%';
+    progressBar.style.height = progressBarWidth + '%';
 }
 window.addEventListener('scroll', updateProgressBar);
-*/
 
 // open/close side menu for mobile view
 function openmenu() {
