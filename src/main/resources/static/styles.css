@@ -12,15 +12,15 @@
  .progress-bar {
     position: fixed;
     width: 1px;
-    height: 75%;
+    height: 70%;
     top: 6em;
-    left: 1em;
+    left: 0.8em;
     z-index: 1;
  }
  .filled {
     width: 100%;
     height: 0%;
-    background-image: linear-gradient(to bottom, black, #d7e7e7);
+    background-image: linear-gradient(to bottom, black, #333, #d7e7e7);
     opacity: 0.8;
     border-radius: 10px;
  }
@@ -116,7 +116,7 @@ nav ul li a:hover {
 }
 .header-text {
     padding: 70px 20px;
-    margin-top: 5%;
+    margin-top: 7%;
 }
 .mobile-header-text {
     display: none;
@@ -131,6 +131,9 @@ nav ul li a:hover {
     color: #d7e7e7;
     font-size: 68px;
 }
+.header-description {
+    font-size: 62px;
+}
 .hero-block {
     position: absolute;
     width: auto;
@@ -143,16 +146,16 @@ nav ul li a:hover {
     display: flex;
     float: left;
     justify-content: flex-end;
-    padding-left: 4rem;
+    padding-left: 11.4rem;
     background-image: linear-gradient(to right, #662D8C, #9600F8);
     border-left: 1px solid rgba(94, 96, 96, .5);
 }
 .index-block {
     position: absolute;
     margin-top: 5%;
-    padding-top: 8%;
-    border-left: 1px solid rgba(255, 255, 255, .8);
-    z-index: -1;
+    padding-top: 7%;
+    left: 1.5rem;
+    border-left: 2px solid rgba(255, 255, 255, .9);
 }
 /* ------ VERTICAL NAV ------- */
 .vertical-nav {
@@ -231,7 +234,7 @@ nav ul li a:hover {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    background-color: rgba(8, 8, 8, 0.8);
+    background-color: rgba(5, 5, 5);
     height: 650px;
     padding: 15px 15px;
     border: 1px solid rgba(94, 96, 96, .2);
@@ -352,7 +355,7 @@ nav ul li a:hover {
   max-width: 800px;
   margin: 0 auto;
   text-align: left;
-  background: rgba(8, 8, 8, 0.8);
+  background: rgba(5, 5, 5);
   padding: 4% 6%;
   border-radius: 10px;
   border: 1px solid rgba(94, 96, 96, .2);
