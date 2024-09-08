@@ -4,84 +4,66 @@
     font-family: system-ui, sans-serif;
     box-sizing: border-box;
  }
- html {
-    scroll-behavior: smooth;
- }
- .progress-bar {
-    position: fixed;
-    width: 1px;
-    height: 70%;
-    top: 6em;
-    left: 0.8em;
-    z-index: 1;
- }
- .filled {
-    width: 100%;
-    height: 0%;
-    background-image: linear-gradient(to bottom, black, #333, #d7e7e7);
-    opacity: 0.8;
-    border-radius: 10px;
- }
- body {
-    background-color: #000000;
-    background-image: url('images/long.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100%;
- }
- #container-landscape {
-     display: none;
- }
- /* -- SCROLL ANIMATION -- */
- .hidden {
-     opacity: 0;
-     filter: blur(3px);
-     transform: translateX(-2%);
-     transition: all 0.7s;
- }
- .show {
-     opacity: 1;
-     filter: blur(0);
-     transform: translateX(0);
- }
- #nav-home {
-     opacity: 0;
-     filter: blur(3px);
-     transform: translateX(15%);
-     transition: all 0.7s;
- }
- #nav-home.visible {
-     opacity: 1;
-     transform: translateX(0);
-     filter: blur(0);
- }
- @media(prefers-reduces-motion) {
+body {
+    color: #d7e7e7;
+    background-color: #000;
+    font-weight: 300;
+}
+#container-landscape {
+    display: none;
+}
+/* -- SCROLL ANIMATION -- */
+.hidden {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateX(-2%);
+    transition: all 0.7s;
+}
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+#nav-home {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateX(15%);
+    transition: all 0.7s;
+}
+#nav-home.visible {
+    color: red;
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+}
+@media(prefers-reduces-motion) {
     .hidden {
         transition: none;
     }
- }
- #header {
+}
+#header {
     position: relative;
     width: 100%;
     height: 100vh;
     border-bottom: 1px solid rgba(94, 96, 96, .5);
- }
- .container {
+}
+.container {
     padding: 1% 6%;
     width: auto;
- }
+}
 nav {
     display: flex;
     position: fixed;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(8, 8, 8, 0.7);
+    background: rgba(8, 8, 8, 0.6);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     top: 0;
     left: 0;
     right: 0;
     padding: 0 40px;
+    border-bottom: 1px solid rgba(215, 231, 231, 0.5);
     z-index: 1;
 }
 .nav_logo {
@@ -120,17 +102,17 @@ nav ul li a:hover {
     display: none;
 }
 .header-text p {
-    color: #d7e7e7;
     margin-top: 2px;
     font-size: 14px;
     font-style: italic;
 }
 .header-text h1 {
-    color: #d7e7e7;
     font-size: 68px;
+    font-weight: 500;
 }
 .header-description {
     font-size: 62px;
+    font-weight: 500;
 }
 .hero-block {
     position: absolute;
@@ -139,6 +121,7 @@ nav ul li a:hover {
 }
 .hero-block h1 {
     font-size: 68px;
+    font-weight: 500;
 }
 .name-block {
     display: flex;
@@ -153,7 +136,7 @@ nav ul li a:hover {
     margin-top: 5%;
     padding-top: 7%;
     left: 1.5rem;
-    border-left: 2px solid rgba(255, 255, 255, .9);
+    border-left: 1px solid rgba(215, 231, 231, 0.5);
 }
 /* ------ VERTICAL NAV ------- */
 .vertical-nav {
@@ -165,8 +148,8 @@ nav ul li a:hover {
     margin-bottom: 22px;
 }
 .vertical-nav li a {
-    font-size: 22px;
     color: #d7e7e7;
+    font-size: 22px;
     text-decoration: none;
     border-bottom: 1px solid #d7e7e7;
 }
@@ -175,21 +158,21 @@ nav ul li a:hover {
 }
 /* ----------- ABOUT ------------*/
 .about {
-    background: #000;
     height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-size: contain;
-    border-bottom: 1px solid rgba(94, 96, 96, .5);
+    border-top: 1px solid rgba(215, 231, 231, 0.5);
+    border-bottom: 1px solid rgba(215, 231, 231, 0.5);
 }
 .about h1 {
-    color: #d7e7e7;
     font-size: 42px;
+    font-weight: 500;
 }
 .about h1 span {
     background-image: linear-gradient(to right, #662D8C, #9600F8);
-    padding-left: 2rem;
+    padding-left: 1.6rem;
 }
 /* -----------PORTFOLIO------------- */
 .main {
@@ -199,16 +182,15 @@ nav ul li a:hover {
     text-align: center;
     min-height: 100vh;
     padding-bottom: 400px;
-    border-bottom: 1px solid rgba(94, 96, 96, .5);
+    border-bottom: 1px solid rgba(215, 231, 231, 0.5);
 }
 .main h2 {
-    color: #d7e7e7;
-    padding-left: 130px;
-    font-size: 46px;
-    padding-top: 50px;
+    position: absolute;
+    font-size: 180px;
+    font-weight: 400;
+    z-index: -1;
 }
 .main p {
-    color: #d7e7e7;
     margin: 0 auto;
     font-size: 20px;
     text-align: left;
@@ -216,8 +198,7 @@ nav ul li a:hover {
 .row {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
-    margin: 0 auto;
+    margin: 8em auto;
 }
 .column-1, .column-2, .column-3 {
     flex: 1;
@@ -232,10 +213,10 @@ nav ul li a:hover {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    background-color: rgba(5, 5, 5);
+    background: rgba(8, 8, 8, 1);
     height: 650px;
     padding: 15px 15px;
-    border: 1px solid rgba(94, 96, 96, .2);
+    border: 1px solid rgba(215, 231, 231, 0.2);
     box-shadow: rgba(255, 255, 255, 0.05) 0px 10px 15px -3px, rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
 }
 .tile {
@@ -258,20 +239,20 @@ nav ul li a:hover {
 }
 /* OPACITY AND OPACITY COLOR LAYER FOR TILES */
 .tile::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 .tile:hover {
     transform: scale(1.05);
 }
 .column1-layer h3, .column2-layer h3, .column3-layer h3 {
     font-size: 20px;
-    color: #d7e7e7;
+    font-weight: 400;
     padding-top: 0.5em;
 }
 .column1-layer p {
@@ -288,49 +269,9 @@ nav ul li a:hover {
     padding-top: 1em;
     padding-bottom: 2.44em;
 }
-.pulser {
-    background: #B23BFF;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    border: none;
-    margin-top: 1.75em;
-}
-.pulser::after {
-    animation: pulse 1.8s cubic-bezier(1.0, 0.7, 0.6, 0.9) infinite;
-}
-@keyframes pulse {
-    0% {
-        opacity: 0;
-        transform: scale(0.1);
-    }
-    50% {
-        transform: scale(1.4);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
-}
-.pulser::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    background: #C162ff;
-}
-.pulser:hover {
-    background: #BC55FF;
-    opacity: 0.7;
-}
 /*----------- CONTACT ----------- */
 #contact {
-  padding: 30px 0;
+    border-top: 1px solid rgba(215, 231, 231, 0.5);
 }
 .contact-section {
     width: 100%;
@@ -343,33 +284,29 @@ nav ul li a:hover {
     text-align: center;
 }
 .main-contact h2 {
-    color: #d7e7e7;
-    padding-left: 130px;
-    font-size: 46px;
-    padding-top: 12px;
-    padding-bottom: 18px;
+    position: absolute;
+    font-size: 180px;
+    font-weight: 400;
+    z-index: -1;
 }
 .contact-container {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-  background: rgba(5, 5, 5);
-  padding: 4% 6%;
-  border-radius: 10px;
-  border: 1px solid rgba(94, 96, 96, .2);
-  box-shadow: rgba(255, 255, 255, 0.05) 0px 10px 15px -3px, rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
+    max-width: 800px;
+    margin: 8em auto;
+    text-align: left;
+    background: rgba(5, 5, 5);
+    padding: 4% 6%;
+    border-radius: 10px;
+    border: 1px solid rgba(215, 231, 231, 0.5);
+    box-shadow: rgba(255, 255, 255, 0.05) 0px 10px 15px -3px, rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
 }
 .contact-container span {
-    color: #d7e7e7;
     font-size: 12px;
 }
 .form-group {
-    color: #d7e7e7;
     margin-bottom: 20px;
 }
 label {
     display: block;
-    font-weight: bold;
     padding-bottom: 4px;
 }
 input, textarea {
@@ -401,7 +338,8 @@ button:hover {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgba(15, 15, 15, 0.9);
+    background-color: rgba(8, 8, 8, 0.6);
+    border-top: 1px solid rgba(215, 231, 231, 0.5);
     backdrop-filter: blur(26px);
 }
 .icons a {
