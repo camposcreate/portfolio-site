@@ -43,7 +43,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #111112;/*#060607;*/
+    background: #000;
     position: fixed;
     top: 0;
     left: 0;
@@ -204,7 +204,6 @@ nav ul li a:hover::after {
     color: #333;
     transition: background-color 0.3s ease;
     border-radius: 20px;
-    border: 2px solid #9b00ff; /*#333*/
     object-fit: cover;
     overflow: hidden;
     transition: transform 0.5s ease;
@@ -232,13 +231,12 @@ nav ul li a:hover::after {
 .tile:active {
     background-color: #fff;
 }
-/* work in progress header */
-.column1-layer h3{
+/* spaceman header */
+.column1-layer h3 {
     color: #bbe6e4;
-    /*color: #9b00ff;*/
     padding-top: 12px;
 }
-/* work in progress description */
+/* spaceman description */
 .column1-layer p {
     font-size: 17px;
     text-align: left;
@@ -295,15 +293,12 @@ nav ul li a:hover::after {
   padding-top: 50px;
 }
 .form-group {
-    color: #bbe6e4; /*#9b00ff;*/
+    color: #bbe6e4;
     margin-bottom: 20px;
 }
 label {
     display: block;
     font-weight: bold;
-    /*
-    text-decoration: underline;
-    text-decoration-color: #9b00ff; */
     padding-bottom: 4px;
 }
 input, textarea {
