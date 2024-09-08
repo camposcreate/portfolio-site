@@ -12,11 +12,13 @@
 </head>
 <!--HEADER + NAV BAR-->
 <body>
-<!---- PROGRESS BAR DISABLED ----
 <div class="progress-bar">
     <div class="filled"></div>
 </div>
---------------------------------->
+<div id="container-landscape">
+    <h1>Please rotate your device!<br/><span>We do not currently support landscape mode :/</span></h1>
+</div>
+<div id="container-portrait">
 <div id="header">
     <div class="container">
         <nav>
@@ -37,11 +39,11 @@
         <!------ HERO --------->
         <section id="home" class="hidden">
             <div class="header-text">
-                <h1>welcome to my <br>&nbsp;&nbsp;world of code <span class="less-than">&lt;</span><span>/&gt;</span></h1>
+                <h1>Welcome! <span class="header-description"><br>To My Portfolio.</span></h1>
                 <div class="hero-block">
-                    <div class="name-block"><h1>uriel.</h1></div>
+                    <div class="name-block"><h1>I'm Uriel.</h1></div>
                 </div>
-                <div class="index-block"><p>&nbsp;a full-time student based out of Texas</p></div>
+                <div class="index-block"><p>&nbsp;a computer science graduate based out of Texas.</p></div>
             </div>
             <!------ FOR MOBILE --------->
             <section class="hero">
@@ -51,7 +53,7 @@
                             <h1 class="welcome">welcome<br>to my<br>portfolio.</h1>
                             <h1><span class="uriel">uriel</span></h1>
                         </div>
-                        <div class="mobile-index-block"><p>a full-time student based out of Texas.</p></div>
+                        <div class="mobile-index-block"><p>a recent graduate based out of Texas</p></div>
                     </div>
                 </div>
             </section>
@@ -79,20 +81,26 @@
         <div class="main">
             <h2>portfolio</h2>
             <div class="row">
-                <!--<div class="column-1">
+                <div class="column-1">
                     <div class="block">
-                        <a href="#" class="tile">
-                            <img src="images/temp.png">
+                        <a href="project-games/games.html" class="tile">
+                            <img src="images/spaceman-main-screen.jpg">
                         </a>
-                        <div class="banner"></div>
                         <div class="column1-layer">
-                            <h3>work in progress</h3>
+                            <h3>Spaceman</h3>
                             <p>
-                                Currently under development. Specific details and purpose of the program have yet to be decided.
+                                Designed to search, explore, and learn more about video games.
+                                <br><br>
+                                Dive into curated lists, navigate seamlessly, and uncover your next gaming obsession.
+                                Rediscover your favorite classics or search for something new with spaceman.
+                                <br><br>
                             </p>
+                            <a href="project-games/games.html">
+                                <button class="pulser"></button>
+                            </a>
                         </div>
                     </div>
-                </div>-->
+                </div>
                 <div class="column-2">
                     <div class="block">
                         <a href="algorithm-visualizer/vis.html" class="tile">
@@ -105,12 +113,14 @@
                                 or DFS) traverse a 2-D grid.
                                 <br><br>This project provides an interactive way for users to
                                 understand and learn about algorithms.
-                                <br><br><span>Select the image above to explore.</span>
                             </p>
+                            <a href="algorithm-visualizer/vis.html">
+                                <button class="pulser"></button>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="column-3 hidden">
+                <div class="column-3">
                     <div class="block">
                         <a href="projects/task-manager/task-manager.html" class="tile">
                             <img src="images/task-compressed.jpg">
@@ -121,8 +131,10 @@
                                 A program designed to assist users in managing their tasks effectively.
                                 Users can create, prioritize, and delete their own tasks accordingly.
                                 <br><br>The program utilizes Java Oriented Programming to create objects represented as a user defined task.
-                                <br><br><span>Select the image above to try it now.</span>
                             </p>
+                            <a href="projects/task-manager/task-manager.html">
+                                <button class="pulser"></button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -165,6 +177,7 @@
     <a href="https://github.com/camposcreate" target="_blank">
         github
     </a>
+</div>
 </div>
 </body>
 </html>
