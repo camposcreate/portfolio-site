@@ -62,7 +62,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    padding: 0 40px;
+    padding: 0 20px;
     border-bottom: 1px solid rgba(215, 231, 231, 0.5);
     z-index: 1;
 }
@@ -80,62 +80,52 @@ nav ul {
     list-style: none;
 }
 nav ul li {
-    margin: 10px 12px;
+    margin: 14px;
 }
 nav ul li a {
-    color: #d7e7e7;
+    color: #a7caca;
     font-size: 18px;
     text-decoration: none;
-    border-bottom: 1px solid #d7e7e7;
+    padding: 6px;
+    border: 1px solid #a7caca;
+    border-radius: 2px;
 }
 nav ul li a:hover {
-    color: #a7caca;
+    color: #d7e7e7;
+    border: 1px solid #d7e7e7;
 }
 #portfolio-menu, #contact-menu {
     display: none;
 }
 .header-text {
-    padding: 70px 20px;
-    margin-top: 7%;
+    margin-top: 10%;
 }
 .mobile-header-text {
     display: none;
 }
-.header-text p {
-    margin-top: 2px;
-    font-size: 14px;
-    font-style: italic;
-}
 .header-text h1 {
-    font-size: 68px;
+    font-size: 72px;
     font-weight: 500;
-}
-.header-description {
-    font-size: 62px;
-    font-weight: 500;
+    font-style: italic;
+    line-height: 70px;
 }
 .hero-block {
     position: absolute;
     width: auto;
-    z-index: -1;
-}
-.hero-block h1 {
-    font-size: 68px;
-    font-weight: 500;
 }
 .name-block {
     display: flex;
-    float: left;
     justify-content: flex-end;
-    padding-left: 11.4rem;
+    padding-left: 5rem;
+    padding-right: 0.2rem;
     background-image: linear-gradient(to right, #662D8C, #9600F8);
     border-left: 1px solid rgba(94, 96, 96, .5);
 }
 .index-block {
     position: absolute;
-    margin-top: 5%;
-    padding-top: 7%;
-    left: 1.5rem;
+    padding-top: 2%;
+    font-style: italic;
+    left: 2rem;
     border-left: 1px solid rgba(215, 231, 231, 0.5);
 }
 /* ------ VERTICAL NAV ------- */
@@ -145,16 +135,20 @@ nav ul li a:hover {
     margin-top: 10%;
 }
 .vertical-nav li {
-    margin-bottom: 22px;
+    margin: 30px;
+    list-style: none;
 }
 .vertical-nav li a {
-    color: #d7e7e7;
-    font-size: 22px;
+    color: #a7caca;
+    font-size: 20px;
+    padding: 12px;
     text-decoration: none;
-    border-bottom: 1px solid #d7e7e7;
+    border: 1px solid #a7caca;
+    border-radius: 2px;
 }
 .vertical-nav li a:hover {
-    color: #a7caca;
+    color: #d7e7e7;
+    border: 1px solid #d7e7e7;
 }
 /* ----------- ABOUT ------------*/
 .about {
@@ -167,8 +161,9 @@ nav ul li a:hover {
     border-bottom: 1px solid rgba(215, 231, 231, 0.5);
 }
 .about h1 {
-    font-size: 42px;
+    font-size: 52px;
     font-weight: 500;
+    font-style: italic;
 }
 .about h1 span {
     background-image: linear-gradient(to right, #662D8C, #9600F8);
@@ -182,6 +177,7 @@ nav ul li a:hover {
     text-align: center;
     min-height: 100vh;
     padding-bottom: 400px;
+    border-top: 1px solid rgba(215, 231, 231, 0.5);
     border-bottom: 1px solid rgba(215, 231, 231, 0.5);
 }
 .main h2 {
@@ -198,7 +194,7 @@ nav ul li a:hover {
 .row {
     display: flex;
     justify-content: center;
-    margin: 8em auto;
+    margin: 9em auto;
 }
 .column-1, .column-2, .column-3 {
     flex: 1;
@@ -291,7 +287,7 @@ nav ul li a:hover {
 }
 .contact-container {
     max-width: 800px;
-    margin: 8em auto;
+    margin: 9em auto;
     text-align: left;
     background: rgba(5, 5, 5);
     padding: 4% 6%;
@@ -321,12 +317,12 @@ textarea {
     height: 100px;
 }
 button {
-    color: #d7e7e7;
+    color: #a7caca;
     background: rgba(15, 15, 15, 0.9);
     padding: 10px 18px;
-    border-radius: 18px;
+    border-radius: 2px;
     font-size: 16px;
-    border: 1px solid #d7e7e7;
+    border: 1px solid #a7caca;
     cursor: pointer;
 }
 button:hover {
