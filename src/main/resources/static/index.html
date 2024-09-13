@@ -6,6 +6,7 @@
     <title>Personal Portfolio Website</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" type="image/png" href="images/favicon-resized.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="script.js"></script>
     <script src="projects/task-manager/task-manager.js"></script>
 </head>
@@ -19,7 +20,7 @@
     <div class="container">
         <nav>
             <img src="images/navbar_logo.png" class="nav_logo">
-            <img src="images/logo_name.png" class="logo">
+            <h3 class="logo">open to work.</h3>
             <ul id="sidemenu">
                 <li id="nav-home" class="home"><a href="#header" class="nav-link home-link" onclick="closemenu()">&nbsp;HOME&nbsp;</a></li>
                 <li id="portfolio-menu"><a href="#portfolio-section" class="nav-link hidden" onclick="closemenu()">PROJECTS</a></li>
@@ -154,17 +155,19 @@
                     </div>
                     <button type="submit">send</button>
                 </form>
+                <div class="contact-buttons">
+                    <a href="https://www.linkedin.com/in/uriel-campos-a76838214/">
+                        <button class="linkedin"><i class="fa-brands fa-linkedin"></i> LinkedIn</button>
+                    </a>
+                    <a href="https://github.com/camposcreate" target="blank">
+                        <button class="github"><i class="fa-brands fa-github"></i> GitHub</button>
+                    </a>
+                </div>
                 <span id="message-pop-up"></span>
             </div>
         </div>
     </div>
 </section>
-<!-- RESUME AND GITHUB ICONS-->
-<div class="icons">
-    <a href="https://github.com/camposcreate" target="_blank">
-        github
-    </a>
-</div>
 </div>
 </body>
 </html>
