@@ -67,13 +67,15 @@ nav {
     z-index: 1;
 }
 .nav_logo {
-    width: 28px;
-    padding: 4px;
+    width: 3%;
+    padding: 0.2em;
     border-right: 1px solid rgba(215, 231, 231, 0.4);
 }
 .logo {
     margin-right: auto;
     margin-left: 1%;
+    font-weight: 300;
+    font-style: italic;
 }
 nav ul {
     display: flex;
@@ -287,7 +289,6 @@ nav ul li a:hover {
     justify-content: space-between;
     align-items: flex-start;
     width: 80%;
-    height: 76vh;
     margin: 9em auto;
     text-align: left;
     background-color: #050505;
@@ -300,16 +301,12 @@ nav ul li a:hover {
     font-size: 12px;
 }
 form {
-    flex: 1;
-    margin-right: 15%;
+    margin-right: 10%;
+    padding-right: 10%;
     border-right: 1px solid rgba(215, 231, 231, 0.4);
 }
-.form-group {
-    margin-bottom: 26.5em;
-}
 input, textarea {
-    position: absolute;
-    width: 40%;
+    width: 100%;
     font-size: 18px;
     padding: 0 12px;
     line-height: 40px;
@@ -318,61 +315,55 @@ input, textarea {
     border-radius: 2px;
     background: transparent;
     transition: 0.1s ease;
-    z-index: 1;
 }
-.label-name, .label-email, .label-subject, .label-message {
-    position: absolute;
+textarea {
+    height: auto;
+    resize: vertical;
+}
+label {
+    position: relative;
+    top: -32px;
+    left: 12px;
     color: rgba(215, 231, 231, 0.7);
-    padding: 0.2em;
-    margin: 8px 12px;
-    background: #050505;
     transition: 0.2s ease;
 }
-#email {
-    margin-top: 3.5em;
-}
-.label-email {
-    margin-top: 4.5em;
-}
-#subject {
-    margin-top: 7.25em;
-}
-.label-subject {
-    margin-top: 8.75em;
-}
-#description {
-    margin-top: 11.25em;
-}
-.label-message {
-    margin-top: 13.25em;
+#message {
+    top: -196px;
 }
 input:focus, input:valid,
 textarea:focus, textarea:valid {
     color: #d7e7e7;
-    border: 2px solid #d7e7e7;
+    border: 1px solid #B23BFF;
 }
-input:focus + .label-name,
-input:valid + .label-name,
-input:focus + .label-email,
-input:valid + .label-email,
-input:focus + .label-subject,
-input:valid + .label-subject,
-textarea:focus + .label-message,
-textarea:valid + .label-message {
+input:focus + label,
+input:valid + label {
     color: #d7e7e7;
-    height: 12px;
-    line-height: 12px;
-    transform: translate(-5px, -16px) scale(0.88);
+    background: #030303;
+    padding: 1%;
+    top: -52px;
+    left: 6px;
+    transform: scale(0.88);
+    z-index: 1;
+}
+textarea:focus + #message,
+textarea:valid + #message {
+    color: #d7e7e7;
+    background: #030303;
+    padding: 1%;
+    top: -216px;
+    left: 6px;
+    transform: scale(0.88);
     z-index: 1;
 }
 button {
     color: #a7caca;
     background: rgba(15, 15, 15, 0.9);
-    padding: 10px 18px;
+    padding: 10px 14px;
     border-radius: 2px;
-    font-size: 18px;
+    font-size: 16px;
     border: 1px solid rgba(215, 231, 231, 0.5);
     cursor: pointer;
+    white-space: nowrap;
 }
 button:hover {
     color: #030303;
@@ -380,12 +371,7 @@ button:hover {
     transition: 200ms;
 }
 .contact-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 25%;
-    margin-right: 10%;
+    margin-top: 160px;
 }
 .github {
     padding-right: 1.5em;
