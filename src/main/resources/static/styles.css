@@ -15,23 +15,19 @@ body {
 /* -- SCROLL ANIMATION -- */
 .hidden {
     opacity: 0;
-    filter: blur(3px);
     transform: translateX(-2%);
     transition: all 0.7s;
 }
 .show {
     opacity: 1;
-    filter: blur(0);
     transform: translateX(0);
 }
 #nav-home {
     opacity: 0;
-    filter: blur(3px);
     transform: translateX(15%);
     transition: all 0.7s;
 }
 #nav-home.visible {
-    color: red;
     opacity: 1;
     transform: translateX(0);
     filter: blur(0);
@@ -57,8 +53,8 @@ nav {
     align-items: center;
     justify-content: space-between;
     background: rgba(8, 8, 8, 0.6);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
     top: 0;
     left: 0;
     right: 0;
@@ -85,16 +81,16 @@ nav ul li {
     margin: 14px;
 }
 nav ul li a {
-    color: #a7caca;
+    color: #d7e7e7;
     font-size: 18px;
     text-decoration: none;
     padding: 6px;
-    border: 1px solid rgba(215, 231, 231, 0.4);
+    border: 1px solid #d7e7e7;
     border-radius: 2px;
 }
 nav ul li a:hover {
-    color: #d7e7e7;
-    border: 1px solid #d7e7e7;
+    color: rgba(215, 231, 231, 0.6);
+    border: 1px solid rgba(215, 231, 231, 0.6);
     transition: 200ms;
 }
 #portfolio-menu, #contact-menu {
@@ -130,6 +126,9 @@ nav ul li a:hover {
     left: 3rem;
     border-left: 1px solid rgba(215, 231, 231, 0.4);
 }
+.fa-location-dot {
+    color: #E05263;
+}
 /* ------ VERTICAL NAV ------- */
 .vertical-nav {
     padding: 0;
@@ -141,16 +140,16 @@ nav ul li a:hover {
     list-style: none;
 }
 .vertical-nav li a {
-    color: #a7caca;
+    color: #d7e7e7;
     font-size: 20px;
     padding: 12px;
     text-decoration: none;
-    border: 1px solid rgba(215, 231, 231, 0.5);
+    border: 1px solid #d7e7e7;
     border-radius: 2px;
 }
 .vertical-nav li a:hover {
-    color: #d7e7e7;
-    border: 1px solid #d7e7e7;
+    color: rgba(215, 231, 231, 0.6);
+    border: 1px solid rgba(215, 231, 231, 0.6);
     transition: 200ms;
 }
 /* ----------- ABOUT ------------*/
@@ -324,7 +323,7 @@ label {
     position: relative;
     top: -32px;
     left: 12px;
-    color: rgba(215, 231, 231, 0.7);
+    color: rgba(215, 231, 231, 0.6);
     transition: 0.2s ease;
 }
 #message {
@@ -333,7 +332,7 @@ label {
 input:focus, input:valid,
 textarea:focus, textarea:valid {
     color: #d7e7e7;
-    border: 1px solid #B23BFF;
+    border: 2px solid #d7e7e7;
 }
 input:focus + label,
 input:valid + label {
@@ -343,7 +342,6 @@ input:valid + label {
     top: -52px;
     left: 6px;
     transform: scale(0.88);
-    z-index: 1;
 }
 textarea:focus + #message,
 textarea:valid + #message {
@@ -353,10 +351,9 @@ textarea:valid + #message {
     top: -216px;
     left: 6px;
     transform: scale(0.88);
-    z-index: 1;
 }
 button {
-    color: #a7caca;
+    color: #d7e7e7;
     background: rgba(15, 15, 15, 0.9);
     padding: 10px 14px;
     border-radius: 2px;
