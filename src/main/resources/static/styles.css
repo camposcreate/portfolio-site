@@ -177,7 +177,6 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
-    min-height: 90vh;
     padding-bottom: 400px;
     border-top: 1px solid rgba(215, 231, 231, 0.4);
     border-bottom: 1px solid rgba(215, 231, 231, 0.4);
@@ -368,7 +367,8 @@ button:hover {
     transition: 200ms;
 }
 .contact-buttons {
-    margin-top: 160px;
+    margin-top: 10em;
+    padding-right: 2em;
 }
 .github {
     padding-right: 1.5em;
@@ -405,9 +405,6 @@ nav #close-menu {
     }
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
-    .progress-bar {
-        display: none;
-    }
     #container-landscape {
         display: none;
     }
@@ -420,7 +417,16 @@ nav #close-menu {
      }
     /* ----------- NAV --------*/
     nav {
-        padding: 5px 15px;
+        padding: 0px 10px;
+    }
+    .nav_logo {
+        width: 8%;
+        padding: 0.2em;
+    }
+    .logo {
+        font-size: 16px;
+        font-weight: 200;
+        font-style: italic;
     }
     nav #open-menu {
         display: block;
@@ -491,43 +497,43 @@ nav #close-menu {
      }
      /* -- DISPLAY MOBILE HERO -- */
      .hero {
-         height: 100vh;
+         width: 100%;
+         height: 90vh;
          display: flex;
          justify-content: left;
          align-items: flex-end;
          color: #d7e7e7;
-         padding-bottom: 25%;
+         padding-bottom: 15%;
      }
      .hero .hero-content {
          position: relative;
      }
      .mobile-header-text {
          display: flex;
-         flex-direction: column;
-         justify-content: flex-end;
-         align-items: flex-start;
-         position: absolute;
-         bottom: 0;
-         left: 0;
          color: #d7e7e7;
      }
      .welcome-text h1 {
-         font-size: 48px;
-         text-transform: uppercase;
          margin: 0;
+         font-size: 34px;
+         font-weight: 700;
      }
      .welcome {
-         margin-bottom: 150px;
-         border-bottom: 2px solid #d7e7e7;
+         border-bottom: 1px solid #d7e7e7;
      }
      .welcome-text h1 .uriel {
-         padding-left: 7rem;
+         float: right;
+         width: 100%;
+         padding: 0.15em;
+         font-style: italic;
          background-image: linear-gradient(to right, #662D8C, #9600F8);
+         z-index: -10;
      }
      .mobile-index-block {
          font-size: 14px;
-         border-left: 1px solid white;
-         padding-left: 10px;
+         line-height: 20px;
+         font-style: italic;
+         border-left: 1px solid #d7e7e7;
+         padding-left: 8px;
      }
      /* ------ VERTICAL NAV ------- */
      .vertical-nav {
@@ -539,43 +545,58 @@ nav #close-menu {
      }
      /* --- PORTFOLIO --- */
      .main {
-         padding-bottom: 125px;
+        padding-bottom: 25px;
      }
      .main h2 {
-         padding-left: 2rem;
-         font-size: 35px;
+        position: absolute;
+        margin: 0.5em auto;
+        font-size: 72px;
      }
      .main p {
-         font-size: 16px;
+        font-size: 16px;
      }
      .row {
-         display: grid;
+        display: grid;
+        margin: 7em auto;
      }
      .column-1, .column-2, .column-3 {
-         padding-bottom: 42em;
-         width: 300px;
-         height: 650px;
-     }
-     .tile {
-        background: #B23BFF;
+        margin-bottom: 20em;
+        width: 300px;
      }
      .column1-layer h3, .column2-layer h3, .column3-layer h3 {
          text-align: left;
      }
-     .pulser {
-         width: 50px;
-         height: 50px;
+     .block {
+         height: 575px;
+         padding: 15px 15px;
      }
-     /*----Contact----*/
+     /*---- CONTACT ----*/
      .main-contact h2 {
-         padding-left: 2rem;
-         font-size: 35px;
+         font-size: 72px;
      }
      .contact-container {
-       padding: 5%;
+         display: block;
+         width: 90%;
+         height: auto;
+         padding: 4% 2%;
+         margin: 6em auto;
      }
-     textarea {
-         width: 320px;
-         height: 100px;
+     form {
+         margin-right: 0%;
+         padding-right: 0%;
+         padding-bottom: 1em;
+         border-right: none;
+         border-bottom: 1px solid rgba(215, 231, 231, 0.5);
+     }
+     .contact-buttons {
+         margin-top: 1em;
+         padding-right: 0em;
+         text-align: center;
+     }
+     .github {
+         padding-right: 1.40em;
+     }
+     .contact-buttons button {
+         margin-right: 10px;
      }
 }
