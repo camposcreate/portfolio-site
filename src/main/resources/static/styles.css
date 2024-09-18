@@ -64,7 +64,7 @@ nav {
 }
 .nav_logo {
     width: 3%;
-    padding: 0.2em;
+    padding: 0.3em;
     border-right: 1px solid rgba(215, 231, 231, 0.4);
 }
 .logo {
@@ -200,11 +200,8 @@ nav ul li a:hover {
 .column-1, .column-2, .column-3 {
     flex: 1;
     padding: 10px;
-    width: 273px;
+    width: 263px;
     height: 300px;
-}
-.column-3 {
-    transition-delay: 200ms;
 }
 .block {
     position: relative;
@@ -232,15 +229,6 @@ nav ul li a:hover {
     object-fit: cover;
 }
 /* OPACITY AND OPACITY COLOR LAYER FOR TILES */
-.tile::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
 .tile:hover {
     transform: scale(1.05);
 }
@@ -296,7 +284,9 @@ nav ul li a:hover {
     box-shadow: rgba(255, 255, 255, 0.05) 0px 10px 15px -3px, rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
 }
 .contact-container span {
-    font-size: 12px;
+    font-size: 14px;
+    padding-left: 1em;
+    font-style: italic;
 }
 form {
     margin-right: 10%;
@@ -338,7 +328,7 @@ input:valid + label {
     color: #d7e7e7;
     background: #030303;
     padding: 1%;
-    top: -52px;
+    top: -56px;
     left: 6px;
     transform: scale(0.88);
 }
@@ -347,7 +337,7 @@ textarea:valid + #message {
     color: #d7e7e7;
     background: #030303;
     padding: 1%;
-    top: -216px;
+    top: -220px;
     left: 6px;
     transform: scale(0.88);
 }
@@ -417,128 +407,85 @@ nav #close-menu {
      }
     /* ----------- NAV --------*/
     nav {
-        padding: 0px 10px;
+        padding: 8px;
     }
     .nav_logo {
-        width: 8%;
-        padding: 0.2em;
+        width: 10%;
+        padding: 0.4em;
     }
     .logo {
-        font-size: 16px;
-        font-weight: 200;
-        font-style: italic;
-    }
-    nav #open-menu {
-        display: block;
-        padding: 5px 5px 0px 5px;
-        margin: 5px;
-        background-color: #0f0f0f;
-        border: 1px solid #d7e7e7;
-    }
-    nav #open-menu img {
-        padding: 15%;
-    }
-    nav #open-menu:hover {
-        background-color: #444;
-    }
-    nav #close-menu {
-        display: block;
-        background: #0f0f0f;
-        border: 2px solid #d7e7e7;
-        position: absolute;
-        padding: 5px 5px 0px 5px;
-        top: 15px;
-        left: 15px;
-    }
-    nav #close-menu:hover {
-        background-color: #444;
+        display: none;
     }
     nav #sidemenu {
-        display: block;
-        background: #0f0f0f;
         position: fixed;
-        top: 0;
         right: -150px;
-        width: 150px;
-        height: 100vh;
-        padding-top: 50px;
-        transition: right 0.5s;
-        z-index: 2;
     }
-    nav #sidemenu.menu-open {
-        right: 0;
+    /* -- SCROLL ANIMATION -- */
+    .hidden {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
     }
-    nav #sidemenu li {
-        display: block;
-        margin: 25px;
+    .show {
+        transform: translateX(0);
     }
-     /* -- SCROLL ANIMATION -- */
-     .hidden {
-         opacity: 1;
-         filter: blur(0);
-         transform: translateX(0);
-     }
-     .show {
-         transform: translateX(0);
-     }
-      #nav-home {
-          opacity: 1;
-          filter: blur(0);
-          transform: translateX(0);
-      }
-      #nav-home.visible {
-          opacity: 1;
-          transform: translateX(0);
-          filter: blur(0);
-      }
-     /* -- HIDE DESKTOP HERO -- */
-     .header-text {
-         display: none;
-     }
-     /* -- DISPLAY MOBILE HERO -- */
-     .hero {
-         width: 100%;
-         height: 90vh;
-         display: flex;
-         justify-content: left;
-         align-items: flex-end;
-         color: #d7e7e7;
-         padding-bottom: 15%;
-     }
-     .hero .hero-content {
-         position: relative;
-     }
-     .mobile-header-text {
-         display: flex;
-         color: #d7e7e7;
-     }
-     .welcome-text h1 {
-         margin: 0;
-         font-size: 34px;
-         font-weight: 700;
-     }
-     .welcome {
-         border-bottom: 1px solid #d7e7e7;
-     }
-     .welcome-text h1 .uriel {
-         float: right;
-         width: 100%;
-         padding: 0.15em;
-         font-style: italic;
-         background-image: linear-gradient(to right, #662D8C, #9600F8);
-         z-index: -10;
-     }
-     .mobile-index-block {
-         font-size: 14px;
-         line-height: 20px;
-         font-style: italic;
-         border-left: 1px solid #d7e7e7;
-         padding-left: 8px;
-     }
-     /* ------ VERTICAL NAV ------- */
-     .vertical-nav {
-         display: none;
-     }
+    #nav-home {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+    }
+    #nav-home.visible {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+    /* -- DISPLAY MOBILE HERO -- */
+    .header-text {
+        margin-top: 20%;
+    }
+    .header-text h1 {
+        font-size: 38px;
+        font-weight: 500;
+        line-height: 46px;
+    }
+    .name-block {
+        padding-left: 4rem;
+        margin-top: 5%;
+    }
+    .index-block {
+        padding-top: 5%;
+        font-style: italic;
+        left: 2rem;
+        border-left: 1px solid rgba(215, 231, 231, 0.4);
+    }
+    .fa-location-dot {
+        color: #E05263;
+    }
+    /* ------ VERTICAL NAV ------- */
+    .vertical-nav {
+        text-align: center;
+        margin-top: 30%;
+    }
+    .vertical-nav li {
+        margin: 35px 0 40px 0;
+    }
+    .vertical-nav li a {
+        color: #d7e7e7;
+        padding: 14px;
+        border: 1px solid #d7e7e7;
+    }
+    .vertical-nav .contact {
+        color: rgba(215, 231, 231, 0.9);
+        border: 1px solid rgba(215, 231, 231, 0.9);
+    }
+    .vertical-nav li a:hover {
+        color: #d7e7e7;
+        border: 1px solid #d7e7e7;
+    }
+    .vertical-nav .contact:hover {
+        color: rgba(215, 231, 231, 0.9);
+        border: 1px solid rgba(215, 231, 231, 0.9);
+    }
      /* ------ ABOUT ------- */
      #inspire {
         display: none;
@@ -561,7 +508,7 @@ nav #close-menu {
      }
      .column-1, .column-2, .column-3 {
         margin-bottom: 20em;
-        width: 300px;
+        width: 275px;
      }
      .column1-layer h3, .column2-layer h3, .column3-layer h3 {
          text-align: left;
@@ -589,12 +536,9 @@ nav #close-menu {
          border-bottom: 1px solid rgba(215, 231, 231, 0.5);
      }
      .contact-buttons {
-         margin-top: 1em;
+         margin-top: 1.25em;
          padding-right: 0em;
          text-align: center;
-     }
-     .github {
-         padding-right: 1.40em;
      }
      .contact-buttons button {
          margin-right: 10px;

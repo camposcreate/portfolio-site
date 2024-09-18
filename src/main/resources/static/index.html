@@ -22,16 +22,8 @@
             <img src="images/navbar_logo.png" class="nav_logo">
             <h3 class="logo">a self-developed web-application.</h3>
             <ul id="sidemenu">
-                <li id="nav-home" class="home"><a href="#header" class="nav-link home-link" onclick="closemenu()">&nbsp;HOME&nbsp;</a></li>
-                <li id="portfolio-menu"><a href="#portfolio-section" class="nav-link hidden" onclick="closemenu()">PROJECTS</a></li>
-                <li id="contact-menu"><a href="#contact-section" class="nav-link hidden" onclick="closemenu()">CONTACT</a></li>
-                <button id="close-menu" onclick="closemenu()">
-                    <img src="images/x.png" width="30">
-                </button>
+                <li id="nav-home" class="home"><a href="#header" class="nav-link home-link">&nbsp;HOME&nbsp;</a></li>
             </ul>
-            <button id="open-menu" onclick="openmenu()">
-                <img src="images/hamburger.png" width="30">
-            </button>
         </nav>
         <!------ HERO --------->
         <section id="home" class="hidden">
@@ -42,26 +34,13 @@
                 <h1>RECENT GRADUATE AND VETERAN COMING FROM WASHINGTON <i class="fa-solid fa-location-dot"></i></h1>
                 <div class="index-block"><p>&nbsp;the evergreen state.</p></div>
             </div>
-            <!------ FOR MOBILE --------->
-            <section class="hero">
-                <div class="hero-content">
-                    <div class="mobile-header-text">
-                        <div class="welcome-text">
-                            <h1 class="welcome">RECENT GRADUATE AND VETERAN COMING FROM WASHINGTON</h1>
-                            <h1><span class="uriel">URIEL CAMPOS</span></h1>
-                        </div>
-                        <div class="mobile-index-block">
-                            <p>Java.<br>JavaScript.<br>SpringBoot.</p></div>
-                    </div>
-                </div>
-            </section>
             <!----- VERTICAL NAV ----->
             <ul class="vertical-nav">
                 <li>
-                    <a href="#portfolio-section" class="nav-link hidden" onclick="closemenu()">PROJECTS</a>
+                    <a href="#portfolio-section">PROJECTS</a>
                 </li>
                 <li>
-                    <a href="#contact-section" class="nav-link hidden" onclick="closemenu()">CONTACT&nbsp;</a>
+                    <a href="#contact-section" class="contact">CONTACT</a>
                 </li>
             </ul>
         </section>
@@ -149,6 +128,7 @@
                         <label id="message">message</label>
                     </div>
                     <button type="submit" id="submit">Send</button>
+                    <span id="message-pop-up"></span>
                 </form>
                 <div class="contact-buttons">
                     <a href="https://www.linkedin.com/in/uriel-campos-a76838214" target="blank">
@@ -158,7 +138,6 @@
                         <button class="github"><i class="fa-brands fa-github"></i> GitHub</button>
                     </a>
                 </div>
-                <span id="message-pop-up"></span>
             </div>
         </div>
     </div>
