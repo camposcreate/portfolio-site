@@ -227,7 +227,6 @@ nav ul li a:hover {
     height: 650px;
     padding: 15px 15px;
     border: 1px solid rgba(215, 231, 231, 0.2);
-    box-shadow: rgba(215, 231, 231, 0.10) 0px 9px 15px -3px, rgba(215, 231, 231, 0.10) 0px 2px 6px -2px;
 }
 .tile {
     position: relative;
@@ -237,7 +236,7 @@ nav ul li a:hover {
     border: 2px solid #B23BFF;
     object-fit: cover;
     overflow: hidden;
-    transition: transform 200ms ease;
+    transition: transform 300ms ease;
 }
 .tile img {
     max-width: 100%;
@@ -249,13 +248,13 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 .column1-layer h3, .column2-layer h3, .column3-layer h3 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
     padding-top: 0.5em;
 }
 .column1-layer p, .column2-layer p, .column3-layer p {
     font-size: 16px;
-    padding-top: 0.75em;
+    padding-top: 0.60em;
 }
 /*----------- CONTACT ----------- */
 #contact {
