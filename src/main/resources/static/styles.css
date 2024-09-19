@@ -64,14 +64,16 @@ nav {
 }
 .nav_logo {
     width: 3%;
-    padding: 0.3em;
+    padding-right: 0.5em;
     border-right: 1px solid rgba(215, 231, 231, 0.4);
 }
 .logo {
+    color: rgba(215, 231, 231, 0.9);
     margin-right: auto;
     margin-left: 1%;
     font-weight: 300;
     font-style: italic;
+    font-size: 16px;
 }
 nav ul {
     display: flex;
@@ -89,8 +91,8 @@ nav ul li a {
     border-radius: 2px;
 }
 nav ul li a:hover {
-    color: rgba(215, 231, 231, 0.6);
-    border: 1px solid rgba(215, 231, 231, 0.6);
+    color: rgba(215, 231, 231, 0.7);
+    border: 1px solid rgba(215, 231, 231, 0.7);
     transition: 200ms;
 }
 #portfolio-menu, #contact-menu {
@@ -117,7 +119,7 @@ nav ul li a:hover {
     justify-content: flex-end;
     padding-left: 5rem;
     padding-right: 0.2rem;
-    background-image: linear-gradient(to right, #662D8C, #9600F8);
+    background-image: linear-gradient(to right, #662D8C, #B23BFF);
 }
 .index-block {
     position: absolute;
@@ -132,11 +134,11 @@ nav ul li a:hover {
 /* ------ VERTICAL NAV ------- */
 .vertical-nav {
     padding: 0;
-    text-align: right;
+    text-align: left;
     margin-top: 10%;
 }
 .vertical-nav li {
-    margin: 30px;
+    margin: 2em;
     list-style: none;
 }
 .vertical-nav li a {
@@ -147,10 +149,19 @@ nav ul li a:hover {
     border: 1px solid #d7e7e7;
     border-radius: 2px;
 }
+.vertical-nav li .contact {
+    color: #030303;
+    background: #d7e7e7;
+    border: 1px solid transparent;
+}
 .vertical-nav li a:hover {
-    color: rgba(215, 231, 231, 0.6);
-    border: 1px solid rgba(215, 231, 231, 0.6);
-    transition: 200ms;
+    color: rgba(215, 231, 231, 0.7);
+    border: 1px solid rgba(215, 231, 231, 0.7);
+    transition: 300ms;
+}
+.vertical-nav li .contact:hover {
+    color: #030303;
+    background: rgba(215, 231, 231, 0.9);
 }
 /* ----------- ABOUT ------------*/
 .about {
@@ -168,7 +179,7 @@ nav ul li a:hover {
     font-style: italic;
 }
 .about h1 span {
-    background-image: linear-gradient(to right, #662D8C, #9600F8);
+    background-image: linear-gradient(to right, #662D8C, #B23BFF);
     padding-left: 1.6rem;
 }
 /* -----------PORTFOLIO------------- */
@@ -184,22 +195,24 @@ nav ul li a:hover {
 .main h2 {
     position: absolute;
     font-size: 180px;
-    font-weight: 400;
+    font-weight: 500;
     z-index: -1;
 }
 .main p {
     margin: 0 auto;
     font-size: 20px;
     text-align: left;
+    color: rgba(215, 231, 231, 0.7);
+    line-height: 18px;
 }
 .row {
     display: flex;
     justify-content: center;
-    margin: 9em auto;
+    margin: 8em auto;
 }
 .column-1, .column-2, .column-3 {
     flex: 1;
-    padding: 10px;
+    padding: 0.5em;
     width: 263px;
     height: 300px;
 }
@@ -233,23 +246,13 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 .column1-layer h3, .column2-layer h3, .column3-layer h3 {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 500;
     padding-top: 0.5em;
 }
-.column1-layer p {
+.column1-layer p, .column2-layer p, .column3-layer p {
     font-size: 16px;
-    padding-top: 1em;
-    padding-bottom: 1.2em;
-}
-.column2-layer p {
-    font-size: 16px;
-    padding-top: 1em;
-}
-.column3-layer p {
-    font-size: 16px;
-    padding-top: 1em;
-    padding-bottom: 2.44em;
+    padding-top: 0.75em;
 }
 /*----------- CONTACT ----------- */
 #contact {
@@ -267,7 +270,7 @@ nav ul li a:hover {
 .main-contact h2 {
     position: absolute;
     font-size: 180px;
-    font-weight: 400;
+    font-weight: 500;
     z-index: -1;
 }
 .contact-container {
@@ -343,28 +346,26 @@ textarea:valid + #message {
 }
 button {
     color: #d7e7e7;
-    background: rgba(15, 15, 15, 0.9);
+    background: #030303;
     padding: 10px 14px;
     border-radius: 2px;
-    font-size: 16px;
-    border: 1px solid rgba(215, 231, 231, 0.5);
+    font-size: 18px;
+    border: 1px solid #d7e7e7;;
     cursor: pointer;
     white-space: nowrap;
 }
-button:hover {
-    color: #030303;
-    background: #d7e7e7;
-    transition: 200ms;
-}
 .contact-buttons {
-    margin-top: 10em;
-    padding-right: 2em;
-}
-.github {
+    margin-top: 9em;
     padding-right: 1.5em;
+    text-align: center;
 }
-.contact-buttons button {
-    margin-bottom: 18px;
+.linkedin {
+    margin-bottom: 1em;
+}
+button:hover {
+    color: rgba(215, 231, 231, 0.7);
+    border: 1px solid rgba(215, 231, 231, 0.7);
+    transition: 300ms;
 }
 /*--------CSS for Small Screens--------*/
 nav #open-menu {
