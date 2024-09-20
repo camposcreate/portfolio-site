@@ -442,7 +442,7 @@ nav #close-menu {
         transform: translateX(0);
         filter: blur(0);
     }
-    /* -- DISPLAY MOBILE HERO -- */
+    /*--- DISPLAY MOBILE HERO ---*/
     .header-text {
         margin-top: 20%;
     }
