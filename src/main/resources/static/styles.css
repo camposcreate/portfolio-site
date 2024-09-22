@@ -94,8 +94,8 @@ nav ul li a {
     border-radius: 2px;
 }
 nav ul li a:hover {
-    color: rgba(215, 231, 231, 0.7);
-    border: 1px solid rgba(215, 231, 231, 0.7);
+    color: #030303;
+    background: #d7e7e7;
     transition: 200ms;
 }
 #portfolio-menu, #contact-menu {
@@ -158,9 +158,9 @@ nav ul li a:hover {
     border: 1px solid transparent;
 }
 .vertical-nav li a:hover {
-    color: rgba(215, 231, 231, 0.7);
-    border: 1px solid rgba(215, 231, 231, 0.7);
-    transition: 300ms;
+    color: #030303;
+    background: #d7e7e7;
+    transition: 200ms;
 }
 .vertical-nav li .contact:hover {
     color: #030303;
@@ -198,7 +198,8 @@ nav ul li a:hover {
 .main h2 {
     position: absolute;
     font-size: 180px;
-    font-weight: 500;
+    font-weight: 400;
+    color: rgba(215, 231, 231, 0.8);
     z-index: -1;
 }
 .main p {
@@ -272,7 +273,8 @@ nav ul li a:hover {
 .main-contact h2 {
     position: absolute;
     font-size: 180px;
-    font-weight: 500;
+    font-weight: 400;
+    color: rgba(215, 231, 231, 0.8);
     z-index: -1;
 }
 .contact-container {
@@ -365,9 +367,9 @@ button {
     margin-bottom: 1em;
 }
 button:hover {
-    color: rgba(215, 231, 231, 0.7);
-    border: 1px solid rgba(215, 231, 231, 0.7);
-    transition: 300ms;
+    color: #030303;
+    background: #d7e7e7;
+    transition: 200ms;
 }
 /*--------CSS for Small Screens--------*/
 nav #open-menu {
@@ -385,13 +387,16 @@ nav #close-menu {
         align-items: center;
         height: 100vh;
         text-align: center;
+        line-height: 26px;
     }
     #container-landscape > h1 {
         font-size: 36px;
+        font-weight: 500;
     }
     #container-landscape > h1 > span {
         font-size: 24px;
-        color: yellow;
+        font-weight: 300;
+        color: #B23BFF
     }
     #container-portrait {
         display: none;
@@ -473,6 +478,7 @@ nav #close-menu {
         color: #d7e7e7;
         padding: 14px;
         border: 1px solid #d7e7e7;
+        transition: 2s;
     }
     .vertical-nav .contact {
         color: rgba(215, 231, 231, 0.9);
@@ -480,6 +486,7 @@ nav #close-menu {
     }
     .vertical-nav li a:hover {
         color: #d7e7e7;
+        background: #030303;
         border: 1px solid #d7e7e7;
     }
     .vertical-nav .contact:hover {
@@ -491,11 +498,11 @@ nav #close-menu {
      }
      /* --- PORTFOLIO --- */
      .main {
-        padding-bottom: 25px;
+        padding-bottom: 20px;
      }
      .main h2 {
         position: absolute;
-        margin: 0.5em auto;
+        margin: 0.6em auto;
         font-size: 72px;
      }
      .main p {
@@ -510,7 +517,7 @@ nav #close-menu {
         width: 275px;
      }
      .column1-layer h3, .column2-layer h3, .column3-layer h3 {
-         text-align: left;
+         text-align: center;
      }
      .block {
          height: 575px;
@@ -541,5 +548,10 @@ nav #close-menu {
      }
      .contact-buttons button {
          margin-right: 10px;
+     }
+     button:hover {
+         color: #d7e7e7;
+         background: #030303;
+         border: 1px solid #d7e7e7;
      }
 }
