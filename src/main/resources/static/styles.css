@@ -102,16 +102,10 @@ nav ul li a:hover {
     display: none;
 }
 .header-text {
-    margin-top: 10%;
+    margin-top: 8%;
 }
 .mobile-header-text {
     display: none;
-}
-.header-text h1 {
-    font-size: 72px;
-    font-weight: 500;
-    font-style: italic;
-    line-height: 70px;
 }
 .hero-block {
     position: absolute;
@@ -124,15 +118,28 @@ nav ul li a:hover {
     padding-right: 0.2rem;
     background-image: linear-gradient(to right, #662D8C, #B23BFF);
 }
+.header-text h1 {
+    font-size: 70px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 68px;
+}
+.header-text > h1 {
+    font-size: 68px;
+    font-weight: 400;
+    line-height: 68px;
+    margin-top: 0.15em;
+}
 .index-block {
     position: absolute;
-    padding-top: 1%;
+    padding-top: 1.5em;
     font-style: italic;
-    left: 3rem;
+    left: 3em;
     border-left: 1px solid rgba(215, 231, 231, 0.4);
 }
 .fa-location-dot {
-    color: #E05263;
+    font-size: 64px;
+    color: #d7e7e7;
 }
 /* ------ VERTICAL NAV ------- */
 .vertical-nav {
@@ -165,6 +172,42 @@ nav ul li a:hover {
 .vertical-nav li .contact:hover {
     color: #030303;
     background: rgba(215, 231, 231, 0.9);
+}
+/* ----------- BADGES ------------*/
+.badge-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(215, 231, 231, 0.8);
+}
+.badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.badge {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 10em;
+    height: 8em;
+    margin: 1.75em 2em;
+    border-radius: 20px;
+    border: 1px solid rgba(215, 231, 231, 0.4);
+}
+.badge i {
+    margin-bottom: 0.25em;
+}
+.badge p {
+    margin-top: 0.25em;
+    font-style: italic;
+}
+.fa-check {
+    margin-top: 1em;
+    color: #B23BFF;
+    font-size: 18px;
 }
 /* ----------- ABOUT ------------*/
 .about {
@@ -199,7 +242,7 @@ nav ul li a:hover {
     position: absolute;
     font-size: 180px;
     font-weight: 400;
-    color: rgba(215, 231, 231, 0.8);
+    color: rgba(215, 231, 231, 0.9);
     z-index: -1;
 }
 .main p {
@@ -274,7 +317,7 @@ nav ul li a:hover {
     position: absolute;
     font-size: 180px;
     font-weight: 400;
-    color: rgba(215, 231, 231, 0.8);
+    color: rgba(215, 231, 231, 0.9);
     z-index: -1;
 }
 .contact-container {
@@ -451,28 +494,34 @@ nav #close-menu {
     .header-text {
         margin-top: 20%;
     }
+    .name-block {
+        padding-left: 4rem;
+        margin-top: 5%;
+    }
     .header-text h1 {
         font-size: 38px;
         font-weight: 500;
         line-height: 46px;
     }
-    .name-block {
-        padding-left: 4rem;
-        margin-top: 5%;
+    .header-text > h1 {
+        font-size: 38px;
+        font-weight: 400;
+        line-height: 40px;
+        margin-top: 0.1em;
     }
     .index-block {
-        padding-top: 5%;
+        padding-top: 1em;
         font-style: italic;
         left: 2rem;
         border-left: 1px solid rgba(215, 231, 231, 0.4);
     }
     .fa-location-dot {
-        color: #E05263;
+        font-size: 34px;
     }
     /* ------ VERTICAL NAV ------- */
     .vertical-nav {
         text-align: center;
-        margin-top: 30%;
+        margin-top: 25%;
     }
     .vertical-nav li a {
         color: #d7e7e7;
@@ -492,66 +541,81 @@ nav #close-menu {
     .vertical-nav .contact:hover {
         background: #d7e7e7;
     }
-     /* ------ ABOUT ------- */
-     #inspire {
+    /* ----------- BADGES ------------*/
+    .badge {
+        width: 8em;
+        height: 8em;
+        margin: 1em 1em;
+    }
+    .badge h4 {
+        font-size: 14px;
+    }
+    .badge p {
+        margin-top: 0.25em;
+    }
+    .fa-check {
+        margin-top: 0.5em;
+    }
+    /* ------ ABOUT ------- */
+    #inspire {
         display: none;
-     }
-     /* --- PORTFOLIO --- */
-     .main {
+    }
+    /* --- PORTFOLIO --- */
+    .main {
         padding-bottom: 20px;
-     }
-     .main h2 {
+    }
+    .main h2 {
         position: absolute;
         margin: 0.6em auto;
         font-size: 72px;
-     }
-     .main p {
+    }
+    .main p {
         font-size: 16px;
-     }
-     .row {
+    }
+    .row {
         display: grid;
         margin: 6em auto;
-     }
-     .column-1, .column-2, .column-3 {
+    }
+    .column-1, .column-2, .column-3 {
         margin-bottom: 20em;
         width: 275px;
-     }
-     .column1-layer h3, .column2-layer h3, .column3-layer h3 {
-         text-align: center;
-     }
-     .block {
-         height: 575px;
-         padding: 15px 15px;
-     }
-     /*---- CONTACT ----*/
-     .main-contact h2 {
-         font-size: 72px;
-         margin-top: 0.5em;
-     }
-     .contact-container {
-         display: block;
-         width: 90%;
-         padding: 4% 2%;
-         margin: 6em auto;
-     }
-     form {
-         margin-right: 0%;
-         padding-right: 0%;
-         padding-bottom: 1em;
-         border-right: none;
-         border-bottom: 1px solid rgba(215, 231, 231, 0.5);
-     }
-     .contact-buttons {
-         margin-top: 1.25em;
-         padding-right: 0em;
-         text-align: center;
-     }
-     .contact-buttons button {
-         margin-right: 10px;
-     }
-     button:hover {
-         color: #d7e7e7;
-         background: #030303;
-         border: 1px solid #d7e7e7;
-     }
+    }
+    .column1-layer h3, .column2-layer h3, .column3-layer h3 {
+        text-align: center;
+    }
+    .block {
+        height: 575px;
+        padding: 15px 15px;
+    }
+    /*---- CONTACT ----*/
+    .main-contact h2 {
+        font-size: 72px;
+        margin-top: 0.5em;
+    }
+    .contact-container {
+        display: block;
+        width: 90%;
+        padding: 4% 2%;
+        margin: 6em auto;
+    }
+    form {
+        margin-right: 0%;
+        padding-right: 0%;
+        padding-bottom: 1em;
+        border-right: none;
+        border-bottom: 1px solid rgba(215, 231, 231, 0.5);
+    }
+    .contact-buttons {
+        margin-top: 1.25em;
+        padding-right: 0em;
+        text-align: center;
+    }
+    .contact-buttons button {
+        margin-right: 10px;
+    }
+    button:hover {
+        color: #d7e7e7;
+        background: #030303;
+        border: 1px solid #d7e7e7;
+    }
 }
