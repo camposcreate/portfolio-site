@@ -66,14 +66,14 @@ nav {
     z-index: 1;
 }
 .nav_logo {
-    width: 3%;
+    width: 32px;
     padding-right: 0.5em;
     border-right: 1px solid rgba(215, 231, 231, 0.4);
 }
 .logo {
-    color: rgba(215, 231, 231, 0.9);
+    color: rgba(215, 231, 231, 1);
     margin-right: auto;
-    margin-left: 1%;
+    margin-left: 0.75em;
     font-weight: 300;
     font-style: italic;
     font-size: 16px;
@@ -110,50 +110,41 @@ nav ul li a:hover {
 .hero-block {
     position: absolute;
     width: auto;
+    border-bottom: 2px solid white;
 }
 .name-block {
     display: flex;
     justify-content: flex-end;
-    padding-left: 5rem;
-    padding-right: 0.2rem;
-    background-image: linear-gradient(to right, #662D8C, #B23BFF);
+    padding-left: 4rem;
+    background-image: linear-gradient(to right, #B23BFF, #662D8C);
 }
 .header-text h1 {
-    font-size: 70px;
+    font-size: 54px;
     font-weight: 500;
-    font-style: italic;
-    line-height: 68px;
+    background: #000;
 }
 .header-text > h1 {
-    font-size: 62px;
+    font-size: 48px;
     font-weight: 400;
-    line-height: 62px;
-    margin-top: 0.15em;
-}
-.index-block {
-    position: absolute;
-    padding-top: 1em;
-    font-style: italic;
-    left: 2em;
-    border-left: 1px solid rgba(215, 231, 231, 0.4);
+    line-height: 52px;
+    margin-top: 0.25em;
 }
 .fa-location-dot {
-    font-size: 58px;
+    font-size: 42px;
     color: #d7e7e7;
 }
 /* ------ VERTICAL NAV ------- */
 .vertical-nav {
     padding: 0;
     text-align: left;
-    margin-top: 10%;
+    margin-top: 2em;
 }
 .vertical-nav li {
-    margin: 2em;
     list-style: none;
 }
 .vertical-nav li a {
     color: #d7e7e7;
-    font-size: 20px;
+    font-size: 18px;
     padding: 12px;
     text-decoration: none;
     border: 1px solid #d7e7e7;
@@ -178,7 +169,6 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgba(215, 231, 231, 0.8);
 }
 .badge-group {
     display: flex;
@@ -193,21 +183,31 @@ nav ul li a:hover {
     text-align: center;
     width: 10em;
     height: 8em;
-    margin: 1.75em 2em;
-    border-radius: 20px;
+    margin: 8em 2em;
+    border-radius: 10px;
     border: 1px solid rgba(215, 231, 231, 0.4);
+    box-shadow: rgba(178, 59, 255, 0.2) -5px 5px,
+                rgba(178, 59, 255, 0.15) -15px 15px,
+                rgba(178, 59, 255, 0.1) -20px 20px;
 }
 .badge i {
     margin-bottom: 0.25em;
+    color: rgba(215, 231, 231, 0.9);
+}
+.badge h4 {
+    color: rgba(215, 231, 231, 0.9);
 }
 .badge p {
     margin-top: 0.25em;
     font-style: italic;
+    color: rgba(215, 231, 231, 0.7);
 }
 .fa-check {
     margin-top: 1em;
-    color: #B23BFF;
     font-size: 18px;
+}
+.badge:hover > .fa-check {
+    color: #B23BFF;
 }
 /* ----------- ABOUT ------------*/
 .about {
@@ -220,7 +220,7 @@ nav ul li a:hover {
     border-bottom: 1px solid rgba(215, 231, 231, 0.4);
 }
 .about h1 {
-    font-size: 52px;
+    font-size: 48px;
     font-weight: 500;
     font-style: italic;
 }
@@ -461,8 +461,7 @@ nav #close-menu {
         padding: 8px;
     }
     .nav_logo {
-        width: 10%;
-        padding: 0.4em;
+        width: 2em;
     }
     .logo {
         display: none;
@@ -490,36 +489,29 @@ nav #close-menu {
         transform: translateX(0);
         filter: blur(0);
     }
-    /*--- DISPLAY MOBILE HERO ---*/
+    /*--- MOBILE HERO ---*/
     .header-text {
         margin-top: 14%;
     }
     .name-block {
-        padding-left: 4rem;
+        padding-left: 2em;
         margin-top: 5%;
     }
     .header-text h1 {
-        font-size: 36px;
+        font-size: 40px;
         line-height: 42px;
     }
     .header-text > h1 {
-        font-size: 28px;
-        line-height: 32px;
-        margin-top: 0.1em;
-    }
-    .index-block {
-        padding-top: 0.5em;
-        font-style: italic;
-        left: 2rem;
-        border-left: 1px solid rgba(215, 231, 231, 0.4);
+        font-size: 32px;
+        line-height: 28px;
     }
     .fa-location-dot {
-        font-size: 28px;
+        font-size: 26px;
     }
     /* ------ VERTICAL NAV ------- */
     .vertical-nav {
         text-align: center;
-        margin-top: 25%;
+        margin: 3em;
     }
     .vertical-nav li a {
         color: #d7e7e7;
