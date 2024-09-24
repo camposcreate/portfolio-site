@@ -186,9 +186,6 @@ nav ul li a:hover {
     margin: 8em 2em;
     border-radius: 10px;
     border: 1px solid rgba(215, 231, 231, 0.4);
-    box-shadow: rgba(178, 59, 255, 0.2) -5px 5px,
-                rgba(178, 59, 255, 0.15) -15px 15px,
-                rgba(178, 59, 255, 0.1) -20px 20px;
 }
 .badge i {
     margin-bottom: 0.25em;
