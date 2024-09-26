@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function(){
             console.log('Success!', response)
             msg.innerHTML = ""
-        },2000) // 4 secs
+        },2000) // 2 secs
         form.reset()
       })
       .catch(error => console.error('Error!', error.message));
