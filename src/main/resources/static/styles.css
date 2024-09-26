@@ -580,22 +580,19 @@ nav #close-menu {
         margin-top: 5em;
     }
     .vertical-nav li a {
-        color: #d7e7e7;
         padding: 14px;
-        border: 1px solid #d7e7e7;
-        transition: 2s;
     }
     .vertical-nav .contact {
         color: rgba(215, 231, 231, 0.9);
         border: 1px solid rgba(215, 231, 231, 0.9);
     }
     .vertical-nav li a:hover {
-        color: #d7e7e7;
+        color: #3C9AE2;
         background: #030303;
-        border: 1px solid #d7e7e7;
+        border: 1px solid #3C9AE2;
     }
     .vertical-nav .contact:hover {
-        background: #d7e7e7;
+        background: #3C9AE2;
     }
     /* ------ ABOUT ------- */
     #inspire {
