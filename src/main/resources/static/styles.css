@@ -153,6 +153,7 @@ nav ul li a:hover {
     margin: 4em 1em;
     border-radius: 10px;
     border: 1px solid rgba(215, 231, 231, 0.4);
+    background-color: #030303;
 }
 .badge:nth-child(1) {
     animation: float 14s infinite;
@@ -233,32 +234,32 @@ nav ul li a:hover {
     list-style: none;
 }
 .vertical-nav li a {
-    color: #d7e7e7;
+    color: #3C9AE2;
     font-size: 18px;
     padding: 12px;
     text-decoration: none;
-    border: 1px solid #d7e7e7;
+    border: 1px solid #3C9AE2;
     border-radius: 2px;
 }
 .vertical-nav li .contact {
     color: #030303;
-    background: #d7e7e7;
+    background: #3C9AE2;
     border: 1px solid transparent;
 }
 .vertical-nav p {
     color: rgba(215, 231, 231, 0.6);
     margin: 2em 0;
     font-style: italic;
-    font-size: 12px;
+    font-size: 14px;
 }
 .vertical-nav li a:hover {
     color: #030303;
-    background: #d7e7e7;
+    background: #4EA3E4;
     transition: 200ms;
 }
 .vertical-nav li .contact:hover {
     color: #030303;
-    background: rgba(215, 231, 231, 0.9);
+    background: #4EA3E4;
 }
 /* ----------- ABOUT ------------*/
 .about {
@@ -268,6 +269,7 @@ nav ul li a:hover {
     align-items: center;
     border-top: 1px solid rgba(215, 231, 231, 0.4);
     border-bottom: 1px solid rgba(215, 231, 231, 0.4);
+    background-color: #030303;
 }
 .about h1 {
     font-size: 48px;
