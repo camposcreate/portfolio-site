@@ -71,12 +71,12 @@ nav {
     border-right: 1px solid rgba(215, 231, 231, 0.4);
 }
 .logo {
-    color: rgba(215, 231, 231, 1);
+    color: rgba(215, 231, 231, 0.9);
     margin-right: auto;
     margin-left: 0.75em;
     font-weight: 300;
     font-style: italic;
-    font-size: 16px;
+    font-size: 14px;
 }
 nav ul {
     display: flex;
@@ -102,67 +102,34 @@ nav ul li a:hover {
     display: none;
 }
 .header-text {
-    margin-top: 8%;
+    margin-top: 3em;
 }
 .mobile-header-text {
     display: none;
 }
 .hero-block {
-    position: absolute;
     width: auto;
-    border-bottom: 2px solid white;
 }
 .name-block {
     display: flex;
-    justify-content: flex-end;
-    padding-left: 4rem;
-    background-image: linear-gradient(to right, #B23BFF, #662D8C);
+    justify-content: center;
+    background: -webkit-linear-gradient(#d7e7e7, #B23BFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .header-text h1 {
-    font-size: 54px;
+    font-size: 58px;
     font-weight: 500;
-    background: #000;
+    text-align: center;
 }
 .header-text > h1 {
-    font-size: 48px;
+    font-size: 38px;
     font-weight: 400;
-    line-height: 52px;
-    margin-top: 0.25em;
+    line-height: 42px;
+    white-space: nowrap;
 }
 .fa-location-dot {
-    font-size: 42px;
     color: #d7e7e7;
-}
-/* ------ VERTICAL NAV ------- */
-.vertical-nav {
-    padding: 0;
-    text-align: left;
-    margin-top: 2em;
-}
-.vertical-nav li {
-    list-style: none;
-}
-.vertical-nav li a {
-    color: #d7e7e7;
-    font-size: 18px;
-    padding: 12px;
-    text-decoration: none;
-    border: 1px solid #d7e7e7;
-    border-radius: 2px;
-}
-.vertical-nav li .contact {
-    color: #030303;
-    background: #d7e7e7;
-    border: 1px solid transparent;
-}
-.vertical-nav li a:hover {
-    color: #030303;
-    background: #d7e7e7;
-    transition: 200ms;
-}
-.vertical-nav li .contact:hover {
-    color: #030303;
-    background: rgba(215, 231, 231, 0.9);
 }
 /* ----------- BADGES ------------*/
 .badge-container {
@@ -183,9 +150,60 @@ nav ul li a:hover {
     text-align: center;
     width: 10em;
     height: 8em;
-    margin: 8em 2em;
+    margin: 4em 1em;
     border-radius: 10px;
     border: 1px solid rgba(215, 231, 231, 0.4);
+}
+.badge:nth-child(1) {
+    animation: float 14s infinite;
+    transition: ease 1s;
+}
+.badge:nth-child(2) {
+    animation: float1 13s infinite;
+    transition: ease 1s;
+}
+.badge:nth-child(3) {
+    animation: float2 15s infinite;
+    transition: ease 1s;
+}
+@keyframes float {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(5%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes float1 {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(-5%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes float2 {
+    0% {
+        transform: translateY(0%);
+    }
+    25% {
+        transform: translateY(2%);
+    }
+    50% {
+        transform: translateY(0%);
+    }
+    75% {
+        transform: translateY(-7%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 .badge i {
     margin-bottom: 0.25em;
@@ -193,18 +211,54 @@ nav ul li a:hover {
 }
 .badge h4 {
     color: rgba(215, 231, 231, 0.9);
+    font-weight: 500;
 }
 .badge p {
     margin-top: 0.25em;
     font-style: italic;
     color: rgba(215, 231, 231, 0.7);
 }
-.fa-check {
+.badge > .fa-check {
     margin-top: 1em;
     font-size: 18px;
-}
-.badge:hover > .fa-check {
     color: #B23BFF;
+}
+/* ------ VERTICAL NAV ------- */
+.vertical-nav {
+    padding: 0;
+    text-align: center;
+    margin-top: 1em;
+}
+.vertical-nav li {
+    list-style: none;
+}
+.vertical-nav li a {
+    color: #d7e7e7;
+    font-size: 18px;
+    padding: 12px;
+    text-decoration: none;
+    border: 1px solid #d7e7e7;
+    border-radius: 2px;
+}
+.vertical-nav li .contact {
+    color: #030303;
+    background: #d7e7e7;
+    border: 1px solid transparent;
+}
+.vertical-nav p {
+    color: rgba(215, 231, 231, 0.6);
+    margin: 2em 0;
+    font-style: italic;
+    font-size: 12px;
+}
+.vertical-nav li a:hover {
+    color: #030303;
+    background: #d7e7e7;
+    transition: 200ms;
+}
+.vertical-nav li .contact:hover {
+    color: #030303;
+    background: rgba(215, 231, 231, 0.9);
 }
 /* ----------- ABOUT ------------*/
 .about {
@@ -212,7 +266,6 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: contain;
     border-top: 1px solid rgba(215, 231, 231, 0.4);
     border-bottom: 1px solid rgba(215, 231, 231, 0.4);
 }
@@ -459,6 +512,7 @@ nav #close-menu {
     }
     .nav_logo {
         width: 2em;
+        border-right: none;
     }
     .logo {
         display: none;
@@ -488,27 +542,40 @@ nav #close-menu {
     }
     /*--- MOBILE HERO ---*/
     .header-text {
-        margin-top: 14%;
+        margin-top: 4em;
     }
     .name-block {
-        padding-left: 2em;
-        margin-top: 5%;
+        justify-content: center;
     }
     .header-text h1 {
         font-size: 40px;
         line-height: 42px;
+        text-align: center;
     }
     .header-text > h1 {
-        font-size: 32px;
-        line-height: 28px;
+        font-size: 24px;
+        line-height: 24px;
+        font-weight: 300;
     }
     .fa-location-dot {
-        font-size: 26px;
+        font-size: 24px;
+    }
+    /* ----------- BADGES ------------*/
+    .badge {
+        width: 8em;
+        height: 8em;
+        margin: 1em 0.25em;
+    }
+    .badge h4, li {
+        font-size: 14px;
+    }
+    .badge p {
+        font-size: 12px;
     }
     /* ------ VERTICAL NAV ------- */
     .vertical-nav {
         text-align: center;
-        margin: 3em;
+        margin-top: 5em;
     }
     .vertical-nav li a {
         color: #d7e7e7;
@@ -527,21 +594,6 @@ nav #close-menu {
     }
     .vertical-nav .contact:hover {
         background: #d7e7e7;
-    }
-    /* ----------- BADGES ------------*/
-    .badge {
-        width: 8em;
-        height: 8em;
-        margin: 1em 1em;
-    }
-    .badge h4 {
-        font-size: 14px;
-    }
-    .badge p {
-        margin-top: 0.25em;
-    }
-    .fa-check {
-        margin-top: 0.5em;
     }
     /* ------ ABOUT ------- */
     #inspire {
