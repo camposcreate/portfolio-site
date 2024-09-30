@@ -67,6 +67,7 @@ nav {
 }
 .nav_logo {
     width: 32px;
+    height: 23px;
     padding-right: 0.5em;
     border-right: 1px solid rgba(215, 231, 231, 0.4);
 }
@@ -121,10 +122,11 @@ nav ul li a:hover {
     font-weight: 500;
     text-align: center;
 }
-.header-text > h1 {
+.header-text h2 {
     font-size: 38px;
     font-weight: 400;
     line-height: 38px;
+    text-align: center;
     white-space: nowrap;
 }
 /* ----------- BADGES ------------*/
@@ -205,9 +207,10 @@ nav ul li a:hover {
     margin-bottom: 0.25em;
     color: rgba(215, 231, 231, 0.8);
 }
-.badge h4 {
+.badge h3 {
     color: rgba(215, 231, 231, 0.9);
     font-weight: 500;
+    font-size: 16px;
 }
 .badge p {
     margin-top: 0.25em;
@@ -241,11 +244,12 @@ nav ul li a:hover {
     background: #d7e7e7;
     border: 1px solid transparent;
 }
-.vertical-nav p {
+.hero-buttons p {
     color: rgba(215, 231, 231, 0.6);
     margin: 2em 0;
     font-style: italic;
     font-size: 14px;
+    text-align: center;
 }
 .vertical-nav li a:hover {
     color: #030303;
@@ -412,7 +416,7 @@ label {
     position: relative;
     top: -32px;
     left: 12px;
-    color: rgba(215, 231, 231, 0.6);
+    color: rgba(215, 231, 231, 0.7);
     transition: 0.2s ease;
 }
 #message {
@@ -458,6 +462,10 @@ button {
 }
 .linkedin {
     margin-bottom: 1em;
+    padding: 0.75em;
+}
+.github {
+    padding: 0.75em;
 }
 button:hover {
     color: #030303;
@@ -504,7 +512,8 @@ button:hover {
         padding: 8px;
     }
     .nav_logo {
-        width: 2em;
+        width: 32px;
+        height: 23px;
         border-right: none;
     }
     .logo {
@@ -545,7 +554,7 @@ button:hover {
         line-height: 42px;
         text-align: center;
     }
-    .header-text > h1 {
+    .header-text h2 {
         font-size: 24px;
         line-height: 24px;
         font-weight: 300;
@@ -559,7 +568,7 @@ button:hover {
         height: 8em;
         margin: 1em 0.25em;
     }
-    .badge h4, li {
+    .badge h3, li {
         font-size: 14px;
     }
     .badge p {
@@ -618,6 +627,10 @@ button:hover {
     }
     .block:hover {
         border: 1px solid rgba(215, 231, 231, 0.2);
+    }
+    .tile img {
+        width: 225px;
+        height: 225px;
     }
     /*---- CONTACT ----*/
     .main-contact h2 {
