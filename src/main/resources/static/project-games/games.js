@@ -1,8 +1,6 @@
 const modal = document.querySelector('#game-window');
-let initialGameData;
-var similarGameData;
 const similarGamesContainer = document.querySelector('.modal-similar-games');
-var inputName = "";
+let similarGameData;
 
 // embed videos to modal
 function addVideosToModal(videos) {
@@ -20,6 +18,7 @@ function addVideosToModal(videos) {
         videoContainer.appendChild(iframe);
     });
 }
+
 // if user uses 'esc' key
 const EscapePressed = ()  => {
     // clear previous data
@@ -32,6 +31,7 @@ const EscapePressed = ()  => {
 };
 const onEscapePress = (event) => event.key === 'Escape' && EscapePressed();
 document.addEventListener('keydown', onEscapePress);
+
 // close modal --> clear data
 function closeModalClick() {
     modal.close();
@@ -47,12 +47,14 @@ function closeModalClick() {
 
 // game click behavior --> open modal w/ data
 // modalGameData = array of objects
-function openModal(modalGameData) {
+function openModal(game, modalGameData) {
     // disable body scroll
     document.body.classList.add('modal-open');
 
     // set cover/title/genre/release/developer/rating/summary data
     const image = document.querySelector('.modal-image');
+    const initialGameData = game;
+
     if (initialGameData.cover != null) {
         image.setAttribute('src', initialGameData.cover);
     } else {
@@ -121,7 +123,7 @@ function openModal(modalGameData) {
     } else {
         // clear previous data
         similarGamesContainer.innerHTML = '';
-        console.error('similarGameData is not an array:', similarGameData);
+        console.error('not an array:', similarGameData);
     }
     modal.showModal();
 }
@@ -133,7 +135,7 @@ function deleteModalGame() {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Error clearing moodal data: ' + response.status);
+            throw new Error('Error clearing modal data: ' + response.status);
         }
     })
     .catch(error => {
@@ -168,7 +170,6 @@ async function createSimilarGameObjects(similar) {
             body: JSON.stringify(similar)
         })
         .then(response => {
-            // console.log('Response:', response);
             if (!response.ok) {
                 throw new Error('Error adding game: ' + response.status);
             }
@@ -179,7 +180,6 @@ async function createSimilarGameObjects(similar) {
             similarGameData = data;
         })
         .catch(error => {
-            // handle errors if any
             console.error(error);
         });
     } catch (error) {
@@ -188,7 +188,7 @@ async function createSimilarGameObjects(similar) {
 }
 
 // add game objects to list
-async function addModalData(modalGameDataArray) {
+async function addModalData(game, modalGameDataArray) {
     try {
         // array of response
         const gameModalArray = [];
@@ -240,7 +240,7 @@ async function addModalData(modalGameDataArray) {
         })
         .then(data => {
             // games added successfully --> update modal
-            openModal(data);
+            openModal(game, data);
         })
         .catch(error => {
             // handle errors if any
@@ -252,7 +252,7 @@ async function addModalData(modalGameDataArray) {
 }
 
 // search similar games list w/ id
-async function searchModalData(gameID) {
+async function searchModalData(game, gameID) {
     try {
         // GET request to backend endpoint
         await fetch(`/games/searchModalData?id=${encodeURIComponent(gameID)}`)
@@ -266,7 +266,7 @@ async function searchModalData(gameID) {
             })
             .then(data => {
                 // handle data
-                addModalData(data);
+                addModalData(game, data);
             })
             .catch(error => {
                 // handle error
@@ -277,17 +277,17 @@ async function searchModalData(gameID) {
   }
 }
 
-// upon game click --> fetch (by id) additional modal data -->
+// upon game click --> fetch (by id) additional modal data
 function fetchModalData(game) {
     return function () {
-        initialGameData = game;
-        searchModalData(game.id);
+        searchModalData(game, game.id);
     }
 }
-// modify cover image url for resizing t_logo_med
+
+// modify cover image url for resizing
 function editCoverImageURL(url) {
     if (url) {
-        const baseURL = "//images.igdb.com/igdb/image/upload/t_cover_big/";
+        const baseURL = "//images.igdb.com/igdb/image/upload/t_cover_small_2x/";
         const parts = url.split('/');
         const extension = parts[parts.length - 1];
         return baseURL + extension;
@@ -355,16 +355,9 @@ function addGameData(games) {
         const coverURL = cover ? cover.url : "";
         const platformName = platforms ? platforms.map(platform => platform.name) : ["Platform Unavailable"];
         const genreName = genres ? genres.map(genre => genre.name) : ["Genre Unavailable"];
-        /*const artworkURL = artworks ? artworks.map(art => art.url) : [];*/
         const ratings = rating ? rating : "";
         const devName = involved_companies && involved_companies.length > 0
             ? involved_companies.map(dev => dev.company.name) : ["Information Unavailable"];
-
-        /* retrieve last artwork image element
-        let artworkSelect = 0;
-        if (artworkURL > 0) {
-            artworkSelect = artworkURL.length - 1;
-        }*/
 
         // reconstruct cover image url (for results screen)
         let newCoverURL = "";
@@ -379,9 +372,7 @@ function addGameData(games) {
             cover: newCoverURL,
             platform: platformName,
             genres: genreName,
-            /*artwork: artworkURL,*/
             rating: ratings,
-            /*artNumber: artworkSelect*/
             developer: devName
         };
         // push object
@@ -397,7 +388,6 @@ function addGameData(games) {
         body: JSON.stringify(gameArray)
     })
     .then(response => {
-        //console.log('Response:', response);
         if (!response.ok) {
             throw new Error('Error adding game: ' + response.status);
         }
@@ -408,12 +398,11 @@ function addGameData(games) {
         updateGamesDisplay(data);
     })
     .catch(error => {
-        // handle errors if any
         console.error(error);
     });
 }
 
-// skeleton animation --> four empty containers
+// skeleton animation
 function skeletonAnimate() {
     const gameDisplay = document.getElementById('game-display');
     gameDisplay.innerHTML = '';
@@ -439,11 +428,10 @@ function skeletonAnimate() {
     }
 }
 
-// call function initially --> initial splash screen
+// populate initial splash screen
 function recentlyReleasedGames() {
     skeletonAnimate();
     document.getElementById("results").innerHTML = "Recently Released Video Games of 2024!";
-    // delete any pre-existing data
     deleteGames();
     // GET request to backend endpoint
     fetch('/games/searchRecentGames')
@@ -490,14 +478,13 @@ function searchTopGames() {
 // send user input to backend
 function searchGame() {
     skeletonAnimate();
-    inputName = document.getElementById('game-input').value.trim();
+    const inputName = document.getElementById('game-input').value.trim();
     document.getElementById("results").innerHTML = "Results for... " + "\""+inputName+"\"";
     // validate input field is not empty
     if (!inputName) {
         alert('Invalid input! Please enter a video game title.');
         return;
     }
-    // delete any pre-existing data
     deleteGames();
     // GET request to backend endpoint
     fetch(`/games/search?name=${encodeURIComponent(inputName)}`)

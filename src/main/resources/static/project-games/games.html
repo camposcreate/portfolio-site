@@ -2,29 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Video Game Search Web-Application">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPACEMAN</title>
+    <title>SPACEMAN - Search and Explore Video Games</title>
     <link rel="stylesheet" href="games.css">
     <link rel="shortcut icon" type="image/png" href="../images/favicon-resized.png">
 </head>
 <body>
     <button onclick="scrollUp()" id="scrollUp">
-        <img src="../images/man-logo.png">
+        <img src="../images/man-logo.png" width="65" alt="scroll up logo">
     </button>
     <img src="../images/spaceman-large.png"
          srcset="../images/spaceman-mini.png 400w,
                  ../images/spaceman-small.png 600w,
                  ../images/spaceman-medium.png 1200w,
                  ../images/spaceman-large.png 1900w"
-         id="spaceman" draggable="false">
+         id="spaceman" draggable="false" alt="Spaceman logo">
     <div class="search">
-        <input type="text" id="game-input" placeholder="...wicked man kept searching" required>
-        <button id="search-button" onclick="searchGame()">search</button>
+        <input type="text" id="game-input" placeholder="...search your favorites" required>
+        <button id="search-button" onclick="searchGame()">SEARCH</button>
     </div>
     <div class="search-tools">
-        <button onclick="recentlyReleasedGames()" class="special">Recently Released</button>
-        <button onclick="searchTopGames()">Top 50</button>
-        <img id="search-image" src="../images/mini.png" draggable="false">
+        <button onclick="recentlyReleasedGames()" class="special">RECENTLY RELEASED</button>
+        <button onclick="searchTopGames()">TOP 50 HIGHEST RATED</button>
+        <img id="search-image" src="../images/mini.png" draggable="false" alt="mini spaceman logo">
     </div>
     <!-- DISPLAY GAMES -->
     <h2 id="results">Games</h2>
@@ -36,12 +37,12 @@
     <dialog class="game-window" id="game-window">
         <nav>
             <button class="close-modal" onclick="closeModalClick()">
-                <img src="../images/x.png" width="30">
+                <img src="../images/x.png" alt="exit modal">
             </button>
         </nav>
         <div class="first-container">
-            <img class="modal-image">
-            <div clas="second-container">
+            <img class="modal-image" alt="Cover Art">
+            <div class="second-container">
                 <p class="modal-title"></p>
                 <p class="modal-developer"></p>
                 <p class="modal-genre"></p>
