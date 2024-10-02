@@ -232,7 +232,6 @@ async function addModalData(game, modalGameDataArray) {
             body: JSON.stringify(gameModalArray)
         })
         .then(response => {
-            console.log('Response:', response);
             if (!response.ok) {
                 throw new Error('Error adding game: ' + response.status);
             }
