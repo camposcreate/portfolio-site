@@ -55,3 +55,11 @@ document.addEventListener('DOMContentLoaded', function () {
       .catch(error => console.error('Error!', error.message));
   });
 });
+
+function copyToClipBoard() {
+    var copyEmail = document.getElementById("copy-email");
+    copyEmail.select();
+    copyEmail.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(copyEmail.value);
+}

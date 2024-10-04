@@ -443,15 +443,22 @@ button {
     white-space: nowrap;
 }
 .contact-buttons {
-    margin-top: 9em;
+    margin-top: 8em;
     padding-right: 1.5em;
     text-align: center;
+}
+.contact-buttons input, .contact-buttons label {
+    display: none;
 }
 .linkedin {
     margin-bottom: 1em;
     padding: 0.75em;
 }
 .github {
+    padding: 0.75em;
+    margin-bottom: 1em;
+}
+.email {
     padding: 0.75em;
 }
 button:hover {
