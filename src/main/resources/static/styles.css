@@ -91,9 +91,10 @@ nav ul li a:hover {
     display: none;
 }
 #home {
-    margin-top: 4em;
+    padding-top: 2em;
 }
 .hero-block {
+    margin-top: 3em;
     width: auto;
 }
 .name-block {
@@ -146,7 +147,7 @@ nav ul li a:hover {
     height: 8em;
     margin: 4em 1em;
     border-radius: 10px;
-    border: 1px solid rgba(178, 59, 255, 0.5);
+    border: 2px solid rgba(215, 231, 231, 0.8);
 }
 .badge:nth-child(1) {
     animation: float 11s infinite alternate;
@@ -189,7 +190,11 @@ nav ul li a:hover {
     color: rgba(215, 231, 231, 0.9);
 }
 .badge h3 {
-    color: rgba(215, 231, 231, 1);
+    background-image: linear-gradient(to right, #ffa751, #B23BFF);
+    background-clip: text;
+    background-size: 400%;
+    color: transparent;
+    animation: text-animation 10s infinite alternate;
     font-weight: 500;
     font-size: 1rem;
 }
