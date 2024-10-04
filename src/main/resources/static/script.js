@@ -61,5 +61,15 @@ function copyToClipBoard() {
     copyEmail.select();
     copyEmail.setSelectionRange(0, 99999);
 
+    var emailButton = document.querySelector(".email");
+    emailButton.textContent = "Copied!";
+    emailButton.classList.add("copied");
+
     navigator.clipboard.writeText(copyEmail.value);
+
+    setTimeout(function() {
+        emailButton.innerHTML = '<i class="fa-regular fa-clone"></i> Email';
+        emailButton.classList.remove("copied");
+    }, 1500);
 }
+

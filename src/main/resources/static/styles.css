@@ -69,15 +69,15 @@ nav ul {
     list-style: none;
 }
 nav ul li {
-    margin: 14px;
+    margin: 15px 6px;
 }
 nav ul li a {
     color: #d7e7e7;
     font-size: 18px;
     text-decoration: none;
-    padding: 6px;
+    padding: 8px;
     border: 1px solid #d7e7e7;
-    border-radius: 2px;
+    border-radius: 980px;
 }
 nav ul li a:hover {
     color: #030303;
@@ -87,11 +87,11 @@ nav ul li a:hover {
 #portfolio-menu, #contact-menu {
     display: none;
 }
-.header-text {
-    margin-top: 4em;
-}
 .mobile-header-text {
     display: none;
+}
+#home {
+    margin-top: 4em;
 }
 .hero-block {
     width: auto;
@@ -99,7 +99,7 @@ nav ul li a:hover {
 .name-block {
     display: flex;
     justify-content: center;
-    background-image: linear-gradient(to right, #d7e7e7, #B23BFF);
+    background-image: linear-gradient(to right, #ffa751, #B23BFF);
     background-clip: text;
     background-size: 400%;
     color: transparent;
@@ -214,10 +214,11 @@ nav ul li a:hover {
     color: #d7e7e7;
     font-size: 1rem;
     font-weight: 400;
-    padding: 12px;
+    padding: 14px;
+    margin: 2px;
     text-decoration: none;
     border: 1px solid #d7e7e7;
-    border-radius: 2px;
+    border-radius: 980px;
 }
 .vertical-nav li .contact {
     color: #030303;
@@ -435,8 +436,8 @@ textarea:valid + #message {
 button {
     color: #d7e7e7;
     background: #030303;
-    padding: 10px 14px;
-    border-radius: 2px;
+    padding: 10px 16px;
+    border-radius: 980px;
     font-size: 18px;
     border: 1px solid #d7e7e7;;
     cursor: pointer;
@@ -452,19 +453,23 @@ button {
 }
 .linkedin {
     margin-bottom: 1em;
-    padding: 0.75em;
+    padding: 0.75em 1.05em;
 }
 .github {
-    padding: 0.75em;
+    padding: 0.75em 1.3em;
     margin-bottom: 1em;
 }
 .email {
-    padding: 0.75em;
+    padding: 0.75em 1.67em;
+}
+.email.copied {
+    background: #d7e7e7;
+    color: #030303;
 }
 button:hover {
     color: #030303;
     background: #d7e7e7;
-    transition: 200ms;
+    transition: background 200ms ease;
 }
 .main-contact p {
     text-align: center;
@@ -515,9 +520,7 @@ button:hover {
         padding: 8px;
     }
     .nav_logo {
-        width: 32px;
-        height: 23px;
-        border-right: none;
+        width: 1.75em;
     }
     .logo {
         display: none;
@@ -563,7 +566,7 @@ button:hover {
         font-weight: 300;
     }
     .fa-location-dot {
-        font-size: 1em;
+        font-size: 0.9em;
     }
     /* ----------- BADGES ------------*/
     .badge {
@@ -580,7 +583,7 @@ button:hover {
     /* ------ VERTICAL NAV ------- */
     .vertical-nav {
         text-align: center;
-        margin-top: 5em;
+        margin-top: 4em;
     }
     .vertical-nav li a {
         padding: 14px;
