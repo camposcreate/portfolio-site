@@ -100,10 +100,11 @@ nav ul li a:hover {
 .name-block {
     display: flex;
     justify-content: center;
-    background-image: linear-gradient(to right, #B23BFF, #ffa751);
+    background-image: linear-gradient(to right, #d9a7c7, #B23BFF);
     background-clip: text;
     background-size: 200%;
     color: transparent;
+    animation: background-animation 18s infinite alternate;
 }
 .header-text h1 {
     font-size: 5em;
@@ -141,13 +142,13 @@ nav ul li a:hover {
     border: 2px solid rgba(215, 231, 231, 0.8);
 }
 .badge:nth-child(1) {
-    animation: float 11s infinite alternate;
+    animation: float 12s infinite alternate;
 }
 .badge:nth-child(2) {
-    animation: float1 8s infinite alternate;
+    animation: float1 9s infinite alternate;
 }
 .badge:nth-child(3) {
-    animation: float2 10s infinite alternate;
+    animation: float2 11s infinite alternate;
 }
 @keyframes float {
     0% {
@@ -178,7 +179,7 @@ nav ul li a:hover {
 }
 .badge i {
     margin-bottom: 0.25em;
-    color: rgba(215, 231, 231, 0.9);
+    color: rgba(215, 231, 231, 0.8);
 }
 .badge h3 {
     font-weight: 500;
@@ -191,6 +192,7 @@ nav ul li a:hover {
 }
 .badge > .fa-check {
     margin-top: 1.25em;
+    color: #B23BFF;
 }
 /* ------ VERTICAL NAV ------- */
 .vertical-nav {
@@ -210,7 +212,7 @@ nav ul li a:hover {
     text-decoration: none;
     border: 2px solid rgba(215, 231, 231, 0.1);
     box-shadow: 0 0 0 2px transparent;
-    background-image: linear-gradient(45deg, #fceabb, #f8b500);
+    background-image: linear-gradient(to right, #d9a7c7, #fffcdc);
     background-clip: text;
     border-radius: 980px;
     background-size: 200%;
@@ -222,10 +224,10 @@ nav ul li a:hover {
 }
 @keyframes border-animation {
     0% {
-        box-shadow: 0 0 0 2px #fceabb;
+        box-shadow: 0 0 0 2px #d9a7c7;
     }
     100% {
-        box-shadow: 0 0 0 2px #f8b500;
+        box-shadow: 0 0 0 2px #fffcdc;
     }
 }
 @keyframes background-animation {
@@ -238,14 +240,13 @@ nav ul li a:hover {
 }
 .hero-buttons p {
     color: rgba(215, 231, 231, 0.6);
-    margin: 2em 0;
+    margin: 2.5em 0;
     font-style: italic;
     font-size: 0.8rem;
     text-align: center;
 }
 .vertical-nav li a:hover {
     animation: border-animation 5s infinite alternate;
-    transition: 200ms ease;
 }
 .vertical-nav li .contact:hover {
     border: 2px solid transparent;
@@ -538,7 +539,7 @@ button:hover {
         position: fixed;
         right: -150px;
     }
-    /* -- SCROLL ANIMATION -- */
+    /* ---- SCROLL ANIMATION ---- */
     .hidden {
         opacity: 1;
         filter: blur(0);
@@ -559,7 +560,7 @@ button:hover {
     }
     /* ---- MOBILE HERO ---- */
     .header-text {
-        margin-top: 4em;
+        margin-top: 3.5em;
     }
     .name-block {
         justify-content: center;
@@ -579,15 +580,15 @@ button:hover {
     }
     /* ----------- BADGES ------------*/
     .badge {
-        width: 8em;
-        height: 8em;
+        width: 8.5em;
+        height: 8.5em;
         margin: 1em 0.25em;
     }
     .badge h3, li {
         font-size: 14px;
     }
     .badge p {
-        font-size: 12px;
+        font-size: 14px;
     }
     /* ------ VERTICAL NAV ------- */
     .vertical-nav {
@@ -595,19 +596,10 @@ button:hover {
         margin-top: 4em;
     }
     .vertical-nav li a {
-        padding: 14px;
-    }
-    .vertical-nav .contact {
-        color: #d7e7e7;
+        padding: 18px;
     }
     .vertical-nav li a:hover {
-        color: #d7e7e7;
-        background: #030303;
-        border: 1px solid #d7e7e7;
-    }
-    .vertical-nav .contact:hover {
-        background: #d7e7e7;
-        border: 1px solid #d7e7e7;
+        animation: none;
     }
     /* ------ ABOUT ------- */
     #inspire {
