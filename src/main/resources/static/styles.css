@@ -142,13 +142,13 @@ nav ul li a:hover {
     border: 2px solid rgba(215, 231, 231, 0.8);
 }
 .badge:nth-child(1) {
-    animation: float 12s infinite alternate;
+    animation: float 13s infinite alternate;
 }
 .badge:nth-child(2) {
-    animation: float1 9s infinite alternate;
+    animation: float1 10s infinite alternate;
 }
 .badge:nth-child(3) {
-    animation: float2 11s infinite alternate;
+    animation: float2 12s infinite alternate;
 }
 @keyframes float {
     0% {
@@ -184,6 +184,11 @@ nav ul li a:hover {
 .badge h3 {
     font-weight: 500;
     font-size: 1rem;
+    background-image: linear-gradient(to right, #d9a7c7, #B23BFF);
+    background-clip: text;
+    background-size: 200%;
+    color: transparent;
+    animation: background-animation 10s infinite alternate;
 }
 .badge p {
     margin-top: 0.25em;
@@ -192,7 +197,7 @@ nav ul li a:hover {
 }
 .badge > .fa-check {
     margin-top: 1.25em;
-    color: #B23BFF;
+
 }
 /* ------ VERTICAL NAV ------- */
 .vertical-nav {
