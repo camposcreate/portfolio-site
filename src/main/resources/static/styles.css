@@ -578,7 +578,7 @@ button:hover {
     }
     /* ---- MOBILE HERO ---- */
     .header-text {
-        margin-top: 3em;
+        margin-top: 2em;
     }
     .name-block {
         justify-content: center;
@@ -603,7 +603,7 @@ button:hover {
         margin: 1em 0.25em;
     }
     .badge h3, li {
-        font-size: 14px;
+        font-size: 16px;
     }
     .badge p {
         font-size: 14px;
