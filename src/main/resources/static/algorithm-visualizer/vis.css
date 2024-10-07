@@ -33,9 +33,9 @@ nav a {
     color: #d7e7e7;
     font-size: 18px;
     text-decoration: none;
-    padding: 6px;
+    padding: 8px;
     border: 1px solid #d7e7e7;
-    border-radius: 2px;
+    border-radius: 980px;
 }
 nav a:hover {
     color: #030303;
