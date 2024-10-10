@@ -35,6 +35,12 @@ body {
     transform: translateX(0);
     filter: blur(0);
 }
+.home > a {
+    cursor: default;
+}
+.home.visible > a {
+    cursor: pointer;
+}
 @media(prefers-reduces-motion) {
     .hidden {
         transition: none;
@@ -108,12 +114,11 @@ nav ul li a:hover {
     color: #d7e7e7;
 }
 .header-text h2 {
-    font-size: 2em;
+    font-size: 2.2em;
     font-weight: 200;
     line-height: 1em;
     text-align: center;
     white-space: nowrap;
-    color: rgba(215, 231, 231, 0.9);
 }
 /* ----------- BADGES ------------ */
 .badge-container {
@@ -152,7 +157,7 @@ nav ul li a:hover {
         transform: translateY(0%);
     }
     100% {
-        transform: translateY(9%);
+        transform: translateY(8%);
     }
 }
 @keyframes float1 {
@@ -213,7 +218,7 @@ nav ul li a:hover {
     background-clip: text;
     border-radius: 980px;
     background-size: 300%;
-    animation: background-animation 10s infinite alternate;
+    animation: background-animation 8s infinite alternate;
 }
 .vertical-nav li .contact {
     color: #030303;
@@ -251,7 +256,7 @@ nav ul li a:hover {
 }
 /* ----------- ABOUT ------------*/
 .about {
-    height: 60vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -375,6 +380,7 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
+    padding-bottom: 4em;
 }
 .main-contact h2 {
     position: absolute;
@@ -499,10 +505,27 @@ button:hover {
     font-size: 16px;
     font-weight: 200;
     width: 100%;
-    margin-top: -8em;
+    margin-top: -5em;
     padding-bottom: 1em;
 }
-/*---- MOBILE VIEW (MAX: 767px) ----*/
+@media (max-width: 925px) {
+    .main h2 {
+        font-size: 9em;
+    }
+    .main p {
+        font-size: 1em;
+    }
+    .column-1, .column-2, .column-3 {
+        width: 235px;
+    }
+    .block {
+        height: 600px;
+    }
+    .main-contact h2 {
+        font-size: 9em;
+    }
+}
+/* ---- MOBILE VIEW (MAX: 767px) ---- */
 @media only screen and (min-width: 320px) and (max-width: 932px) and (max-height: 450px) and (orientation: landscape) {
     #container-landscape {
         display: flex;
@@ -526,7 +549,7 @@ button:hover {
         display: none;
     }
 }
-@media only screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+@media only screen and (min-width: 320px) and (max-width: 820px) and (orientation: portrait) {
     #container-landscape {
         display: none;
     }
@@ -537,7 +560,7 @@ button:hover {
         width: 100vw;
         height: 100vh;
      }
-    /* ----------- NAV --------*/
+    /* --------- NAV --------- */
     nav {
         padding: 8px;
     }
@@ -572,7 +595,7 @@ button:hover {
     }
     /* ---- MOBILE HERO ---- */
     .header-text {
-        margin-top: 1.75em;
+        margin-top: 1.5em;
     }
     .name-block {
         justify-content: center;
@@ -624,7 +647,7 @@ button:hover {
     .main h2 {
         position: absolute;
         margin: 0.6em auto;
-        font-size: 4.5em;
+        font-size: 4.8em;
     }
     .main p {
         font-size: 16px;
@@ -653,7 +676,7 @@ button:hover {
     }
     /* ----- CONTACT ----- */
     .main-contact h2 {
-        font-size: 4.5em;
+        font-size: 4.8em;
         margin-top: 0.5em;
     }
     .contact-container {
