@@ -141,7 +141,7 @@ nav ul li a:hover {
     height: 8em;
     margin: 4em 1em;
     border-radius: 10px;
-    border: 1px solid rgba(215, 231, 231, 0.7);
+    border: 2px solid rgba(215, 231, 231, 0.7);
 }
 .badge:nth-child(1) {
     animation: float 13s infinite alternate;
@@ -446,19 +446,17 @@ input:focus + label,
 input:valid + label {
     color: #d7e7e7;
     background: #030303;
-    padding: 1%;
+    padding: 0.25em;
     top: -56px;
     left: 6px;
-    transform: scale(0.88);
 }
 textarea:focus + #message,
 textarea:valid + #message {
     color: #d7e7e7;
     background: #030303;
-    padding: 1%;
-    top: -220px;
+    padding: 0.25em;
+    top: -219px;
     left: 6px;
-    transform: scale(0.88);
 }
 button {
     color: #d7e7e7;
@@ -686,8 +684,8 @@ button:hover {
         margin: 6em auto;
     }
     form {
-        margin-right: 0%;
-        padding-right: 0%;
+        margin-right: 0;
+        padding-right: 0;
         padding-bottom: 1em;
         border-right: none;
         border-bottom: 1px solid rgba(215, 231, 231, 0.5);
