@@ -1,7 +1,7 @@
 
 # Portfolio Web-Application
 
-<img width="1012" alt="Screenshot 2024-05-15 at 11 31 24 PM" src="https://github.com/camposcreate/portfolio-site/assets/29357264/717344ca-befd-42fd-8e6e-3f053cef4677">
+<img width="900" alt="Screenshot 2024-10-12 at 10 15 40 AM" src="https://github.com/user-attachments/assets/b198b750-ffd5-47eb-96cc-16d50fcd4d0a">
 
 Welcome to my portfolio! Showcasing my skills by building web-apps with Java, JavaScript, and HTML/CSS. I'm continuously introducing or improving existing projects: all contained within this repository.
 
