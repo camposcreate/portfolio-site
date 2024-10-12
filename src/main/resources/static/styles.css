@@ -82,7 +82,7 @@ nav ul li a {
     font-size: 18px;
     text-decoration: none;
     padding: 8px;
-    border: 1px solid #d7e7e7;
+    border: 2px solid rgba(215, 231, 231, 0.8);
     border-radius: 980px;
 }
 nav ul li a:hover {
@@ -341,20 +341,19 @@ nav ul li a:hover {
 }
 .tile img {
     max-width: 100%;
-    max-height: 100%;
     object-fit: cover;
 }
 .tile:hover {
     transform: scale(1.05);
 }
 .column1-layer h3, .column2-layer h3, .column3-layer h3 {
-    font-size: 20px;
+    font-size: 1.2em;
     font-weight: 500;
     padding-top: 0.5em;
 }
 .column1-layer p, .column2-layer p, .column3-layer p {
-    font-size: 16px;
-    padding-top: 0.60em;
+    font-size: 1em;
+    padding-top: 0.5em;
 }
 .column1-layer a, .column2-layer a, .column3-layer a {
     position: absolute;
@@ -407,70 +406,42 @@ nav ul li a:hover {
     font-style: italic;
 }
 form {
-    margin-right: 10%;
+    margin-right: 5%;
     padding-right: 10%;
     border-right: 1px solid rgba(215, 231, 231, 0.5);
 }
 input, textarea {
     width: 100%;
-    font-size: 18px;
+    font-size: 1em;
     padding: 0 12px;
     line-height: 40px;
     outline: none;
-    border: 2px solid rgba(215, 231, 231, 0.6);
+    border: 2px solid rgba(215, 231, 231, 0.8);
     border-radius: 2px;
     background: transparent;
-    transition: 0.1s ease;
+    margin: 0.35em;
 }
 textarea {
     height: auto;
     resize: none;
-}
-label {
-    position: relative;
-    font-weight: 400;
-    top: -32px;
-    left: 12px;
-    color: rgba(215, 231, 231, 0.9);
-    transition: 200ms ease;
-}
-#message {
-    top: -196px;
 }
 input:focus, input:valid,
 textarea:focus, textarea:valid {
     color: #d7e7e7;
     border: 2px solid #d7e7e7;
 }
-input:focus + label,
-input:valid + label {
-    color: #d7e7e7;
-    background: #030303;
-    padding: 0.25em;
-    top: -56px;
-    left: 6px;
-}
-textarea:focus + #message,
-textarea:valid + #message {
-    color: #d7e7e7;
-    background: #030303;
-    padding: 0.25em;
-    top: -219px;
-    left: 6px;
-}
 button {
     color: #d7e7e7;
     background: #030303;
     padding: 10px 16px;
     border-radius: 980px;
-    font-size: 18px;
-    border: 1px solid #d7e7e7;;
+    font-size: 1.1em;
+    border: 2px solid rgba(215, 231, 231, 0.8);
     cursor: pointer;
     white-space: nowrap;
 }
 .contact-buttons {
-    margin-top: 8em;
-    padding-right: 1.5em;
+    margin-top: 7em;
     text-align: center;
 }
 .contact-buttons input, .contact-buttons label {
