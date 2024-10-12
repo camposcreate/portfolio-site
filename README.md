@@ -1,15 +1,14 @@
 
 # Portfolio Web-Application
 
-<img width="1012" alt="Screenshot 2024-05-15 at 11 31 24 PM" src="https://github.com/camposcreate/portfolio-site/assets/29357264/717344ca-befd-42fd-8e6e-3f053cef4677">
+<img width="900" alt="Screenshot 2024-10-12 at 10 15 40 AM" src="https://github.com/user-attachments/assets/b198b750-ffd5-47eb-96cc-16d50fcd4d0a">
 
-Welcome to my portfolio! Showcasing my skills in web-app development using Java/SpringBoot, HTML/CSS, and JavaScript. As I progress, I plan to continuously introduce or improve existing features: all contained within this repository.
+Welcome to my portfolio! Showcasing my skills by building web-apps with Java, JavaScript, and HTML/CSS. I'm continuously introducing or improving existing projects: all contained within this repository.
 
 ## Table of Contents
 
 - [Description](#description)
 - [Features](#features)
-- [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
 - [Contact](#contact)
@@ -20,27 +19,13 @@ This repository contains the source code for my personal portfolio web applicati
 
 ## Features
 
-- Clean and responsive design, suitable for various devices and screen sizes.
-- Project section where users can view and explore different coding projects.
-- Backend components to enhance communication with frontend components.
+- Responsive design, suitable for various devices and screen sizes.
+- View and explore different coding projects.
 - Contact section where users can get in touch.
-
-## Installation
-
-To run this project locally, follow these steps:
-
-1. Clone this repository to your local machine using `git clone https://github.com/camposcreate/portfolio-site.git`.
-2. Run the `./gradlew bootrun` command to start the application.
-3. Open your preferred web browser and navigate to `localhost:8080`.
-4. Use `CTRL + C` to stop the application.
 
 ## Usage
 
-Feel free to explore the website and check out my projects [here](https://web-app-ub20.onrender.com)
-
-Click on project tiles to view more details, and interact with the site to get a glimpse of my projects.
-
-#### Note: The site will take a minute to load initially since I'm utilizing a free service from [Render](https://render.com) for hosting. Please refresh after some time :)
+Feel free to explore my website and check out my projects [here](https://urielcampos.com)
 
 ## License
 
