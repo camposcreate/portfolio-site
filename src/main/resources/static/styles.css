@@ -564,7 +564,7 @@ button:hover {
     }
     /* ---- MOBILE HERO ---- */
     .header-text {
-        margin-top: 1.5em;
+        margin-top: -2em;
     }
     .name-block {
         justify-content: center;
