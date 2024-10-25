@@ -48,27 +48,27 @@ body {
 }
 #header {
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    border-bottom: 1px solid rgba(94, 96, 96, 0.5);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
 }
 nav {
     display: flex;
     position: fixed;
     align-items: center;
     justify-content: space-between;
-    background: rgba(8, 8, 8, 0.5);
+    background: rgba(8, 8, 8, 0.8);
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     top: 0;
     left: 0;
     right: 0;
     padding: 0 20px;
-    border-bottom: 1px solid rgba(215, 231, 231, 0.4);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
     z-index: 1;
 }
 .nav_logo {
-    width: 1.75em;
+    width: 1.6em;
 }
 nav ul {
     display: flex;
@@ -114,11 +114,21 @@ nav ul li a:hover {
     color: #d7e7e7;
 }
 .header-text h2 {
-    font-size: 2.2em;
-    font-weight: 200;
-    line-height: 1em;
+    font-size: 2.6em;
+    font-weight: 300;
     text-align: center;
     white-space: nowrap;
+}
+.header-text h3 {
+    color: rgba(215, 231, 231, 0.9);
+    font-size: 2em;
+    font-weight: 200;
+    line-height: 1.1em;
+    text-align: center;
+    white-space: nowrap;
+}
+.fa-location-dot {
+    font-size: 0.85em;
 }
 /* ----------- BADGES ------------ */
 .badge-container {
@@ -191,7 +201,7 @@ nav ul li a:hover {
     margin-top: 0.25em;
     font-style: italic;
     font-weight: 200;
-    color: rgba(215, 231, 231, 0.7);
+    color: rgba(215, 231, 231, 0.8);
 }
 .badge > .fa-check {
     margin-top: 1.25em;
@@ -254,32 +264,51 @@ nav ul li a:hover {
 .vertical-nav li .contact:hover {
     border: 2px solid transparent;
 }
-/* ----------- ABOUT ------------*/
+/* ----------- ABOUT ------------ */
 .about {
-    height: 50vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid rgba(215, 231, 231, 0.4);
-    border-bottom: 1px solid rgba(215, 231, 231, 0.4);
-    background-color: #030303;
+    background-color: rgba(215, 231, 231, 0.95);
 }
-.about h1 {
-    font-size: 3.25em;
+.about-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1em;
+    white-space: nowrap;
+}
+.about-container h2 {
+    color: #030303;
+    font-size: 5em;
     font-weight: 400;
+}
+.about-container h2 span {
+    border-image: linear-gradient(to right, #662D8C 0%, #B23BFF 100%) 1;
+    border-width: 4px;
+    border-style: solid;
     font-style: italic;
-    line-height: 0.5em;
 }
-.about h1 span {
-    font-weight: 500;
-    background-image: linear-gradient(to right, #662D8C, #B23BFF);
-    padding-left: 1.4rem;
-    border-radius: 2px;
+.mini-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 8em 0.35em 0 0.35em;
+    width: 14em;
+    height: 4em;
+    color: #030303;
+    border-radius: 10px;
+    border: 2px solid rgba(3, 3, 3, 0.8);
 }
-.about h2 {
-    font-size: 3em;
-    padding: .5em;
+.mini-badge i {
+    font-size: 2.25rem;
+}
+.mini-badge h3 {
+    font-size: 1.75rem;
+    font-weight: 300;
 }
 /* -----------PORTFOLIO------------- */
 .main {
@@ -288,8 +317,8 @@ nav ul li a:hover {
     align-items: flex-start;
     text-align: center;
     padding-bottom: 400px;
-    border-top: 1px solid rgba(215, 231, 231, 0.4);
-    border-bottom: 1px solid rgba(215, 231, 231, 0.4);
+    border-top: 1px solid rgba(94, 96, 96, 0.4);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
 }
 .main h2 {
     position: absolute;
@@ -369,7 +398,7 @@ nav ul li a:hover {
 }
 /*----------- CONTACT ----------- */
 #contact {
-    border-top: 1px solid rgba(215, 231, 231, 0.4);
+    border-top: 1px solid rgba(94, 96, 96, 0.4);
 }
 .contact-section {
     width: 100%;
@@ -432,13 +461,20 @@ textarea:focus, textarea:valid {
 }
 button {
     color: #d7e7e7;
-    background: #030303;
+    background: linear-gradient(to right, #d7e7e7 50%, #030303 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
     padding: 10px 16px;
     border-radius: 980px;
     font-size: 1.1em;
     border: 2px solid rgba(215, 231, 231, 0.8);
     cursor: pointer;
     white-space: nowrap;
+    transition: all .3s ease-out;
+}
+button:hover {
+    color: #030303;
+    background-position: left bottom;
 }
 .contact-buttons {
     margin-top: 7em;
@@ -462,11 +498,6 @@ button {
     background: #d7e7e7;
     color: #030303;
 }
-button:hover {
-    color: #030303;
-    background: #d7e7e7;
-    transition: background 200ms ease;
-}
 .main-contact p {
     text-align: center;
     font-style: italic;
@@ -474,8 +505,7 @@ button:hover {
     font-size: 16px;
     font-weight: 200;
     width: 100%;
-    margin-top: -5em;
-    padding-bottom: 1em;
+    margin-top: -6em;
 }
 @media (max-width: 925px) {
     .main h2 {
