@@ -79,16 +79,19 @@ nav ul li {
 }
 nav ul li a {
     color: #d7e7e7;
+    background: linear-gradient(to right, #d7e7e7 50%, #030303 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
     font-size: 18px;
     text-decoration: none;
     padding: 8px;
     border: 2px solid rgba(215, 231, 231, 0.8);
     border-radius: 980px;
+    transition: all .3s ease-out;
 }
 nav ul li a:hover {
     color: #030303;
-    background: #d7e7e7;
-    transition: 200ms;
+    background-position: left bottom;
 }
 #portfolio-menu, #contact-menu {
     display: none;
@@ -296,7 +299,7 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 8em 0.35em 0 0.35em;
+    margin: 10em 0.35em 0 0.35em;
     width: 14em;
     height: 4em;
     color: #030303;
@@ -304,7 +307,7 @@ nav ul li a:hover {
     border: 2px solid rgba(3, 3, 3, 0.8);
 }
 .mini-badge i {
-    font-size: 2.25rem;
+    font-size: 2.2rem;
 }
 .mini-badge h3 {
     font-size: 1.75rem;
@@ -470,7 +473,7 @@ button {
     border: 2px solid rgba(215, 231, 231, 0.8);
     cursor: pointer;
     white-space: nowrap;
-    transition: all .3s ease-out;
+    transition: all .4s ease-out;
 }
 button:hover {
     color: #030303;
@@ -601,13 +604,14 @@ button:hover {
     }
     .header-text h1 {
         font-size: 3em;
-        line-height: 1em;
+        line-height: .8em;
         text-align: center;
     }
     .header-text h2 {
-        font-size: 1.5em;
-        line-height: 1em;
-        font-weight: 300;
+        font-size: 1.6em;
+    }
+    .header-text h3 {
+        font-size: 1.3em;
     }
     .fa-location-dot {
         font-size: 0.9em;
@@ -690,6 +694,11 @@ button:hover {
         padding-bottom: 1em;
         border-right: none;
         border-bottom: 1px solid rgba(215, 231, 231, 0.5);
+    }
+    button {
+        color: #d7e7e7;
+        background: #030303;
+        border: 1px solid #d7e7e7;
     }
     .contact-buttons {
         margin-top: 1.25em;
