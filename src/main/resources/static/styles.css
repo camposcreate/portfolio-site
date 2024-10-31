@@ -75,12 +75,12 @@ nav ul {
     list-style: none;
 }
 nav ul li {
-    margin: 15px 6px;
+    margin: 16px 6px;
 }
 nav ul li a {
     color: #d7e7e7;
     background: linear-gradient(to right, #d7e7e7 50%, #030303 50%);
-    background-size: 200% 100%;
+    background-size: 215% 100%;
     background-position: right bottom;
     font-size: 18px;
     text-decoration: none;
@@ -103,7 +103,7 @@ nav ul li a:hover {
     padding-top: 2em;
 }
 .hero-block {
-    margin-top: 5em;
+    margin-top: 4em;
     width: auto;
 }
 .name-block {
@@ -253,14 +253,6 @@ nav ul li a:hover {
         background-position: right;
     }
 }
-.hero-buttons p {
-    color: rgba(215, 231, 231, 0.9);
-    margin: 2.25em 0;
-    font-style: italic;
-    font-size: 0.8rem;
-    text-align: center;
-    font-weight: 200;
-}
 .vertical-nav li a:hover {
     animation: border-animation 4s infinite alternate;
 }
@@ -269,49 +261,47 @@ nav ul li a:hover {
 }
 /* ----------- ABOUT ------------ */
 .about {
-    height: 70vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(215, 231, 231, 0.95);
+    background-color: rgba(215, 231, 231, 1);
 }
 .about-container {
     position: absolute;
     top: 0;
     left: 0;
-    margin: 1em;
-    white-space: nowrap;
+    margin: 0.5em 0.5em;
 }
 .about-container h2 {
     color: #030303;
     font-size: 5em;
-    font-weight: 400;
+    font-weight: 500;
+    white-space: nowrap;
 }
 .about-container h2 span {
+    font-style: italic;
+    font-weight: 400;
     border-image: linear-gradient(to right, #662D8C 0%, #B23BFF 100%) 1;
     border-width: 4px;
     border-style: solid;
-    font-style: italic;
 }
 .mini-badge {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 10em 0.35em 0 0.35em;
-    width: 14em;
-    height: 4em;
     color: #030303;
-    border-radius: 10px;
-    border: 2px solid rgba(3, 3, 3, 0.8);
+    margin: 2em 0.35em 0 0.35em;
+    width: 10em;
+    height: 6em;
 }
 .mini-badge i {
-    font-size: 2.2rem;
+    font-size: 4.5rem;
 }
-.mini-badge h3 {
-    font-size: 1.75rem;
-    font-weight: 300;
+.mini-badge img {
+    width: 70px;
 }
 /* -----------PORTFOLIO------------- */
 .main {
@@ -465,7 +455,7 @@ textarea:focus, textarea:valid {
 button {
     color: #d7e7e7;
     background: linear-gradient(to right, #d7e7e7 50%, #030303 50%);
-    background-size: 200% 100%;
+    background-size: 215% 100%;
     background-position: right bottom;
     padding: 10px 16px;
     border-radius: 980px;
@@ -505,7 +495,7 @@ button:hover {
     text-align: center;
     font-style: italic;
     color: rgba(215, 231, 231, 0.8);
-    font-size: 16px;
+    font-size: 0.8rem;
     font-weight: 200;
     width: 100%;
     margin-top: -6em;
@@ -516,6 +506,9 @@ button:hover {
     }
     .main p {
         font-size: 1em;
+    }
+    .about-container h2 {
+        font-size: 3.6em;
     }
     .column-1, .column-2, .column-3 {
         width: 235px;
@@ -597,7 +590,7 @@ button:hover {
     }
     /* ---- MOBILE HERO ---- */
     .header-text {
-        margin-top: -2em;
+        margin-top: -1em;
     }
     .name-block {
         justify-content: center;
