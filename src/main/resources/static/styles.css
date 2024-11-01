@@ -49,7 +49,7 @@ body {
 #header {
     position: relative;
     width: 100vw;
-    height: 120vh;
+    height: 100vh;
     border-bottom: 1px solid rgba(94, 96, 96, 0.4);
 }
 nav {
@@ -79,14 +79,16 @@ nav ul li {
 }
 nav ul li a {
     color: #d7e7e7;
-    background: linear-gradient(to right, #d7e7e7 50%, #030303 50%);
+    background: linear-gradient(to right, #d7e7e7 50%, transparent 50%);
     background-size: 215% 100%;
     background-position: right bottom;
-    font-size: 18px;
+    background-clip: padding-box;
+    overflow: hidden;
+    font-size: 1rem;
     text-decoration: none;
-    padding: 8px;
+    padding: 9px 12px;
     border: 2px solid rgba(215, 231, 231, 0.8);
-    border-radius: 980px;
+    border-radius: 50%;
     transition: all .3s ease-out;
 }
 nav ul li a:hover {
@@ -150,7 +152,7 @@ nav ul li a:hover {
     height: 8em;
     margin: 4em 1em;
     border-radius: 10px;
-    border: 2px solid rgba(215, 231, 231, 0.7);
+    border: 2px solid rgba(215, 231, 231, 0.8);
 }
 .badge:nth-child(1) {
     animation: float 13s infinite alternate;
@@ -257,7 +259,7 @@ nav ul li a:hover {
 }
 /* ----------- ABOUT ------------ */
 .about {
-    height: 35vh;
+    height: 55vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,24 +270,22 @@ nav ul li a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    margin: -5em 0.25em;
+    margin: 1em;
 }
 .about-container h2 {
     color: #030303;
-    font-size: 6em;
+    font-size: 4.5em;
     font-weight: 500;
     white-space: nowrap;
-    line-height: 1em;
-}
-.about-container h2 .building {
-    color: rgba(215, 231, 231, 1);
+    line-height: 1.1em;
 }
 .about-container h2 .app {
     font-style: italic;
     font-weight: 300;
     border-image: linear-gradient(to right, #662D8C 0%, #B23BFF 100%) 1;
-    border-width: 4px;
+    border-width: 5px;
     border-style: solid;
+    margin-left: 0.5em;
 }
 .mini-badge {
     display: flex;
@@ -293,9 +293,11 @@ nav ul li a:hover {
     align-items: center;
     text-align: center;
     color: #030303;
-    margin: 6em 0.35em 0 0.35em;
+    margin: 10em 0.35em 0 0.35em;
     width: 10em;
     height: 6em;
+    border: 1px solid;
+    border-radius: 10px;
 }
 .mini-badge i {
     font-size: 4.5rem;
@@ -309,7 +311,7 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
-    padding-bottom: 400px;
+    padding-bottom: 375px;
     border-top: 1px solid rgba(94, 96, 96, 0.4);
     border-bottom: 1px solid rgba(94, 96, 96, 0.4);
 }
@@ -401,7 +403,7 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
-    padding-bottom: 4em;
+    padding-bottom: 2em;
 }
 .main-contact h2 {
     position: absolute;
@@ -418,7 +420,7 @@ nav ul li a:hover {
     margin: 9em auto;
     text-align: left;
     background-color: #050505;
-    padding: 3% 4%;
+    padding: 3% 3%;
     border-radius: 10px;
     border: 1px solid rgba(215, 231, 231, 0.4);
 }
@@ -428,8 +430,7 @@ nav ul li a:hover {
     font-style: italic;
 }
 form {
-    margin-right: 5%;
-    padding-right: 10%;
+    padding-right: 2em;
     border-right: 1px solid rgba(215, 231, 231, 0.5);
 }
 input, textarea {
@@ -454,9 +455,11 @@ textarea:focus, textarea:valid {
 }
 button {
     color: #d7e7e7;
-    background: linear-gradient(to right, #d7e7e7 50%, #030303 50%);
-    background-size: 215% 100%;
+    background: linear-gradient(to right, #d7e7e7 50%, transparent 50%);
+    background-size: 200% 100%;
     background-position: right bottom;
+    background-clip: padding-box;
+    overflow: hidden;
     padding: 10px 16px;
     border-radius: 980px;
     font-size: 1.1em;
@@ -470,7 +473,7 @@ button:hover {
     background-position: left bottom;
 }
 .contact-buttons {
-    margin-top: 7em;
+    margin: 7em -1.8em 0 0;
     text-align: center;
 }
 .contact-buttons input, .contact-buttons label {
@@ -507,12 +510,9 @@ button:hover {
     .main p {
         font-size: 1em;
     }
-    .about-container {
-        margin: -4.1em 0.25em;
-    }
     .about-container h2 {
-        font-size: 5em;
-        line-height: 1em;
+        font-size: 4em;
+        line-height: 1.1em;
     }
     .mini-badge i {
         font-size: 4rem;
