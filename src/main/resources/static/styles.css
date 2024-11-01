@@ -49,7 +49,7 @@ body {
 #header {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     border-bottom: 1px solid rgba(94, 96, 96, 0.4);
 }
 nav {
@@ -75,7 +75,7 @@ nav ul {
     list-style: none;
 }
 nav ul li {
-    margin: 16px 6px;
+    margin: 14px 4px;
 }
 nav ul li a {
     color: #d7e7e7;
@@ -100,11 +100,7 @@ nav ul li a:hover {
     display: none;
 }
 #home {
-    padding-top: 2em;
-}
-.hero-block {
-    margin-top: 4em;
-    width: auto;
+    padding-top: 6em;
 }
 .name-block {
     display: flex;
@@ -261,7 +257,7 @@ nav ul li a:hover {
 }
 /* ----------- ABOUT ------------ */
 .about {
-    height: 50vh;
+    height: 35vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -272,17 +268,21 @@ nav ul li a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    margin: 0.5em 0.5em;
+    margin: -5em 0.25em;
 }
 .about-container h2 {
     color: #030303;
-    font-size: 5em;
+    font-size: 6em;
     font-weight: 500;
     white-space: nowrap;
+    line-height: 1em;
 }
-.about-container h2 span {
+.about-container h2 .building {
+    color: rgba(215, 231, 231, 1);
+}
+.about-container h2 .app {
     font-style: italic;
-    font-weight: 400;
+    font-weight: 300;
     border-image: linear-gradient(to right, #662D8C 0%, #B23BFF 100%) 1;
     border-width: 4px;
     border-style: solid;
@@ -293,7 +293,7 @@ nav ul li a:hover {
     align-items: center;
     text-align: center;
     color: #030303;
-    margin: 2em 0.35em 0 0.35em;
+    margin: 6em 0.35em 0 0.35em;
     width: 10em;
     height: 6em;
 }
@@ -507,8 +507,18 @@ button:hover {
     .main p {
         font-size: 1em;
     }
+    .about-container {
+        margin: -4.1em 0.25em;
+    }
     .about-container h2 {
-        font-size: 3.6em;
+        font-size: 5em;
+        line-height: 1em;
+    }
+    .mini-badge i {
+        font-size: 4rem;
+    }
+    .mini-badge img {
+        width: 62px;
     }
     .column-1, .column-2, .column-3 {
         width: 235px;
