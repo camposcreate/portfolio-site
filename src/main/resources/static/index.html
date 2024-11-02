@@ -21,7 +21,9 @@
         <nav>
             <img src="images/navbar_logo.png" class="nav_logo" alt="website logo" draggable="false">
             <ul id="sidemenu">
-                <li id="nav-home" class="home"><a href="#header" class="nav-link home-link">&nbsp;HOME&nbsp;</a></li>
+                <li id="nav-home" class="home">
+                    <a href="#header" class="nav-link home-link" aria-label="Click here to scroll home"><i class="fa-solid fa-angle-up"></i></a>
+                </li>
             </ul>
         </nav>
         <!------ HERO --------->
@@ -30,7 +32,8 @@
                 <div class="hero-block">
                     <div class="name-block"><h1>Uriel Campos</h1></div>
                 </div><br>
-                <h2>Save time and skip the search <br>- based out of San Antonio, Texas <i class="fa-solid fa-location-dot"></i></h2>
+                <h2>Save time and skip the search.</h2>
+                <h3>San Antonio, Texas <i class="fa-solid fa-location-dot"></i></h3>
             </div>
             <!----- BADGES ------>
             <div class="badge-container">
@@ -63,7 +66,6 @@
                         <a href="#contact-section" class="contact">CONNECT</a>
                     </li>
                 </ul>
-                <p>available for hire</p>
             </div>
         </section>
     </div>
@@ -71,7 +73,23 @@
 <!--------- ABOUT ------------->
 <section id="inspire" class="hidden">
     <div class="about">
-        <h1>building <span>web apps</span> with <i class="fa-brands fa-java"></i>&nbsp&nbsp<i class="fa-brands fa-js"></i></h1>
+        <div class="about-container">
+            <h2><span class="building">BUILDING</span><br><span class="app">&nbsp;WEB APPS</span> WITH</h2>
+        </div>
+        <!----- MINI BADGES ------>
+        <div class="badge-container">
+            <div class="badge-group">
+                <div class="mini-badge">
+                    <i class="fa-brands fa-java"></i>
+                </div>
+                <div class="mini-badge">
+                    <i class="fa-brands fa-js"></i>
+                </div>
+                <div class="mini-badge">
+                    <img src="images/spring_icon_256.png" alt="spring boot icon">
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <!--------- PORTFOLIO --------->
@@ -158,7 +176,7 @@
                         <textarea id="description" name="description" rows="5" placeholder="message" required></textarea>
                         <label id="message" for="description"></label>
                     </div>
-                    <button type="submit" id="submit">Send</button>
+                    <button type="submit" id="submit">Send <i class="fa-solid fa-paper-plane"></i></button>
                     <span id="message-pop-up"></span>
                 </form>
                 <div class="contact-buttons">
@@ -173,7 +191,7 @@
                     <button class="email" onclick="copyToClipBoard()"><i class="fa-regular fa-clone"></i> Email</button>
                 </div>
             </div>
-            <p>a self-developed web-application</p>
+            <p>an original design and self-developed web application</p>
         </div>
     </div>
 </section>

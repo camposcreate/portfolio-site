@@ -15,7 +15,7 @@ body {
 #container-landscape {
     display: none;
 }
-/* -- SCROLL ANIMATION -- */
+/* ---- SCROLL ANIMATION ---- */
 .hidden {
     opacity: 0;
     transform: translateX(-2%);
@@ -48,47 +48,49 @@ body {
 }
 #header {
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    border-bottom: 1px solid rgba(94, 96, 96, 0.5);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
 }
 nav {
     display: flex;
     position: fixed;
     align-items: center;
     justify-content: space-between;
-    background: rgba(8, 8, 8, 0.5);
+    background: rgba(8, 8, 8, 0.8);
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     top: 0;
     left: 0;
     right: 0;
     padding: 0 20px;
-    border-bottom: 1px solid rgba(215, 231, 231, 0.4);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
     z-index: 1;
 }
 .nav_logo {
-    width: 1.75em;
+    width: 1.6em;
 }
 nav ul {
     display: flex;
     list-style: none;
 }
 nav ul li {
-    margin: 15px 6px;
+    margin: 14px 4px;
 }
 nav ul li a {
     color: #d7e7e7;
-    font-size: 18px;
+    background: transparent;
+    overflow: hidden;
+    font-size: 1rem;
     text-decoration: none;
-    padding: 8px;
-    border: 2px solid rgba(215, 231, 231, 0.8);
+    padding: 9px 12px;
+    border: 1px solid rgba(215, 231, 231, 0.5);
     border-radius: 980px;
+    transition: 300ms ease;
 }
 nav ul li a:hover {
     color: #030303;
     background: #d7e7e7;
-    transition: 200ms;
 }
 #portfolio-menu, #contact-menu {
     display: none;
@@ -97,11 +99,7 @@ nav ul li a:hover {
     display: none;
 }
 #home {
-    padding-top: 2em;
-}
-.hero-block {
-    margin-top: 5em;
-    width: auto;
+    padding-top: 6em;
 }
 .name-block {
     display: flex;
@@ -114,11 +112,21 @@ nav ul li a:hover {
     color: #d7e7e7;
 }
 .header-text h2 {
-    font-size: 2.2em;
-    font-weight: 200;
-    line-height: 1em;
+    font-size: 2.6em;
+    font-weight: 300;
     text-align: center;
     white-space: nowrap;
+}
+.header-text h3 {
+    color: rgba(215, 231, 231, 0.9);
+    font-size: 2em;
+    font-weight: 200;
+    line-height: 1.1em;
+    text-align: center;
+    white-space: nowrap;
+}
+.fa-location-dot {
+    font-size: 0.85em;
 }
 /* ----------- BADGES ------------ */
 .badge-container {
@@ -141,16 +149,16 @@ nav ul li a:hover {
     height: 8em;
     margin: 4em 1em;
     border-radius: 10px;
-    border: 2px solid rgba(215, 231, 231, 0.7);
+    border: 1px solid rgba(215, 231, 231, 0.8);
 }
 .badge:nth-child(1) {
-    animation: float 13s infinite alternate;
+    animation: float 12s infinite alternate;
 }
 .badge:nth-child(2) {
-    animation: float1 10s infinite alternate;
+    animation: float1 9s infinite alternate;
 }
 .badge:nth-child(3) {
-    animation: float2 12s infinite alternate;
+    animation: float2 11s infinite alternate;
 }
 @keyframes float {
     0% {
@@ -191,7 +199,7 @@ nav ul li a:hover {
     margin-top: 0.25em;
     font-style: italic;
     font-weight: 200;
-    color: rgba(215, 231, 231, 0.7);
+    color: rgba(215, 231, 231, 0.8);
 }
 .badge > .fa-check {
     margin-top: 1.25em;
@@ -240,46 +248,64 @@ nav ul li a:hover {
         background-position: right;
     }
 }
-.hero-buttons p {
-    color: rgba(215, 231, 231, 0.9);
-    margin: 2.25em 0;
-    font-style: italic;
-    font-size: 0.8rem;
-    text-align: center;
-    font-weight: 200;
-}
 .vertical-nav li a:hover {
     animation: border-animation 4s infinite alternate;
 }
 .vertical-nav li .contact:hover {
     border: 2px solid transparent;
 }
-/* ----------- ABOUT ------------*/
+/* ----------- ABOUT ------------ */
 .about {
     height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid rgba(215, 231, 231, 0.4);
-    border-bottom: 1px solid rgba(215, 231, 231, 0.4);
-    background-color: #030303;
+    background-color: rgba(215, 231, 231, 1);
 }
-.about h1 {
-    font-size: 3.25em;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 0.5em;
+.about-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1em;
 }
-.about h1 span {
+.about-container h2 {
+    color: #030303;
+    font-size: 4.5em;
     font-weight: 500;
-    background-image: linear-gradient(to right, #662D8C, #B23BFF);
-    padding-left: 1.4rem;
-    border-radius: 2px;
+    white-space: nowrap;
+    line-height: 1.1em;
 }
-.about h2 {
-    font-size: 3em;
-    padding: .5em;
+.about-container h2 .app {
+    font-style: italic;
+    font-weight: 300;
+    border-image: linear-gradient(to right, #662D8C 0%, #B23BFF 100%) 1;
+    border-width: 5px;
+    border-style: solid;
+    margin-left: 0.5em;
+    letter-spacing: 4px;
+}
+.mini-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #030303;
+    margin: 10em 0.35em 0 0.35em;
+    width: 10em;
+    height: 6em;
+    border: 1px solid rgba(3, 3, 3, 0.3);
+    border-radius: 10px;
+    transition: 300ms ease;
+}
+.mini-badge:hover {
+    border: 1px solid rgba(3, 3, 3, 0.5);
+}
+.mini-badge i {
+    font-size: 4.5rem;
+}
+.mini-badge img {
+    width: 70px;
 }
 /* -----------PORTFOLIO------------- */
 .main {
@@ -287,9 +313,9 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
-    padding-bottom: 400px;
-    border-top: 1px solid rgba(215, 231, 231, 0.4);
-    border-bottom: 1px solid rgba(215, 231, 231, 0.4);
+    padding-bottom: 375px;
+    border-top: 1px solid rgba(94, 96, 96, 0.4);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
 }
 .main h2 {
     position: absolute;
@@ -369,17 +395,14 @@ nav ul li a:hover {
 }
 /*----------- CONTACT ----------- */
 #contact {
-    border-top: 1px solid rgba(215, 231, 231, 0.4);
-}
-.contact-section {
-    width: 100%;
+    border-top: 1px solid rgba(94, 96, 96, 0.4);
 }
 .main-contact {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
-    padding-bottom: 4em;
+    padding-bottom: 2em;
 }
 .main-contact h2 {
     position: absolute;
@@ -396,9 +419,9 @@ nav ul li a:hover {
     margin: 9em auto;
     text-align: left;
     background-color: #050505;
-    padding: 3% 4%;
+    padding: 2em 1.5em;
     border-radius: 10px;
-    border: 1px solid rgba(215, 231, 231, 0.4);
+    border: 1px solid rgba(215, 231, 231, 0.2);
 }
 .contact-container span {
     font-size: 14px;
@@ -406,9 +429,8 @@ nav ul li a:hover {
     font-style: italic;
 }
 form {
-    margin-right: 5%;
-    padding-right: 10%;
-    border-right: 1px solid rgba(215, 231, 231, 0.5);
+    padding-right: 1.5em;
+    border-right: 1px solid rgba(215, 231, 231, 0.2);
 }
 input, textarea {
     width: 100%;
@@ -416,7 +438,7 @@ input, textarea {
     padding: 0 12px;
     line-height: 40px;
     outline: none;
-    border: 2px solid rgba(215, 231, 231, 0.8);
+    border: 2px solid rgba(215, 231, 231, 0.6);
     border-radius: 2px;
     background: transparent;
     margin: 0.35em;
@@ -432,50 +454,49 @@ textarea:focus, textarea:valid {
 }
 button {
     color: #d7e7e7;
-    background: #030303;
-    padding: 10px 16px;
+    background: transparent;
+    padding: 12px 16px;
     border-radius: 980px;
     font-size: 1.1em;
-    border: 2px solid rgba(215, 231, 231, 0.8);
+    border: 1px solid rgba(215, 231, 231, 0.5);
     cursor: pointer;
     white-space: nowrap;
+    transition: 200ms ease;
+}
+button:hover {
+    color: #030303;
+    background: #d7e7e7;
 }
 .contact-buttons {
-    margin-top: 7em;
+    margin: 7.25em -0.5em 0 1.5em;
     text-align: center;
 }
 .contact-buttons input, .contact-buttons label {
     display: none;
 }
 .linkedin {
-    margin-bottom: 1em;
-    padding: 0.75em 1.05em;
+    margin-bottom: 0.75em;
+    padding: 0.75em 4.2em;
 }
 .github {
-    padding: 0.75em 1.3em;
-    margin-bottom: 1em;
+    padding: 0.75em 4.5em;
+    margin-bottom: 0.75em;
 }
 .email {
-    padding: 0.75em 1.67em;
+    padding: 0.75em 4.87em;
 }
 .email.copied {
     background: #d7e7e7;
     color: #030303;
 }
-button:hover {
-    color: #030303;
-    background: #d7e7e7;
-    transition: background 200ms ease;
-}
 .main-contact p {
     text-align: center;
     font-style: italic;
     color: rgba(215, 231, 231, 0.8);
-    font-size: 16px;
+    font-size: 0.8rem;
     font-weight: 200;
     width: 100%;
-    margin-top: -5em;
-    padding-bottom: 1em;
+    margin-top: -7em;
 }
 @media (max-width: 925px) {
     .main h2 {
@@ -483,6 +504,16 @@ button:hover {
     }
     .main p {
         font-size: 1em;
+    }
+    .about-container h2 {
+        font-size: 4em;
+        line-height: 1.1em;
+    }
+    .mini-badge i {
+        font-size: 4rem;
+    }
+    .mini-badge img {
+        width: 62px;
     }
     .column-1, .column-2, .column-3 {
         width: 235px;
@@ -564,20 +595,21 @@ button:hover {
     }
     /* ---- MOBILE HERO ---- */
     .header-text {
-        margin-top: -2em;
+        margin-top: -1em;
     }
     .name-block {
         justify-content: center;
     }
     .header-text h1 {
         font-size: 3em;
-        line-height: 1em;
+        line-height: .8em;
         text-align: center;
     }
     .header-text h2 {
-        font-size: 1.5em;
-        line-height: 1em;
-        font-weight: 300;
+        font-size: 1.6em;
+    }
+    .header-text h3 {
+        font-size: 1.3em;
     }
     .fa-location-dot {
         font-size: 0.9em;
@@ -660,6 +692,11 @@ button:hover {
         padding-bottom: 1em;
         border-right: none;
         border-bottom: 1px solid rgba(215, 231, 231, 0.5);
+    }
+    button {
+        color: #d7e7e7;
+        background: #030303;
+        border: 1px solid #d7e7e7;
     }
     .contact-buttons {
         margin-top: 1.25em;
