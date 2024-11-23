@@ -49,21 +49,21 @@ body {
 #header {
     position: relative;
     height: 100vh;
-    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.3);
 }
 nav {
     display: flex;
     position: fixed;
     align-items: center;
     justify-content: space-between;
-    background: rgba(8, 8, 8, 0.8);
+    background: rgba(3, 3, 3, 0.8);
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     top: 0;
     left: 0;
     right: 0;
     padding: 0 20px;
-    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.3);
     z-index: 1;
 }
 .nav_logo {
@@ -310,8 +310,8 @@ nav ul li a:hover {
     align-items: flex-start;
     text-align: center;
     padding-bottom: 375px;
-    border-top: 1px solid rgba(94, 96, 96, 0.4);
-    border-bottom: 1px solid rgba(94, 96, 96, 0.4);
+    border-top: 1px solid rgba(94, 96, 96, 0.3);
+    border-bottom: 1px solid rgba(94, 96, 96, 0.3);
 }
 .main h2 {
     position: absolute;
@@ -391,7 +391,9 @@ nav ul li a:hover {
 }
 /*----------- CONTACT ----------- */
 #contact {
-    border-top: 1px solid rgba(94, 96, 96, 0.4);
+    position: relative;
+    height: 100vh;
+    border-top: 1px solid rgba(94, 96, 96, 0.3);
 }
 .main-contact {
     display: flex;
